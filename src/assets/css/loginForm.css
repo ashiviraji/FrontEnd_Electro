@@ -21,19 +21,17 @@ form input[name="firstName"],
 form input[name="lastName"],
 form input[name="confirmPassword"]{
   
-    color: rgb(252, 249, 246);
+   
     border: 0;
     border-bottom: 3px solid rgb(211, 208, 208);
     border-radius: 0;
 }
 form input:focus{
-    background-color: transparent !important;
+   background-color: white;
     box-shadow: none !important;
-     
-  
-   
 }
 .form-control:focus{
+  background-color: white;
  border-color: #22cca4;
 }
 .forgot-password,

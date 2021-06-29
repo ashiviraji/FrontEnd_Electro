@@ -14,12 +14,12 @@ export default class LoginForm extends Component {
 
                         <div className="form-group">
 
-                            <input type="email" name="email" className="form-control my-4" placeholder="Enter email" />
+                            <input type="email" name="email" className="form-control my-4" placeholder="Enter email" required />
                         </div>
 
                         <div className="form-group">
 
-                            <input type="password" name="password" className="form-control my-2" placeholder="Enter password" />
+                            <input type="password" name="password" className="form-control my-2" placeholder="Enter password" required />
                         </div>
 
                         <div className="form-group">

@@ -17,11 +17,14 @@ export default function Navbar() {
                             <li className="nav-item ">
                                 <Link className="nav-link" to="/sign-in">Login</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/contact-us">Contactus</Link>
+                            <li className="nav-item ">
+                                <Link className="nav-link" to="/sign-up">Sign up</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/about-us">AboutUs</Link>
+                                <Link className="nav-link" to="/contact-us">Contact us</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/about-us">About us</Link>
                             </li>
 
                             <li className="nav-item">
