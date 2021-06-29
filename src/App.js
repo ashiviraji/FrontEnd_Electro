@@ -1,10 +1,14 @@
 import "./App.css";
 import { Route } from "react-router-dom";
 
+
 import Navbar from "./components/common/Navbar";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Contactus from "./views/Contactus";
 import Aboutus from "./views/Aboutus";
+import Sidebar from './components/common/Sidebar';
+import DeviceWiseFixed from './views/customer/Devicevicefixed';
+
 
 import Home from "./views/Home";
 import Term from "./views/Term";
@@ -36,6 +40,10 @@ function App() {
       <Route exact path="/addnewcebengineer">
         <AddNewCebEngineer />
       </Route>
+
+      <Route exact path='/dashboard'><Sidebar /></Route>
+      <Route exact path='/manage-bill'><Sidebar/><DeviceWiseFixed /></Route>
+
     </div>
   );
 }
