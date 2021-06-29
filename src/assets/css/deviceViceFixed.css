@@ -1,0 +1,86 @@
+.main {
+   
+    font-size: 28px; 
+    padding: 0px 10px;
+    display: inline-block;
+    width: 1240px;
+    
+    margin-top: 3.5rem;
+    margin-left: rem;
+    
+    margin-left: 18.5rem;
+}
+
+.device-wise-title{
+    margin-top: 1.5rem;
+    margin-right: 2rem;
+    display: inline-block;
+    
+    padding: 4px;
+    border-radius: 20px;
+    width: 500px;
+    background-color: #E2EEDE
+}
+
+.selection-method{
+    font-size: 22px;
+    width:350px;
+    border-radius: 6px;
+    border-color:  darkgreen ;
+    border-width: 2px;
+    padding: 5px;
+    background-color: #E5E9CF;
+    
+}
+
+.selection-title{
+    font-size: 22px;
+    color: black;
+    margin-right:4rem;
+}
+
+.option-method{
+    font-size: 24px;
+    color: black; 
+}
+
+.selection-card{
+
+    margin-top: 1.5rem;
+}
+
+.table-borderless{
+    font-size: 20px;
+    margin-top: 2rem;
+    width: 90%;
+    margin-left: 3.5rem;
+}
+
+.device-wise-td{
+    text-align: center;
+}
+
+.device-wise-tr{
+    border-radius: 10px;
+    border-color:#79DBC4 ;
+    padding: 5px;
+    border-width: 3px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.device-wise-chart{
+    margin-top: 1.5rem;
+    margin-right: 2rem;
+    display: inline-block;
+    border-color: black;
+    border-style: solid ;
+    border-width: 2px;
+    padding: 4px;
+    border-radius: 20px;
+    width: 500px;
+    background-color: goldenrod;
+}
+
+
