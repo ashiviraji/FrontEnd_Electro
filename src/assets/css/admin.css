@@ -1,0 +1,14 @@
+.body-engineer {
+  width: 50%;
+  top: 100px;
+  position: relative;
+  padding: 25px 100px 75px;
+  display: inline-block;
+}
+
+.heading {
+  width: 100%;
+  top: -30px;
+  position: relative;
+  float: center;
+}
