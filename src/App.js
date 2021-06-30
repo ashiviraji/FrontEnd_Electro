@@ -16,6 +16,7 @@ import Aboutus from "./views/Aboutus";
 import Sidebar from './components/common/Sidebar';
 import DeviceWiseFixed from './views/customer/Devicevicefixed';
 import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
+import BillComparison  from './views/BillComparison';
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
 
       <Route exact path='/dashboard'><Sidebar /></Route>
       <Route exact path='/manage-bill'><Sidebar/><DeviceWiseFixed /></Route>
+
+      <Route exact path='/bill-comparison'><BillComparison /></Route>
 
     </div>
   );
