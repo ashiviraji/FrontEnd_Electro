@@ -11,6 +11,7 @@ import Home from './views/Home';
 import Term from './views/Term';
 import SignIn from './views/SignIn';
 import SignUp from './views/SignUp';
+import Table from './components/Table';
 function App() {
   return (
     <div className="App">
@@ -22,6 +23,7 @@ function App() {
       <Route exact path='/sign-in'><SignIn /></Route>
       <Route exact path='/sign-up'><SignUp /></Route>
       <Route exact path='/term'><Term /></Route>
+      <Route exact path='/tablelist'><Table /></Route>
     </div>
   );
 }
