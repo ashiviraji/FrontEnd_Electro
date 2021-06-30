@@ -1,20 +1,26 @@
-.card1{
+/* .card1{
     background-color: #7ae7f5;
-}
+} */
 
 .card2{
     background-color: turquoise;
 }
 
 .text-center{
-    background: #9af3ff;
+    background: #83fca7;
+}
+
+.text-center1{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 5%;
 }
 
 .grp{
     width: 40%;
 }
 
-h3{
+h4{
     margin-bottom: 5%;
 }
 
@@ -26,10 +32,7 @@ h3{
 .active{
     margin: 5% ;
     margin-bottom: none;
-}
-
-.form-group{
-    text-align: center;
+    font-size: 100%;
 }
 
 .best_one{
