@@ -5,13 +5,13 @@ export default function billcomparison() {
   return (
     <div className="frm">
       <div className="grp">
-        <h4>Bill Comparison</h4>
+        <h3>Bill Comparison</h3>
 
         <div className="row">
           <div className="col-sm-6">
-            <div className="card1 card border-success mb-3">
+            <div className="card1">
               <div className="card-body">
-                <h5 className="card-title">TOU MODEL</h5>
+                <h4 className="card-title">TOU MODEL</h4>
                 {/* <p className="card-text">LKR 4590</p> */}
                 <div className="form-group">
                   <input
@@ -29,7 +29,7 @@ export default function billcomparison() {
           <div className="col-sm-6">
             <div className="card2">
               <div className="card-body">
-                <h5 className="card-title">FIXED MODEL</h5>
+                <h4 className="card-title">FIXED MODEL</h4>
                 {/* <p className="card-text">LKR 3320</p> */}
                 <div className="form-group">
                   <input
@@ -45,26 +45,23 @@ export default function billcomparison() {
             </div>
           </div>
         </div>
-        <div className="card text-center1">
-          <div className="card-body">
-          <h5> Best Model : Fixed </h5>
-          </div>
+        <div className="best_one">
+        <h3> Best Model : Fixed </h3>
         </div>
-        
         <div className="card text-center">
           <div className="card-body">
             <h5 className="card-title">Usage of Device Wise</h5>
             <a
               href="#"
-              className="btn btn-success btn-lg active"
+              className="btn btn-primary btn-lg active"
               role="button"
               aria-pressed="true"
             >
               TOU MODEL
-            </a>
+            </a>{"  "}
             <a
               href="#"
-              className="btn btn-success btn-lg active"
+              className="btn btn-primary btn-lg active"
               role="button"
               aria-pressed="true"
             >
@@ -86,7 +83,7 @@ export default function billcomparison() {
           <h5> View TOU Suggestions</h5>
           <a
             href="#"
-            className="btn btn-info btn-lg active"
+            className="btn btn-primary btn-lg active"
             role="button"
             aria-pressed="true"
           >

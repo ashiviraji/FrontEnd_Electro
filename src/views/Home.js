@@ -1,13 +1,18 @@
-import React from 'react'
-import '../assets/css/home.css';
-import Table from '../components/Table';
+import React, { useState } from 'react'
+import Sidebar from '../components/common/CollapsedSidebar';
+import Navbar from '../components/common/Navbar'
+
 export default function Home() {
+
+    const [isOpen, setIsOpen] = useState(false)
+    const toggle = () => {
+        setIsOpen(!isOpen)
+    }
+
     return (
-
-        <div className="">
-            <h1>home</h1>
-            < Table />
-
+        <div>
+            <Sidebar isOpen={isOpen} toggle={toggle} />
+            <Navbar toggle={toggle} />
         </div>
     )
 }
