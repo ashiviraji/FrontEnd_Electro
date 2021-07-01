@@ -6,14 +6,13 @@ export const SideNav = styled.div`
 width:300px;
 background:#011627;
 position:absolute;
-height:670px;
+height:770px;
 padding: 0 30px;
 transition: all 1s;
-left:-100%;
+position:fixed;
 
-&.active{
-    left:0;
-}
+
+
 
 `
 
@@ -59,10 +58,10 @@ font-size:16px;
 display:block;
 padding:10px 15px;
 border-radius:6px;
-&.active{
+// &.active{
     
-    color:#ffff
-}
+//     color:#ffff
+// }
 
 &:hover{
     background:#172b4d;
