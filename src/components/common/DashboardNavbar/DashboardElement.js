@@ -36,7 +36,7 @@ cursor:pointer;
 display:flex;
 font-size:1.5rem;
 align:item:left;
-margin-left:10px;
+margin-left:-550px;
 font-weight:bold;
 margin-top:15px;
 text-decoration:none;
@@ -59,6 +59,13 @@ display:none;
    
 }
 
+`
+
+export const HamburgerIcon=styled.img`
+width:30px;
+height:30px;
+margin-top:20px;
+margin-left: -110px;
 `
 export const NavMenu = styled.ul`
     display:flex;
