@@ -28,9 +28,11 @@ export default class LoginForm extends Component {
                                 <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                             </div>
                         </div>
-                        <div className="text-center">
-                            <button type="submit" className="btn my-3 submitbtn">Sign In</button>
-                            <p className="forgot-password text-center">
+                        <div className="">
+                            <button type="submit" className="submitbtn">Sign In</button>
+                        </div>
+                        <div>
+                            <p className="forgot-password">
                                 Forgot {/*<a href="#">password?</a> */}
                             </p>
                         </div>

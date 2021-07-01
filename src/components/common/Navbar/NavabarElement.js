@@ -23,7 +23,7 @@ display:flex;
 justify-content:space-between;
 height:80px;
 z-index:1;
-width:100%;
+width:90%;
 
 
 margin-left: 120px;

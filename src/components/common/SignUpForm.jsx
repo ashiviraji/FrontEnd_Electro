@@ -14,36 +14,35 @@ export default function SignUpForm() {
 
                     <div className="form-group">
 
-                        <input type="text" name="firstName" className="form-control my-3" placeholder="First name" required />
+                        <input type="text" name="firstName" className="form-control " placeholder="First name" required />
                     </div>
 
                     <div className="form-group">
 
-                        <input type="text" name="lastName" className="form-control my-3" placeholder="Last name" required />
+                        <input type="text" name="lastName" className="form-control " placeholder="Last name" required />
                     </div>
 
                     <div className="form-group">
 
-                        <input type="email" name="email" className="form-control my-3" placeholder="Enter email" required />
+                        <input type="email" name="email" className="form-control " placeholder="Enter email" required />
                     </div>
 
                     <div className="form-group">
 
-                        <input type="password" name="password" className="form-control my-3" placeholder="Enter password" required />
+                        <input type="password" name="password" className="form-control " placeholder="Enter password" required />
                     </div>
                     <div className="form-group">
 
-                        <input type="password" name="confirmPassword" className="form-control my-3" placeholder="Confirm password" required />
+                        <input type="password" name="confirmPassword" className="form-control " placeholder="Confirm password" required />
                     </div>
-                    <div className="text-center">
-                        <button type="submit" className="btn submitbtn my-3">Sign Up</button>
+                    <button type="submit" className="submitbtn ">Sign Up</button>
 
-                        <p className="forgot-password text-center">
-                            Already registered<Link className="nav-link" to="/sign-in">sign in?</Link>
-                        </p>
+                    <p className="forgot-password ">
+                        Already registered<Link className="nav-link" to="/sign-in">sign in?</Link>
+                    </p>
 
 
-                    </div>
+
                 </div>
             </div>
 
