@@ -1,17 +1,21 @@
 import React from "react";
-import "../assets/css/billcompare.css";
+import "../../assets/css/billcompare.css";
+
+import { Link } from "react-router-dom";
 
 export default function billcomparison() {
   return (
-    <div className="frm">
+    <div className="frm res">
       <div className="grp">
-        <h3>Bill Comparison</h3>
+        <div className="main-title">
+         <h4> Bill Comparison</h4>
+        </div>
 
         <div className="row">
           <div className="col-sm-6">
-            <div className="card1">
+            <div className="card1 card border-success mb-3">
               <div className="card-body">
-                <h4 className="card-title">TOU MODEL</h4>
+                <h5 className="card-title">TOU MODEL</h5>
                 {/* <p className="card-text">LKR 4590</p> */}
                 <div className="form-group">
                   <input
@@ -29,7 +33,7 @@ export default function billcomparison() {
           <div className="col-sm-6">
             <div className="card2">
               <div className="card-body">
-                <h4 className="card-title">FIXED MODEL</h4>
+                <h5 className="card-title">FIXED MODEL</h5>
                 {/* <p className="card-text">LKR 3320</p> */}
                 <div className="form-group">
                   <input
@@ -45,28 +49,20 @@ export default function billcomparison() {
             </div>
           </div>
         </div>
-        <div className="best_one">
-        <h3> Best Model : Fixed </h3>
+        <div className="card text-center1">
+          <div className="card-body">
+          <h5> Best Model : Fixed </h5>
+          </div>
         </div>
+        
         <div className="card text-center">
           <div className="card-body">
             <h5 className="card-title">Usage of Device Wise</h5>
-            {/* <a
-              href="#"
-              className="btn btn-primary btn-lg active"
-              role="button"
-              aria-pressed="true"
-            > */}
-              TOU MODEL
-            {/* </a>{"  "} */}
-            {/* <a
-              href="#"
-              className="btn btn-primary btn-lg active"
-              role="button"
-              aria-pressed="true"
-            > */}
-              {/* FIXED MODEL
-            </a> */}
+            
+            <Link className="btn btn-success btn-lg active" to="#">TOU Model</Link>
+
+            <Link className="btn btn-success btn-lg active" to="#">FIXED Model</Link>
+
           </div>
         </div>
 
@@ -81,14 +77,9 @@ export default function billcomparison() {
 
         <div>
           <h5> View TOU Suggestions</h5>
-          {/* <a
-            href="#"
-            className="btn btn-primary btn-lg active"
-            role="button"
-            aria-pressed="true"
-          >
-            Suggestions
-          </a> */}
+          
+          <Link className="btn btn-info btn-lg active" to="#">Suggestions</Link>
+
         </div>
       </div>
     </div>
