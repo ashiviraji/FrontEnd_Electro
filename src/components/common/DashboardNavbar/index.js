@@ -1,20 +1,20 @@
 import React from 'react';
- import {useState} from 'react';
+
 import { FaBars } from 'react-icons/fa';
- import Sidebar from '../Sidebar';
 
 import MenuIcon from '../../../assets/img/menu.png';
 import {
-    Nav, NavbarContainer, NavBtn,HamburgerIcon,
+    Nav, NavbarContainer, NavBtn, HamburgerIcon,
     NavBtnLinks, NavLogo, MobileIcon, NavMenu, NavLinks, NavItem,
 } from './DashboardElement';
 const DashbordNavbar = () => {
-    const [showNav,setShowNav] =useState(false)
+    
     return (
         <>
+
             <Nav>
                 <NavbarContainer>
-                   <HamburgerIcon src={MenuIcon}  onClick={() => setShowNav(!showNav)}></HamburgerIcon>
+                    <HamburgerIcon src={MenuIcon}  ></HamburgerIcon>
                     <NavLogo to='/'>
                         Electro
                     </NavLogo>
@@ -34,7 +34,7 @@ const DashbordNavbar = () => {
                         </NavItem>
                         <NavItem>
                             <NavBtn>
-                                <NavBtnLinks to="signin">Tharindu</NavBtnLinks>
+                                <NavBtnLinks to="signin">Dashboard</NavBtnLinks>
                             </NavBtn>
                         </NavItem>
                         <NavItem>
@@ -46,8 +46,7 @@ const DashbordNavbar = () => {
                     </NavMenu>
                 </NavbarContainer>
             </Nav>
-            <Sidebar show={showNav}/>
-            
+
         </>
     );
 };
