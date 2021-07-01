@@ -21,7 +21,7 @@ import Navbar from './components/common/Navbar';
 
 
 import { BrowserRouter as Router } from "react-router-dom";
-import BillComparison from './views/BillComparison';
+import BillComparison from './views/customer/BillComparison';
 import Home from "./views/Home";
 
 
@@ -40,9 +40,9 @@ function App() {
     <Route exact path="/addnewcebengineer"><AddNewCebEngineer /></Route>
     {/* <Route exact path='/dashboard'><Sidebar /></Route>
       <Route exact path='/manage-bill'><Sidebar /><DeviceWiseFixed /></Route> */}
-    {/* <Route exact path='/bill-comparison'><BillComparison /></Route> */}
-    <Route exact path='/dashboard'><Sidebar /></Route>
+      <Route exact path='/dashboard'><Sidebar /></Route>
       <Route exact path='/manage-bill'><Sidebar /><DeviceWiseFixed /></Route>
+      <Route exact path='/bill-comparison'><BillComparison /></Route>
       </Router>
 
 
