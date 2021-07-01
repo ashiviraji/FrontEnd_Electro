@@ -2,7 +2,11 @@ import "./App.css";
 import { Route } from "react-router-dom";
 import SignIn from './views/SignIn';
 import SignUp from './views/SignUp';
+
+import Table from './components/Table';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Sidebar from './components/common/Sidebar';
+import DeviceWiseFixed from './views/customer/Devicevicefixed';
 
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import DashNavbar from './components/common/DashboardNavbar';
@@ -21,14 +25,10 @@ import BillComparison from './views/BillComparison';
 import Home from "./views/Home";
 
 
+
 function App() {
   return (
     <div className="App">
-
-      
-      
-
-     
 
       <Router>
         <Home />
@@ -38,15 +38,15 @@ function App() {
         <Route exact path='/sign-up'><SignUp /></Route>
       <Route exact path='/tablelist'><Table /></Route>
     <Route exact path="/addnewcebengineer"><AddNewCebEngineer /></Route>
-      </Router>
-      
-
-      
-
-      {/* <Route exact path='/dashboard'><Sidebar /></Route>
+    {/* <Route exact path='/dashboard'><Sidebar /></Route>
       <Route exact path='/manage-bill'><Sidebar /><DeviceWiseFixed /></Route> */}
+    {/* <Route exact path='/bill-comparison'><BillComparison /></Route> */}
+    <Route exact path='/dashboard'><Sidebar /></Route>
+      <Route exact path='/manage-bill'><Sidebar /><DeviceWiseFixed /></Route>
+      </Router>
 
-      {/* <Route exact path='/bill-comparison'><BillComparison /></Route> */}
+
+      
 
     </div>
   );
