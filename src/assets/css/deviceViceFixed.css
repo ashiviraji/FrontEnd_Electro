@@ -3,19 +3,25 @@
     font-size: 28px; 
     padding: 0px 10px;
     display: inline-block;
-    width: 1240px;
+    width: 1200px;
     
-    margin-top: 3.5rem;
+    
     margin-left: rem;
     
     margin-left: 18.5rem;
 }
 
+.table-responsive{
+    width: 1000px;
+    margin-left: 50px;
+}
+
 .device-wise-title{
-    margin-top: 1.5rem;
-    margin-right: 2rem;
-    display: inline-block;
+    margin-top: 45px;
     
+    display: inline-block;
+    text-align: center;
+    margin-left: 250px;
     padding: 4px;
     border-radius: 20px;
     width: 500px;
@@ -47,6 +53,7 @@
 .selection-card{
 
     margin-top: 1.5rem;
+    margin-left:180px;
 }
 
 .table-borderless{
@@ -80,7 +87,14 @@
     padding: 4px;
     border-radius: 20px;
     width: 500px;
+    text-align: center;
+    margin-left: 240px;
     background-color: goldenrod;
 }
+
+.application-name{
+    text-align: center;
+}
+
 
 
