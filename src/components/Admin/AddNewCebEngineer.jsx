@@ -3,17 +3,17 @@ import "../../assets/css/admin.css";
 
 export default function AddNewCebEngineer() {
   return (
-    <div className="body-engineer">
+    <div className="body-addengineer">
       <form>
         <div className="heading">
-          <h1>Add New CEB Engineer</h1>
+          <h1 align="center">Add New CEB Engineer</h1>
         </div>
 
         <div class="row mb-3">
           <label for="firstname" class="col-sm-2 col-form-label" align="left">
             <b>First Name</b>
           </label>
-          <div class="col-sm-10">
+          <div class="w-50 p-1">
             <input type="text" class="form-control" id="firstname" required />
           </div>
         </div>
@@ -22,7 +22,7 @@ export default function AddNewCebEngineer() {
           <label for="lastname" class="col-sm-2 col-form-label" align="left">
             <b>Last Name</b>
           </label>
-          <div class="col-sm-10">
+          <div class="w-50 p-1">
             <input type="text" class="form-control" id="lastname" required />
           </div>
         </div>
@@ -31,7 +31,7 @@ export default function AddNewCebEngineer() {
           <label for="email" class="col-sm-2 col-form-label" align="left">
             <b>Email</b>
           </label>
-          <div class="col-sm-10">
+          <div class="w-50 p-1">
             <input type="email" class="form-control" id="email" required />
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function AddNewCebEngineer() {
           >
             <b>Contact Number</b>
           </label>
-          <div class="col-sm-10">
+          <div class="w-50 p-1">
             <input
               type="tel"
               class="form-control"
@@ -58,7 +58,7 @@ export default function AddNewCebEngineer() {
           <label for="image" class="col-sm-2 col-form-label" align="left">
             <b>Image</b>
           </label>
-          <div class="col-sm-10">
+          <div class="w-50 p-1">
             <input
               type="file"
               accept="image/*"
@@ -69,7 +69,7 @@ export default function AddNewCebEngineer() {
         </div>
 
         <div className="text-center">
-          <button type="submit" className="btn submitbtn my-3">
+          <button type="submit" className="addbtn">
             ADD
           </button>
         </div>
