@@ -51,22 +51,22 @@ export default function billcomparison() {
         <div className="card text-center">
           <div className="card-body">
             <h5 className="card-title">Usage of Device Wise</h5>
-            <a
+            {/* <a
               href="#"
               className="btn btn-primary btn-lg active"
               role="button"
               aria-pressed="true"
-            >
+            > */}
               TOU MODEL
-            </a>{"  "}
-            <a
+            {/* </a>{"  "} */}
+            {/* <a
               href="#"
               className="btn btn-primary btn-lg active"
               role="button"
               aria-pressed="true"
-            >
-              FIXED MODEL
-            </a>
+            > */}
+              {/* FIXED MODEL
+            </a> */}
           </div>
         </div>
 
@@ -81,14 +81,14 @@ export default function billcomparison() {
 
         <div>
           <h5> View TOU Suggestions</h5>
-          <a
+          {/* <a
             href="#"
             className="btn btn-primary btn-lg active"
             role="button"
             aria-pressed="true"
           >
             Suggestions
-          </a>
+          </a> */}
         </div>
       </div>
     </div>
