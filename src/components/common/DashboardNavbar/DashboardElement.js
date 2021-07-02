@@ -36,7 +36,7 @@ cursor:pointer;
 display:flex;
 font-size:1.5rem;
 align:item:left;
-margin-left:-550px;
+
 font-weight:bold;
 margin-top:15px;
 text-decoration:none;
