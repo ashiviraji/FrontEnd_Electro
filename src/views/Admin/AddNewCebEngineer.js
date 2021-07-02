@@ -1,6 +1,10 @@
 import React from "react";
-import AddNewCebEngineer from "../../components/Admin/AddNewCebEngineer";
+import AddNewEngineer from "../../components/Admin/AddNewCebEngineer";
 
 export default function AddNewCebEngineer() {
-  return <div></div>;
+  return (
+    <div>
+      <AddNewEngineer />
+    </div>
+  );
 }
