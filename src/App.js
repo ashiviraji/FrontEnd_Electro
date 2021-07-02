@@ -23,9 +23,8 @@ import SidebarAdmin from "./components/common/Sidebar-admin";
 
 // import { BrowserRouter as Router } from "react-router-dom";
 
-// import BillComparison  from './views/BillComparison';
 
-// import BillComparison from './views/customer/BillComparison';
+import BillComparison from './views/customer/BillComparison';
 // import Home from "./views/Home";
 import DashbordNavbar from './components/common/DashboardNavbar/index';
 
@@ -71,10 +70,12 @@ function App() {
           <DashNavbar />
           <SidebarAdmin />
         </Route>
+
         <Route exact path="/calculate-bill">
-        <CalculateBill />
+        <DashbordNavbar/><SidebarUser/>
         </Route>
      
+
     </div>
   );
 }
