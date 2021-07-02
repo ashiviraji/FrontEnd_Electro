@@ -11,6 +11,7 @@ import { MdEventNote } from 'react-icons/md';
 import { BrowserRouter as Router } from "react-router-dom";
 import DeviceWiseFixed from '../../../views/customer/Devicevicefixed';
 import TOUSuggestions from '../../../views/customer/TOUSuggestions';
+import CalculateBill from '../../../views/customer/CalculateBill';
 
 
 
@@ -57,8 +58,9 @@ const Sidebar = ({ show }) => {
                             <LinkList to='/TOU-suggestions'><GiTeamIdea />&nbsp;&nbsp;&nbsp; View Suggestions</LinkList>
                         </List>
 
-
-
+                        <List>
+                            <LinkList to='/calculate-bill'><GiTeamIdea />&nbsp;&nbsp;&nbsp; Calculate Bill</LinkList>
+                        </List>
 
                         <List>
                             <LinkList to='/information'><RiInformationLine />&nbsp;&nbsp;&nbsp; Information</LinkList>
@@ -66,7 +68,8 @@ const Sidebar = ({ show }) => {
                     </UlList>
                 </SideNav>
                 <Route path='/device-wise' exact={true} component={DeviceWiseFixed} />
-                <Route path='/TOU-suggestions' exact={true} component={TOUSuggestions} />
+                <Route path='/TOU-suggestions' exact={true} component={TOUSuggestions} /> 
+                <Route path='/calculate-bill' exact={true} component={CalculateBill} />
             </Router>
         </>
 

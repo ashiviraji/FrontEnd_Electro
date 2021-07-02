@@ -4,6 +4,9 @@ import { Route } from "react-router-dom";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
 import Home from "./views/Home";
+import CalculateBill from "./views/customer/CalculateBill";
+import { makeStyles, CssBaseline, createMuiTheme, ThemeProvider } from '@material-ui/core';
+import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
 
 // import Table from './components/Table';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -50,6 +53,9 @@ function App() {
       <Route exact path="/dashboard-admin">
         <DashNavbar />
         <SidebarAdmin />
+      </Route>
+      <Route exact path="/calculate-bill">
+        <CalculateBill />
       </Route>
 
       {/* <Route exact path='/bill-comparison'><BillComparison /></Route> */}
