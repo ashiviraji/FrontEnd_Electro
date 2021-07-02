@@ -14,8 +14,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import DashNavbar from "./components/common/DashboardNavbar";
 
 import SidebarAdmin from "./components/common/Sidebar-admin";
+import ManageCebEngineer from "./components/Admin/ManageCebEngineer";
 import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
-
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -27,28 +27,34 @@ import { BrowserRouter as Router } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Router>
+      {/* <Router> */}
+      <Route exact path="/">
         <Home />
-        <Route exact path="/dashboard-user">
-          <DashNavbar />
-          <Sidebar />
-        </Route>
-        <Route exact path="/sign-in">
-          <SignIn />
-        </Route>
-        <Route exact path="/sign-up">
-          <SignUp />
-        </Route>
-        <Route exact path="/addnewcebengineer">
-          <AddNewCebEngineer />
-        </Route>
-        <Route exact path="/dashboard-admin">
-          <DashNavbar />
-          <SidebarAdmin />
-        </Route>
+      </Route>
+      <Route exact path="/dashboard-user">
+        <DashNavbar />
+        <Sidebar />
+      </Route>
+      <Route exact path="/sign-in">
+        <SignIn />
+      </Route>
+      <Route exact path="/sign-up">
+        <SignUp />
+      </Route>
+      <Route exact path="/manage-cebengineer">
+        <ManageCebEngineer />
+      </Route>
+      <Route exact path="/addnewcebengineer">
+        <AddNewCebEngineer />
+      </Route>
+      <Route exact path="/dashboard-admin">
+        <DashNavbar />
+        <SidebarAdmin />
+      </Route>
 
-        {/* <Route exact path='/bill-comparison'><BillComparison /></Route> */}
-      </Router>
+      {/* <Route exact path='/bill-comparison'><BillComparison /></Route> */}
+      {/* </Router> */}
+
     </div>
   );
 }
