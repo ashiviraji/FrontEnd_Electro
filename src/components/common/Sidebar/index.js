@@ -3,6 +3,8 @@ import image from '../../../assets/img/user.png';
 import active from '../../../assets/img/active.png';
 import { FiHome } from 'react-icons/fi';
 import { RiInformationLine } from 'react-icons/ri';
+
+import {AiOutlineBook} from 'react-icons/ai';
 import { Route } from "react-router-dom";
 import {GiTeamIdea}  from 'react-icons/gi';
 
@@ -11,6 +13,8 @@ import { MdEventNote } from 'react-icons/md';
 import { BrowserRouter as Router } from "react-router-dom";
 import DeviceWiseFixed from '../../../views/customer/Devicevicefixed';
 import TOUSuggestions from '../../../views/customer/TOUSuggestions';
+
+import "../../../assets/css/Sidebar-user.css"
 
 
 
@@ -25,6 +29,8 @@ const Sidebar = ({ show }) => {
     return (
         <>
             <Router>
+                <div className="sidebar-main">
+                    <div className="sidebar-left">
                 <SideNav className={show ? 'sidenav active ' : 'sidenav'}>
                     <UserName>
                         <UserProfile src={image} alt="image"></UserProfile>
@@ -63,10 +69,20 @@ const Sidebar = ({ show }) => {
                         <List>
                             <LinkList to='/information'><RiInformationLine />&nbsp;&nbsp;&nbsp; Information</LinkList>
                         </List>
+
+                        <List>
+                            <LinkList to='/bill-comparison'><AiOutlineBook />&nbsp;&nbsp;&nbsp; Bill Comparison</LinkList>
+                        </List>
                     </UlList>
                 </SideNav>
+                </div>
+                {/* <Route path='/device-wise' exact={true} component={DeviceWiseFixed} />
+                <Route path='/TOU-suggestions' exact={true} component={TOUSuggestions} /> */}
+                <div className="load-area" >
                 <Route path='/device-wise' exact={true} component={DeviceWiseFixed} />
                 <Route path='/TOU-suggestions' exact={true} component={TOUSuggestions} />
+                </div>
+               </div>
             </Router>
         </>
 

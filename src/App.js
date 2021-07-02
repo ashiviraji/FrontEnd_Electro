@@ -17,7 +17,7 @@ import SidebarAdmin from "./components/common/Sidebar-admin";
 import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
 
 
-import { BrowserRouter as Router } from "react-router-dom";
+// import { BrowserRouter as Router } from "react-router-dom";
 
 // import BillComparison  from './views/BillComparison';
 
@@ -27,8 +27,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Home />
+    
+        <Route exact path="/"><Home/></Route>
+        
         <Route exact path="/dashboard-user">
           <DashNavbar />
           <Sidebar />
@@ -48,7 +49,7 @@ function App() {
         </Route>
 
         {/* <Route exact path='/bill-comparison'><BillComparison /></Route> */}
-      </Router>
+     
     </div>
   );
 }
