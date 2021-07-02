@@ -36,38 +36,38 @@ function Devicevicefixed() {
           <tr className="device-wise-tr">
             <th scope="row">1</th>
             <td className="device-wise-td" >Television</td>
-            <td class="center-td">1</td>
-            <td class="center-td">100</td>
-            <td class="center-td">LKR : 1340</td>
+            <td className="center-td">1</td>
+            <td className="center-td">100</td>
+            <td className="center-td">LKR : 1340</td>
           </tr>
           <tr className="device-wise-tr">
             <th scope="row">2</th>
             <td className="device-wise-td" >Rice Cooker</td>
-            <td class="center-td">2</td>
-            <td class="center-td">25</td>
-            <td class="center-td">LKR : 500</td>
+            <td className="center-td">2</td>
+            <td className="center-td">25</td>
+            <td className="center-td">LKR : 500</td>
           </tr>
           <tr className="device-wise-tr">
             <th scope="row">3</th>
             <td className="device-wise-td" >Radio</td>
-            <td class="center-td">1</td>
-            <td class="center-td">170</td>
-            <td class="center-td">LKR : 6100</td>
+            <td className="center-td">1</td>
+            <td className="center-td">170</td>
+            <td className="center-td">LKR : 6100</td>
           </tr>
           <tr className="device-wise-tr">
             <th scope="row">4</th>
             <td className="device-wise-td" >Washing Machine</td>
-            <td class="center-td">1</td>
-            <td class="center-td">290</td>
-            <td class="center-td">LKR : 9700</td>
+            <td className="center-td">1</td>
+            <td className="center-td">290</td>
+            <td className="center-td">LKR : 9700</td>
           </tr>
 
           <tr className="device-wise-tr">
             <th scope="row">5</th>
             <td className="device-wise-td" >Multi Cooker</td>
-            <td class="center-td">1</td>
-            <td class="center-td">120</td>
-            <td class="center-td">LKR : 4200</td>
+            <td className="center-td">1</td>
+            <td className="center-td">120</td>
+            <td className="center-td">LKR : 4200</td>
           </tr>
 
 

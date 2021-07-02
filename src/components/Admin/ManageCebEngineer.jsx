@@ -1,12 +1,14 @@
 import React from "react";
+// import { Route } from "react-router-dom";
 import "../../assets/css/admin.css";
+// import AddNewCebEngineer from "../../views/Admin/AddNewCebEngineer";
 
-export default function AddNewCebEngineer() {
+export default function ManageCebEngineer() {
   return (
     <div className="body-manageengineer">
       <form>
         <div className="ceb-heading">
-          <h1 align="center">Add New CEB Engineer</h1>
+          <h1 align="center">W.K.B.K.Madhushanka</h1>
         </div>
 
         <div class="row mb-3">
@@ -14,7 +16,13 @@ export default function AddNewCebEngineer() {
             <b>First Name</b>
           </label>
           <div class="w-50 p-1">
-            <input type="text" class="form-control" id="firstname" required />
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              value="Buthsara"
+              required
+            />
           </div>
         </div>
 
@@ -23,7 +31,13 @@ export default function AddNewCebEngineer() {
             <b>Last Name</b>
           </label>
           <div class="w-50 p-1">
-            <input type="text" class="form-control" id="lastname" required />
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              value="Madhushanka"
+              required
+            />
           </div>
         </div>
 
@@ -32,7 +46,13 @@ export default function AddNewCebEngineer() {
             <b>Email</b>
           </label>
           <div class="w-50 p-1">
-            <input type="email" class="form-control" id="email" required />
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              value="buthsaramadhushanka@gmail.com"
+              required
+            />
           </div>
         </div>
 
@@ -49,6 +69,7 @@ export default function AddNewCebEngineer() {
               type="tel"
               class="form-control"
               id="contactnumber"
+              value="078 344 1655"
               required
             />
           </div>
@@ -70,7 +91,7 @@ export default function AddNewCebEngineer() {
 
         <div className="text-center">
           <button type="submit" className="adminbtn">
-            ADD
+            Update
           </button>
         </div>
       </form>
