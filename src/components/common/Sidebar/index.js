@@ -4,11 +4,13 @@ import active from '../../../assets/img/active.png';
 import { FiHome } from 'react-icons/fi';
 import { RiInformationLine } from 'react-icons/ri';
 import { Route } from "react-router-dom";
+import {GiTeamIdea}  from 'react-icons/gi';
 
 import { RiBillLine } from 'react-icons/ri';
 import { MdEventNote } from 'react-icons/md';
 import { BrowserRouter as Router } from "react-router-dom";
 import DeviceWiseFixed from '../../../views/customer/Devicevicefixed';
+import TOUSuggestions from '../../../views/customer/TOUSuggestions';
 
 
 
@@ -51,6 +53,10 @@ const Sidebar = ({ show }) => {
                             <LinkList to='/special-events'><MdEventNote />&nbsp;&nbsp;&nbsp; Special Events</LinkList>
                         </List>
 
+                        <List>
+                            <LinkList to='/TOU-suggestions'><GiTeamIdea />&nbsp;&nbsp;&nbsp; View Suggestions</LinkList>
+                        </List>
+
 
 
 
@@ -60,6 +66,7 @@ const Sidebar = ({ show }) => {
                     </UlList>
                 </SideNav>
                 <Route path='/device-wise' exact={true} component={DeviceWiseFixed} />
+                <Route path='/TOU-suggestions' exact={true} component={TOUSuggestions} />
             </Router>
         </>
 

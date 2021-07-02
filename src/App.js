@@ -54,6 +54,7 @@ function App() {
 
       {/* <Route exact path='/bill-comparison'><BillComparison /></Route> */}
       {/* </Router> */}
+
     </div>
   );
 }
