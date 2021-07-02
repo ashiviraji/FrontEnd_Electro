@@ -1,34 +1,50 @@
 import React from 'react';
 import {Card} from "react-bootstrap";
-import '../../assets/css/TOUSuggestions.css';
+import {Form} from "react-bootstrap";
+
+
+
 
 const TOUSuggestions = () =>{
     const cardInfo =[
-        {image:"https://homepages.cae.wisc.edu/~ece533/images/airplane.png",title:"Ashika",text:"The goat"},
-        {image:"https://homepages.cae.wisc.edu/~ece533/images/arctichare.png",title:"Sithara",text:"He good"},
-        {image:"https://homepages.cae.wisc.edu/~ece533/images/boat.png",title:"Siluni",text:"he good"},
-        {image:"https://homepages.cae.wisc.edu/~ece533/images/peppers.png",title:"Ashoka",text:"he is very close to goat"},
+        {Applicance:"Television",Quantity:"1",Suggestion1:"Transfer to time peak to off-peak",Save:"200"},
+        {Applicance:"Radio",Quantity:"2",Suggestion1:"Transfer to time peak to day",Save:"100"},
+        {Applicance:"Celling Fan",Quantity:"3",Suggestion1:"Transfer to time peak to off-peak",Save:"300"},
+        {Applicance:"Washing Machine",Quantity:"1",Suggestion1:"Transfer to time peak to off-peak",Save:"400"},
     ];
 
     const renderCard =(card,index) =>{
         return(
-            <Card style={{ width: '18rem' }} key={index}>
-            <Card.Img variant="top" src="holder.js/100px180"  src={card.image}/>
+            
+        <Card style={{ width: '40rem' }} key={index} className="box">
+            
          <Card.Body>
-            <Card.Title>{card.title}</Card.Title>
-            <Card.Text>
-             {card.text}
-            </Card.Text>
+            <Card.Title>Device Name &nbsp;:&nbsp;&nbsp;{card.Applicance}</Card.Title>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+             <Form.Label>Quantity &nbsp;:</Form.Label>
+             <Form.Label>&nbsp;&nbsp;{card.Quantity}</Form.Label>
+             </Form.Group>
+            
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+             <Form.Label>Suggestion 1 &nbsp;:</Form.Label>
+             <Form.Label className="suggestions">{card.Suggestion1}</Form.Label>
+             </Form.Group>
+
+             <Form.Group className="mb-3" controlId="formBasicPassword">
+             <Form.Label>Save Amount (LKR) &nbsp;:</Form.Label>
+             <Form.Label>&nbsp;&nbsp;{card.Save}</Form.Label>
+             </Form.Group>
+            
+            
          
          </Card.Body>
     </Card>
 
-        )
-    }
+        );
+    };
     return (
-      <div>
-      {cardInfo.map(renderCard)}
-       </div>
+       
+      <div className="grid">{cardInfo.map(renderCard)}</div>
        
 
     )

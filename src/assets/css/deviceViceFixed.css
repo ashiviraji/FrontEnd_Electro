@@ -6,9 +6,7 @@
     width: 1200px;
     
     
-    margin-left: rem;
     
-    margin-left: 18.5rem;
 }
 
 .table-responsive{
@@ -21,7 +19,7 @@
     
     display: inline-block;
     text-align: center;
-    margin-left: 250px;
+   margin-left:260px;
     padding: 4px;
     border-radius: 20px;
     width: 500px;
