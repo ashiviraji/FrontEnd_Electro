@@ -1,5 +1,7 @@
 import React from "react";
 import "../../assets/css/billcompare.css";
+import { FaThList } from 'react-icons/fa';
+
 
 import { Link } from "react-router-dom";
 
@@ -78,7 +80,7 @@ export default function billcomparison() {
         <div>
           <h5> View TOU Suggestions</h5>
           
-          <Link className="btn btn-info btn-lg btn-suggest" to="#">Suggestions</Link>
+          <Link className="btn btn-info btn-lg btn-suggest" to="#"><FaThList /> {' '}Suggestions</Link>
 
         </div>
       </div>
