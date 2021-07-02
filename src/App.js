@@ -3,6 +3,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
+import Home from "./views/Home";
 
 // import Table from './components/Table';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -15,7 +16,6 @@ import DashNavbar from "./components/common/DashboardNavbar";
 import SidebarAdmin from "./components/common/Sidebar-admin";
 import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
 
-import Navbar from "./components/common/Navbar";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -28,9 +28,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Route exact path="/home">
-          <Navbar />
-        </Route>
+        <Home />
         <Route exact path="/dashboard-user">
           <DashNavbar />
           <Sidebar />
