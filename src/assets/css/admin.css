@@ -1,14 +1,32 @@
-.body-engineer {
-  width: 50%;
+.body-addengineer {
+  width: 70%;
   top: 100px;
+  left: 25%;
   position: relative;
   padding: 25px 100px 75px;
-  display: inline-block;
 }
 
 .heading {
   width: 100%;
   top: -30px;
+  left: -15%;
   position: relative;
-  float: center;
+}
+
+.addbtn {
+  background-color: #01bf71;
+  border-radius: 50px;
+  box-shadow: #049665;
+  border: none;
+  width: 250px;
+  font-weight: bold;
+  font-size: medium;
+  padding: 7px;
+  margin-top: 25px;
+  left: -15%;
+  position: relative;
+}
+.addbtn:hover {
+  background-color: #00af86;
+  color: beige;
 }

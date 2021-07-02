@@ -1,11 +1,13 @@
 import React from "react";
 import "../../assets/css/billcompare.css";
+import { FaThList } from 'react-icons/fa';
+
 
 import { Link } from "react-router-dom";
 
 export default function billcomparison() {
   return (
-    <div className="frm res">
+    <div className="frm">
       <div className="grp">
         <div className="main-title">
          <h4> Bill Comparison</h4>
@@ -59,9 +61,9 @@ export default function billcomparison() {
           <div className="card-body">
             <h5 className="card-title">Usage of Device Wise</h5>
             
-            <Link className="btn btn-success btn-lg active" to="#">TOU Model</Link>
+            <Link className="btn btn-success btn-lg btn-tou" to="#">TOU Model</Link>
 
-            <Link className="btn btn-success btn-lg active" to="#">FIXED Model</Link>
+            <Link className="btn btn-success btn-lg btn-fixed" to="#">FIXED Model</Link>
 
           </div>
         </div>
@@ -78,7 +80,7 @@ export default function billcomparison() {
         <div>
           <h5> View TOU Suggestions</h5>
           
-          <Link className="btn btn-info btn-lg active" to="#">Suggestions</Link>
+          <Link className="btn btn-info btn-lg btn-suggest" to="#"><FaThList /> {' '}Suggestions</Link>
 
         </div>
       </div>

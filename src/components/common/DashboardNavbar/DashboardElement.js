@@ -61,7 +61,7 @@ display:none;
 
 `
 
-export const HamburgerIcon=styled.img`
+export const HamburgerIcon = styled.img`
 width:30px;
 height:30px;
 margin-top:20px;
