@@ -2,23 +2,21 @@ import React from 'react';
 
 import { FaBars } from 'react-icons/fa';
 
-import MenuIcon from '../../../assets/img/menu.png';
+
 import {
-    Nav, NavbarContainer, NavBtn, HamburgerIcon,
+    Nav, NavbarContainer, NavBtn, 
     NavBtnLinks, NavLogo, MobileIcon, NavMenu, NavLinks, NavItem,
 } from './DashboardElement';
-const DashbordNavbar = () => {
+const DashbordNavbar = ({ toggle }) => {
     
     return (
         <>
-
-            <Nav>
+              <Nav>
                 <NavbarContainer>
-                    <HamburgerIcon src={MenuIcon}  ></HamburgerIcon>
                     <NavLogo to='/'>
                         Electro
                     </NavLogo>
-                    <MobileIcon>
+                    <MobileIcon onClick={toggle}>
                         <FaBars />
                     </MobileIcon>
                     <NavMenu>
@@ -34,18 +32,19 @@ const DashbordNavbar = () => {
                         </NavItem>
                         <NavItem>
                             <NavBtn>
-                                <NavBtnLinks to="signin">Dashboard</NavBtnLinks>
+                                <NavBtnLinks to="/dashboard-user">Dashboard</NavBtnLinks>
                             </NavBtn>
                         </NavItem>
                         <NavItem>
                             <NavBtn>
-                                <NavBtnLinks to="signup">Logout</NavBtnLinks>
+                                <NavBtnLinks to="/log-out">Log Out</NavBtnLinks>
                             </NavBtn>
 
                         </NavItem>
                     </NavMenu>
                 </NavbarContainer>
             </Nav>
+            
 
         </>
     );

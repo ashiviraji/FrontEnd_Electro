@@ -11,6 +11,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
 import ManageCebEngineer from "../../../views/Admin/ManageCebEngineer";
 import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
+import "../../../assets/css/sidebar-admin.css"
 
 import {
   SideNav,
@@ -27,7 +28,11 @@ import {
 const SidebarAdmin = ({ show }) => {
   return (
     <>
-      <Router>
+
+<Router>
+     <div className="sidebar-main">
+      <div className="sidebar-left">
+     
         <SideNav className={show ? "sidenav active " : "sidenav"}>
           <UserName>
             <UserProfile src={image} alt="image"></UserProfile>
@@ -77,7 +82,8 @@ const SidebarAdmin = ({ show }) => {
             </List>
           </UlList>
         </SideNav>
-        <Route
+        </div>
+        {/* <Route
           path="/manage-cebengineer"
           exact={true}
           component={ManageCebEngineer}
@@ -86,7 +92,13 @@ const SidebarAdmin = ({ show }) => {
           path="/addnewcebengineer"
           exact={true}
           component={AddNewCebEngineer}
-        />
+        /> */}
+
+           <div className="load-area" >
+                <Route path='/manage-cebengineer' exact={true} component={ManageCebEngineer} />
+                <Route path='/addnewcebengineer' exact={true} component={AddNewCebEngineer} />
+              </div>
+               </div>
       </Router>
     </>
   );
