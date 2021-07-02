@@ -2,6 +2,7 @@ import React from "react";
 // import { Route } from "react-router-dom";
 import "../../assets/css/admin.css";
 // import AddNewCebEngineer from "../../views/Admin/AddNewCebEngineer";
+import Engineer from "../../assets/img/CEBEngineer.png";
 
 export default function ManageCebEngineer() {
   return (
@@ -80,12 +81,7 @@ export default function ManageCebEngineer() {
             <b>Image</b>
           </label>
           <div class="w-50 p-1">
-            <input
-              type="file"
-              accept="image/*"
-              class="form-control"
-              id="fileToUpload"
-            />
+            <img src={Engineer} height={200} width={200} />
           </div>
         </div>
 
