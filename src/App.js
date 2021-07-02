@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Home />
+        <Route exact path="/home" > <Home id="home" />  </Route>
         <Route exact path="/dashboard-user">
           <DashNavbar />
           <Sidebar />

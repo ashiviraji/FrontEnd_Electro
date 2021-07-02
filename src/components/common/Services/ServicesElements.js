@@ -9,7 +9,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background:#010606;
+background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
 @media screen and (max-width: 818px){
   height: 1100px;
 }
