@@ -7,14 +7,15 @@ import Home from "./views/Home";
 
 // import Table from './components/Table';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Sidebar from "./components/common/Sidebar";
+import SidebarUser from "./components/common/Sidebar";
 // import DeviceWiseFixed from './views/customer/Devicevicefixed';
 
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import DashNavbar from "./components/common/DashboardNavbar";
 
 import SidebarAdmin from "./components/common/Sidebar-admin";
-import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
+// import ManageCebEngineer from "./components/Admin/ManageCebEngineer";
+// import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
 
 
 // import { BrowserRouter as Router } from "react-router-dom";
@@ -23,6 +24,7 @@ import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
 
 // import BillComparison from './views/customer/BillComparison';
 // import Home from "./views/Home";
+import DashbordNavbar from './components/common/DashboardNavbar/index';
 
 function App() {
   return (
@@ -32,7 +34,7 @@ function App() {
         
         <Route exact path="/dashboard-user">
           <DashNavbar />
-          <Sidebar />
+          <SidebarUser />
         </Route>
         <Route exact path="/sign-in">
           <SignIn />
@@ -40,9 +42,27 @@ function App() {
         <Route exact path="/sign-up">
           <SignUp />
         </Route>
-        <Route exact path="/addnewcebengineer">
-          <AddNewCebEngineer />
+
+        <Route exact path="/device-wise">
+        <DashbordNavbar/><SidebarUser/>
         </Route>
+
+        <Route exact path="/TOU-suggestions">
+        <DashbordNavbar/><SidebarUser/>
+        </Route>
+
+        <Route exact path="/addnewcebengineer">
+        <DashbordNavbar/><SidebarAdmin/>
+        </Route>
+
+        <Route exact path="/manage-cebengineer">
+          <DashbordNavbar/><SidebarAdmin/>
+        </Route>
+
+        <Route exact path="/bill-comparison">
+          <DashbordNavbar/><SidebarUser/>
+        </Route>
+
         <Route exact path="/dashboard-admin">
           <DashNavbar />
           <SidebarAdmin />

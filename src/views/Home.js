@@ -6,7 +6,7 @@ import InforSection from '../components/common/InforSection';
 import Services from '../components/common/Services';
 import { homeObjOne, homeObjThree, homeObjTwo } from '../components/common/InforSection/Data';
 
-export default function Home() {
+export default function Home({ id }) {
 
     const [isOpen, setIsOpen] = useState(false)
     const toggle = () => {
@@ -14,14 +14,15 @@ export default function Home() {
     }
 
     return (
-        <div>
+        <div id={id}>
             <Sidebar isOpen={isOpen} toggle={toggle} />
             <Navbar toggle={toggle} />
             <HeroSection />
             <InforSection {...homeObjOne} />
+            <Services />
             <InforSection {...homeObjTwo} />
             <InforSection {...homeObjThree} />
-            <Services />
+
         </div>
     )
 }

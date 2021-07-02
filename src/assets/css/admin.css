@@ -1,19 +1,19 @@
-.body-addengineer {
+.body-manageengineer {
   width: 70%;
   top: 100px;
-  left: 25%;
+  left: 15%;
   position: relative;
   padding: 25px 100px 75px;
 }
 
-.heading {
+.ceb-heading {
   width: 100%;
   top: -30px;
   left: -15%;
   position: relative;
 }
 
-.addbtn {
+.adminbtn {
   background-color: #01bf71;
   border-radius: 50px;
   box-shadow: #049665;
@@ -26,7 +26,7 @@
   left: -15%;
   position: relative;
 }
-.addbtn:hover {
+.adminbtn:hover {
   background-color: #00af86;
   color: beige;
 }

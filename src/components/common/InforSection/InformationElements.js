@@ -3,7 +3,7 @@ import { Link as LinkR } from 'react-router-dom';
 
 export const InforContainer = styled.div`
 color:#fff;
-background:${({ lightBg }) => (lightBg ? '#f9f9f9' : '#010606')};
+background:${({ lightBg }) => (lightBg ? '#f9f9f9' : '#fff')};
 @media screen and (max-width:818px){
     padding:10px 0;
 }
@@ -18,7 +18,7 @@ margin-left:auto;
 
 padding: 0 24px;
 justify-content: center;
-background-color: beige;
+
 
 `
 export const InforRow = styled.div`
@@ -85,7 +85,7 @@ justify-content:flex-start;
 
 `
 export const ImgWrap = styled.div`
-max-width:550px;
+max-width:500px;
 height:100%;
 `
 export const Img = styled.img`

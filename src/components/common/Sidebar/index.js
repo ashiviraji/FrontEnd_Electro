@@ -13,8 +13,9 @@ import { MdEventNote } from 'react-icons/md';
 import { BrowserRouter as Router } from "react-router-dom";
 import DeviceWiseFixed from '../../../views/customer/Devicevicefixed';
 import TOUSuggestions from '../../../views/customer/TOUSuggestions';
+import BillCompariosn from "../../../views/customer/BillComparison";
 
-import "../../../assets/css/Sidebar-user.css"
+import "../../../assets/css/sidebar-user.css"
 
 
 
@@ -81,6 +82,7 @@ const Sidebar = ({ show }) => {
                 <div className="load-area" >
                 <Route path='/device-wise' exact={true} component={DeviceWiseFixed} />
                 <Route path='/TOU-suggestions' exact={true} component={TOUSuggestions} />
+                <Route path='/bill-comparison' exact={true} component={BillCompariosn} />
                 </div>
                </div>
             </Router>
