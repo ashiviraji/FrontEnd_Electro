@@ -1,13 +1,15 @@
 import React from "react";
 import image from "../../../assets/img/user.png";
 import active from "../../../assets/img/active.png";
-import { FiHome } from "react-icons/fi";
-// import { RiInformationLine } from "react-icons/ri";
-import { Route } from "react-router-dom";
 
-import { RiBillLine } from "react-icons/ri";
-import { MdEventNote } from "react-icons/md";
+import { FiHome } from "react-icons/fi";
+import { AiOutlineDollar } from "react-icons/ai";
+import { FaUserTie } from "react-icons/fa";
+import { BiUserCircle } from "react-icons/bi";
+
 import { BrowserRouter as Router } from "react-router-dom";
+import { Route } from "react-router-dom";
+import ManageCebEngineer from "../../../views/Admin/ManageCebEngineer";
 import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
 
 import {
@@ -48,26 +50,38 @@ const SidebarAdmin = ({ show }) => {
 
             <List>
               <LinkList to="/admin-unit-charges">
-                <RiBillLine />
+                <AiOutlineDollar />
                 &nbsp;&nbsp;&nbsp;Unit Charges
               </LinkList>
             </List>
 
             <List>
-              <LinkList to="/addnewcebengineer">
-                <MdEventNote />
+              <LinkList to="/manage-cebengineer">
+                <FaUserTie />
                 &nbsp;&nbsp;&nbsp;Manage CEB Engineer
               </LinkList>
             </List>
 
             <List>
+              <LinkList to="/addnewcebengineer">
+                <FaUserTie />
+                &nbsp;&nbsp;&nbsp;Add New CEB Engineer
+              </LinkList>
+            </List>
+
+            <List>
               <LinkList to="/user-profile">
-                <MdEventNote />
+                <BiUserCircle />
                 &nbsp;&nbsp;&nbsp;User Profile
               </LinkList>
             </List>
           </UlList>
         </SideNav>
+        <Route
+          path="/manage-cebengineer"
+          exact={true}
+          component={ManageCebEngineer}
+        />
         <Route
           path="/addnewcebengineer"
           exact={true}
