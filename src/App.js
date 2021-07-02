@@ -7,6 +7,8 @@ import SignUp from './views/SignUp';
 
 // import Table from './components/Table';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+
 import Sidebar from './components/common/Sidebar';
 // import DeviceWiseFixed from './views/customer/Devicevicefixed';
 
