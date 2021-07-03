@@ -6,6 +6,7 @@
     border-style: solid;
     border-width: 3px;
     border-color:#23e694;
+    box-shadow:0px 14px 80px rgb(34 35 58 / 20%)
 }
 
 .grid{
@@ -13,9 +14,7 @@
     margin-top: 100px;
 }
 
-.card-body{
-    box-shadow:0px 14px 80px rgb(34 35 58 / 20%)
-}
+
 
 
 .device-wise-title-TOU{
@@ -23,9 +22,9 @@
     height: 50px;
     padding: 5px;
     text-align: center;
-    
+    font-weight:bold;
     text-align: center;
-
+    font-size:25px;
     display: inline-block;
     text-align: center;
     margin-left: 250px;
@@ -40,7 +39,7 @@
     font-size: 20px;
     color: white;
     background: #0096FF;
-    
+    margin-top:100px;
     float: right;
     margin-right: 100px;
     width: 250px;
@@ -55,4 +54,61 @@
     height: 27px;
     padding-left: 5px;
     padding-right:5px;
+}
+.paginationBttns{
+    width:80%;
+    height:40px;
+    list-style:none;
+    display:flex;
+    margin-left:7%;
+    
+   
+}
+
+.paginationBttns a{
+    padding:10px;
+    margin: 8px;
+    border-radius:5px;
+    border:1px solid #23e694;
+    color:#23e694;
+    cursor: pointer;
+}
+
+.paginationBttns a:hover{
+    color:white;
+    background-color:#23e694; 
+}
+
+.paginationActive a{
+    color:white;
+    background-color:#23e694; 
+}
+
+.nextBttn{
+    text-decoration: none;;
+}
+
+.search-bar{
+    width: 35%;
+    text-align: left;
+    background: #E8E8E8;
+    height: 40px;
+    margin-top: 30px;
+    margin-left: 24%;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.input-icons i {
+    position: absolute;
+}
+  
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.bsSearch{
+   margin-top: -3px;
+   margin-left: -28px;
 }
