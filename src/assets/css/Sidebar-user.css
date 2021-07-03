@@ -15,7 +15,11 @@
 }
 
 .load-area{
+<<<<<<< HEAD
     width:80%;
+=======
+    width: 80%;
+>>>>>>> d78d827f3b3d9f48a0d442a776021f3db6526985
    margin-left:5%;
    float: left;
   
