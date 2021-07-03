@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 
 import '../../assets/css/loginForm.css';
 
@@ -40,8 +41,12 @@ export default function SignUpForm() {
                     <p className="forgot-password ">
                         Already registered<Link className="nav-link" to="/sign-in">sign in?</Link>
                     </p>
+                    <hr />
+                    <div className="signIcons">
+                        <FaFacebook />
+                        <FaInstagram /><FaTwitter /><FaLinkedinIn />
 
-
+                    </div>
 
                 </div>
             </div>
