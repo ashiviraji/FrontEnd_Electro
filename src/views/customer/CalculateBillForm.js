@@ -28,23 +28,33 @@ export default function CalculateBillForm() {
     const [values, setValues] = useState(initialFvalues);
     const classes = useStyles();
 
+    const handleInputChange = e =>{
+        const { name, value} = e.target
+        setValues({
+            [name] : value
+        })
+    }
+
     return (
         <div>
-            <h1> Hi babala </h1>
+            <h1> Bill Calculation </h1>
             <form className={classes.root}>
-            
             <Grid container>
                 <Grid item xs={6}>
                 
                     <TextField
                         TextField id="standard-basic" 
                         label="Full Name"
+                        name = "fullName"
                         value={values.fullName}
+                        onChange = {handleInputChange}
                     />
                     <TextField
                         TextField id="standard-basic" 
                         label="Email"
+                        name = "email"
                         value={values.email}
+                        onChange = {handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={6}>
