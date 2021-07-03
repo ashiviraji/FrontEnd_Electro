@@ -1,5 +1,7 @@
 import React from 'react';
 import '../../assets/css/TOUSuggestions.css';
+import {BsSearch} from 'react-icons/bs';
+
 
 
 
@@ -9,25 +11,28 @@ import TOUSuggestionsPage from './../../components/Customer/TOUSuggestions';
 
 
 export default function TOUSuggestions() {
+
+ 
   return (
     <div>
       <div className="device-wise-title-TOU">
        TOU SUGGESTIONS
     </div>
-    <div>
+    
       
        
       
       
    
     <input  className="download-button" type="Button" value="Download As Pdf"  />
-      
+    <div className="ui search">
+      <div className="ui icon input">
+    <input  className="search-bar" type="Text" placeholder="Search Device" />
+    <BsSearch className="bsSearch"></BsSearch>
     </div>
-     
-
-
-
-      <TOUSuggestionsPage />
+    </div>
+   
+    <TOUSuggestionsPage />
     </div>
 
 
