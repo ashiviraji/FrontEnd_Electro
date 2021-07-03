@@ -10,7 +10,7 @@ export default function billcomparison() {
     <div className="frm">
       <div className="grp">
         <div className="main-title">
-         <h4> Bill Comparison</h4>
+         <h4 className="text-center"> Bill Comparison</h4>
         </div>
 
         <div className="row">
@@ -51,13 +51,13 @@ export default function billcomparison() {
             </div>
           </div>
         </div>
-        <div className="card text-center1">
+        <div className="card text-center best-model">
           <div className="card-body">
           <h5> Best Model : Fixed </h5>
           </div>
         </div>
         
-        <div className="card text-center">
+        <div className="card text-center usage-device">
           <div className="card-body">
             <h5 className="card-title">Usage of Device Wise</h5>
             
@@ -68,14 +68,6 @@ export default function billcomparison() {
           </div>
         </div>
 
-        <hr
-          style={{
-            color: "#FFFFFF",
-            backgroundColor: "#FFFFFF",
-            height: 0.5,
-            borderColor: "#FFFFFF",
-          }}
-        />
 
         <div>
           <h5> View TOU Suggestions</h5>
