@@ -93,11 +93,12 @@ const SidebarAdmin = ({ show }) => {
           exact={true}
           component={AddNewCebEngineer}
         /> */}
-
+           <div claasName = "page-load" > 
            <div className="load-area" >
                 <Route path='/manage-cebengineer' exact={true} component={ManageCebEngineer} />
                 <Route path='/addnewcebengineer' exact={true} component={AddNewCebEngineer} />
               </div>
+               </div>
                </div>
       </Router>
     </>
