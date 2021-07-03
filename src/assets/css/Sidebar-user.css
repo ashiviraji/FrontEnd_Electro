@@ -7,7 +7,13 @@
     float:left;
 }
 
+.page-load{
+    float: right;
+    width: 80%;
+}
+
 .load-area{
-   margin-left:20%;
+   margin-left:5%;
+   float: left;
   
 }
