@@ -48,7 +48,7 @@ form input:focus{
 .forgot-password a {
   color: #0861d6;
 }
-.frm{
+.frmLogin{
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -57,11 +57,12 @@ form input:focus{
  
   width: 100%;
   align-items: center;
-   @media screen and (max-width:600px){
+
+ @media screen and (max-width:600px){
      margin-left:5%;
    }
 }
-.grp{
+.grpLogin{
   width: 390px;
   margin: auto;
   text-align: center;
