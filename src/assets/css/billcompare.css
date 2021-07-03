@@ -10,6 +10,7 @@
     background: #83fca7;
 }
 
+
 .best-model{
     margin-top: 5%;
     margin-bottom: 20px;
@@ -20,6 +21,7 @@
     width: 60%;
     margin-left: 20%;
     margin-top: 40px;
+
 }
 
 .main-title{
@@ -51,15 +53,12 @@
 }
 
 .btn-suggest{
-    margin: 5% ;
+    margin: 2% ;
     margin-bottom: none;
     font-size: 100%;
 }
 
-
 .frm{
     width: 80%;
     margin: auto;
-    
-    margin-bottom: 5%;
 }
