@@ -4,7 +4,7 @@ import '../assets/css/signinPage.css';
 
 export default function SignUp() {
     return (
-        <div className="cnt">
+        <div className="signinPageContainer">
             <SignUpForm />
         </div>
     )
