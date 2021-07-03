@@ -26,7 +26,7 @@ z-index:1;
 width:90%;
 
 
-margin-left: 120px;
+margin-left: 10%;
 
 `
 export const NavLogo = styled(LinkS)`

@@ -3,7 +3,7 @@ import { Link as LinkR } from 'react-router-dom';
 
 
 export const SideNav = styled.div`
-width:300px;
+width:20%;
 background:#011627;
 position:absolute;
 height:770px;
