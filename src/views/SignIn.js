@@ -4,10 +4,15 @@ import '../assets/css/signinPage.css';
 
 export default function SignIn() {
     return (
-        <div>
-            <div className="cnt">
-                <LoginForm />
-            </div>
+
+        <div className="signinPageContainer">
+
+            <LoginForm />
         </div>
+
+
+
+
+
     )
 }

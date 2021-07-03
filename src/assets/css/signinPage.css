@@ -1,8 +1,13 @@
-.cnt {
- background: #a3f0d19d !important;
+ .signinPageContainer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.801), rgba(0, 0, 0, 0.808)),
+    url("../img/backgroundimg.jpg");
   min-height: 89vh;
   display: flex;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
- 
-}
+  height: 760px;
+  background-repeat: no-repeat;
+
+ justify-content: center;
+ align-items: center;
+} 
