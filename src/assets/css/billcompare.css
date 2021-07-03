@@ -11,13 +11,13 @@
 }
 
 .text-center1{
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     border-radius: 5%;
 }
 
 .grp{
-    width: 60%;
+    width: 50%;
 }
 
 .main-title{
@@ -48,18 +48,12 @@
 }
 
 .btn-suggest{
-    margin: 5% ;
+    margin: 2% ;
     margin-bottom: none;
     font-size: 100%;
-}
-
-.best_one{
-    margin-top: 5%;
 }
 
 .frm{
     width: 80%;
     margin: auto;
-    
-    margin-bottom: 5%;
 }
