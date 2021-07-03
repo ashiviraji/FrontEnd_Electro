@@ -18,7 +18,7 @@ const TOUSuggestions = () =>{
             
         <Card style={{ width: '40rem' }} key={index} className="box">
             
-         <Card.Body>
+         <Card.Body  className="card-body">
             <Card.Title>Device Name &nbsp;:&nbsp;&nbsp;{card.Applicance}</Card.Title>
             <Form.Group className="mb-3" controlId="formBasicPassword">
              <Form.Label>Quantity &nbsp;:</Form.Label>
