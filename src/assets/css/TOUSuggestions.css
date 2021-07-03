@@ -55,3 +55,60 @@
     padding-left: 5px;
     padding-right:5px;
 }
+.paginationBttns{
+    width:80%;
+    height:40px;
+    list-style:none;
+    display:flex;
+    margin-left:7%;
+    
+   
+}
+
+.paginationBttns a{
+    padding:10px;
+    margin: 8px;
+    border-radius:5px;
+    border:1px solid #23e694;
+    color:#23e694;
+    cursor: pointer;
+}
+
+.paginationBttns a:hover{
+    color:white;
+    background-color:#23e694; 
+}
+
+.paginationActive a{
+    color:white;
+    background-color:#23e694; 
+}
+
+.nextBttn{
+    text-decoration: none;;
+}
+
+.search-bar{
+    width: 35%;
+    text-align: left;
+    background: #E8E8E8;
+    height: 40px;
+    margin-top: 30px;
+    margin-left: 24%;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.input-icons i {
+    position: absolute;
+}
+  
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.bsSearch{
+   margin-top: -3px;
+   margin-left: -28px;
+}
