@@ -1,25 +1,34 @@
 import React from "react";
-// import { Route } from "react-router-dom";
 import "../../assets/css/admin.css";
-// import AddNewCebEngineer from "../../views/Admin/AddNewCebEngineer";
 import Engineer from "../../assets/img/CEBEngineer.png";
+import { GrUserAdd } from "react-icons/gr";
+import { NavLink } from "../../components/common/Sidebar-admin/SidebarElement";
 
 export default function ManageCebEngineer() {
   return (
     <div className="body-manageengineer">
+      <NavLink to="/addnewcebengineer">
+        <GrUserAdd />
+        <button className="addnewceb-btn">Add New CEB Engineer</button>
+      </NavLink>
+
       <form>
         <div className="ceb-heading">
           <h1 align="center">W.K.B.K.Madhushanka</h1>
         </div>
 
-        <div class="row mb-3">
-          <label for="firstname" class="col-sm-2 col-form-label" align="left">
+        <div className="row mb-3">
+          <label
+            for="firstname"
+            className="col-sm-2 col-form-label"
+            align="left"
+          >
             <b>First Name</b>
           </label>
-          <div class="w-50 p-1">
+          <div className="w-50 p-1">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="firstname"
               value="Buthsara"
               required
@@ -27,14 +36,18 @@ export default function ManageCebEngineer() {
           </div>
         </div>
 
-        <div class="row mb-3">
-          <label for="lastname" class="col-sm-2 col-form-label" align="left">
+        <div className="row mb-3">
+          <label
+            for="lastname"
+            className="col-sm-2 col-form-label"
+            align="left"
+          >
             <b>Last Name</b>
           </label>
-          <div class="w-50 p-1">
+          <div className="w-50 p-1">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="lastname"
               value="Madhushanka"
               required
@@ -42,14 +55,14 @@ export default function ManageCebEngineer() {
           </div>
         </div>
 
-        <div class="row mb-3">
-          <label for="email" class="col-sm-2 col-form-label" align="left">
+        <div className="row mb-3">
+          <label for="email" className="col-sm-2 col-form-label" align="left">
             <b>Email</b>
           </label>
-          <div class="w-50 p-1">
+          <div className="w-50 p-1">
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="email"
               value="buthsaramadhushanka@gmail.com"
               required
@@ -57,18 +70,18 @@ export default function ManageCebEngineer() {
           </div>
         </div>
 
-        <div class="row mb-3">
+        <div className="row mb-3">
           <label
             for="contactnumber"
-            class="col-sm-2 col-form-label"
+            className="col-sm-2 col-form-label"
             align="left"
           >
             <b>Contact Number</b>
           </label>
-          <div class="w-50 p-1">
+          <div className="w-50 p-1">
             <input
               type="tel"
-              class="form-control"
+              className="form-control"
               id="contactnumber"
               value="078 344 1655"
               required
@@ -76,17 +89,17 @@ export default function ManageCebEngineer() {
           </div>
         </div>
 
-        <div class="row mb-3">
-          <label for="image" class="col-sm-2 col-form-label" align="left">
+        <div className="row mb-3">
+          <label for="image" className="col-sm-2 col-form-label" align="left">
             <b>Image</b>
           </label>
-          <div class="w-50 p-1">
+          <div className="w-50 p-1">
             <img src={Engineer} height={200} width={200} />
           </div>
         </div>
 
-        <div className="text-center">
-          <button type="submit" className="adminbtn">
+        <div>
+          <button type="submit" className="admin-add-update-btn">
             Update
           </button>
         </div>
