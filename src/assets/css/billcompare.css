@@ -6,29 +6,32 @@
     background-color: turquoise;
 }
 
-.text-center{
+.usage-device{
     background: #83fca7;
 }
 
-.text-center1{
+.best-model{
     margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 20px;
     border-radius: 5%;
 }
 
 .grp{
     width: 60%;
+    margin-left: 20%;
+    margin-top: 40px;
 }
 
 .main-title{
     display: inline-block;
-    
+    align-items: center;
     padding: 4px;
     border-radius: 20px;
     width: 80%;
     margin-bottom: 5%;
     background-color: #E2EEDE
 }
+
 
 .my-3{
     width: 100%;
@@ -53,9 +56,6 @@
     font-size: 100%;
 }
 
-.best_one{
-    margin-top: 5%;
-}
 
 .frm{
     width: 80%;
