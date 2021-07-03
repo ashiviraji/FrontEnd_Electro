@@ -14,7 +14,7 @@ export default function TOUSuggestions() {
       <div className="device-wise-title-TOU">
        TOU SUGGESTIONS
     </div>
-    <div>
+    
       
        
       
@@ -22,7 +22,7 @@ export default function TOUSuggestions() {
    
     <input  className="download-button" type="Button" value="Download As Pdf"  />
       
-    </div>
+   
      
 
 
