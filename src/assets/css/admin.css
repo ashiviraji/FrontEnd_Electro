@@ -1,7 +1,14 @@
 .body-manageengineer {
-  width: 70%;
-  top: 100px;
-  left: 15%;
+  width: 90%;
+  left: 8%;
+  position: relative;
+  padding: 25px 100px 75px;
+}
+
+.body-addengineer {
+  width: 90%;
+  left: 8%;
+  top: 70px;
   position: relative;
   padding: 25px 100px 75px;
 }
@@ -13,7 +20,7 @@
   position: relative;
 }
 
-.adminbtn {
+.admin-add-update-btn {
   background-color: #01bf71;
   border-radius: 50px;
   box-shadow: #049665;
@@ -23,10 +30,27 @@
   font-size: medium;
   padding: 7px;
   margin-top: 25px;
-  left: -15%;
+  left: 20%;
   position: relative;
 }
-.adminbtn:hover {
+.admin-add-update-btn:hover {
+  background-color: #00af86;
+  color: beige;
+}
+
+.addnewceb-btn {
+  background-color: #01bf71;
+  border-radius: 50px;
+  box-shadow: #049665;
+  border: none;
+  width: 200px;
+  font-weight: bold;
+  font-size: medium;
+  padding: 7px;
+  margin-top: 25px;
+  position: relative;
+}
+.addnewceb-btn:hover {
   background-color: #00af86;
   color: beige;
 }
