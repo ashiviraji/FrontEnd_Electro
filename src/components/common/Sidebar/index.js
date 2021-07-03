@@ -83,6 +83,7 @@ const Sidebar = ({ show }) => {
                 </div>
                 {/* <Route path='/device-wise' exact={true} component={DeviceWiseFixed} />
                 <Route path='/TOU-suggestions' exact={true} component={TOUSuggestions} /> */}
+                <div claasName = "page-load" > 
                 <div className="load-area" >
                 <Route path='/device-wise' exact={true} component={DeviceWiseFixed} />
 
@@ -92,6 +93,8 @@ const Sidebar = ({ show }) => {
                 <Route path='/TOU-suggestions' exact={true} component={TOUSuggestions} />
                 <Route path='/bill-comparison' exact={true} component={BillCompariosn} />
                 </div>
+                </div>
+                
                </div>
 
             </Router>

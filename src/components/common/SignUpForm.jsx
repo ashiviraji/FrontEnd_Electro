@@ -9,8 +9,8 @@ export default function SignUpForm() {
     return (
 
         <form className="col">
-            <div className="frm">
-                <div className="grp">
+            <div className="frmLogin">
+                <div className="grpLogin">
                     <h3>Sign Up</h3>
 
                     <div className="form-group">

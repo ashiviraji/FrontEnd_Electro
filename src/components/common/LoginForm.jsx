@@ -7,8 +7,8 @@ export default class LoginForm extends Component {
     render() {
         return (
             <form className="col">
-                <div className="frm">
-                    <div className="grp">
+                <div className="frmLogin">
+                    <div className="grpLogin">
 
 
                         <h3>Sign In</h3>
