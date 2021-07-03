@@ -12,10 +12,19 @@ export default function TOUSuggestions() {
   return (
     <div>
       <div className="device-wise-title-TOU">
-       TOU Suggestions
+       TOU SUGGESTIONS
+    </div>
+    <div>
+      
+       
+      
+      
+   
+    <input  className="download-button" type="Button" value="Download As Pdf"  />
+      
+    </div>
+     
 
-      </div>
-      <input  className="download-button" type="Button" value="Download As Pdf"  />
 
 
       <TOUSuggestionsPage />
