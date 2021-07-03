@@ -20,13 +20,8 @@
   position: relative;
 }
 
-<<<<<<< HEAD
-.adminbtn {
-  
-=======
 .admin-add-update-btn {
   background-color: #01bf71;
->>>>>>> d78d827f3b3d9f48a0d442a776021f3db6526985
   border-radius: 50px;
   box-shadow: #049665;
   border: none;
