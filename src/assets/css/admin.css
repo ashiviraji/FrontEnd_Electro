@@ -1,13 +1,13 @@
 .body-manageengineer {
   width: 90%;
-  left: 8%;
+  margin-left: 25%;
   position: relative;
   padding: 25px 100px 75px;
 }
 
 .body-addengineer {
   width: 90%;
-  left: 8%;
+  margin-left: 25%;
   top: 70px;
   position: relative;
   padding: 25px 100px 75px;

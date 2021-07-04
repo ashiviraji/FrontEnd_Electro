@@ -18,7 +18,7 @@ import  { useRef } from 'react';
 
 const TOUSuggestions = (props) => {
     console.log(props);
-    const inputEl =useRef("");
+    
 
     
     
@@ -88,7 +88,8 @@ const TOUSuggestions = (props) => {
 
     const [devices, setDevices] = useState(cardInfo.slice(0, 15));
     const [pageNumber, setPageNumber] = useState(0);
-    const devicesPerPage = 4;
+    const devicesPerPage = 4
+    ;
     const pagesVisited = pageNumber * devicesPerPage;
 
     const displayDivices = devices.slice(pagesVisited, pagesVisited + devicesPerPage).map((card, index) => {
