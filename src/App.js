@@ -5,8 +5,13 @@ import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
 import Home from "./views/Home";
 import CalculateBill from "./views/customer/CalculateBill";
-import { makeStyles, CssBaseline, createMuiTheme, ThemeProvider } from '@material-ui/core';
-import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
+import {
+  makeStyles,
+  CssBaseline,
+  createMuiTheme,
+  ThemeProvider,
+} from "@material-ui/core";
+import PeopleOutlineTwoToneIcon from "@material-ui/icons/PeopleOutlineTwoTone";
 
 // import Table from './components/Table';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -20,20 +25,18 @@ import SidebarAdmin from "./components/common/Sidebar-admin";
 // import ManageCebEngineer from "./components/Admin/ManageCebEngineer";
 // import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
 
-
 // import { BrowserRouter as Router } from "react-router-dom";
 
-
-import BillComparison from './views/customer/BillComparison';
+import BillComparison from "./views/customer/BillComparison";
 // import Home from "./views/Home";
-import DashbordNavbar from './components/common/DashboardNavbar/index';
+import DashbordNavbar from "./components/common/DashboardNavbar/index";
 
 function App() {
   return (
     <div className="App">
-
-
-      <Route exact path="/home"><Home id="home" /></Route>
+      <Route exact path="/home">
+        <Home id="home" />
+      </Route>
 
       <Route exact path="/dashboard-user">
         <DashNavbar />
@@ -47,23 +50,13 @@ function App() {
       </Route>
 
       <Route exact path="/device-wise">
-        <DashbordNavbar /><SidebarUser />
+        <DashbordNavbar />
+        <SidebarUser />
       </Route>
 
       <Route exact path="/TOU-suggestions">
-        <DashbordNavbar /><SidebarUser />
-      </Route>
-
-      <Route exact path="/addnewcebengineer">
-        <DashbordNavbar /><SidebarAdmin />
-      </Route>
-
-      <Route exact path="/manage-cebengineer">
-        <DashbordNavbar /><SidebarAdmin />
-      </Route>
-
-      <Route exact path="/bill-comparison">
-        <DashbordNavbar /><SidebarUser />
+        <DashbordNavbar />
+        <SidebarUser />
       </Route>
 
       <Route exact path="/dashboard-admin">
@@ -71,11 +64,30 @@ function App() {
         <SidebarAdmin />
       </Route>
 
-      <Route exact path="/calculate-bill">
-        <DashbordNavbar /><SidebarUser />
+      <Route exact path="/addnewcebengineer">
+        <DashbordNavbar />
+        <SidebarAdmin />
       </Route>
 
+      <Route exact path="/manage-cebengineer">
+        <DashbordNavbar />
+        <SidebarAdmin />
+      </Route>
 
+      <Route exact path="/admin-userprofile">
+        <DashbordNavbar />
+        <SidebarAdmin />
+      </Route>
+
+      <Route exact path="/bill-comparison">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
+
+      <Route exact path="/calculate-bill">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
     </div>
   );
 }
