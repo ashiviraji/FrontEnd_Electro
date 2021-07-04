@@ -1,38 +1,37 @@
-
+.card1{
+    height:90%;
+}
 .card2{
     background-color: turquoise;
-    height: 100%;
+    height: 90%;
 }
 
-.usage-device{
+.usage{
     background: #83fca7;
-    margin-top: 5%;
     margin-bottom: 5%;
 }
 
 .best-model{
-    margin-top: 5%;
-    margin-bottom: 20px;
-    border-radius: 5%;
+    margin-top: 2%;
+    margin-bottom: 5%;
 }
 
-.grp{
+.grp-bill{
     width: 60%;
-    margin-left: 20%;
-    margin-top: 40px;
-
+    align-items: center;
 }
 
 .main-title{
-    display: inline-block;
-    align-items: center;
-    padding: 4px;
-    border-radius: 20px;
-    width: 80%;
+    display: inline-block;  
+    padding: 2%;
+    border-radius: 30px;
+    width: 60%;
     margin-bottom: 5%;
-    background-color: #E2EEDE
+    background-color: #E2EEDE;
+    align-items: center;
+    margin-left: 22%;
+    margin-top: 10%;
 }
-
 
 .my-3{
     width: 100%;
@@ -42,26 +41,22 @@
 .btn-tou{
     margin: 5% ;
     margin-bottom: none;
-    font-size: 100%;
+    font-size: 120%;
 }
 
 .btn-fixed{
     margin: 5% ;
     margin-bottom: none;
-    font-size: 100%;
+    font-size: 120%;
 }
 
 .btn-suggest{
     margin: 2% ;
     margin-bottom: none;
-    font-size: 100%;
+    font-size: 120%;
 }
 
-.row{
-    margin-bottom: 5%;
-}
-
-.frm{
-    width: 80%;
-    margin: auto;
+.frm-bill{
+    align-items: center;
+    margin-left: 25%;
 }
