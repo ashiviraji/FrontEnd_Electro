@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 
-import '../../assets/css/loginForm.css';
+import '../../assets/css/Authentication/loginForm.css';
 
 
 export default function SignUpForm() {
