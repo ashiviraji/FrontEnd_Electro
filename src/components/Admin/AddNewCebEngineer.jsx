@@ -3,7 +3,7 @@ import "../../assets/css/admin.css";
 
 export default function AddNewCebEngineer() {
   return (
-    <div className="body-addengineer">
+    <div className="body-engineer">
       <form>
         <div className="ceb-heading">
           <h1 align="center">Add New CEB Engineer</h1>
