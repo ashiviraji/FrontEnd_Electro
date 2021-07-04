@@ -41,7 +41,7 @@ ul#horizontal-list {
         border-color: black;
         border-width: 2px;
         padding: 10px;
-      width: 80px;
+      width: 100px;
       text-align: center;
         
     }
@@ -59,12 +59,12 @@ ul#horizontal-list {
 
     #inside-category{
         margin-left:5%;
-        width: 80px;
+        width: 100px;
     }
 
     #inside-unitCharge{
         margin-left: 13%;
-        width: 80px;
+        width: 100px;
     }
 
     .inside-update{
@@ -75,12 +75,15 @@ ul#horizontal-list {
 
     #inside-fixedCharge{
         margin-left: 10%;
-        width: 80px;
+        width: 100px;
     }
 
 
 
     .card{
+        border-style: solid;
+    border-color: #3B7769;
+    border-width: 2px;
         margin-left: 15%;
     width: 70%;
     height: 80px;
@@ -99,4 +102,12 @@ ul#horizontal-list {
         margin-top: 50px;
     width: 55%;
     margin-left: 24%;
+    }
+
+   
+
+    .label-list-inside{
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
     }
