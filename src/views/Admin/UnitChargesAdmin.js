@@ -1,6 +1,7 @@
 import React from "react";
 import "../../assets/css/unitchargesadmin.css";
 import { GrDocumentTime } from 'react-icons/gr';
+import image from '../../assets/img/unitCharge.png';
 
 
 import { Link } from "react-router-dom";
@@ -36,6 +37,7 @@ export default function unitchargesAdmin() {
             </div>
           </div>
        </div>
+       <img src={image} alt="unit-charge-admin" width="250" height="250" />
       </div>
     </div>
   </form>
