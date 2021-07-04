@@ -28,15 +28,18 @@ import SidebarAdmin from "./components/common/Sidebar-admin";
 // import { BrowserRouter as Router } from "react-router-dom";
 
 import BillComparison from "./views/customer/BillComparison";
+
 // import Home from "./views/Home";
 import DashbordNavbar from "./components/common/DashboardNavbar/index";
 
 function App() {
   return (
     <div className="App">
+    
       <Route exact path="/home">
         <Home id="home" />
       </Route>
+
 
       <Route exact path="/dashboard-user">
         <DashNavbar />
@@ -88,6 +91,12 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
+    
+    <Route exact path="/admin-unit-charges">
+        <DashbordNavbar/><SidebarAdmin/>
+        </Route>
+
+
     </div>
   );
 }

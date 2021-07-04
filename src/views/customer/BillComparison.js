@@ -68,7 +68,6 @@ export default function billcomparison() {
           </div>
         </div>
 
-
         <div>
           <h5> View TOU Suggestions</h5>
           

@@ -12,6 +12,7 @@ import { Route } from "react-router-dom";
 import ManageCebEngineer from "../../../views/Admin/ManageCebEngineer";
 import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
+
 import "../../../assets/css/sidebar-admin.css";
 
 import {
@@ -76,7 +77,7 @@ const SidebarAdmin = ({ show }) => {
             </SideNav>
           </div>
 
-          <div className="load-area">
+                  <div className="load-area">
             <Route
               path="/manage-cebengineer"
               exact={true}
@@ -92,6 +93,7 @@ const SidebarAdmin = ({ show }) => {
               exact={true}
               component={AdminUserProfile}
             />
+
           </div>
         </div>
       </Router>
