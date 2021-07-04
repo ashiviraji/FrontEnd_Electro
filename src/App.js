@@ -32,14 +32,16 @@ import BillComparison from "./views/customer/BillComparison";
 
 // import Home from "./views/Home";
 import DashbordNavbar from "./components/common/DashboardNavbar/index";
+import ForgotPassword from "./views/ForgotPassword";
 
 function App() {
   return (
     <div className="App">
-    
+
       <Route exact path="/home">
         <Home id="home" />
       </Route>
+      <Route exact path="/forgotpassword"><ForgotPassword /></Route>
 
 
       <Route exact path="/dashboard-user">
@@ -97,10 +99,10 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
-    
-    <Route exact path="/admin-unit-charges">
-        <DashbordNavbar/><SidebarAdmin/>
-        </Route>
+
+      <Route exact path="/admin-unit-charges">
+        <DashbordNavbar /><SidebarAdmin />
+      </Route>
 
       <Route exact path="/manage-unitCharges">
         <DashbordNavbar /><SidebarEngineer />
