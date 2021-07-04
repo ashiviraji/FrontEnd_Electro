@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import ReactPaginate from 'react-paginate';
-import  { useRef } from 'react';
+
 
 
 
@@ -10,10 +10,7 @@ import  { useRef } from 'react';
 
  
 
-  onchange = e =>{
-    this.setState({search : e.target.value});
-  }
-
+  
 
 
 const TOUSuggestions = (props) => {
