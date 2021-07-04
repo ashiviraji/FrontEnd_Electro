@@ -1,15 +1,14 @@
-/* .card1{
-    background-color: #7ae7f5;
-} */
 
 .card2{
     background-color: turquoise;
+    height: 100%;
 }
 
 .usage-device{
     background: #83fca7;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
-
 
 .best-model{
     margin-top: 5%;
@@ -56,6 +55,10 @@
     margin: 2% ;
     margin-bottom: none;
     font-size: 100%;
+}
+
+.row{
+    margin-bottom: 5%;
 }
 
 .frm{
