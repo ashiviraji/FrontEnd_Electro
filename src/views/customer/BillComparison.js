@@ -68,15 +68,6 @@ export default function billcomparison() {
           </div>
         </div>
 
-        <hr
-          style={{
-            color: "#FFFFFF",
-            backgroundColor: "#FFFFFF",
-            height: 0.5,
-            borderColor: "#FFFFFF",
-          }}
-        />
-
         <div>
           <h5> View TOU Suggestions</h5>
           
