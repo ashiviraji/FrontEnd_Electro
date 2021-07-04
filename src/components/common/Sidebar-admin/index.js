@@ -11,6 +11,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
 import ManageCebEngineer from "../../../views/Admin/ManageCebEngineer";
 import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
+import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
+
 import "../../../assets/css/sidebar-admin.css";
 
 import {
@@ -66,7 +68,7 @@ const SidebarAdmin = ({ show }) => {
                 </List>
 
                 <List>
-                  <LinkList to="/user-profile">
+                  <LinkList to="/admin-userprofile">
                     <BiUserCircle />
                     &nbsp;&nbsp;&nbsp;User Profile
                   </LinkList>
@@ -96,6 +98,12 @@ const SidebarAdmin = ({ show }) => {
               exact={true}
               component={AddNewCebEngineer}
             />
+            <Route
+              path="/admin-userprofile"
+              exact={true}
+              component={AdminUserProfile}
+            />
+
           </div>
         </div>
         </div>
