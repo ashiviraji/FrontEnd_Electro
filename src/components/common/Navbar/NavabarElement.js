@@ -9,8 +9,9 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-size:1rem;
-position:sticky;
+position:fixed;
 top:0;
+width:100%;
 margin-right:0px;
 z-index:10;
 @media screen and (max-width:960px){
@@ -26,7 +27,7 @@ z-index:1;
 width:90%;
 
 
-margin-left: 120px;
+margin-left: 10%;
 
 `
 export const NavLogo = styled(LinkS)`

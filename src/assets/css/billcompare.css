@@ -4,25 +4,35 @@
     height: 100%;
 }
 
-.text-center{
+.usage-device{
     background: #83fca7;
     margin-top: 5%;
     margin-bottom: 5%;
 }
 
-.text-center1{
-    margin-top: 2%;
+.best-model{
+    margin-top: 5%;
+    margin-bottom: 20px;
     border-radius: 5%;
+}
+
+.grp{
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 40px;
+
 }
 
 .main-title{
     display: inline-block;
+    align-items: center;
     padding: 4px;
     border-radius: 20px;
     width: 80%;
     margin-bottom: 5%;
     background-color: #E2EEDE
 }
+
 
 .my-3{
     width: 100%;
@@ -49,4 +59,9 @@
 
 .row{
     margin-bottom: 5%;
+}
+
+.frm{
+    width: 80%;
+    margin: auto;
 }
