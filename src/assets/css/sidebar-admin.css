@@ -1,5 +1,6 @@
 .sidebar-main{
     width:100%;
+    margin-top: 80px;
 }
 
 .sidebar-left{
@@ -7,7 +8,14 @@
     float:left;
 }
 
+.page-load{
+    float: right;
+    width: 80%;
+}
+
 .load-area{
-   margin-left:20%;
+    width: 80%;
+    margin-left:19%;
+    float: left;
   
 }

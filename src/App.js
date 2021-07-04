@@ -22,6 +22,7 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import DashNavbar from "./components/common/DashboardNavbar";
 
 import SidebarAdmin from "./components/common/Sidebar-admin";
+import SidebarEngineer from "./components/common/Sidebar-Engineer";
 // import ManageCebEngineer from "./components/Admin/ManageCebEngineer";
 // import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
 
@@ -87,6 +88,11 @@ function App() {
         <SidebarUser />
       </Route>
 
+      <Route exact path="/dashboard-engineer">
+        <DashNavbar />
+        <SidebarEngineer />
+      </Route>
+
       <Route exact path="/calculate-bill">
         <DashbordNavbar />
         <SidebarUser />
@@ -95,6 +101,11 @@ function App() {
     <Route exact path="/admin-unit-charges">
         <DashbordNavbar/><SidebarAdmin/>
         </Route>
+
+      <Route exact path="/manage-unitCharges">
+        <DashbordNavbar /><SidebarEngineer />
+      </Route>
+
 
 
     </div>
