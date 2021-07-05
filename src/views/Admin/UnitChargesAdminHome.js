@@ -14,9 +14,9 @@ export default function unitchargesAdminHome() {
             <h4> Unit Charges </h4>
           </div>
 
-          <div className="row both">
+          <div className="row">
             <div className="col-sm-6">
-              <div className="card card border-success mb-3 fixed-unit">
+              <div className="uchargecard card border-success mb-3">
                 <div className="card-body">
                   <h5 className="card-title text-center fixed_title">
                     Fixed Unit Billing Method
@@ -34,9 +34,9 @@ export default function unitchargesAdminHome() {
               </div>
             </div>
             <div className="col-sm-6">
-              <div className="card card border-success mb-3 tou-unit">
+              <div className="uchargecard card border-success mb-3">
                 <div className="card-body">
-                  <div className="icon text-center">
+                  <div className="icon">
                     <GrDocumentTime size={35} />
                   </div>
                   <h5 className="card-title text-center">Time of Use MODEL</h5>

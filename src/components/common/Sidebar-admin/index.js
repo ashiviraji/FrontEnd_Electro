@@ -11,8 +11,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
 import ManageCebEngineer from "../../../views/Admin/ManageCebEngineer";
 import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
-import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
+import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
+
 import "../../../assets/css/sidebar-admin.css";
 
 import {
@@ -98,16 +99,17 @@ const SidebarAdmin = ({ show }) => {
               exact={true}
               component={AddNewCebEngineer}
             />
+            <Route>
+              path="/admin-userprofile"
+              exact={true}
+              component={AdminUserProfile}
+            />
             <Route
               path="/admin-unit-charges"
               exact={true}
               component={UnitChargesAdminHome}
             />
-            <Route
-              path="/admin-userprofile"
-              exact={true}
-              component={AdminUserProfile}
-            />
+
           </div>
         </div>
       </div>
