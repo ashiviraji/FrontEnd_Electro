@@ -3,126 +3,193 @@ import { Grid } from "@material-ui/core";
 import useForm from "../../components/Customer/useForm";
 import { Form } from "../../components/Customer/useForm";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from '@material-ui/core/FormControl';
-import { FormLabel } from "@material-ui/core";
-import { RadioGroup } from "@material-ui/core";
-import { FormControlLabel } from "@material-ui/core";
-import { Radio } from "@material-ui/core";
 import { Button } from "@material-ui/core";
+import Controls from "../../components/Customer/bill_control/Controls";
 
+
+const priorityList = [
+  { id:'high', title :'High'},
+  { id:'mid', title :'Mid'},
+  { id:'low', title :'Low'},
+]
 
 const initialFvalues = {
   appliance: "",
   quantity: "",
   hPeak: "",
+  mPeak: "",
   hOffPeak: "",
+  mOffPeak: "",
   hDay: "",
+  mDay: "",
   power: "",
   priority: "",
 };
 
-const useStyles = makeStyles(theme =>({
-  root : {
-    margin:theme.spacing(1)
+const useStyles = makeStyles((theme) => ({
+  root: {
+    margin: theme.spacing(1),
   },
   label: {
-    textTransform: 'none'
-  }
-}))
+    textTransform: "none",
+  },
+}));
 
 export default function CalculateBillForm() {
-  const { values, setValues, handleInputChange } = useForm(initialFvalues);
-  const classes = useStyles();
+
+  const classes = useStyles(); 
+  const validate = () => {
+    let temp = {}
+    temp.appliance = values.appliance?"":"This field is required"
+    temp.quantity= values.quantity>0?"":"Enter The quantity"
+    temp.power = values.power>0?"":"power should be a number and > 0"
+    temp.priority = values.priority?"":"Please select priority of device"
+    setErrors({
+      ...temp
+    })
+    return Object.values(temp).every(x => x == "")
+  }
+
+  const {
+    values,
+    setValues,
+    errors,
+    setErrors,
+    handleInputChange,
+  } = useForm(initialFvalues);
+
+  const handleSubmitBill= e => {
+    e.preventDefault()
+    if (validate())
+      window.alert('testing...')
+  }
 
   return (
-    <Form>
-      <Grid container>
+    <Form onSubmit={handleSubmitBill}>
+      <Grid container spacing={3}>
         <Grid item xs={6}>
-          <TextField
-            TextField
-            id="standard-basic"
+          <Controls.InputTxt
+            id = "standard-basic"
             label="Appliance"
             name="appliance"
             value={values.appliance}
             onChange={handleInputChange}
+            error = { errors.appliance}
           />
-          <TextField
-            id="standard-number"
+          <Controls.InputTxt
+            id = "standard-number"
             label="Quantity"
-            type="number"
             name="quantity"
-            InputLabelProps={{
-              shrink: true,
-            }}
+            type="number"
             value={values.quantity}
             onChange={handleInputChange}
+            error = { errors.quantity}
           />
-          <TextField
-            id="standard-start-adornment"
+
+          <Controls.InputTxt
+            id = "standard-start-adornment"
             label="Power of Appliance"
             name="power"
             value={values.power}
             onChange={handleInputChange}
-            // className={clsx(classes.margin, classes.textField)}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">W</InputAdornment>,
-            }}
+            unit = "W"
+            error = { errors.power}
           />
-          <FormControl>
-            <FormLabel>Select Priority</FormLabel>
-            <RadioGroup row
-              name = "priority"
-              value = {values.priority}
-              onChange = {handleInputChange}
-            >
-              <FormControlLabel value="high" control={<Radio/>} label="High"  />
-              <FormControlLabel value="mid" control={<Radio/>} label="Mid"  />
-              <FormControlLabel value="low" control={<Radio/>} label="Low"  />
-
-            </RadioGroup>
-
-          </FormControl>
           
         </Grid>
-        <Grid item xs={6}>
-          <TextField
-            id="standard-start-adornment"
-            label="Hours in Peak Time"
-            name = "hPeak"
+        
+          <Grid item xs={6} sm={3}>
+          <Controls.InputTxt
+            id = "standard-start-adornment"
+            label="Peak"
+            name="hPeak"
             value={values.hPeak}
             onChange={handleInputChange}
-            // className={clsx(classes.margin, classes.textField)}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">h</InputAdornment>,
-            }}
+            unit = "h"
           />
-          <TextField
-            id="standard-start-adornment"
-            label="Hours in off Peak Time"
-            name = "hOffPeak"
+
+          <Controls.InputTxt
+            id = "standard-start-adornment"
+            label="Off Peak"
+            name="hOffPeak"
             value={values.hOffPeak}
             onChange={handleInputChange}
-            // className={clsx(classes.margin, classes.textField)}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">h</InputAdornment>,
-            }}
+            unit = "h"
           />
-          <TextField
-            id="standard-start-adornment"
-            label="Hours in Day Time"
-            name = "hDay"
+
+          <Controls.InputTxt
+            id = "standard-start-adornment"
+            label="Day"
+            name="hDay"
             value={values.hDay}
             onChange={handleInputChange}
-            // className={clsx(classes.margin, classes.textField)}
-            InputProps={{
-              endAdornment: <InputAdornment position="end">h</InputAdornment>,
-            }}
+            unit = "h"
           />
-          <Button variant = "contained" size = "large" color = "primary" classes={{ root: classes.root, label: classes.label}} > Submit </Button>
-          <Button variant = "contained"  size = "large"  color = "default" classes={{ root: classes.root, label: classes.label}}> Reset </Button>
+            
+          </Grid>
+          <Grid item xs={6} sm={3}>
+          <Controls.InputTxt
+            id = "standard-start-adornment"
+            label="Peak"
+            name="mPeak"
+            value={values.mPeak}
+            onChange={handleInputChange}
+            unit = "min"
+          />
+
+          <Controls.InputTxt
+            id = "standard-start-adornment"
+            label="Off Peak"
+            name="mOffPeak"
+            value={values.mOffPeak}
+            onChange={handleInputChange}
+            unit = "min"
+          />
+
+          <Controls.InputTxt
+            id = "standard-start-adornment"
+            label="Day"
+            name="mDay"
+            value={values.mDay}
+            onChange={handleInputChange}
+            unit = "min"
+          />
+          </Grid>
+        <Grid item xs={6}>
+          <Controls.RadioGroup
+            name="priority"
+            label = "Select Priority"
+            value={values.priority}
+            onChange={handleInputChange}
+            items = {priorityList}
+            error = { errors.power}
+          />
+        
         </Grid>
+        <Grid item xs={6}>
+            <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            color="primary"
+            onClick = ""
+            classes={{ root: classes.root, label: classes.label }}
+          >
+            {" "}
+            Submit{" "}
+          </Button>
+          <Button
+            variant="contained"
+            size="large"
+            color="default"
+            classes={{ root: classes.root, label: classes.label }}
+          >
+            {" "}
+            Reset{" "}
+          </Button>
+        </Grid>
+          
+        
       </Grid>
     </Form>
   );
