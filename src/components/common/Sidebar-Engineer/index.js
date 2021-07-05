@@ -4,16 +4,14 @@ import active from "../../../assets/img/active.png";
 
 import { FiHome } from "react-icons/fi";
 import { AiOutlineDollar } from "react-icons/ai";
-import { FaUserTie } from "react-icons/fa";
+
 import { BiUserCircle } from "react-icons/bi";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
-import ManageCebEngineer from "../../../views/Admin/ManageCebEngineer";
-import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
-import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
-import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
+
 import "../../../assets/css/sidebar-admin.css";
+import updateUnitCharges from "../../CEBEnginner/updateUnitCharges";
 
 import {
   SideNav,
@@ -27,7 +25,7 @@ import {
   ActiveIcon,
 } from "./SidebarElement";
 
-const SidebarAdmin = ({ show }) => {
+const SidebarEngineer= ({ show }) => {
   return (
     <>
       <Router>
@@ -38,8 +36,8 @@ const SidebarAdmin = ({ show }) => {
                 <UserProfile src={image} alt="image"></UserProfile>
 
                 <UlDetailList>
-                  <NameList>Miss. Hasini </NameList>
-                  <NameList>Administrator</NameList>
+                  <NameList>Mr. Tharindu </NameList>
+                  <NameList>CEB Engineer</NameList>
                   <NameList>
                     <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
                   </NameList>
@@ -54,21 +52,16 @@ const SidebarAdmin = ({ show }) => {
                 </List>
 
                 <List>
-                  <LinkList to="/admin-unit-charges">
+                  <LinkList to="/manage-unitCharges">
                     <AiOutlineDollar />
                     &nbsp;&nbsp;&nbsp;Unit Charges
                   </LinkList>
                 </List>
 
-                <List>
-                  <LinkList to="/manage-cebengineer">
-                    <FaUserTie />
-                    &nbsp;&nbsp;&nbsp;Manage CEB Engineer
-                  </LinkList>
-                </List>
+                
 
                 <List>
-                  <LinkList to="/admin-userprofile">
+                  <LinkList to="/user-profile">
                     <BiUserCircle />
                     &nbsp;&nbsp;&nbsp;User Profile
                   </LinkList>
@@ -86,27 +79,12 @@ const SidebarAdmin = ({ show }) => {
           exact={true}
           component={AddNewCebEngineer}
         /> */}
-
          <div claasName="page-load">
           <div className="load-area">
-            <Route
-              path="/manage-cebengineer"
+          <Route
+              path="/manage-unitCharges"
               exact={true}
-              component={ManageCebEngineer}
-            />
-            <Route
-              path="/addnewcebengineer"
-              exact={true}
-              component={AddNewCebEngineer}
-            />
-            <Route
-              path="/admin-unit-charges"
-              exact={true}
-              component={UnitChargesAdminHome}
-            />
-              path="/admin-userprofile"
-              exact={true}
-              component={AdminUserProfile}
+              component={updateUnitCharges}
             />
           </div>
         </div>
@@ -116,4 +94,4 @@ const SidebarAdmin = ({ show }) => {
   );
 };
 
-export default SidebarAdmin;
+export default SidebarEngineer;

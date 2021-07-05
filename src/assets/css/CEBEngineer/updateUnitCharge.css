@@ -1,0 +1,113 @@
+#menu-outer {
+	height: 64px;
+	width: 70%;
+    margin-top: 2%;
+    margin-left: 15%;
+}
+
+.table {
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}
+
+ul#horizontal-list {
+	min-width: 696px;
+	list-style: none;
+	padding-top: 20px;
+	}
+	ul#horizontal-list li {
+		display: inline;
+       padding-left: 60px;
+       padding-top: 60px;
+       font-weight: bold;
+       
+       padding-right: 60px;
+	}
+
+    ul#horizontal-list-inside{
+        min-width: 696px;
+        list-style: none;
+        
+    }
+
+    ul#horizontal-list-inside li {
+		display: inline;
+        
+	}
+
+    .label-list-inside{
+        background-color: #F6EEEE;
+        border-radius: 4px;
+        border-color: black;
+        border-width: 2px;
+        padding: 10px;
+      width: 100px;
+      text-align: center;
+        
+    }
+
+    .label-list-update{
+        background-color: #F6EEEE;
+        border-radius: 4px;
+        border-color: black;
+        border-width: 2px;
+        padding: 10px;
+      
+      text-align: center;
+        
+    }
+
+    #inside-category{
+        margin-left:5%;
+        width: 100px;
+    }
+
+    #inside-unitCharge{
+        margin-left: 13%;
+        width: 100px;
+    }
+
+    .inside-update{
+        margin-left: 3%;
+        width: 100px;
+        background-color: #79DBC4;
+    }
+
+    #inside-fixedCharge{
+        margin-left: 10%;
+        width: 100px;
+    }
+
+
+
+    .card{
+        border-style: solid;
+    border-color: #3B7769;
+    border-width: 2px;
+        margin-left: 15%;
+    width: 70%;
+    height: 80px;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    }
+
+    #title-unit-charge{
+        margin-left: 3%;
+    }
+
+    #title-heading{
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 50px;
+    width: 55%;
+    margin-left: 24%;
+    }
+
+   
+
+    .label-list-inside{
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+    }
