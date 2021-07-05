@@ -16,6 +16,7 @@ import TOUSuggestions from "../../../views/customer/TOUSuggestions";
 
 import CalculateBill from "../../../views/customer/CalculateBill";
 import BillCompariosn from "../../../views/customer/BillComparison";
+import myBillPlans from "../../../views/customer/billPlans";
 
 import "../../../assets/css/sidebar-user.css";
 
@@ -100,6 +101,13 @@ const Sidebar = ({ show }) => {
                 </List>
 
                 <List>
+                  <LinkList to="/myBillPlans">
+                    <RiInformationLine />
+                    &nbsp;&nbsp;&nbsp; My Bill Plans
+                  </LinkList>
+                </List>
+
+                <List>
                   <LinkList to="/bill-comparison">
                     <AiOutlineBook />
                     &nbsp;&nbsp;&nbsp; Bill Comparison
@@ -128,6 +136,11 @@ const Sidebar = ({ show }) => {
                 path="/TOU-suggestions"
                 exact={true}
                 component={TOUSuggestions}
+              />
+              <Route
+                path="/myBillPlans"
+                exact={true}
+                component={myBillPlans}
               />
               <Route
                 path="/bill-comparison"
