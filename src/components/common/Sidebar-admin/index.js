@@ -14,6 +14,7 @@ import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
 import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
 
+
 import "../../../assets/css/sidebar-admin.css";
 
 import {
@@ -53,12 +54,22 @@ const SidebarAdmin = ({ show }) => {
                 </LinkList>
               </List>
 
+
+               
+                
+
+              
               <List>
+
                 <LinkList to="/admin-unit-charges">
                   <AiOutlineDollar />
                   &nbsp;&nbsp;&nbsp;Unit Charges
                 </LinkList>
               </List>
+
+
+
+
 
               <List>
                 <LinkList to="/manage-cebengineer">
@@ -73,6 +84,7 @@ const SidebarAdmin = ({ show }) => {
                   &nbsp;&nbsp;&nbsp;User Profile
                 </LinkList>
               </List>
+
             </UlList>
           </SideNav>
         </div>
@@ -99,7 +111,7 @@ const SidebarAdmin = ({ show }) => {
               exact={true}
               component={AddNewCebEngineer}
             />
-            <Route>
+            <Route
               path="/admin-userprofile"
               exact={true}
               component={AdminUserProfile}
@@ -109,6 +121,13 @@ const SidebarAdmin = ({ show }) => {
               exact={true}
               component={UnitChargesAdminHome}
             />
+
+             <Route
+              path="/admin-unit-charges"
+              exact={true}
+              component={UnitChargesAdminHome}
+            />
+
 
           </div>
         </div>
