@@ -47,7 +47,7 @@ const SidebarAdmin = ({ show }) => {
               </UserName>
               <UlList>
                 <List>
-                  <LinkList to="/home" >
+                  <LinkList to="/home">
                     <FiHome />
                     &nbsp;&nbsp;&nbsp;Home
                   </LinkList>
@@ -86,26 +86,25 @@ const SidebarAdmin = ({ show }) => {
           exact={true}
           component={AddNewCebEngineer}
         /> */}
-         <div claasName="page-load">
-          <div className="load-area">
-            <Route
-              path="/manage-cebengineer"
-              exact={true}
-              component={ManageCebEngineer}
-            />
-            <Route
-              path="/addnewcebengineer"
-              exact={true}
-              component={AddNewCebEngineer}
-            />
-            <Route
-              path="/admin-userprofile"
-              exact={true}
-              component={AdminUserProfile}
-            />
-
+          <div claasName="page-load">
+            <div className="load-area">
+              <Route
+                path="/manage-cebengineer"
+                exact={true}
+                component={ManageCebEngineer}
+              />
+              <Route
+                path="/addnewcebengineer"
+                exact={true}
+                component={AddNewCebEngineer}
+              />
+              <Route
+                path="/admin-userprofile"
+                exact={true}
+                component={AdminUserProfile}
+              />
+            </div>
           </div>
-        </div>
         </div>
       </Router>
     </>

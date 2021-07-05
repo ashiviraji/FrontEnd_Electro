@@ -1,5 +1,5 @@
 import React from "react";
-import "../../assets/css/admin.css";
+import "../../assets/css/Admin/admin.css";
 import Admin from "../../assets/img/Admin.png";
 
 export default function AdminUserProfile() {

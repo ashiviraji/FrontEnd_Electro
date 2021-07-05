@@ -1,5 +1,5 @@
 import React from "react";
-import "../../assets/css/admin.css";
+import "../../assets/css/Admin/admin.css";
 
 export default function AddNewCebEngineer() {
   return (
