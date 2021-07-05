@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
 import Home from "./views/Home";
-import CalculateBill from "./views/customer/CalculateBill";
+
 import {
   makeStyles,
   CssBaseline,
@@ -23,13 +23,15 @@ import DashNavbar from "./components/common/DashboardNavbar";
 
 import SidebarAdmin from "./components/common/Sidebar-admin";
 import SidebarEngineer from "./components/common/Sidebar-Engineer";
+
+
 // import ManageCebEngineer from "./components/Admin/ManageCebEngineer";
 // import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
 import AdminUnitCharges60plus from "./components/Admin/AdminUnitCharges60plus";
 
 // import { BrowserRouter as Router } from "react-router-dom";
 
-import BillComparison from "./views/customer/BillComparison";
+
 
 // import Home from "./views/Home";
 import DashbordNavbar from "./components/common/DashboardNavbar/index";
@@ -44,7 +46,6 @@ function App() {
       <Route exact path="/forgotpassword">
         <ForgotPassword />
       </Route>
-
       <Route exact path="/dashboard-user">
         <DashNavbar />
         <SidebarUser />
@@ -74,6 +75,11 @@ function App() {
       <Route exact path="/addnewcebengineer">
         <DashbordNavbar />
         <SidebarAdmin />
+      </Route>
+
+      <Route exact path="/myBillPlans">
+        <DashbordNavbar />
+        <SidebarUser />
       </Route>
 
       <Route exact path="/manage-cebengineer">
@@ -108,9 +114,10 @@ function App() {
       </Route>
 
       <Route exact path="/admin-unit-charges">
-        <DashbordNavbar />
-        <SidebarAdmin />
+        <DashbordNavbar /><SidebarAdmin />
       </Route>
+
+     
 
       <Route exact path="/manage-unitCharges">
         <DashbordNavbar />

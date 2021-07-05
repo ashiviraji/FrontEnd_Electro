@@ -11,8 +11,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
 import ManageCebEngineer from "../../../views/Admin/ManageCebEngineer";
 import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
-import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
+import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
+
+
 import "../../../assets/css/sidebar-admin.css";
 
 import {
@@ -52,12 +54,22 @@ const SidebarAdmin = ({ show }) => {
                 </LinkList>
               </List>
 
+
+               
+                
+
+              
               <List>
+
                 <LinkList to="/admin-unit-charges">
                   <AiOutlineDollar />
                   &nbsp;&nbsp;&nbsp;Unit Charges
                 </LinkList>
               </List>
+
+
+
+
 
               <List>
                 <LinkList to="/manage-cebengineer">
@@ -72,6 +84,7 @@ const SidebarAdmin = ({ show }) => {
                   &nbsp;&nbsp;&nbsp;User Profile
                 </LinkList>
               </List>
+
             </UlList>
           </SideNav>
         </div>
@@ -99,15 +112,23 @@ const SidebarAdmin = ({ show }) => {
               component={AddNewCebEngineer}
             />
             <Route
-              path="/admin-unit-charges"
-              exact={true}
-              component={UnitChargesAdminHome}
-            />
-            <Route
               path="/admin-userprofile"
               exact={true}
               component={AdminUserProfile}
             />
+            <Route
+              path="/admin-unit-charges"
+              exact={true}
+              component={UnitChargesAdminHome}
+            />
+
+             <Route
+              path="/admin-unit-charges"
+              exact={true}
+              component={UnitChargesAdminHome}
+            />
+
+
           </div>
         </div>
       </div>

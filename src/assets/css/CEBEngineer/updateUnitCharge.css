@@ -1,4 +1,4 @@
-#menu-outer {
+ #menu-outer {
 	height: 64px;
 	width: 70%;
     margin-top: 2%;
@@ -69,7 +69,7 @@ ul#horizontal-list {
 
     .inside-update{
         margin-left: 3%;
-        width: 100px;
+        /* width: 100px; */
         background-color: #79DBC4;
     }
 
@@ -80,7 +80,7 @@ ul#horizontal-list {
 
 
 
-    .card{
+    /* .card1{
         border-style: solid;
     border-color: #3B7769;
     border-width: 2px;
@@ -90,6 +90,18 @@ ul#horizontal-list {
     border-radius: 8px;
     margin-top: 15px;
     box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    } */
+
+    .card1-body{
+        border-style: solid;
+        border-color: #3B7769;
+        border-width: 2px;
+            margin-left: 15%;
+        width: 70%;
+        height: 80px;
+        border-radius: 8px;
+        margin-top: 15px;
+        box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); 
     }
 
     #title-unit-charge{
@@ -110,4 +122,4 @@ ul#horizontal-list {
         border-color: black;
         border-style: solid;
         border-width: 1px;
-    }
+    } 
