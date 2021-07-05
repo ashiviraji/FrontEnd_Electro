@@ -38,15 +38,21 @@ const useStyles = makeStyles((theme) => ({
 export default function CalculateBillForm() {
 
   const classes = useStyles(); 
-  const validate = () => {
-    let temp = {}
-    temp.appliance = values.appliance?"":"This field is required"
-    temp.quantity= values.quantity>0?"":"Enter The quantity"
-    temp.power = values.power>0?"":"power should be a number and > 0"
-    temp.priority = values.priority?"":"Please select priority of device"
+  const validate = (fieldValues = values) => {
+    let temp = {...errors}
+    if('appliance' in  fieldValues)
+      temp.appliance = fieldValues.appliance?"":"This field is required"
+    if('quantity' in  fieldValues)
+      temp.quantity= fieldValues.quantity>0?"":"Enter The quantity"
+    if('power' in  fieldValues)
+      temp.power = fieldValues.power>0?"":"power should be a number and > 0"
+    if('priority' in  fieldValues)
+      temp.priority = fieldValues.priority?"":"Please select priority of device"
     setErrors({
       ...temp
     })
+
+    if (fieldValues == values)
     return Object.values(temp).every(x => x == "")
   }
 
@@ -56,7 +62,8 @@ export default function CalculateBillForm() {
     errors,
     setErrors,
     handleInputChange,
-  } = useForm(initialFvalues);
+    resetForm
+  } = useForm(initialFvalues, true, validate);
 
   const handleSubmitBill= e => {
     e.preventDefault()
@@ -64,6 +71,7 @@ export default function CalculateBillForm() {
       window.alert('testing...')
   }
 
+  
   return (
     <Form onSubmit={handleSubmitBill}>
       <Grid container spacing={3}>
@@ -162,7 +170,7 @@ export default function CalculateBillForm() {
             value={values.priority}
             onChange={handleInputChange}
             items = {priorityList}
-            error = { errors.power}
+            error = { errors.priority}
           />
         
         </Grid>
@@ -182,6 +190,7 @@ export default function CalculateBillForm() {
             variant="contained"
             size="large"
             color="default"
+            onClick = {resetForm}
             classes={{ root: classes.root, label: classes.label }}
           >
             {" "}
