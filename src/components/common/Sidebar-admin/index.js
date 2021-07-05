@@ -11,8 +11,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
 import ManageCebEngineer from "../../../views/Admin/ManageCebEngineer";
 import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
-import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
+import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
+
 import "../../../assets/css/sidebar-admin.css";
 
 import {
@@ -86,7 +87,6 @@ const SidebarAdmin = ({ show }) => {
           exact={true}
           component={AddNewCebEngineer}
         /> */}
-
          <div claasName="page-load">
           <div className="load-area">
             <Route
@@ -100,14 +100,16 @@ const SidebarAdmin = ({ show }) => {
               component={AddNewCebEngineer}
             />
             <Route
-              path="/admin-unit-charges"
-              exact={true}
-              component={UnitChargesAdminHome}
-            />
               path="/admin-userprofile"
               exact={true}
               component={AdminUserProfile}
             />
+            <Route
+              path="/admin-unit-charges"
+              exact={true}
+              component={UnitChargesAdminHome}
+            />
+
           </div>
         </div>
         </div>
