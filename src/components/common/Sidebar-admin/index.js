@@ -30,54 +30,53 @@ import {
 
 const SidebarAdmin = ({ show }) => {
   return (
-    <>
-      <Router>
-        <div className="sidebar-main">
-          <div className="sidebar-left">
-            <SideNav className={show ? "sidenav active " : "sidenav"}>
-              <UserName>
-                <UserProfile src={image} alt="image"></UserProfile>
+    <Router>
+      <div className="sidebar-main">
+        <div className="sidebar-left">
+          <SideNav className={show ? "sidenav active " : "sidenav"}>
+            <UserName>
+              <UserProfile src={image} alt="image"></UserProfile>
 
-                <UlDetailList>
-                  <NameList>Miss. Hasini </NameList>
-                  <NameList>Administrator</NameList>
-                  <NameList>
-                    <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
-                  </NameList>
-                </UlDetailList>
-              </UserName>
-              <UlList>
-                <List>
-                  <LinkList to="/home" >
-                    <FiHome />
-                    &nbsp;&nbsp;&nbsp;Home
-                  </LinkList>
-                </List>
+              <UlDetailList>
+                <NameList>Miss. Hasini </NameList>
+                <NameList>Administrator</NameList>
+                <NameList>
+                  <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
+                </NameList>
+              </UlDetailList>
+            </UserName>
+            <UlList>
+              <List>
+                <LinkList to="/home">
+                  <FiHome />
+                  &nbsp;&nbsp;&nbsp;Home
+                </LinkList>
+              </List>
 
-                <List>
-                  <LinkList to="/admin-unit-charges">
-                    <AiOutlineDollar />
-                    &nbsp;&nbsp;&nbsp;Unit Charges
-                  </LinkList>
-                </List>
+              <List>
+                <LinkList to="/admin-unit-charges">
+                  <AiOutlineDollar />
+                  &nbsp;&nbsp;&nbsp;Unit Charges
+                </LinkList>
+              </List>
 
-                <List>
-                  <LinkList to="/manage-cebengineer">
-                    <FaUserTie />
-                    &nbsp;&nbsp;&nbsp;Manage CEB Engineer
-                  </LinkList>
-                </List>
+              <List>
+                <LinkList to="/manage-cebengineer">
+                  <FaUserTie />
+                  &nbsp;&nbsp;&nbsp;Manage CEB Engineer
+                </LinkList>
+              </List>
 
-                <List>
-                  <LinkList to="/admin-userprofile">
-                    <BiUserCircle />
-                    &nbsp;&nbsp;&nbsp;User Profile
-                  </LinkList>
-                </List>
-              </UlList>
-            </SideNav>
-          </div>
-          {/* <Route
+              <List>
+                <LinkList to="/admin-userprofile">
+                  <BiUserCircle />
+                  &nbsp;&nbsp;&nbsp;User Profile
+                </LinkList>
+              </List>
+            </UlList>
+          </SideNav>
+        </div>
+        {/* <Route
           path="/manage-cebengineer"
           exact={true}
           component={ManageCebEngineer}
@@ -87,7 +86,8 @@ const SidebarAdmin = ({ show }) => {
           exact={true}
           component={AddNewCebEngineer}
         /> */}
-         <div claasName="page-load">
+
+        <div claasName="page-load">
           <div className="load-area">
             <Route
               path="/manage-cebengineer"
@@ -99,7 +99,7 @@ const SidebarAdmin = ({ show }) => {
               exact={true}
               component={AddNewCebEngineer}
             />
-            <Route
+            <Route>
               path="/admin-userprofile"
               exact={true}
               component={AdminUserProfile}
@@ -112,9 +112,8 @@ const SidebarAdmin = ({ show }) => {
 
           </div>
         </div>
-        </div>
-      </Router>
-    </>
+      </div>
+    </Router>
   );
 };
 
