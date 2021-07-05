@@ -25,6 +25,7 @@ import SidebarAdmin from "./components/common/Sidebar-admin";
 import SidebarEngineer from "./components/common/Sidebar-Engineer";
 // import ManageCebEngineer from "./components/Admin/ManageCebEngineer";
 // import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
+import AdminUnitCharges60plus from "./components/Admin/AdminUnitCharges60plus";
 
 // import { BrowserRouter as Router } from "react-router-dom";
 
@@ -37,12 +38,12 @@ import ForgotPassword from "./views/ForgotPassword";
 function App() {
   return (
     <div className="App">
-
       <Route exact path="/home">
         <Home id="home" />
       </Route>
-      <Route exact path="/forgotpassword"><ForgotPassword /></Route>
-
+      <Route exact path="/forgotpassword">
+        <ForgotPassword />
+      </Route>
 
       <Route exact path="/dashboard-user">
         <DashNavbar />
@@ -85,6 +86,12 @@ function App() {
         <SidebarAdmin />
       </Route>
 
+      <Route exact path="/admin-unitcharges-60plus">
+        <DashbordNavbar />
+        <SidebarAdmin />
+        <AdminUnitCharges60plus />
+      </Route>
+
       <Route exact path="/bill-comparison">
         <DashbordNavbar />
         <SidebarUser />
@@ -101,15 +108,14 @@ function App() {
       </Route>
 
       <Route exact path="/admin-unit-charges">
-        <DashbordNavbar /><SidebarAdmin />
+        <DashbordNavbar />
+        <SidebarAdmin />
       </Route>
 
       <Route exact path="/manage-unitCharges">
-        <DashbordNavbar /><SidebarEngineer />
+        <DashbordNavbar />
+        <SidebarEngineer />
       </Route>
-
-
-
     </div>
   );
 }
