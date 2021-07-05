@@ -47,7 +47,7 @@ const SidebarAdmin = ({ show }) => {
               </UserName>
               <UlList>
                 <List>
-                  <LinkList to="/home" >
+                  <LinkList to="/home">
                     <FiHome />
                     &nbsp;&nbsp;&nbsp;Home
                   </LinkList>
@@ -87,6 +87,7 @@ const SidebarAdmin = ({ show }) => {
           component={AddNewCebEngineer}
         /> */}
 
+
          <div claasName="page-load">
           <div className="load-area">
             <Route
@@ -108,8 +109,8 @@ const SidebarAdmin = ({ show }) => {
               exact={true}
               component={AdminUserProfile}
             />
+
           </div>
-        </div>
         </div>
       </Router>
     </>
