@@ -64,6 +64,7 @@ export default function CalculateBillForm() {
       window.alert('testing...')
   }
 
+
   return (
     <Form onSubmit={handleSubmitBill}>
       <Grid container spacing={3}>
@@ -95,7 +96,7 @@ export default function CalculateBillForm() {
             unit = "W"
             error = { errors.power}
           />
-          
+
         </Grid>
         
           <Grid item xs={6} sm={3}>
