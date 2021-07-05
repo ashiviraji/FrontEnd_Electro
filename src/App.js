@@ -23,6 +23,8 @@ import DashNavbar from "./components/common/DashboardNavbar";
 
 import SidebarAdmin from "./components/common/Sidebar-admin";
 import SidebarEngineer from "./components/common/Sidebar-Engineer";
+
+
 // import ManageCebEngineer from "./components/Admin/ManageCebEngineer";
 // import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
 
@@ -36,7 +38,7 @@ import DashbordNavbar from "./components/common/DashboardNavbar/index";
 function App() {
   return (
     <div className="App">
-    
+
       <Route exact path="/home">
         <Home id="home" />
       </Route>
@@ -73,6 +75,11 @@ function App() {
         <SidebarAdmin />
       </Route>
 
+      <Route exact path="/myBillPlans">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
+
       <Route exact path="/manage-cebengineer">
         <DashbordNavbar />
         <SidebarAdmin />
@@ -97,10 +104,10 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
-    
-    <Route exact path="/admin-unit-charges">
-        <DashbordNavbar/><SidebarAdmin/>
-        </Route>
+
+      <Route exact path="/admin-unit-charges">
+        <DashbordNavbar /><SidebarAdmin />
+      </Route>
 
       <Route exact path="/manage-unitCharges">
         <DashbordNavbar /><SidebarEngineer />

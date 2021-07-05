@@ -1,0 +1,55 @@
+.uchargecard{
+    height: 90%;
+}
+
+.title-unitcharges{
+    display: inline-block;
+    padding: 1.5%;
+    border-radius: 30px;
+    width: 70%;
+    margin-bottom: 5%;
+    background-color: #E2EEDE;
+    margin-left: 10%;
+}
+
+.btn-60{
+    margin: 5% ;
+    margin-bottom: none;
+}
+
+.btn-60+{
+    margin: 5% ;
+    margin-bottom: none;
+}
+
+.icon{
+    margin: auto;
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.fixed-unit{
+    height: 100%;
+}
+
+.tou-unit{
+    height: 100%;
+}
+
+.fixed_title{
+    margin-top: 7%;
+}
+
+.grp-ucharges{
+    width: 50%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 20%;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
+    padding: 40px 55px 45px 55px;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+    
+}

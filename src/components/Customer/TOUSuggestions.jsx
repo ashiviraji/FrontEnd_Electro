@@ -2,29 +2,14 @@ import React, { useState } from 'react';
 import { Card } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import ReactPaginate from 'react-paginate';
+import '../../assets/css/TOUSuggestions.css';
 
 
 
-
-
-
- 
-
-  
 
 
 const TOUSuggestions = (props) => {
     console.log(props);
-    
-
-    
-    
-
-    
-
-
-
-
     const cardInfo = [
         { Applicance: "Television", Quantity: "1", Suggestion1: "Transfer to time peak to off-peak", Save: "200" },
         { Applicance: "Radio", Quantity: "2", Suggestion1: "Transfer to time peak to day", Save: "100" },
@@ -47,9 +32,9 @@ const TOUSuggestions = (props) => {
     ];
 
 
-    
-    
-    
+
+
+
 
 
     // const renderCard =(card,index) =>{
@@ -86,12 +71,12 @@ const TOUSuggestions = (props) => {
     const [devices, setDevices] = useState(cardInfo.slice(0, 15));
     const [pageNumber, setPageNumber] = useState(0);
     const devicesPerPage = 4
-    ;
+        ;
     const pagesVisited = pageNumber * devicesPerPage;
 
     const displayDivices = devices.slice(pagesVisited, pagesVisited + devicesPerPage).map((card, index) => {
         return (
-            <Card style={{ width: '40rem' }} key={index} className="box">
+            <Card style={{ width: '40rem',height:'12rem' }} key={index} className="box" id="box-card">
 
                 <Card.Body className="card-body">
                     <Card.Title>Device Name &nbsp;:&nbsp;&nbsp;{card.Applicance}</Card.Title>
@@ -122,7 +107,7 @@ const TOUSuggestions = (props) => {
         setPageNumber(selected);
     };
     return (
-        <div className="grid">
+        <div className="grid-pagnation" id="paginate-buttons">
             {displayDivices}
             <ReactPaginate
                 previousLabel={"Previous"}

@@ -26,7 +26,7 @@ export default function TOUSuggestions() {
    
     <input  className="download-button" type="Button" value="Download As Pdf"  />
     <div className="ui search">
-      <div className="ui icon input">
+      <div className="ui icon1 input">
     <input  className="search-bar" type="Text" placeholder="Search Device" />
     <BsSearch className="bsSearch"></BsSearch>
     </div>
