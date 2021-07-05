@@ -9,8 +9,10 @@ export default function useForm(initialFvalues, validateOnChange=false , validat
 
     const handleInputChange = e =>{
         const { name, value} = e.target
+
         console.log(name);
         console.log(value);
+
         setValues({
             ...values,
             [name] : value
