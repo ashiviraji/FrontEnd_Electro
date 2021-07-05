@@ -1,4 +1,4 @@
-#menu-outer {
+ #menu-outer {
 	height: 64px;
 	width: 70%;
     margin-top: 2%;
@@ -69,7 +69,7 @@ ul#horizontal-list {
 
     .inside-update{
         margin-left: 3%;
-        width: 100px;
+        /* width: 100px; */
         background-color: #79DBC4;
     }
 
@@ -122,4 +122,4 @@ ul#horizontal-list {
         border-color: black;
         border-style: solid;
         border-width: 1px;
-    }
+    } 
