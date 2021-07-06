@@ -64,6 +64,7 @@ export default function CalculateBillForm() {
     if (validate()) window.alert("testing...");
   };
 
+
   return (
     <Form onSubmit={handleSubmitBill}>
       <Grid container spacing={3}>
