@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card as card2 } from "react-bootstrap";
 import "../../assets/css/Admin/adminupdateunitcharges.css";
 import { MdNotificationsActive } from "react-icons/md";
 
@@ -14,14 +14,14 @@ export default function AdminUnitCharges60plus() {
 
       <div class="admin-unit-table">
         <ul id="admin-unit-horizontal-list">
-          <li>Category</li>
+          <li id="admin-unit-title-category">Category</li>
           <li>Unit Charge(LKR/kWh)</li>
           <li>Fixed Charge(LKR/month)</li>
         </ul>
       </div>
 
-      <Card>
-        <Card.Body>
+      <card2>
+        <card2.Body className="card2-body">
           <ul id="admin-unit-horizontal-list-inside">
             <li>
               <label
@@ -61,11 +61,11 @@ export default function AdminUnitCharges60plus() {
               </button>
             </li>
           </ul>
-        </Card.Body>
-      </Card>
+        </card2.Body>
+      </card2>
 
-      <Card>
-        <Card.Body>
+      <card2>
+        <card2.Body className="card2-body">
           <ul id="admin-unit-horizontal-list-inside">
             <li>
               <label
@@ -105,10 +105,10 @@ export default function AdminUnitCharges60plus() {
               </button>
             </li>
           </ul>
-        </Card.Body>
-      </Card>
-      <Card>
-        <Card.Body>
+        </card2.Body>
+      </card2>
+      <card2>
+        <card2.Body className="card2-body">
           <ul id="admin-unit-horizontal-list-inside">
             <li>
               <label
@@ -145,10 +145,10 @@ export default function AdminUnitCharges60plus() {
               </button>
             </li>
           </ul>
-        </Card.Body>
-      </Card>
-      <Card>
-        <Card.Body>
+        </card2.Body>
+      </card2>
+      <card2>
+        <card2.Body className="card2-body">
           <ul id="admin-unit-horizontal-list-inside">
             <li>
               <label
@@ -185,10 +185,10 @@ export default function AdminUnitCharges60plus() {
               </button>
             </li>
           </ul>
-        </Card.Body>
-      </Card>
-      <Card>
-        <Card.Body>
+        </card2.Body>
+      </card2>
+      <card2>
+        <card2.Body className="card2-body">
           <ul id="admin-unit-horizontal-list-inside">
             <li>
               <label
@@ -229,8 +229,8 @@ export default function AdminUnitCharges60plus() {
               </button>
             </li>
           </ul>
-        </Card.Body>
-      </Card>
+        </card2.Body>
+      </card2>
     </div>
   );
 }
