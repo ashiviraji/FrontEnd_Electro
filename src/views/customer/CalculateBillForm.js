@@ -5,6 +5,8 @@ import { Form } from "../../components/Customer/useForm";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import Controls from "../../components/Customer/bill_control/Controls";
+import * as DeviceBill from "./DeviceBill";
+
 
 const priorityList = [
   { id: "high", title: "High" },
@@ -38,13 +40,14 @@ export default function CalculateBillForm() {
   const classes = useStyles();
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
-   if (("appliance" in fieldValues) || ("quantity" in fieldValues) || ("power" in fieldValues) || ("priority" in fieldValues) )
+    // || ("quantity" in fieldValues) || ("power" in fieldValues) || ("priority" in fieldValues)
+   if ("appliance" in fieldValues)
       temp.appliance = fieldValues.appliance? "": "This field is required";
     if ("quantity" in fieldValues)
       temp.quantity = fieldValues.quantity > 0 ? "" : "Quantity is required and > 0";
     if ("power" in fieldValues)
       temp.power = fieldValues.power > 0 ? "" : "power should be a number and > 0";
-    if (("appliance" in fieldValues) || ("priority" in fieldValues))
+    if ("priority" in fieldValues)
       temp.priority = fieldValues.priority? "" : "Please select priority of device";
     if ("hPeak" in fieldValues)
       temp.hPeak = ( (fieldValues.hPeak > 0 && fieldValues.hPeak < 4) ||  fieldValues.hPeak == "") ? "" : "4 >Peak Hours in day > 0";
@@ -59,11 +62,11 @@ export default function CalculateBillForm() {
     if ("mDay" in fieldValues)
       temp.mDay = ( (fieldValues.mDay > 0 && fieldValues.mDay < 60) ||  fieldValues.mDay == "")  ? "" : "60 > minutes > 0";
     setErrors({
-      ...temp,
-    });
+      ...temp
+    })
 
     if (fieldValues == values) {
-      return Object.values(temp).every((x) => x == "");
+      return Object.values(temp).every(x => x == "");
     }
       
   };
@@ -73,13 +76,16 @@ export default function CalculateBillForm() {
 
   const handleSubmitBill = (e) => {
     e.preventDefault();
+    console.log("testing...");
     if (validate()) {
-      window.alert("testing...");
+      DeviceBill.insertDevice(values)
     }
-  };
+      
+    
+  }
 
   return (
-    <Form onSubmit={handleSubmitBill}>
+    <Form>
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <Controls.InputTxt
@@ -189,7 +195,7 @@ export default function CalculateBillForm() {
             variant="contained"
             size="large"
             color="primary"
-            onClick=""
+            onClick={handleSubmitBill}
             classes={{ root: classes.root, label: classes.label }}
           >
             {" "}
