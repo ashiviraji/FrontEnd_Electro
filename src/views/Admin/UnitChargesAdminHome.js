@@ -2,8 +2,14 @@ import React from "react";
 import "../../assets/css/unitchargesadminhome.css";
 import { GrDocumentTime } from "react-icons/gr";
 import image from "../../assets/img/unitCharge.png";
+import AdminUnitCharges60plus from "../../views/Admin/AdminUnitCharges60plus";
+import DashbordNavbar from "../../components/common/DashboardNavbar";
+import SidebarAdmin from "../../components/common/Sidebar-admin";
 
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+//import { Link } from "react-router";
+import { NavLink } from "react-router-dom";
 
 export default function unitchargesAdminHome() {
   return (
@@ -23,12 +29,20 @@ export default function unitchargesAdminHome() {
                   </h5>
                   {/* <p className="card-text">LKR 4590</p> */}
                   <div className="text-center">
-                    <Link className="btn btn-success btn-lg btn-60" to="#">
+                    <NavLink className="btn btn-success btn-lg btn-60" to="#">
                       0 - 60
-                    </Link>
-                    <Link className="btn btn-success btn-lg btn-60+" to="#">
+                    </NavLink>
+                    <NavLink
+                      className="btn btn-success btn-lg btn-60+"
+                      to="/admin-unitcharges-60plus"
+                    >
                       60+
-                    </Link>
+                      <Route exact path="/admin-unitcharges-60plus">
+                        <DashbordNavbar />
+                        <SidebarAdmin />
+                        <AdminUnitCharges60plus />
+                      </Route>
+                    </NavLink>
                   </div>
                 </div>
               </div>
