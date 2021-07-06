@@ -1,13 +1,10 @@
 import React from "react";
-import "../../assets/css/unitchargesadminhome.css";
+import "../../assets/css/Admin/unitchargesadminhome.css";
 import { GrDocumentTime } from "react-icons/gr";
 import image from "../../assets/img/unitCharge.png";
-import AdminUnitCharges60plus from "../../views/Admin/AdminUnitCharges60plus";
-import DashbordNavbar from "../../components/common/DashboardNavbar";
-import SidebarAdmin from "../../components/common/Sidebar-admin";
+import unitchargeupdates from "../../assets/img/unitchargeupdates.png";
 
 // import "../../assets/css/Admin/admin.css";
-
 
 //import { Link } from "react-router-dom";
 import { Route } from "react-router-dom";
@@ -32,7 +29,10 @@ export default function AdminUnitChargeHome() {
                   </h5>
                   {/* <p className="card-text">LKR 4590</p> */}
                   <div className="text-center">
-                    <NavLink className="btn btn-success btn-lg btn-60" to="#">
+                    <NavLink
+                      className="btn btn-success btn-lg btn-60"
+                      to="/admin-unitcharges-0to60"
+                    >
                       0 - 60
                     </NavLink>
                     <NavLink
@@ -40,11 +40,6 @@ export default function AdminUnitChargeHome() {
                       to="/admin-unitcharges-60plus"
                     >
                       60+
-                      <Route exact path="/admin-unitcharges-60plus">
-                        <DashbordNavbar />
-                        <SidebarAdmin />
-                        <AdminUnitCharges60plus />
-                      </Route>
                     </NavLink>
                   </div>
                 </div>
@@ -53,15 +48,28 @@ export default function AdminUnitChargeHome() {
             <div className="col-sm-6">
               <div className="uchargecard card border-success mb-3">
                 <div className="card-body">
+                  <h5 className="card-title text-center fixed_title">
+                    Time of Use MODEL
+                  </h5>
                   <div className="icon">
-                    <GrDocumentTime size={35} />
+                    <NavLink
+                      className="btn btn-success btn-lg btn-60+"
+                      to="/admin-unitcharges-ToU"
+                    >
+                      {" "}
+                      <GrDocumentTime size={25} />
+                    </NavLink>
                   </div>
-                  <h5 className="card-title text-center">Time of Use MODEL</h5>
                 </div>
               </div>
             </div>
           </div>
-          <img src={image} alt="unit-charge-admin" width="250" height="250" />
+          <img
+            src={unitchargeupdates}
+            alt="unit-charge-update-admin"
+            width="350"
+            height="250"
+          />
         </div>
       </div>
     </form>

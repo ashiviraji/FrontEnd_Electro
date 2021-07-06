@@ -3,20 +3,20 @@ import { Card as card2 } from "react-bootstrap";
 import "../../assets/css/Admin/adminupdateunitcharges.css";
 import { MdNotificationsActive } from "react-icons/md";
 
-export default function AdminUnitCharges60plus() {
+export default function AdminUnitChargesToU() {
   return (
     <div className="admin-unit-body">
       <div id="admin-unit-title-heading">
         <h2>
           <b>
-            <label>FIXED BILLING MODEL (ONLY FOR 60kWh+)</label>
+            <label>ToU BILLING MODEL</label>
           </b>
         </h2>
       </div>
 
-      <div class="admin-unit-table">
+      <div class="admin-unit-table-0to60">
         <ul id="admin-unit-horizontal-list">
-          <li id="admin-unit-title-category">Category</li>
+          <li id="admin-unit-title-category">Time of Use(ToU)</li>
           <li>Unit Charge(LKR/kWh)</li>
           <li>Fixed Charge(LKR/month)</li>
         </ul>
@@ -30,7 +30,7 @@ export default function AdminUnitCharges60plus() {
                 className="admin-unit-label-list-inside"
                 id="admin-unit-inside-category"
               >
-                00-60
+                Peak (18.30-22.30)
               </label>
             </li>
             <li>
@@ -38,7 +38,7 @@ export default function AdminUnitCharges60plus() {
                 className="admin-unit-label-list-inside"
                 id="admin-unit-inside-unitCharge"
               >
-                7.85
+                54.00
               </label>
             </li>
             <li>
@@ -54,7 +54,7 @@ export default function AdminUnitCharges60plus() {
                 className="admin-unit-label-list-inside"
                 id="admin-unit-inside-fixedCharge"
               >
-                N/A
+                540.00
               </label>
             </li>
             <li>
@@ -74,7 +74,7 @@ export default function AdminUnitCharges60plus() {
                 className="admin-unit-label-list-inside"
                 id="admin-unit-inside-category"
               >
-                61-90
+                Day (5.30-18.30)
               </label>
             </li>
             <li>
@@ -82,131 +82,7 @@ export default function AdminUnitCharges60plus() {
                 className="admin-unit-label-list-inside"
                 id="admin-unit-inside-unitCharge"
               >
-                10.00
-              </label>
-            </li>
-            <li>
-              <button className="admin-unit-label-list-update">
-                UPDATE&nbsp;
-                <MdNotificationsActive
-                  style={{ width: "1.2rem", height: "1.2rem" }}
-                ></MdNotificationsActive>
-              </button>
-            </li>
-            <li>
-              <label
-                className="admin-unit-label-list-inside"
-                id="admin-unit-inside-fixedCharge"
-              >
-                90.00
-              </label>
-            </li>
-            <li>
-              <button className="admin-unit-label-list-update" disabled>
-                UPDATE
-              </button>
-            </li>
-          </ul>
-        </card2.Body>
-      </card2>
-      <card2>
-        <card2.Body className="card2-body">
-          <ul id="admin-unit-horizontal-list-inside">
-            <li>
-              <label
-                className="admin-unit-label-list-inside"
-                id="admin-unit-inside-category"
-              >
-                91-120
-              </label>
-            </li>
-            <li>
-              <label
-                className="admin-unit-label-list-inside"
-                id="admin-unit-inside-unitCharge"
-              >
-                27.75
-              </label>
-            </li>
-            <li>
-              <button className="admin-unit-label-list-update" disabled>
-                UPDATE
-              </button>
-            </li>
-            <li>
-              <label
-                className="admin-unit-label-list-inside"
-                id="admin-unit-inside-fixedCharge"
-              >
-                480.00
-              </label>
-            </li>
-            <li>
-              <button className="admin-unit-label-list-update" disabled>
-                UPDATE
-              </button>
-            </li>
-          </ul>
-        </card2.Body>
-      </card2>
-      <card2>
-        <card2.Body className="card2-body">
-          <ul id="admin-unit-horizontal-list-inside">
-            <li>
-              <label
-                className="admin-unit-label-list-inside"
-                id="admin-unit-inside-category"
-              >
-                121-180
-              </label>
-            </li>
-            <li>
-              <label
-                className="admin-unit-label-list-inside"
-                id="admin-unit-inside-unitCharge"
-              >
-                32.00
-              </label>
-            </li>
-            <li>
-              <button className="admin-unit-label-list-update" disabled>
-                UPDATE
-              </button>
-            </li>
-            <li>
-              <label
-                className="admin-unit-label-list-inside"
-                id="admin-unit-inside-fixedCharge"
-              >
-                480.00
-              </label>
-            </li>
-            <li>
-              <button className="admin-unit-label-list-update" disabled>
-                UPDATE
-              </button>
-            </li>
-          </ul>
-        </card2.Body>
-      </card2>
-      <card2>
-        <card2.Body className="card2-body">
-          <ul id="admin-unit-horizontal-list-inside">
-            <li>
-              <label
-                className="admin-unit-label-list-inside"
-                id="admin-unit-inside-category"
-              >
-                {" "}
-                {">"} 180
-              </label>
-            </li>
-            <li>
-              <label
-                className="admin-unit-label-list-inside"
-                id="admin-unit-inside-unitCharge"
-              >
-                45.00
+                25.00
               </label>
             </li>
             <li>
@@ -228,6 +104,50 @@ export default function AdminUnitCharges60plus() {
                 <MdNotificationsActive
                   style={{ width: "1.2rem", height: "1.2rem" }}
                 ></MdNotificationsActive>
+              </button>
+            </li>
+          </ul>
+        </card2.Body>
+      </card2>
+
+      <card2>
+        <card2.Body className="card2-body">
+          <ul id="admin-unit-horizontal-list-inside">
+            <li>
+              <label
+                className="admin-unit-label-list-inside"
+                id="admin-unit-inside-category"
+              >
+                Off-peak (22.30-05.30)
+              </label>
+            </li>
+            <li>
+              <label
+                className="admin-unit-label-list-inside"
+                id="admin-unit-inside-unitCharge"
+              >
+                13.00
+              </label>
+            </li>
+            <li>
+              <button className="admin-unit-label-list-update">
+                UPDATE&nbsp;
+                <MdNotificationsActive
+                  style={{ width: "1.2rem", height: "1.2rem" }}
+                ></MdNotificationsActive>
+              </button>
+            </li>
+            <li>
+              <label
+                className="admin-unit-label-list-inside"
+                id="admin-unit-inside-fixedCharge"
+              >
+                540.00
+              </label>
+            </li>
+            <li>
+              <button className="admin-unit-label-list-update" disabled>
+                UPDATE
               </button>
             </li>
           </ul>
