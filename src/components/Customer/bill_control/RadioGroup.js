@@ -9,7 +9,7 @@ import { FormHelperText } from '@material-ui/core';
 
 export default function RadioGroup(props) {
 
-    const {name, label, value, error, onChange, items} = props;
+    const {name, label, value, error=null, onChange, items} = props;
 
     return (
         <FormControl {...(error && {error:true})}>
