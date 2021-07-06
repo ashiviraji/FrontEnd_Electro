@@ -38,22 +38,34 @@ export default function CalculateBillForm() {
   const classes = useStyles();
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
-    if ("appliance" in fieldValues)
-      temp.appliance = fieldValues.appliance ? "" : "This field is required";
+   if (("appliance" in fieldValues) || ("quantity" in fieldValues) || ("power" in fieldValues) || ("priority" in fieldValues) )
+      temp.appliance = fieldValues.appliance? "": "This field is required";
     if ("quantity" in fieldValues)
-      temp.quantity = fieldValues.quantity > 0 ? "" : "Enter The quantity";
+      temp.quantity = fieldValues.quantity > 0 ? "" : "Quantity is required and > 0";
     if ("power" in fieldValues)
-      temp.power =
-        fieldValues.power > 0 ? "" : "power should be a number and > 0";
-    if ("priority" in fieldValues)
-      temp.priority = fieldValues.priority
-        ? ""
-        : "Please select priority of device";
+      temp.power = fieldValues.power > 0 ? "" : "power should be a number and > 0";
+    if (("appliance" in fieldValues) || ("priority" in fieldValues))
+      temp.priority = fieldValues.priority? "" : "Please select priority of device";
+    if ("hPeak" in fieldValues)
+      temp.hPeak = ( (fieldValues.hPeak > 0 && fieldValues.hPeak < 4) ||  fieldValues.hPeak == "") ? "" : "4 >Peak Hours in day > 0";
+    if ("hOffPeak" in fieldValues)
+      temp.hOffPeak = ( (fieldValues.hOffPeak > 0 && fieldValues.hOffPeak < 7) ||  fieldValues.hOffPeak == "") ? "" : "7 >Off Peak Hours in day > 0";
+    if ("hDay" in fieldValues)
+      temp.hDay = ( (fieldValues.hDay > 0 && fieldValues.hDay < 13) ||  fieldValues.hDay == "") ? "" : "13 >Day Hours in day > 0";
+    if ("mPeak" in fieldValues)
+      temp.mPeak = ( (fieldValues.mPeak > 0 && fieldValues.mPeak < 60) ||  fieldValues.mPeak == "") ? "" : "60 > minutes > 0";
+    if ("mOffPeak" in fieldValues)
+      temp.mOffPeak = ( (fieldValues.mOffPeak > 0 && fieldValues.mOffPeak < 60) ||  fieldValues.mOffPeak == "")  ? "" : "60 > minutes > 0";
+    if ("mDay" in fieldValues)
+      temp.mDay = ( (fieldValues.mDay > 0 && fieldValues.mDay < 60) ||  fieldValues.mDay == "")  ? "" : "60 > minutes > 0";
     setErrors({
       ...temp,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues == values) {
+      return Object.values(temp).every((x) => x == "");
+    }
+      
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -61,9 +73,10 @@ export default function CalculateBillForm() {
 
   const handleSubmitBill = (e) => {
     e.preventDefault();
-    if (validate()) window.alert("testing...");
+    if (validate()) {
+      window.alert("testing...");
+    }
   };
-
 
   return (
     <Form onSubmit={handleSubmitBill}>
@@ -105,7 +118,8 @@ export default function CalculateBillForm() {
             name="hPeak"
             value={values.hPeak}
             onChange={handleInputChange}
-            unit="h"
+            error={errors.hPeak}
+            unit="h &"
           />
 
           <Controls.InputTxt
@@ -114,7 +128,8 @@ export default function CalculateBillForm() {
             name="hOffPeak"
             value={values.hOffPeak}
             onChange={handleInputChange}
-            unit="h"
+            error={errors.hOffPeak}
+            unit="h &"
           />
 
           <Controls.InputTxt
@@ -123,7 +138,8 @@ export default function CalculateBillForm() {
             name="hDay"
             value={values.hDay}
             onChange={handleInputChange}
-            unit="h"
+            error={errors.hDay}
+            unit="h &"
           />
         </Grid>
         <Grid item xs={6} sm={3}>
@@ -133,6 +149,7 @@ export default function CalculateBillForm() {
             name="mPeak"
             value={values.mPeak}
             onChange={handleInputChange}
+            error={errors.mPeak}
             unit="min"
           />
 
@@ -142,6 +159,7 @@ export default function CalculateBillForm() {
             name="mOffPeak"
             value={values.mOffPeak}
             onChange={handleInputChange}
+            error={errors.mOffPeak}
             unit="min"
           />
 
@@ -151,6 +169,7 @@ export default function CalculateBillForm() {
             name="mDay"
             value={values.mDay}
             onChange={handleInputChange}
+            error={errors.mDay}
             unit="min"
           />
         </Grid>
