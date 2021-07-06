@@ -6,13 +6,15 @@
 }
 
 #admin-unit-title-heading {
-  margin-top: 50px;
-  margin-left: 33%;
+  margin-left: 25%;
+  margin-top: -1%;
 }
 
 .admin-unit-table {
   top: 5px;
   min-width: 100%;
+  margin-left: -1%;
+  margin-top: 1%;
   position: relative;
 }
 
@@ -23,10 +25,9 @@ ul#admin-unit-horizontal-list {
 }
 ul#admin-unit-horizontal-list li {
   display: inline;
-  padding-left: 140px;
+  padding-left: 130px;
   padding-top: 60px;
   font-weight: bold;
-
   padding-right: 60px;
 }
 
@@ -79,8 +80,8 @@ ul#admin-unit-horizontal-list-inside li {
   border-style: solid;
   border-color: #3b7769;
   border-width: 2px;
-  margin-left: 26%;
-  width: 70%;
+  margin-left: 7%;
+  width: 90%;
   height: 80px;
   border-radius: 8px;
   margin-top: 28px;
@@ -89,7 +90,7 @@ ul#admin-unit-horizontal-list-inside li {
 }
 
 #admin-unit-title-category {
-  margin-left: 18%;
+  margin-left: 0%;
 }
 
 .admin-unit-label-list-inside {
