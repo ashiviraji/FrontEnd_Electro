@@ -71,11 +71,7 @@ export default function CalculateBillForm() {
       window.alert('testing...')
   }
 
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 3bb58ef8ea086eb8d39e7d9779bdb8b4478d000b
   return (
     <Form onSubmit={handleSubmitBill}>
       <Grid container spacing={3}>
