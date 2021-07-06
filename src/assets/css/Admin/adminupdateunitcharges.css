@@ -6,7 +6,7 @@
 }
 
 #admin-unit-title-heading {
-  margin-left: 25%;
+  margin-left: 20%;
   margin-top: -1%;
 }
 
@@ -15,6 +15,14 @@
   min-width: 100%;
   margin-left: -1%;
   margin-top: 1%;
+  position: relative;
+}
+
+.admin-unit-table-0to60 {
+  top: 5px;
+  min-width: 100%;
+  margin-left: -1%;
+  margin-top: 5%;
   position: relative;
 }
 

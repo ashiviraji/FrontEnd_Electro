@@ -108,6 +108,21 @@ function App() {
         <SidebarAdmin />
       </Route>
 
+      <Route exact path="/admin-unitcharges-60plus">
+        <DashbordNavbar />
+        <SidebarAdmin />
+      </Route>
+
+      <Route exact path="/admin-unitcharges-0to60">
+        <DashbordNavbar />
+        <SidebarAdmin />
+      </Route>
+
+      <Route exact path="/admin-unitcharges-ToU">
+        <DashbordNavbar />
+        <SidebarAdmin />
+      </Route>
+
       <Route exact path="/manage-unitCharges">
         <DashbordNavbar />
         <SidebarEngineer />
