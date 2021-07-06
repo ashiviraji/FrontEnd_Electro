@@ -26,7 +26,6 @@ import SidebarEngineer from "./components/common/Sidebar-Engineer";
 
 // import ManageCebEngineer from "./components/Admin/ManageCebEngineer";
 // import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
-import AdminUnitCharges60plus from "./components/Admin/AdminUnitCharges60plus";
 
 // import { BrowserRouter as Router } from "react-router-dom";
 
@@ -87,12 +86,6 @@ function App() {
       <Route exact path="/admin-userprofile">
         <DashbordNavbar />
         <SidebarAdmin />
-      </Route>
-
-      <Route exact path="/admin-unitcharges-60plus">
-        <DashbordNavbar />
-        <SidebarAdmin />
-        <AdminUnitCharges60plus />
       </Route>
 
       <Route exact path="/bill-comparison">

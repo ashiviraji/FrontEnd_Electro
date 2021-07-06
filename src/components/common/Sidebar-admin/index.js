@@ -13,6 +13,7 @@ import ManageCebEngineer from "../../../views/Admin/ManageCebEngineer";
 import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
 import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
+import AdminUnitCharges60plus from "../../../views/Admin/AdminUnitCharges60plus";
 
 import "../../../assets/css/sidebar-admin.css";
 
@@ -108,6 +109,11 @@ const SidebarAdmin = ({ show }) => {
               path="/admin-unit-charges"
               exact={true}
               component={UnitChargesAdminHome}
+            />
+            <Route
+              path="/admin-unitcharges-60plus"
+              exact={true}
+              component={AdminUnitCharges60plus}
             />
           </div>
         </div>

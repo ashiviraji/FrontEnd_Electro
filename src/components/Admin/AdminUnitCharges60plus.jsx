@@ -8,7 +8,9 @@ export default function AdminUnitCharges60plus() {
     <div className="admin-unit-body">
       <div id="admin-unit-title-heading">
         <h2>
-          <label>FIXED BILLING MODEL (APPLICABLE FOR 60+ UNITS)</label>
+          <b>
+            <label>FIXED BILLING MODEL (Only for 60kWh+)</label>
+          </b>
         </h2>
       </div>
 
