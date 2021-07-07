@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CalculateBillForm from './CalculateBillForm';
 import { Paper, makeStyles } from '@material-ui/core';
-import useTable from '../../components/Customer/useTable';
+import useTable  from '../../components/Customer/useTable';
 import * as DeviceBill from './DeviceBill';
 import { TableBody } from '@material-ui/core'
 import { TableCell } from '@material-ui/core';
@@ -36,7 +36,11 @@ export default function CalculateBill() {
 
             <Paper className = {classes.pageContent}>
                 <CalculateBillForm/>
-                <TblContainer>
+                
+            </Paper>
+
+            <Paper className = {classes.pageContent}>
+            <TblContainer>
                     <TblHead/>
                     <TableBody>
                         {
@@ -50,7 +54,10 @@ export default function CalculateBill() {
                         }
                     </TableBody>
                 </TblContainer>
+                
             </Paper>
+
+            
             
         </div>
     )
