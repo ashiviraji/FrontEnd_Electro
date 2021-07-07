@@ -16,14 +16,14 @@ const priorityList = [
 
 const initialFvalues = {
   appliance: "",
-  quantity: "",
-  hPeak: "",
-  mPeak: "",
-  hOffPeak: "",
-  mOffPeak: "",
-  hDay: "",
-  mDay: "",
-  power: "",
+  quantity: 0,
+  hPeak: 0,
+  mPeak: 0,
+  hOffPeak: 0,
+  mOffPeak: 0,
+  hDay: 0,
+  mDay: 0,
+  power: 0,
   priority: "",
 };
 
@@ -50,17 +50,17 @@ export default function CalculateBillForm() {
     if ("priority" in fieldValues)
       temp.priority = fieldValues.priority? "" : "Please select priority of device";
     if ("hPeak" in fieldValues)
-      temp.hPeak = ( (fieldValues.hPeak > 0 && fieldValues.hPeak < 4) ||  fieldValues.hPeak == "") ? "" : "4 >Peak Hours in day > 0";
+      temp.hPeak = ( (fieldValues.hPeak >= 0 && fieldValues.hPeak < 4) ||  fieldValues.hPeak == "") ? "" : "4 >Peak Hours in day >= 0";
     if ("hOffPeak" in fieldValues)
-      temp.hOffPeak = ( (fieldValues.hOffPeak > 0 && fieldValues.hOffPeak < 7) ||  fieldValues.hOffPeak == "") ? "" : "7 >Off Peak Hours in day > 0";
+      temp.hOffPeak = ( (fieldValues.hOffPeak >= 0 && fieldValues.hOffPeak < 7) ||  fieldValues.hOffPeak == "") ? "" : "7 >Off Peak Hours in day >= 0";
     if ("hDay" in fieldValues)
-      temp.hDay = ( (fieldValues.hDay > 0 && fieldValues.hDay < 13) ||  fieldValues.hDay == "") ? "" : "13 >Day Hours in day > 0";
+      temp.hDay = ( (fieldValues.hDay >= 0 && fieldValues.hDay < 13) ||  fieldValues.hDay == "") ? "" : "13 >Day Hours in day >= 0";
     if ("mPeak" in fieldValues)
-      temp.mPeak = ( (fieldValues.mPeak > 0 && fieldValues.mPeak < 60) ||  fieldValues.mPeak == "") ? "" : "60 > minutes > 0";
+      temp.mPeak = ( (fieldValues.mPeak >= 0 && fieldValues.mPeak < 60) ||  fieldValues.mPeak == "") ? "" : "60 > minutes >= 0";
     if ("mOffPeak" in fieldValues)
-      temp.mOffPeak = ( (fieldValues.mOffPeak > 0 && fieldValues.mOffPeak < 60) ||  fieldValues.mOffPeak == "")  ? "" : "60 > minutes > 0";
+      temp.mOffPeak = ( (fieldValues.mOffPeak >= 0 && fieldValues.mOffPeak < 60) ||  fieldValues.mOffPeak == "")  ? "" : "60 > minutes >= 0";
     if ("mDay" in fieldValues)
-      temp.mDay = ( (fieldValues.mDay > 0 && fieldValues.mDay < 60) ||  fieldValues.mDay == "")  ? "" : "60 > minutes > 0";
+      temp.mDay = ( (fieldValues.mDay >= 0 && fieldValues.mDay < 60) ||  fieldValues.mDay == "")  ? "" : "60 > minutes >= 0";
     setErrors({
       ...temp
     })
@@ -110,6 +110,7 @@ export default function CalculateBillForm() {
             id="standard-start-adornment"
             label="Power of Appliance"
             name="power"
+            type="number"
             value={values.power}
             onChange={handleInputChange}
             unit="W"
@@ -122,6 +123,7 @@ export default function CalculateBillForm() {
             id="standard-start-adornment"
             label="Peak"
             name="hPeak"
+            type="number"
             value={values.hPeak}
             onChange={handleInputChange}
             error={errors.hPeak}
@@ -132,6 +134,7 @@ export default function CalculateBillForm() {
             id="standard-start-adornment"
             label="Off Peak"
             name="hOffPeak"
+            type="number"
             value={values.hOffPeak}
             onChange={handleInputChange}
             error={errors.hOffPeak}
@@ -142,6 +145,7 @@ export default function CalculateBillForm() {
             id="standard-start-adornment"
             label="Day"
             name="hDay"
+            type="number"
             value={values.hDay}
             onChange={handleInputChange}
             error={errors.hDay}
@@ -153,6 +157,7 @@ export default function CalculateBillForm() {
             id="standard-start-adornment"
             label="Peak"
             name="mPeak"
+            type="number"
             value={values.mPeak}
             onChange={handleInputChange}
             error={errors.mPeak}
@@ -163,6 +168,7 @@ export default function CalculateBillForm() {
             id="standard-start-adornment"
             label="Off Peak"
             name="mOffPeak"
+            type="number"
             value={values.mOffPeak}
             onChange={handleInputChange}
             error={errors.mOffPeak}
@@ -173,6 +179,7 @@ export default function CalculateBillForm() {
             id="standard-start-adornment"
             label="Day"
             name="mDay"
+            type="number"
             value={values.mDay}
             onChange={handleInputChange}
             error={errors.mDay}
