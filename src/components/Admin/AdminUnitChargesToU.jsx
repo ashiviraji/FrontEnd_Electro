@@ -6,7 +6,7 @@ import { MdNotificationsActive } from "react-icons/md";
 export default function AdminUnitChargesToU() {
   return (
     <div className="admin-unit-body">
-      <div id="admin-unit-title-heading">
+      <div id="admin-tou-title-heading">
         <h2>
           <b>
             <label>ToU BILLING MODEL</label>
@@ -28,7 +28,7 @@ export default function AdminUnitChargesToU() {
             <li>
               <label
                 className="admin-unit-label-list-inside"
-                id="admin-unit-inside-category"
+                id="admin-tou-inside-category"
               >
                 Peak (18.30-22.30)
               </label>
@@ -36,7 +36,7 @@ export default function AdminUnitChargesToU() {
             <li>
               <label
                 className="admin-unit-label-list-inside"
-                id="admin-unit-inside-unitCharge"
+                id="admin-tou-inside-unitCharge"
               >
                 54.00
               </label>
@@ -52,7 +52,7 @@ export default function AdminUnitChargesToU() {
             <li>
               <label
                 className="admin-unit-label-list-inside"
-                id="admin-unit-inside-fixedCharge"
+                id="admin-tou-inside-fixedCharge"
               >
                 540.00
               </label>
@@ -72,7 +72,7 @@ export default function AdminUnitChargesToU() {
             <li>
               <label
                 className="admin-unit-label-list-inside"
-                id="admin-unit-inside-category"
+                id="admin-tou-inside-category"
               >
                 Day (5.30-18.30)
               </label>
@@ -80,7 +80,7 @@ export default function AdminUnitChargesToU() {
             <li>
               <label
                 className="admin-unit-label-list-inside"
-                id="admin-unit-inside-unitCharge"
+                id="admin-tou-inside-unitCharge"
               >
                 25.00
               </label>
@@ -93,7 +93,7 @@ export default function AdminUnitChargesToU() {
             <li>
               <label
                 className="admin-unit-label-list-inside"
-                id="admin-unit-inside-fixedCharge"
+                id="admin-tou-inside-fixedCharge"
               >
                 540.00
               </label>
@@ -116,7 +116,7 @@ export default function AdminUnitChargesToU() {
             <li>
               <label
                 className="admin-unit-label-list-inside"
-                id="admin-unit-inside-category"
+                id="admin-tou-inside-category"
               >
                 Off-peak (22.30-05.30)
               </label>
@@ -124,7 +124,7 @@ export default function AdminUnitChargesToU() {
             <li>
               <label
                 className="admin-unit-label-list-inside"
-                id="admin-unit-inside-unitCharge"
+                id="admin-tou-inside-unitCharge"
               >
                 13.00
               </label>
@@ -140,7 +140,7 @@ export default function AdminUnitChargesToU() {
             <li>
               <label
                 className="admin-unit-label-list-inside"
-                id="admin-unit-inside-fixedCharge"
+                id="admin-tou-inside-fixedCharge"
               >
                 540.00
               </label>
