@@ -34,6 +34,8 @@ import AdminUnitCharges60plus from "./components/Admin/AdminUnitCharges60plus";
 import DashbordNavbar from "./components/common/DashboardNavbar/index";
 import ForgotPassword from "./views/ForgotPassword";
 
+import InfoTable from "./views/InformationTable";
+
 function App() {
   return (
     <div className="App">
@@ -118,6 +120,12 @@ function App() {
       <Route exact path="/manage-unitCharges">
         <DashbordNavbar />
         <SidebarEngineer />
+      </Route>
+
+      <Route exact path="/info-table">
+        <DashbordNavbar />
+        <SidebarUser />
+        <InfoTable />s
       </Route>
     </div>
   );
