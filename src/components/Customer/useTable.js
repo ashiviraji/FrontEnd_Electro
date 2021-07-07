@@ -18,7 +18,7 @@ export default function useTable(records, headcells) {
             <TableRow>
                 {
                     headcells.map(headCell => (<TableCell key={headCell.id}>
-                        {headcells.label}
+                        {headCell.label}
                     </TableCell>))
                 }
             </TableRow>

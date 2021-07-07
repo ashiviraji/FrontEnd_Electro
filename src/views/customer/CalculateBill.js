@@ -18,7 +18,10 @@ const headCells = [
     {id:'appliance', label:'Appliance'},
     {id:'quantity', label:'Quantity'},
     {id:'power', label:'Power'},
-    {id:'priority', label:'Priority'}
+    {id:'priority', label:'Priority'},
+    {id:'hPeak', label:'Peak Hour'},
+    {id:'hOffPeak', label:'Off Peak Hour'},
+    {id:'hDay', label:'Day Hour'}
 ]
 
 export default function CalculateBill() {
@@ -50,6 +53,9 @@ export default function CalculateBill() {
                                     <TableCell>{item.quantity}</TableCell>
                                     <TableCell>{item.power}</TableCell>
                                     <TableCell>{item.priority}</TableCell>
+                                    <TableCell>{item.hPeak}h & {item.mPeak} min</TableCell>
+                                    <TableCell>{item.hOffPeak}h & {item.mOffPeak} min</TableCell>
+                                    <TableCell>{item.hDay}h & {item.mDay} min</TableCell>
                                 </TableRow>))
                         }
                     </TableBody>
