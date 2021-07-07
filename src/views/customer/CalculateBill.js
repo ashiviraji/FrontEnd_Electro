@@ -31,23 +31,28 @@ export default function CalculateBill() {
     
     const {
         TblContainer,
-        TblHead
+        TblHead,
+        TblPagination,
+        recordsAfterPagingAndSorting
     } = useTable(records,headCells);
 
     return (
         <div>
+            
 
             <Paper className = {classes.pageContent}>
+            <h2>Add Device</h2>
                 <CalculateBillForm/>
                 
             </Paper>
 
             <Paper className = {classes.pageContent}>
+            <h2>Your Device Data</h2>
             <TblContainer>
                     <TblHead/>
                     <TableBody>
                         {
-                            records.map(item =>
+                            recordsAfterPagingAndSorting().map(item =>
                                 (<TableRow key={item.id}>
                                     <TableCell>{item.appliance}</TableCell>
                                     <TableCell>{item.quantity}</TableCell>
@@ -60,6 +65,7 @@ export default function CalculateBill() {
                         }
                     </TableBody>
                 </TblContainer>
+                <TblPagination/>
                 
             </Paper>
 
