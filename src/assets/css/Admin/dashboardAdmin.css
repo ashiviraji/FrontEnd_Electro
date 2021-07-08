@@ -1,0 +1,64 @@
+.admin-card-title-name{
+    font-size: 20px;
+    color: white;
+    
+}
+
+.admin-svg-icon{
+   color: white;
+   margin-left: 10px;
+   width:48px;
+   height: 48px;
+   
+}
+
+.admin-numeric-value{
+    font-size: 30px;
+    color: white;
+    margin-left: 140px;
+
+  
+}
+
+.admin-user-cards-area{
+    display: flex;
+    
+    
+}
+.admin-image-details{
+    margin-top: 50px;
+    /* justify-content: center; */
+    width: 40%;
+    margin-left: 26%;
+}
+.admin-home-user-main{
+    border-color: grey;
+    width: 85%;
+    margin-left: 8%;
+    margin-top: 5px;
+    border-radius: 8px;
+    /* box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
+
+}
+.admin-welcome-note{
+    font-size: 40px;
+    margin-top: 25px;
+    font-weight: 400;
+}
+
+#admin-card1:hover{
+    background-color: #50A7F7  ;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+}
+
+#admin-card2:hover{
+    background-color:  #FB5626  ;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#admin-card3:hover{
+    background-color: #F4BA1E; 
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+}

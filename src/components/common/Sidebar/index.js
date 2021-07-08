@@ -11,13 +11,14 @@ import { GiTeamIdea } from "react-icons/gi";
 import { RiBillLine } from "react-icons/ri";
 import { MdEventNote } from "react-icons/md";
 import { BrowserRouter as Router } from "react-router-dom";
-import DeviceWiseFixed from "../../../views/customer/Devicevicefixed";
+import DeviceWiseFixed from "../../../views/customer/DeviceWiseFixed";
 import TOUSuggestions from "../../../views/customer/TOUSuggestions";
-
+import DashboardUser from "../../../views/customer/DashboardUser";
 import CalculateBill from "../../../views/customer/CalculateBill";
 import BillCompariosn from "../../../views/customer/BillComparison";
 import myBillPlans from "../../../views/customer/billPlans";
 import InformationTable from "../../../views/InformationTable";
+
 
 import "../../../assets/css/sidebar-user.css";
 
@@ -53,9 +54,9 @@ const Sidebar = ({ show }) => {
               </UserName>
               <UlList>
                 <List>
-                  <LinkList to="/home">
+                  <LinkList to="/dashboard-user">
                     <FiHome />
-                    &nbsp;&nbsp;&nbsp;Home
+                    &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
                 </List>
 
@@ -126,6 +127,12 @@ const Sidebar = ({ show }) => {
                 path="/device-wise"
                 exact={true}
                 component={DeviceWiseFixed}
+              />
+
+              <Route
+                path="/dashboard-user"
+                exact={true}
+                component={DashboardUser}
               />
 
               <Route

@@ -80,6 +80,12 @@ function App() {
         <SidebarUser />
       </Route>
 
+      
+      <Route exact path="/home-user">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
+
       <Route exact path="/manage-cebengineer">
         <DashbordNavbar />
         <SidebarAdmin />

@@ -3,6 +3,7 @@ import React from 'react';
 import "../../assets/css/Customer/billPlans.css";
 import img1 from "../../assets/img/bill1.jpg";
 // import { Link } from "react-router-dom";
+
 import {RiDeleteBinFill} from 'react-icons/ri';
 const billPlans = () => {
     const cardDetails = [
