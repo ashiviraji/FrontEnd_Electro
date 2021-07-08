@@ -8,13 +8,15 @@ import { TableCell } from "@material-ui/core";
 import { TableRow } from "@material-ui/core";
 import { Toolbar } from "@material-ui/core";
 import { InputAdornment } from "@material-ui/core";
-import Controls from "../../components/Customer/bill_control/Controls";
 import { TextField } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import "../../assets/css/Customer/billCalculate.css";
 import { Button } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import Popup from "../../components/Customer/bill_control/Popup";
+import { DeleteOutline } from "@material-ui/icons";
+import { EditOutlined } from "@material-ui/icons";
+
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -24,6 +26,11 @@ const useStyles = makeStyles((theme) => ({
   newButton : {
       position: 'absolute',
       right:'10px'
+  },
+  actionButtonIcon : {
+      width: '5px',
+      padding: theme.spacing(0),
+      margin: theme.spacing(1),
   }
 }));
 
@@ -35,6 +42,7 @@ const headCells = [
   { id: "hPeak", label: "Peak Hour" },
   { id: "hOffPeak", label: "Off Peak Hour" },
   { id: "hDay", label: "Day Hour" },
+  { id:'action', label:'Actions'}
 ];
 
 export default function CalculateBill() {
@@ -64,6 +72,13 @@ export default function CalculateBill() {
     });
   };
 
+  const addOrEdit = (device, resetForm) => {
+    DeviceBill.insertDevice(device)
+    resetForm()
+    setOpenPopup(false)
+    setRecords(DeviceBill.getAllDevices())
+  }
+
   return (
     <div>
       
@@ -71,7 +86,8 @@ export default function CalculateBill() {
         <h2>Your Device Data</h2>
         <Toolbar>
           <TextField
-            label="With normal TextField"
+            label="Search Device"
+            className = "Search-bar-in-form"
             onChange={handleSearch}
             InputProps={{
               endAdornment: (
@@ -110,6 +126,12 @@ export default function CalculateBill() {
                 <TableCell>
                   {item.hDay}h & {item.mDay} min
                 </TableCell>
+                <TableCell >
+                    <button className="btn editActionButtonIcon"> <EditOutlined fontSize="small" ClassName={classes.actionButtonIcon}/> </button>
+                    
+                    <button className="btn deleteActionButtonIcon"> <DeleteOutline fontSize="small" ClassName={classes.actionButtonIcon}/> </button>
+                    
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -121,7 +143,8 @@ export default function CalculateBill() {
         openPopup = {openPopup}
         setOpenPopup = {setOpenPopup}
       >
-          <CalculateBillForm />
+          <CalculateBillForm 
+            addOrEdit={addOrEdit} />
       </Popup>
     </div>
   );

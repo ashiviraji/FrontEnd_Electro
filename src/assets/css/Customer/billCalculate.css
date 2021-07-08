@@ -1,7 +1,31 @@
 
 
-
 .search-bar-in-form{
     height: 20px;
-    width: 20%;
+    width: 10%;
 }
+
+.editActionButtonIcon{
+    width:44px;
+    height:40px;
+    border-color: coral;
+    padding-right: -2px;
+    padding-left: -2px;
+    margin-right: 4px;
+    border-width: 2px;
+    
+}
+
+.deleteActionButtonIcon{
+    width:44px;
+    height:40px;
+    border-color: crimson;
+    padding-right: -2px;
+    padding-left: -2px;
+    margin-right: 4px;
+    border-width: 2px;
+}
+
+
+
+
