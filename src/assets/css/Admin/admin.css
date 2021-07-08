@@ -1,6 +1,6 @@
 .body-manageengineer {
   width: 90%;
- left: 8%;
+  left: 8%;
   position: relative;
   padding: 25px 100px 75px;
 }
@@ -8,15 +8,16 @@
 .body-engineer {
   width: 90%;
   left: 8%;
-  top: 70px;
+  margin-top: 1%;
   position: relative;
   padding: 25px 100px 75px;
 }
 
 .ceb-heading {
   width: 100%;
-  top: -30px;
-  left: -15%;
+  margin-top: 1%;
+  left: -13%;
+  padding-bottom: 4%;
   position: relative;
 }
 
@@ -25,12 +26,11 @@
   border-radius: 50px;
   box-shadow: #049665;
   border: none;
-  width: 250px;
+  width: 200px;
   font-weight: bold;
   font-size: medium;
   padding: 7px;
-  margin-top: 25px;
-  left: 20%;
+  left: 18%;
   position: relative;
 }
 .admin-add-update-btn:hover {

@@ -1,0 +1,48 @@
+#admin-manage-engineer-home {
+  font-weight: bold;
+  margin-top: 3%;
+  width: 55%;
+  margin-left: 33%;
+}
+
+.admin-manage-card {
+  background: radial-gradient(#e5e5e5, #ffff, #e5e5e5);
+}
+
+.admin-manage-card-size {
+  width: 18rem;
+  margin-top: 4rem;
+  height: 5rem;
+}
+
+.admin-manage-view-more {
+  border-radius: 8px;
+  margin-top: 5px;
+  width: 150px;
+  height: 30px;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  margin-left: 24%;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.admin-manage-engineer-main {
+  display: flex;
+  margin-left: 25%;
+  margin-top: -2%;
+}
+
+.admin-deactivate-engineer {
+  background-color: #f05634;
+  border-radius: 8px;
+  margin-top: 5px;
+  width: 150px;
+  height: 30px;
+  color: white;
+  font-weight: bold;
+  margin-left: 24%;
+  padding: 2px;
+  cursor: pointer;
+}
