@@ -10,13 +10,14 @@ import { RiInformationLine } from "react-icons/ri";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
-import ManageCebEngineer from "../../../views/Admin/ManageCebEngineer";
+import CebEngineerDetails1 from "../../../views/Admin/CebEngineerDetails1";
 import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
 import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
 import AdminUnitCharges60plus from "../../../views/Admin/AdminUnitCharges60plus";
 import AdminUnitCharges0to60 from "../../../views/Admin/AdminUnitCharges0to60";
 import AdminUnitChargesToU from "../../../views/Admin/AdminUnitChargesToU";
+import ManageCEBEngineerHome from "../../../views/Admin/ManageCEBEngineerHome";
 import InformationTable from "../../../views/InformationTable";
 
 import "../../../assets/css/sidebar-admin.css";
@@ -80,11 +81,11 @@ const SidebarAdmin = ({ show }) => {
               </List>
 
               <List>
-                  <LinkList to="/information">
-                    <RiInformationLine />
-                    &nbsp;&nbsp;&nbsp; Information
-                  </LinkList>
-                </List>
+                <LinkList to="/information">
+                  <RiInformationLine />
+                  &nbsp;&nbsp;&nbsp; Information
+                </LinkList>
+              </List>
             </UlList>
           </SideNav>
         </div>
@@ -104,7 +105,12 @@ const SidebarAdmin = ({ show }) => {
             <Route
               path="/manage-cebengineer"
               exact={true}
-              component={ManageCebEngineer}
+              component={ManageCEBEngineerHome}
+            />
+            <Route
+              path="/cebengineer-details1"
+              exact={true}
+              component={CebEngineerDetails1}
             />
             <Route
               path="/addnewcebengineer"
@@ -137,10 +143,10 @@ const SidebarAdmin = ({ show }) => {
               component={AdminUnitChargesToU}
             />
             <Route
-                path="/information"
-                exact={true}
-                component={InformationTable}
-              />
+              path="/information"
+              exact={true}
+              component={InformationTable}
+            />
           </div>
         </div>
       </div>
