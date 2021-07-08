@@ -1,4 +1,17 @@
-.infotable-group{
+.infotable-group1{
+    margin-top: 3%;
+    width: 50%;
+    margin-left: 30%;
+}
+
+.infotable-group2{
+    margin-top: 3%;
+    width: 50%;
+    margin-left: 30%;
+}
+
+.infotable-group3{
+    margin-top: 3%;
     width: 50%;
     margin-left: 30%;
 }
@@ -7,6 +20,6 @@
     margin-left: 30%;
 }
 
-.tableD1{
+.infotable-grp{
     margin-top: 5%;
 }
