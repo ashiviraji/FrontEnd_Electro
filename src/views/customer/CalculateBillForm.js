@@ -36,7 +36,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CalculateBillForm() {
+export default function CalculateBillForm(props) {
+
+  const {addOrEdit} = props
+
   const classes = useStyles();
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
@@ -78,10 +81,9 @@ export default function CalculateBillForm() {
     e.preventDefault();
     console.log("testing...");
     if (validate()) {
-      DeviceBill.insertDevice(values)
-    }
+      addOrEdit(values, resetForm);
       
-    
+    }
   }
 
   return (
