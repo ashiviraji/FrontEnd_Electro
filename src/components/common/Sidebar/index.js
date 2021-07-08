@@ -45,7 +45,7 @@ const Sidebar = ({ show }) => {
 
                 <UlDetailList>
                   <NameList> Ms . Ashika </NameList>
-                  <NameList>Customer</NameList>
+                  <NameList className="role">Customer</NameList>
                   <NameList>
                     <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
                   </NameList>
