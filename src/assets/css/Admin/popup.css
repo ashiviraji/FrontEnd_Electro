@@ -1,0 +1,62 @@
+.current-label{
+    font-size: 1.5rem;
+    margin-left: 40%;
+    border-radius: 4px;
+    background-color: #9AE88A ;
+    color: white;
+    padding-right: 8px;
+    padding-left: 7px;
+}
+
+.Modal.Footer{
+    justify-content: center;
+}
+
+.increase-amount{
+    font-size: 1.5rem;
+    margin-left: 38%;
+    border-radius: 4px;
+    background-color: #9AE88A ;
+    color: white;
+    padding-right: 8px;
+    padding-left: 7px;
+}
+
+.new-unit-price{
+    font-size: 1.5rem;
+    margin-left: 44%;
+    border-radius: 4px;
+    background-color: #9AE88A ;
+    color: white;
+    padding-right: 8px;
+    padding-left: 7px;
+}
+
+.AcceptButton{
+    width:200px;
+   
+    font-size: 20px;
+}
+
+.RejectButton{
+    width:200px;
+    background-color: #F36C3E;
+    font-size: 20px;
+}
+
+.RejectButton:hover{
+    background-color: #F5460A ;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+}
+
+.popup-price-changes{
+    display: flex;
+    padding: 10px;
+    border-width: 2px;
+    display: flex;
+    border-style: solid;
+    border-color: darkgreen;
+    border-radius: 4px;
+    margin-top:20px;
+}

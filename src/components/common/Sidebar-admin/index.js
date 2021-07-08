@@ -41,7 +41,7 @@ const SidebarAdmin = ({ show }) => {
               <UserProfile src={image} alt="image"></UserProfile>
 
               <UlDetailList>
-                <NameList>Miss. Hasini </NameList>
+                <NameList>Ms. Hasini </NameList>
                 <NameList>Administrator</NameList>
                 <NameList>
                   <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
