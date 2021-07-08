@@ -2,16 +2,11 @@ import React from "react";
 import "../../assets/css/Admin/admin.css";
 import Engineer from "../../assets/img/CEBEngineer.png";
 import { GrUserAdd } from "react-icons/gr";
-import { NavLink } from "../../components/common/Sidebar-admin/SidebarElement";
+import { NavLink } from "../common/Sidebar-admin/SidebarElement";
 
 export default function ManageCebEngineer() {
   return (
     <div className="body-manageengineer">
-      <NavLink to="/addnewcebengineer">
-        <GrUserAdd />
-        <button className="addnewceb-btn">Add New CEB Engineer</button>
-      </NavLink>
-
       <form>
         <div className="ceb-heading">
           <h1 align="center">W.K.B.K.Madhushanka</h1>
