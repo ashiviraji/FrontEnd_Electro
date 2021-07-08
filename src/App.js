@@ -132,7 +132,8 @@ function App() {
 
       <Route exact path="/information">
         <DashbordNavbar />
-        <SidebarUser />
+        {/* <SidebarUser /> */}
+        < InfoTable/>
       </Route>
     </div>
   );

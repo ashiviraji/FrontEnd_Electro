@@ -6,12 +6,14 @@ import { FiHome } from "react-icons/fi";
 import { AiOutlineDollar } from "react-icons/ai";
 
 import { BiUserCircle } from "react-icons/bi";
+import { RiInformationLine } from "react-icons/ri";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
 
 import "../../../assets/css/sidebar-admin.css";
 import updateUnitCharges from "../../CEBEnginner/updateUnitCharges";
+import InformationTable from "../../../views/InformationTable";
 
 import {
   SideNav,
@@ -66,6 +68,13 @@ const SidebarEngineer= ({ show }) => {
                     &nbsp;&nbsp;&nbsp;User Profile
                   </LinkList>
                 </List>
+
+                <List>
+                  <LinkList to="/information">
+                    <RiInformationLine />
+                    &nbsp;&nbsp;&nbsp; Information
+                  </LinkList>
+                </List>
               </UlList>
             </SideNav>
           </div>
@@ -86,6 +95,11 @@ const SidebarEngineer= ({ show }) => {
               exact={true}
               component={updateUnitCharges}
             />
+            <Route
+                path="/information"
+                exact={true}
+                component={InformationTable}
+              />
           </div>
         </div>
         </div>

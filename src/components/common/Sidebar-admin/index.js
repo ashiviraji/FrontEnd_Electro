@@ -6,6 +6,7 @@ import { FiHome } from "react-icons/fi";
 import { AiOutlineDollar } from "react-icons/ai";
 import { FaUserTie } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
+import { RiInformationLine } from "react-icons/ri";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
@@ -16,6 +17,7 @@ import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
 import AdminUnitCharges60plus from "../../../views/Admin/AdminUnitCharges60plus";
 import AdminUnitCharges0to60 from "../../../views/Admin/AdminUnitCharges0to60";
 import AdminUnitChargesToU from "../../../views/Admin/AdminUnitChargesToU";
+import InformationTable from "../../../views/InformationTable";
 
 import "../../../assets/css/sidebar-admin.css";
 
@@ -76,6 +78,13 @@ const SidebarAdmin = ({ show }) => {
                   &nbsp;&nbsp;&nbsp;User Profile
                 </LinkList>
               </List>
+
+              <List>
+                  <LinkList to="/information">
+                    <RiInformationLine />
+                    &nbsp;&nbsp;&nbsp; Information
+                  </LinkList>
+                </List>
             </UlList>
           </SideNav>
         </div>
@@ -127,6 +136,11 @@ const SidebarAdmin = ({ show }) => {
               exact={true}
               component={AdminUnitChargesToU}
             />
+            <Route
+                path="/information"
+                exact={true}
+                component={InformationTable}
+              />
           </div>
         </div>
       </div>
