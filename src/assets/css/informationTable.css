@@ -1,25 +1,29 @@
 .infotable-group1{
     margin-top: 3%;
-    width: 50%;
-    margin-left: 30%;
+    width: 80%;
 }
 
 .infotable-group2{
     margin-top: 3%;
-    width: 50%;
-    margin-left: 30%;
+    width: 80%;
 }
 
 .infotable-group3{
     margin-top: 3%;
-    width: 50%;
-    margin-left: 30%;
-}
-
-.infotable-title{
-    margin-left: 30%;
+    width: 80%;
 }
 
 .infotable-grp{
     margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 10%;
+    width: 100%;
+}
+
+.maintitle-info{
+    margin-bottom: 3%;
+}
+
+.rowfont{
+    color: aliceblue;
 }

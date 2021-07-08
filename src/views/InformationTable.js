@@ -6,21 +6,19 @@ export default function InformationTable() {
     <div className="infotable-form">
       <div className="infotable-grp">
       <div className="infotable-title">
-        <h4>Tariff Plan</h4>
+        <h2 className="maintitle-info"> Tariff Plan</h2>
         <p>
-          The following Electricity Tariffs have been approved by the Public
-          Utility Commission of Sri Lanka.
+          The following Electricity Tariffs have been approved by the Public Utility Commission of Sri Lanka.
         </p>
         <h5>Domestic (D-1) </h5>
       </div>
       <div className="infotable-group1">
         <p>
-          If 30 day Consumption is between 0-60 kWh per month the following
-          tariffs will be applicable.
+          If 30 day Consumption is between 0-60 kWh per month the following tariffs will be applicable.
         </p>
         <table className="table table-hover">
           <thead>
-            <tr>
+            <tr className="bg-info rowfont">
               <th scope="col title1"> Monthly Consumption (kWh)</th>
               <th scope="col title2">Unit Charge (LKR/kWh)</th>
               <th scope="col title3">Fixed Charge (LKR/month</th>
@@ -46,7 +44,7 @@ export default function InformationTable() {
         </p>
         <table className="table table-hover">
           <thead>
-            <tr>
+            <tr className="bg-info rowfont">
               <th scope="col title1"> Monthly Consumption (kWh)</th>
               <th scope="col title2">Unit Charge (LKR/kWh)</th>
               <th scope="col title3">Fixed Charge (LKR/month</th>
@@ -87,7 +85,7 @@ export default function InformationTable() {
         </p>
         <table className="table table-hover">
           <thead>
-            <tr>
+            <tr className="bg-info rowfont">
               <th scope="col title1">Time of Use</th>
               <th scope="col title2">Unit Charge (LKR/kWh)</th>
               <th scope="col title3">Fixed Charge (LKR/month</th>
