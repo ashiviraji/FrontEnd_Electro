@@ -3,12 +3,8 @@ import "../../assets/css/Admin/unitchargesadminhome.css";
 import { GrDocumentTime } from "react-icons/gr";
 import image from "../../assets/img/unitCharge.png";
 import unitchargeupdates from "../../assets/img/unitchargeupdates.png";
+// import { Route } from "react-router-dom";
 
-// import "../../assets/css/Admin/admin.css";
-
-//import { Link } from "react-router-dom";
-import { Route } from "react-router-dom";
-//import { Link } from "react-router";
 import { NavLink } from "react-router-dom";
 
 export default function AdminUnitChargeHome() {
@@ -37,8 +33,8 @@ export default function AdminUnitChargeHome() {
                     </NavLink>
                     <NavLink
                       className="btn btn-success btn-lg btn-60+"
-                      to="/admin-unitcharges-60plus"
-                    >
+                      to="/admin-unitcharges-60plus" 
+                     >
                       60+
                     </NavLink>
                   </div>

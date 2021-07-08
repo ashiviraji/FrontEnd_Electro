@@ -43,7 +43,7 @@ const Sidebar = ({ show }) => {
                 <UserProfile src={image} alt="image"></UserProfile>
 
                 <UlDetailList>
-                  <NameList> Miss . Ashika </NameList>
+                  <NameList> Ms . Ashika </NameList>
                   <NameList>Customer</NameList>
                   <NameList>
                     <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
