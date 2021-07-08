@@ -298,7 +298,7 @@ function MyVerticallyCenteredModal(props) {
         
       
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer id="accept-reject-button">
       <Button onClick={props.onHide} className="AcceptButton">Accept</Button>
         <Button onClick={props.onHide} className="RejectButton">Reject</Button>
        
