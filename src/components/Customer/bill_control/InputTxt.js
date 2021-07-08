@@ -4,7 +4,7 @@ import { InputAdornment } from '@material-ui/core';
 
 export default function InputTxt(props) {
 
-    const { id, name, label, type, value, error=null, onChange, unit } = props;
+    const { id, name, label, type, value, error=null, onChange, unit, variant, ...other} = props;
     return (
         <TextField
             id={id}
@@ -13,6 +13,8 @@ export default function InputTxt(props) {
             name={name}
             value={value}
             onChange={onChange}
+            variant = {variant}
+            {...other}
             {...(error && {error:true, helperText:error})}
             InputProps={{
               endAdornment: <InputAdornment position="end">{ unit }</InputAdornment>,

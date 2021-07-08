@@ -6,6 +6,12 @@ import * as DeviceBill from './DeviceBill';
 import { TableBody } from '@material-ui/core'
 import { TableCell } from '@material-ui/core';
 import { TableRow } from '@material-ui/core';
+import { Toolbar } from '@material-ui/core';
+import { InputAdornment } from '@material-ui/core';
+import Controls from '../../components/Customer/bill_control/Controls';
+import { TextField } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
+import '../../assets/css/Customer/billCalculate.css'
 
 const useStyles = makeStyles((theme) => ({
     pageContent : {
@@ -48,6 +54,18 @@ export default function CalculateBill() {
 
             <Paper className = {classes.pageContent}>
             <h2>Your Device Data</h2>
+            <Toolbar>
+            <TextField
+  label="With normal TextField"
+  InputProps={{
+    endAdornment: (
+      <InputAdornment position="start">
+        <Search />
+      </InputAdornment>
+     )
+    }}
+/>           
+            </Toolbar>
             <TblContainer>
                     <TblHead/>
                     <TableBody>
