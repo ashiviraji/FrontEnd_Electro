@@ -130,10 +130,9 @@ function App() {
         <SidebarEngineer />
       </Route>
 
-      <Route exact path="/info-table">
+      <Route exact path="/information">
         <DashbordNavbar />
         <SidebarUser />
-        <InfoTable />s
       </Route>
     </div>
   );
