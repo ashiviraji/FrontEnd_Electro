@@ -8,8 +8,8 @@
     padding-left: 7px;
 }
 
-.Modal.Footer{
-    justify-content: center;
+#accept-reject-button{
+    justify-content: center !important;
 }
 
 .increase-amount{
