@@ -34,13 +34,28 @@ export default function CalculateBill() {
 
     const classes = useStyles();
     const [records, setRecords] = useState(DeviceBill.getAllDevices())
+    const [filterFn, setFilterFn] = useState({fn:items => {return items;} })
     
     const {
         TblContainer,
         TblHead,
         TblPagination,
         recordsAfterPagingAndSorting
-    } = useTable(records,headCells);
+    } = useTable(records,headCells,filterFn);
+
+    const handleSearch = e => {
+        let target = e.target;
+        setFilterFn({
+            fn: items => { 
+                        if (target.value == "")
+                            return items;
+                        else
+                            return items.filter(x => x.appliance.includes(target.value))
+                            
+                    
+                    }
+        })
+    }
 
     return (
         <div>
@@ -57,11 +72,13 @@ export default function CalculateBill() {
             <Toolbar>
             <TextField
   label="With normal TextField"
+  onChange = {handleSearch}
   InputProps={{
     endAdornment: (
       <InputAdornment position="start">
         <Search />
       </InputAdornment>
+      
      )
     }}
 />           
