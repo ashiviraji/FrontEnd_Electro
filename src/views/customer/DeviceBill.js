@@ -6,17 +6,33 @@ const KEYS = {
 
 export function insertDevice(data) {
     let devices=getAllDevices();
+    console.log(devices);
     data['id'] = genarateDeviceID();
     devices.push(data);
     localStorage.setItem(KEYS.devices, JSON.stringify(devices))
 }
 
+export function updateDevice(data) {
+    let devices=getAllDevices();
+    let recordIndex = devices.findIndex(x => x.id === data.id);
+    console.log(data.id)
+    devices[recordIndex] = { ...data }
+    localStorage.setItem(KEYS.devices, JSON.stringify(devices))
+}
+
 export function genarateDeviceID() {
     if(localStorage.getItem(KEYS.deviceID) == null)
-        localStorage.getItem(KEYS.deviceID, '0')
+        localStorage.setItem(KEYS.deviceID, '0')
     var id = parseInt(localStorage.getItem(KEYS.deviceID))
     localStorage.setItem(KEYS.deviceID, (++id).toString())
+    console.log(id);
     return id;
+}
+
+export function Deletedevice(appliance) {
+    let devices = getAllDevices();
+    devices = devices.filter(x => x.appliance != appliance)
+    localStorage.setItem(KEYS.devices, JSON.stringify(devices));
 }
 
 export function getAllDevices() {

@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../../../assets/img/user.png";
+import CEBEngineer1 from "../../../assets/img/CEBEngineer1.png";
 import active from "../../../assets/img/active.png";
 
 import { FiHome } from "react-icons/fi";
@@ -13,6 +13,7 @@ import { Route } from "react-router-dom";
 
 import "../../../assets/css/sidebar-admin.css";
 import updateUnitCharges from "../../CEBEnginner/updateUnitCharges";
+import EngineerUserProfile from "../../../views/CEBEnginner/EngineerUserProfile";
 import InformationTable from "../../../views/InformationTable";
 
 import {
@@ -27,7 +28,7 @@ import {
   ActiveIcon,
 } from "./SidebarElement";
 
-const SidebarEngineer= ({ show }) => {
+const SidebarEngineer = ({ show }) => {
   return (
     <>
       <Router>
@@ -35,10 +36,10 @@ const SidebarEngineer= ({ show }) => {
           <div className="sidebar-left">
             <SideNav className={show ? "sidenav active " : "sidenav"}>
               <UserName>
-                <UserProfile src={image} alt="image"></UserProfile>
+                <UserProfile src={CEBEngineer1} alt="image"></UserProfile>
 
                 <UlDetailList>
-                  <NameList>Mr. Tharindu </NameList>
+                  <NameList>Mr. Buthsara </NameList>
                   <NameList>CEB Engineer</NameList>
                   <NameList>
                     <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
@@ -47,9 +48,9 @@ const SidebarEngineer= ({ show }) => {
               </UserName>
               <UlList>
                 <List>
-                  <LinkList to="/home" >
+                  <LinkList to="/dashboard-engineer">
                     <FiHome />
-                    &nbsp;&nbsp;&nbsp;Home
+                    &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
                 </List>
 
@@ -60,10 +61,8 @@ const SidebarEngineer= ({ show }) => {
                   </LinkList>
                 </List>
 
-                
-
                 <List>
-                  <LinkList to="/user-profile">
+                  <LinkList to="/engineer-userprofile">
                     <BiUserCircle />
                     &nbsp;&nbsp;&nbsp;User Profile
                   </LinkList>
@@ -88,20 +87,25 @@ const SidebarEngineer= ({ show }) => {
           exact={true}
           component={AddNewCebEngineer}
         /> */}
-         <div claasName="page-load">
-          <div className="load-area">
-          <Route
-              path="/manage-unitCharges"
-              exact={true}
-              component={updateUnitCharges}
-            />
-            <Route
+          <div claasName="page-load">
+            <div className="load-area">
+              <Route
+                path="/manage-unitCharges"
+                exact={true}
+                component={updateUnitCharges}
+              />
+              <Route
+                path="/engineer-userprofile"
+                exact={true}
+                component={EngineerUserProfile}
+              />
+              <Route
                 path="/information"
                 exact={true}
                 component={InformationTable}
               />
+            </div>
           </div>
-        </div>
         </div>
       </Router>
     </>

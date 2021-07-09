@@ -54,9 +54,9 @@ const SidebarAdmin = ({ show }) => {
             </UserName>
             <UlList>
               <List>
-                <LinkList to="/home">
+                <LinkList to="/dashboard-admin">
                   <FiHome />
-                  &nbsp;&nbsp;&nbsp;Home
+                  &nbsp;&nbsp;&nbsp;Dashboard
                 </LinkList>
               </List>
 

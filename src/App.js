@@ -113,6 +113,11 @@ function App() {
         <SidebarEngineer />
       </Route>
 
+      <Route exact path="/engineer-userprofile">
+        <DashbordNavbar />
+        <SidebarAdmin />
+      </Route>
+
       <Route exact path="/calculate-bill">
         <DashbordNavbar />
         <SidebarUser />
