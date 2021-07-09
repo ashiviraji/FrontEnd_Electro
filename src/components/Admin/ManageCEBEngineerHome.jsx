@@ -1,12 +1,21 @@
 import React from "react";
 import "../../assets/css/Admin/manageengineerhome.css";
-import img1 from "../../assets/img/bill1.jpg";
+import Engineers from "../../assets/img/Engineers.png";
 import { RiDeleteBinFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const ManageCEBEngineerHome = () => {
   const cardDetails = [
-    { Name: "W.K.B.K.Madhushanka", Model: "TOU", Total_amount: "LKR : 3500" },
-    { Name: "T.D.Jayalath", Model: "Fixed ", Total_amount: "LKR : 2500" },
+    {
+      Name: "W.K.B.K.Madhushanka",
+      Engineer_ID: "E 01",
+      Url: "/cebengineer-details1",
+    },
+    {
+      Name: "T.M.Jayalath",
+      Engineer_ID: "E 02 ",
+      Url: "/cebengineer-details2",
+    },
   ];
 
   return cardDetails.map((card) => (
@@ -14,19 +23,20 @@ const ManageCEBEngineerHome = () => {
       <div>
         <div className="card text-center admin-manage-card-size">
           <div className="overFlow">
-            <img src={img1} alt="Image1" className="card-img-top" />
+            <img src={Engineers} alt="Image1" className="card-img-top" />
           </div>
           <div className="card-body text-dark admin-manage-card">
             <h4 className="card-title">{card.Name}</h4>
             <div>
-              <label>Suitable Model &nbsp;: &nbsp; {card.Model} </label>
-              <label>Total Amount &nbsp;: &nbsp; {card.Total_amount} </label>
+              <label>Engineer_ID &nbsp;: &nbsp; {card.Engineer_ID} </label>
             </div>
 
-            <div className="admin-manage-view-more">More Details</div>
+            <Link to={card.Url}>
+              <div className="admin-manage-view-more">More Details</div>
+            </Link>
 
             <div className="admin-deactivate-engineer">
-              <RiDeleteBinFill></RiDeleteBinFill> Deactivate
+              <RiDeleteBinFill /> Deactivate
             </div>
           </div>
         </div>

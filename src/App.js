@@ -90,6 +90,11 @@ function App() {
         <SidebarAdmin />
       </Route>
 
+      <Route exact path="/cebengineer-details2">
+        <DashbordNavbar />
+        <SidebarAdmin />
+      </Route>
+
       <Route exact path="/admin-userprofile">
         <DashbordNavbar />
         <SidebarAdmin />
@@ -135,10 +140,8 @@ function App() {
         <SidebarEngineer />
       </Route>
 
-
-      <Route exact path="/information">        
-        < InfoTable/>
-
+      <Route exact path="/information">
+        <InfoTable />
       </Route>
     </div>
   );
