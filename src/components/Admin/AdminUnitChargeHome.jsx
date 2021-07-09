@@ -1,7 +1,7 @@
 import React from "react";
 import "../../assets/css/Admin/unitchargesadminhome.css";
 import { GrDocumentTime } from "react-icons/gr";
-import image from "../../assets/img/unitCharge.png";
+// import image from "../../assets/img/unitCharge.png";
 import unitchargeupdates from "../../assets/img/unitchargeupdates.png";
 // import { Route } from "react-router-dom";
 

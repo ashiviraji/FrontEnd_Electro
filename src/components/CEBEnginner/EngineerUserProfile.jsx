@@ -1,12 +1,12 @@
 import React from "react";
-import "../../assets/css/Admin/admin.css";
-import Admin from "../../assets/img/Admin.png";
+import "../../assets/css/CEBEngineer/engineer.css";
+import CEBEngineer1 from "../../assets/img/CEBEngineer1.png";
 
-export default function AdminUserProfile() {
+export default function EngineerUserProfile() {
   return (
-    <div className="body-manageengineer">
+    <div className="body-engineer">
       <form>
-        <div className="ceb-heading">
+        <div className="ceb-engineer-heading">
           <h1 align="center">User Profile</h1>
         </div>
 
@@ -19,7 +19,7 @@ export default function AdminUserProfile() {
               type="text"
               class="form-control"
               id="firstname"
-              value="Hasini"
+              value="Buthsara"
               required
             />
           </div>
@@ -34,7 +34,7 @@ export default function AdminUserProfile() {
               type="text"
               class="form-control"
               id="lastname"
-              value="Hatharasinghe"
+              value="Madhushanka"
               required
             />
           </div>
@@ -49,7 +49,7 @@ export default function AdminUserProfile() {
               type="email"
               class="form-control"
               id="email"
-              value="hasinividushanka@gmail.com"
+              value="buthsaramadhushanka@gmail.com"
               required
             />
           </div>
@@ -68,7 +68,7 @@ export default function AdminUserProfile() {
               type="tel"
               class="form-control"
               id="contactnumber"
-              value="076 606 5684"
+              value="078 344 1655"
               required
             />
           </div>
@@ -83,7 +83,7 @@ export default function AdminUserProfile() {
               type="text"
               class="form-control"
               id="firstname"
-              value="hasinihatharasinghe"
+              value="buthsaramadhushanka"
               required
             />
           </div>
@@ -109,7 +109,7 @@ export default function AdminUserProfile() {
             <b>Image</b>
           </label>
           <div className="w-50 p-1">
-            <img src={Admin} height={150} width={150} />
+            <img src={CEBEngineer1} height={150} width={150} />
           </div>
         </div>
 
