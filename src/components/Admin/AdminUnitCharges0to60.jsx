@@ -2,8 +2,11 @@ import React from "react";
 import { Card as card2 } from "react-bootstrap";
 import "../../assets/css/Admin/adminupdateunitcharges.css";
 import { MdNotificationsActive } from "react-icons/md";
+import { Modal, Button } from "react-bootstrap";
+import "../../assets/css/Admin/popup.css";
 
-export default function AdminUnitCharges0to60() {
+export default function AdminUnitCharges0to60(props) {
+  const [modalShow, setModalShow] = React.useState(false);
   return (
     <div className="admin-unit-body">
       <div id="admin-unit-title-heading">
@@ -42,12 +45,19 @@ export default function AdminUnitCharges0to60() {
               </label>
             </li>
             <li>
-              <button className="admin-unit-label-list-update">
+              <button
+                className="admin-unit-label-list-update"
+                onClick={() => setModalShow(true)}
+              >
                 UPDATE&nbsp;
                 <MdNotificationsActive
                   style={{ width: "1.2rem", height: "1.2rem" }}
                 ></MdNotificationsActive>
               </button>
+              <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
             </li>
             <li>
               <label
@@ -99,7 +109,10 @@ export default function AdminUnitCharges0to60() {
               </label>
             </li>
             <li>
-              <button className="admin-unit-label-list-update">
+              <button
+                className="admin-unit-label-list-update"
+                onClick={() => setModalShow(true)}
+              >
                 UPDATE&nbsp;
                 <MdNotificationsActive
                   style={{ width: "1.2rem", height: "1.2rem" }}
@@ -110,5 +123,46 @@ export default function AdminUnitCharges0to60() {
         </card2.Body>
       </card2>
     </div>
+  );
+}
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Update Unit Charges
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <div className="popup-price-changes" style={{ display: "flex" }}>
+          <h4>Current Unit Price </h4>
+
+          <label className="current-label">LKR : 7.85</label>
+        </div>
+        <div className="popup-price-changes" style={{ display: "flex" }}>
+          <h4>Increasing Amount </h4>
+          <label className="increase-amount">LKR : 1.50</label>
+        </div>
+
+        <div className="popup-price-changes" style={{ display: "flex" }}>
+          <h4>New Unit Price </h4>
+          <label className="new-unit-price">LKR : 9.35</label>
+        </div>
+      </Modal.Body>
+      <Modal.Footer id="accept-reject-button">
+        <Button onClick={props.onHide} className="AcceptButton">
+          Accept
+        </Button>
+        <Button onClick={props.onHide} className="RejectButton">
+          Reject
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
