@@ -29,6 +29,9 @@ import DashbordNavbar from "./components/common/DashboardNavbar/index";
 import ForgotPassword from "./views/ForgotPassword";
 
 import InfoTable from "./views/InformationTable";
+// import DevicewiseChart from "./views/customer/devicewiseChart";
+// import { Bar } from 'react-chartjs-2';
+
 
 function App() {
   return (
@@ -142,6 +145,11 @@ function App() {
 
       <Route exact path="/information">
         <InfoTable />
+      </Route>
+
+      <Route exact path="/devicewise-chart">   
+        <DashbordNavbar />
+        <SidebarUser />
       </Route>
     </div>
   );

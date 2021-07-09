@@ -19,6 +19,11 @@ import BillCompariosn from "../../../views/customer/BillComparison";
 import myBillPlans from "../../../views/customer/billPlans";
 import InformationTable from "../../../views/InformationTable";
 
+// import BillDetails from "../../../views/customer/BillDetails";
+
+import DevicewiseUsageCharts from "../../../views/customer/devicewiseChart"
+
+
 import "../../../assets/css/sidebar-user.css";
 
 import {
@@ -58,6 +63,13 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp;Home
                   </LinkList>
                 </List>
+
+                {/* <List>
+                  <LinkList to="/bill-details">
+                    <FiHome />
+                    &nbsp;&nbsp;&nbsp;Bill Details
+                  </LinkList>
+                </List> */}
 
                 <List>
                   <LinkList to="/manage-bill">
@@ -114,6 +126,13 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp; Bill Comparison
                   </LinkList>
                 </List>
+
+                <List>
+                  <LinkList to="/devicewise-chart">
+                    <MdEventNote />
+                    &nbsp;&nbsp;&nbsp; Device Vice Usage Charts
+                  </LinkList>
+                </List>
                 
               </UlList>
             </SideNav>
@@ -134,6 +153,12 @@ const Sidebar = ({ show }) => {
                 component={CalculateBill}
               />
 
+              {/* <Route
+                path="/bill-details"
+                exact={true}
+                component={BillDetails}
+              /> */}
+
               <Route
                 path="/TOU-suggestions"
                 exact={true}
@@ -153,6 +178,11 @@ const Sidebar = ({ show }) => {
                 path="/information"
                 exact={true}
                 component={InformationTable}
+              />
+              <Route
+                path="/devicewise-chart"
+                exact={true}
+                component={DevicewiseUsageCharts}
               />
             </div>
           </div>
