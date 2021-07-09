@@ -37,20 +37,3 @@
   background-color: #00af86;
   color: beige;
 }
-
-.addnewceb-btn {
-  background-color: #01bf71;
-  border-radius: 50px;
-  box-shadow: #049665;
-  border: none;
-  width: 200px;
-  font-weight: bold;
-  font-size: medium;
-  padding: 7px;
-  margin-top: 25px;
-  position: relative;
-}
-.addnewceb-btn:hover {
-  background-color: #00af86;
-  color: beige;
-}

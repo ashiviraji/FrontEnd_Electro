@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../../../assets/img/user.png";
+import Admin from "../../../assets/img/Admin.png";
 import active from "../../../assets/img/active.png";
 
 import { FiHome } from "react-icons/fi";
@@ -11,6 +11,7 @@ import { RiInformationLine } from "react-icons/ri";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
 import CebEngineerDetails1 from "../../../views/Admin/CebEngineerDetails1";
+import CebEngineerDetails2 from "../../../views/Admin/CebEngineerDetails2";
 import AddNewCebEngineer from "../../../views/Admin/AddNewCebEngineer";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
 import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
@@ -41,7 +42,7 @@ const SidebarAdmin = ({ show }) => {
         <div className="sidebar-left">
           <SideNav className={show ? "sidenav active " : "sidenav"}>
             <UserName>
-              <UserProfile src={image} alt="image"></UserProfile>
+              <UserProfile src={Admin} alt="Admin"></UserProfile>
 
               <UlDetailList>
                 <NameList>Ms. Hasini </NameList>
@@ -111,6 +112,11 @@ const SidebarAdmin = ({ show }) => {
               path="/cebengineer-details1"
               exact={true}
               component={CebEngineerDetails1}
+            />
+            <Route
+              path="/cebengineer-details2"
+              exact={true}
+              component={CebEngineerDetails2}
             />
             <Route
               path="/addnewcebengineer"
