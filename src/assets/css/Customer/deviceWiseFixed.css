@@ -95,4 +95,38 @@
 }
 
 
+.title-heading{
+    font-size: 29px;
+    width: 85%;
+    /* justify-content: center; */
+    text-align: center;
+    margin-top: 2%;
+    font-weight: 500;
+}
+
+#model-select{
+    
+    margin-left: 38%;
+    width: 30%;
+    margin-top: 2%;
+}
+
+.tou-headline{
+    margin-left: 5%;
+    font-size: 25px;
+    margin-top: 2%;
+    font-weight: 500;
+}
+
+.button-device-wise{
+    margin-left: 69%;
+    width: 18%;
+   
+    
+    
+}
+
+#device-wise-btn{
+    width:250px
+}
 

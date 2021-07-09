@@ -3,12 +3,7 @@ import '../../assets/css/TOUSuggestions.css';
 import {BsSearch} from 'react-icons/bs';
 
 
-
-
 import TOUSuggestionsPage from './../../components/Customer/TOUSuggestions';
-
-
-
 
 export default function TOUSuggestions() {
 

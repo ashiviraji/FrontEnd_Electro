@@ -10,6 +10,7 @@ const billPlans = () => {
         { Bill_Title: "Bill Plan 1", Model: "TOU", Total_amount: "LKR : 3500" },
         { Bill_Title: "Bill Plan 2", Model: "Fixed ", Total_amount: "LKR : 2500" },
         { Bill_Title: "Bill Plan 3", Model: "Fixed ", Total_amount: "LKR : 4500" },
+       
 
     ];
 

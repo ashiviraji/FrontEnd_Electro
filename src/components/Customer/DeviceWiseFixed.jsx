@@ -1,4 +1,5 @@
-import React from 'react';
+
+import * as React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -8,11 +9,14 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
+import { BsFillBarChartFill } from 'react-icons/bs';
+import "../../assets/css/Customer/deviceWiseFixed.css";
 
 const columns = [
   { id: 'device_id', label: '#', minWidth: 90 },
   { id: 'applicance', label: 'Applicance', minWidth: 100 },
-  
+
   {
     id: 'quantity',
     label: 'Quantity',
@@ -36,36 +40,36 @@ const columns = [
   },
 ];
 
-function createData(device_id,applicance,quantity,total_units,total_amount) {
-//   const density = population / size;
-  return { device_id,applicance,quantity,total_units,total_amount };
+function createData(device_id, applicance, quantity, total_units, total_amount) {
+  //   const density = population / size;
+  return { device_id, applicance, quantity, total_units, total_amount };
 }
 
 const rows = [
-  createData(1, 'Television',1,100,1340),
-  createData(2, 'Rice Cooker',1,100,1340),
-  createData(3, 'Radio',1,100,1340),
-  createData(4, 'Blender',1,100,1340),
-  createData(5, 'Washing Machine',1,100,1340),
-  createData(6, 'Multi Cooker',1,100,1340),
-  createData(7, 'Computer',1,100,1340),
-  createData(8, 'Laptop',1,100,1340),
-  createData(9, 'Table Fan',1,100,1340),
-  createData(10, 'Iron',1,100,1340),
-  createData(11, 'Oven',1,100,1340),
-  createData(12, '',1,100,1340),
- 
+  createData(1, 'Television', 1, 100, 1340),
+  createData(2, 'Rice Cooker', 1, 100, 1340),
+  createData(3, 'Radio', 1, 100, 1340),
+  createData(4, 'Blender', 1, 100, 1340),
+  createData(5, 'Washing Machine', 1, 100, 1340),
+  createData(6, 'Multi Cooker', 1, 100, 1340),
+  createData(7, 'Computer', 1, 100, 1340),
+  createData(8, 'Laptop', 1, 100, 1340),
+  createData(9, 'Table Fan', 1, 100, 1340),
+  createData(10, 'Iron', 1, 100, 1340),
+  createData(11, 'Oven', 1, 100, 1340),
+  createData(12, '', 1, 100, 1340),
+
 ];
 
 const useStyles = makeStyles({
   root: {
-   
+
     width: '80%',
-    marginLeft:'10%',
-    marginTop:'10%',
+    marginLeft: '10%',
+    marginTop: '3%',
   },
   container: {
-    maxHeight: 440,
+    maxHeight: 350,
   },
 });
 
@@ -73,6 +77,15 @@ export default function StickyHeadTable() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [selected, setSelected] = React.useState("");
+
+  let area = null;
+  const changeSelectOptionHandler = (event) => {
+    setSelected(event.target.value);
+    console.log(event.target.value);
+
+  };
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -84,52 +97,71 @@ export default function StickyHeadTable() {
   };
 
   return (
-      <div className="device-wise-usage">
-    <Paper className={classes.root}>
-        
-      <TableContainer className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-              return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                  {columns.map((column) => {
-                    const value = row[column.id];
-                    return (
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === 'number' ? column.format(value) : value}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
+    <div className="device-wise-usage">
+      <div className="title-heading">
+        <label className="tou-headline">DEVICE WISE USAGE</label>
+        <select className="form-select" id="model-select" style={{ width: '30%' }} aria-label="Default select example" onChange={changeSelectOptionHandler}>
+          <option selected>Fixed Model</option>
+          <option value="TOU Model">TOU Model</option>
+
+        </select>
+
+
+      </div>
+      <div className="button-device-wise">
+
+        <Button variant="contained" id="device-wise-btn" color="primary" disableElevation>
+          <BsFillBarChartFill ></BsFillBarChartFill>
+          &nbsp;&nbsp;&nbsp;View Chart Of Usgae
+        </Button>
+      </div>
+
+      <Paper className={classes.root}>
+
+        <TableContainer className={classes.container}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    align={column.align}
+                    style={{ minWidth: column.minWidth }}
+                  >
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                return (
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                    {columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format && typeof value === 'number' ? column.format(value) : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+
     </div>
   );
 }

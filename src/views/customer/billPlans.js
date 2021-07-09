@@ -16,6 +16,9 @@ export default  function billPlans() {
       <div className="billPlan-main">
          < BillPlansPage/>
           </div>
+          <div className="billPlan-main">
+         < BillPlansPage/>
+          </div>
           </div>
     //   </div>
       

@@ -18,6 +18,7 @@ import CalculateBill from "../../../views/customer/CalculateBill";
 import BillCompariosn from "../../../views/customer/BillComparison";
 import myBillPlans from "../../../views/customer/billPlans";
 import InformationTable from "../../../views/InformationTable";
+import DeviceWisePlans from "../../../views/customer/DeviceWisePlans";
 
 
 import "../../../assets/css/sidebar-user.css";
@@ -61,7 +62,7 @@ const Sidebar = ({ show }) => {
                 </List>
 
                 <List>
-                  <LinkList to="/manage-bill">
+                  <LinkList to="/calculate-bill">
                     <RiBillLine />
                     &nbsp;&nbsp;&nbsp;Manage Bill
                   </LinkList>
@@ -73,6 +74,15 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp; Device Vice Usage
                   </LinkList>
                 </List>
+
+                <List>
+                  <LinkList to="/device-wise-plans">
+                    <MdEventNote />
+                    &nbsp;&nbsp;&nbsp; Device Vice Usage Plans
+                  </LinkList>
+                </List>
+
+             
 
                 <List>
                   <LinkList to="/special-events">
@@ -139,6 +149,12 @@ const Sidebar = ({ show }) => {
                 path="/calculate-bill"
                 exact={true}
                 component={CalculateBill}
+              />
+
+           <Route
+                path="/device-wise-plans"
+                exact={true}
+                component={DeviceWisePlans}
               />
 
               <Route
