@@ -24,11 +24,6 @@ import DashNavbar from "./components/common/DashboardNavbar";
 import SidebarAdmin from "./components/common/Sidebar-admin";
 import SidebarEngineer from "./components/common/Sidebar-Engineer";
 
-// import ManageCebEngineer from "./components/Admin/ManageCebEngineer";
-// import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
-
-// import { BrowserRouter as Router } from "react-router-dom";
-
 // import Home from "./views/Home";
 import DashbordNavbar from "./components/common/DashboardNavbar/index";
 import ForgotPassword from "./views/ForgotPassword";
@@ -110,9 +105,14 @@ function App() {
         <SidebarEngineer />
       </Route>
 
+      <Route exact path="/engineer-unit-charges-home">
+        <DashbordNavbar />
+        <SidebarEngineer />
+      </Route>
+
       <Route exact path="/engineer-userprofile">
         <DashbordNavbar />
-        <SidebarAdmin />
+        <SidebarEngineer />
       </Route>
 
       <Route exact path="/calculate-bill">
@@ -138,11 +138,6 @@ function App() {
       <Route exact path="/admin-unitcharges-ToU">
         <DashbordNavbar />
         <SidebarAdmin />
-      </Route>
-
-      <Route exact path="/manage-unitCharges">
-        <DashbordNavbar />
-        <SidebarEngineer />
       </Route>
 
       <Route exact path="/information">

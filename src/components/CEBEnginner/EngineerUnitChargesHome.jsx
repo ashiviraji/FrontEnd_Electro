@@ -1,38 +1,38 @@
 import React from "react";
-import "../../assets/css/Admin/unitchargesadminhome.css";
+import "../../assets/css/CEBEngineer/unitchargesengineerhome.css";
 import { GrDocumentTime } from "react-icons/gr";
 import unitchargeupdates from "../../assets/img/unitchargeupdates.png";
 // import { Route } from "react-router-dom";
 
 import { NavLink } from "react-router-dom";
 
-export default function AdminUnitChargeHome() {
+export default function EngineerUnitChargesHome() {
   return (
     <form className="col">
       <div className="frm-ucharges">
-        <div className="grp-ucharges">
-          <div className="title-unitcharges text-center">
+        <div className="eng-grp-ucharges">
+          <div className="eng-title-unitcharges text-center">
             <h4> Unit Charges </h4>
           </div>
 
           <div className="row">
             <div className="col-sm-6">
-              <div className="uchargecard card border-success mb-3">
+              <div className="end-uchargecard card border-success mb-3">
                 <div className="card-body">
-                  <h5 className="card-title text-center fixed_title">
+                  <h5 className="card-title text-center eng-fixed_title">
                     Fixed Unit Billing Method
                   </h5>
                   {/* <p className="card-text">LKR 4590</p> */}
                   <div className="text-center">
                     <NavLink
-                      className="btn btn-success btn-lg btn-60"
-                      to="/admin-unitcharges-0to60"
+                      className="btn btn-success btn-lg eng-btn-60"
+                      to="/engineer-unitcharges-0to60"
                     >
                       0 - 60
                     </NavLink>
                     <NavLink
-                      className="btn btn-success btn-lg btn-60+"
-                      to="/admin-unitcharges-60plus"
+                      className="btn btn-success btn-lg eng-btn-60+"
+                      to="/engineer-unitcharges-60plus"
                     >
                       60+
                     </NavLink>
@@ -41,15 +41,15 @@ export default function AdminUnitChargeHome() {
               </div>
             </div>
             <div className="col-sm-6">
-              <div className="uchargecard card border-success mb-3">
+              <div className="eng-uchargecard card border-success mb-3">
                 <div className="card-body">
-                  <h5 className="card-title text-center fixed_title">
+                  <h5 className="card-title text-center eng-fixed_title">
                     Time of Use MODEL
                   </h5>
-                  <div className="icon">
+                  <div className="eng-icon">
                     <NavLink
-                      className="btn btn-success btn-lg btn-60+"
-                      to="/admin-unitcharges-ToU"
+                      className="btn btn-success btn-lg eng-btn-60+"
+                      to="/engineer-unitcharges-ToU"
                     >
                       {" "}
                       <GrDocumentTime size={25} />
