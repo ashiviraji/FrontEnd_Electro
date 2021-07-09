@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CalculateBillForm from "./CalculateBillForm";
 import { Paper, makeStyles } from "@material-ui/core";
-import useTable from "../../components/Customer/useTable";
+import UseTable from "../../components/Customer/UseTable";
 import * as DeviceBill from "./DeviceBill";
 import { TableBody } from "@material-ui/core";
 import { TableCell } from "@material-ui/core";
@@ -16,6 +16,9 @@ import { Add } from "@material-ui/icons";
 import Popup from "../../components/Customer/bill_control/Popup";
 import { DeleteOutline } from "@material-ui/icons";
 import { EditOutlined } from "@material-ui/icons";
+import Notification from "../../components/Customer/bill_control/Notification";
+import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,11 +29,6 @@ const useStyles = makeStyles((theme) => ({
   newButton : {
       position: 'absolute',
       right:'10px'
-  },
-  actionButtonIcon : {
-      width: '5px',
-      padding: theme.spacing(0),
-      margin: theme.spacing(1),
   }
 }));
 
@@ -47,6 +45,7 @@ const headCells = [
 
 export default function CalculateBill() {
   const classes = useStyles();
+  const [recordForEdit, setRecordForEdit] = useState(null)
   const [records, setRecords] = useState(DeviceBill.getAllDevices());
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
@@ -55,9 +54,11 @@ export default function CalculateBill() {
   });
 
   const [openPopup, setOpenPopup ] = useState(false)
+  const [notify, setNotify] = useState({isOpen:false, message:'', variant:''})
+  const [confirmDialog, setConfirmDialog] = useState({isOpen:false, title:'', subTitle:'' })
 
   const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
-    useTable(records, headCells, filterFn);
+    UseTable(records, headCells, filterFn);
 
   const handleSearch = (e) => {
     let target = e.target;
@@ -73,10 +74,44 @@ export default function CalculateBill() {
   };
 
   const addOrEdit = (device, resetForm) => {
-    DeviceBill.insertDevice(device)
+      if (device.id == 0){
+        DeviceBill.insertDevice(device)
+      }
+      else{
+        console.log(device.id)
+        DeviceBill.updateDevice(device)
+      }
+    
     resetForm()
+    setRecordForEdit(null)
     setOpenPopup(false)
     setRecords(DeviceBill.getAllDevices())
+    setNotify({
+        isOpen:true,
+        message:'Submitted Successfully',
+        variant: 'success'
+    })
+  }
+
+  const openInPopup = item => {
+      console.log(item.id)
+      setRecordForEdit(item)
+      setOpenPopup(true)
+  }
+
+  const onDeletedevice = appliance => {
+      setConfirmDialog({
+          ...confirmDialog,
+          isOpen:false
+      })
+      DeviceBill.Deletedevice(appliance);
+      setRecords(DeviceBill.getAllDevices())
+      setNotify({
+        isOpen:true,
+        message:'Deleted Successfully',
+        variant: 'danger'
+    })
+    
   }
 
   return (
@@ -97,16 +132,15 @@ export default function CalculateBill() {
               ),
             }}
           />
-          <Button
-            variant="contained"
-            size="large"
-            color="default"
-            startIcon = {<Add/>}
-            className = {classes.newButton}
-            onClick={() => setOpenPopup(true)} 
-          >
-            Add New
-          </Button>
+          <button 
+            type="button" 
+            className="btn btn-info add-new-button" 
+
+            onClick={() => {setOpenPopup(true); setRecordForEdit(null);} }
+            >
+              <Add/>Add New
+          </button>
+          
         </Toolbar>
         <TblContainer>
           <TblHead />
@@ -127,9 +161,20 @@ export default function CalculateBill() {
                   {item.hDay}h & {item.mDay} min
                 </TableCell>
                 <TableCell >
-                    <button className="btn editActionButtonIcon"> <EditOutlined fontSize="small" ClassName={classes.actionButtonIcon}/> </button>
-                    
-                    <button className="btn deleteActionButtonIcon"> <DeleteOutline fontSize="small" ClassName={classes.actionButtonIcon}/> </button>
+                    <button className="btn editActionButtonIcon" onClick={()=> {openInPopup(item)}}> 
+                        <EditOutlined fontSize="small" ClassName={classes.actionButtonIcon}/> 
+                    </button>
+                    <button className="btn deleteActionButtonIcon" onClick={()=>{
+                        
+                        setConfirmDialog({
+                            isOpen:true,
+                            title: 'Are You sure delete this record',
+                            subTitle: "You can't  undo this operation",
+                            onConfirm:() => {onDeletedevice(item.appliance)}
+                        })
+                    }}> 
+                        <DeleteOutline fontSize="small" ClassName={classes.actionButtonIcon}/> 
+                    </button>
                     
                 </TableCell>
               </TableRow>
@@ -137,6 +182,14 @@ export default function CalculateBill() {
           </TableBody>
         </TblContainer>
         <TblPagination />
+        <button 
+            type="button" 
+            className="btn btn-success calculate-button" 
+
+            onClick=""
+            >
+              Calculate
+          </button>
       </Paper>
       <Popup
         title = "Add New Device Details"
@@ -144,8 +197,17 @@ export default function CalculateBill() {
         setOpenPopup = {setOpenPopup}
       >
           <CalculateBillForm 
+            recordForEdit = {recordForEdit}
             addOrEdit={addOrEdit} />
       </Popup>
+      <Notification
+        notify = {notify}
+        setNotify = {setNotify}
+      />
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
     </div>
   );
 }
