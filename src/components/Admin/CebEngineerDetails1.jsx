@@ -89,7 +89,7 @@ export default function ManageCebEngineer() {
             <b>Image</b>
           </label>
           <div className="w-50 p-1">
-            <img src={Engineer1} height={200} width={200} />
+            <img src={Engineer1} height={150} width={150} />
           </div>
         </div>
 
