@@ -18,7 +18,11 @@ import CalculateBill from "../../../views/customer/CalculateBill";
 import BillCompariosn from "../../../views/customer/BillComparison";
 import myBillPlans from "../../../views/customer/billPlans";
 import InformationTable from "../../../views/InformationTable";
+
+// import BillDetails from "../../../views/customer/BillDetails";
+
 import DevicewiseUsageCharts from "../../../views/customer/devicewiseChart"
+
 
 import "../../../assets/css/sidebar-user.css";
 
@@ -59,6 +63,13 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp;Home
                   </LinkList>
                 </List>
+
+                {/* <List>
+                  <LinkList to="/bill-details">
+                    <FiHome />
+                    &nbsp;&nbsp;&nbsp;Bill Details
+                  </LinkList>
+                </List> */}
 
                 <List>
                   <LinkList to="/manage-bill">
@@ -141,6 +152,12 @@ const Sidebar = ({ show }) => {
                 exact={true}
                 component={CalculateBill}
               />
+
+              {/* <Route
+                path="/bill-details"
+                exact={true}
+                component={BillDetails}
+              /> */}
 
               <Route
                 path="/TOU-suggestions"

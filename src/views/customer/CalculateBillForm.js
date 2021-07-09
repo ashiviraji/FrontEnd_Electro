@@ -5,7 +5,6 @@ import { Form } from "../../components/Customer/useForm";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import Controls from "../../components/Customer/bill_control/Controls";
-import * as DeviceBill from "./DeviceBill";
 
 
 const priorityList = [
@@ -15,6 +14,7 @@ const priorityList = [
 ];
 
 const initialFvalues = {
+  id:"",
   appliance: "",
   quantity: 0,
   hPeak: 0,
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CalculateBillForm(props) {
 
-  const {addOrEdit} = props
+  const {addOrEdit, recordForEdit} = props
 
   const classes = useStyles();
   const validate = (fieldValues = values) => {
@@ -53,17 +53,17 @@ export default function CalculateBillForm(props) {
     if ("priority" in fieldValues)
       temp.priority = fieldValues.priority? "" : "Please select priority of device";
     if ("hPeak" in fieldValues)
-      temp.hPeak = ( (fieldValues.hPeak >= 0 && fieldValues.hPeak < 4) ||  fieldValues.hPeak == "") ? "" : "4 >Peak Hours in day >= 0";
+      temp.hPeak = ( (fieldValues.hPeak >= 0 && fieldValues.hPeak < 4) ||  fieldValues.hPeak === "") ? "" : "4 >Peak Hours in day >= 0";
     if ("hOffPeak" in fieldValues)
-      temp.hOffPeak = ( (fieldValues.hOffPeak >= 0 && fieldValues.hOffPeak < 7) ||  fieldValues.hOffPeak == "") ? "" : "7 >Off Peak Hours in day >= 0";
+      temp.hOffPeak = ( (fieldValues.hOffPeak >= 0 && fieldValues.hOffPeak < 7) ||  fieldValues.hOffPeak === "") ? "" : "7 >Off Peak Hours in day >= 0";
     if ("hDay" in fieldValues)
-      temp.hDay = ( (fieldValues.hDay >= 0 && fieldValues.hDay < 13) ||  fieldValues.hDay == "") ? "" : "13 >Day Hours in day >= 0";
+      temp.hDay = ( (fieldValues.hDay >= 0 && fieldValues.hDay < 13) ||  fieldValues.hDay === "") ? "" : "13 >Day Hours in day >= 0";
     if ("mPeak" in fieldValues)
-      temp.mPeak = ( (fieldValues.mPeak >= 0 && fieldValues.mPeak < 60) ||  fieldValues.mPeak == "") ? "" : "60 > minutes >= 0";
+      temp.mPeak = ( (fieldValues.mPeak >= 0 && fieldValues.mPeak < 60) ||  fieldValues.mPeak === "") ? "" : "60 > minutes >= 0";
     if ("mOffPeak" in fieldValues)
-      temp.mOffPeak = ( (fieldValues.mOffPeak >= 0 && fieldValues.mOffPeak < 60) ||  fieldValues.mOffPeak == "")  ? "" : "60 > minutes >= 0";
+      temp.mOffPeak = ( (fieldValues.mOffPeak >= 0 && fieldValues.mOffPeak < 60) ||  fieldValues.mOffPeak === "")  ? "" : "60 > minutes >= 0";
     if ("mDay" in fieldValues)
-      temp.mDay = ( (fieldValues.mDay >= 0 && fieldValues.mDay < 60) ||  fieldValues.mDay == "")  ? "" : "60 > minutes >= 0";
+      temp.mDay = ( (fieldValues.mDay >= 0 && fieldValues.mDay < 60) ||  fieldValues.mDay === "")  ? "" : "60 > minutes >= 0";
     setErrors({
       ...temp
     })
@@ -85,6 +85,14 @@ export default function CalculateBillForm(props) {
       
     }
   }
+
+  useEffect(() => {
+    if(recordForEdit != null){
+      setValues({
+        ...recordForEdit
+      })
+    }
+  }, [recordForEdit])
 
   return (
     <Form>
