@@ -12,7 +12,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
 
 import "../../../assets/css/sidebar-admin.css";
-import updateUnitCharges from "../../CEBEnginner/updateUnitCharges";
+import EngineerUnitChargesHome from "../../../views/CEBEnginner/EngineerUnitChargesHome";
 import EngineerUserProfile from "../../../views/CEBEnginner/EngineerUserProfile";
 import InformationTable from "../../../views/InformationTable";
 
@@ -55,7 +55,7 @@ const SidebarEngineer = ({ show }) => {
                 </List>
 
                 <List>
-                  <LinkList to="/manage-unitCharges">
+                  <LinkList to="/engineer-unit-charges-home">
                     <AiOutlineDollar />
                     &nbsp;&nbsp;&nbsp;Unit Charges
                   </LinkList>
@@ -77,22 +77,13 @@ const SidebarEngineer = ({ show }) => {
               </UlList>
             </SideNav>
           </div>
-          {/* <Route
-          path="/manage-cebengineer"
-          exact={true}
-          component={ManageCebEngineer}
-        />
-        <Route
-          path="/addnewcebengineer"
-          exact={true}
-          component={AddNewCebEngineer}
-        /> */}
+
           <div claasName="page-load">
             <div className="load-area">
               <Route
-                path="/manage-unitCharges"
+                path="/engineer-unit-charges-home"
                 exact={true}
-                component={updateUnitCharges}
+                component={EngineerUnitChargesHome}
               />
               <Route
                 path="/engineer-userprofile"
