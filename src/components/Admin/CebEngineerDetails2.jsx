@@ -1,6 +1,6 @@
 import React from "react";
 import "../../assets/css/Admin/admin.css";
-import Engineer1 from "../../assets/img/CEBEngineer1.png";
+import Engineer2 from "../../assets/img/CEBEngineer2.png";
 import { GrUserAdd } from "react-icons/gr";
 import { NavLink } from "../common/Sidebar-admin/SidebarElement";
 
@@ -9,7 +9,7 @@ export default function ManageCebEngineer() {
     <div className="body-manageengineer">
       <form>
         <div className="ceb-heading">
-          <h1 align="center">W.K.B.K.Madhushanka</h1>
+          <h1 align="center">T.M. Jayalath</h1>
         </div>
 
         <div className="row mb-3">
@@ -25,7 +25,7 @@ export default function ManageCebEngineer() {
               type="text"
               className="form-control"
               id="firstname"
-              value="Buthsara"
+              value="Taniya"
               required
             />
           </div>
@@ -44,7 +44,7 @@ export default function ManageCebEngineer() {
               type="text"
               className="form-control"
               id="lastname"
-              value="Madhushanka"
+              value="Jayalath"
               required
             />
           </div>
@@ -59,7 +59,7 @@ export default function ManageCebEngineer() {
               type="email"
               className="form-control"
               id="email"
-              value="buthsaramadhushanka@gmail.com"
+              value="jayalath123@gmail.com"
               required
             />
           </div>
@@ -78,7 +78,7 @@ export default function ManageCebEngineer() {
               type="tel"
               className="form-control"
               id="contactnumber"
-              value="078 344 1655"
+              value="076 123 4567"
               required
             />
           </div>
@@ -89,7 +89,7 @@ export default function ManageCebEngineer() {
             <b>Image</b>
           </label>
           <div className="w-50 p-1">
-            <img src={Engineer1} height={200} width={200} />
+            <img src={Engineer2} height={150} width={150} />
           </div>
         </div>
 
