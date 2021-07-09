@@ -4,11 +4,13 @@ import { Pie } from "react-chartjs-2";
 
 export default function deviceChart() {
   return (
-    <div class="row devicewiseChart">
-      <div class="col-sm-6">
+    <div>
+      <h4 className="chartMainTitle text-center"> Device Wise Usage </h4>
+    <div class="devicewiseChart">
+      <h5 class="card-title chartTitle1">Cost Usage - Device Wise (LKR/month)</h5>
+      <div class="col-sm-8">
         <div class="card cardChart">
           <div class="card-body chartbody">
-            <h5 class="card-title chartTitle text-center">Cost Usage - Device Wise (LKR/month)</h5>
             <div className="chart-devicewise">
               <Pie
                 data={{
@@ -21,13 +23,13 @@ export default function deviceChart() {
                   ],
                   datasets: [
                     {
-                      data: [300, 50, 100, 233, 77],
+                      data: [1340, 500, 6100, 9700, 4200],
                       backgroundColor: [
-                        "rgb(255, 99, 132)",
-                        "rgb(54, 162, 235)",
-                        "rgb(255, 205, 86)",
-                        "rgb(54, 162, 235)",
-                        "rgb(255, 205, 86)",
+                        "#C7FF33",
+                        "#33BDFF",
+                        "#FFE633",
+                        "#DC33FF",
+                        "#33FFBD",
                       ],
                       hoverOffset: 4,
                     },
@@ -38,10 +40,10 @@ export default function deviceChart() {
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
+      <h5 class="card-title chartTitle2">Unit Usage - Device Wise (kWh)</h5>
+      <div class="col-sm-8">
         <div class="card cardChart">
           <div class="card-body chartbody">
-            <h5 class="card-title chartTitle text-center">Unit Usage - Device Wise (kWh)</h5>
             <div className="chart-devicewise">
               <Pie
                 data={{
@@ -54,13 +56,13 @@ export default function deviceChart() {
                   ],
                   datasets: [
                     {
-                      data: [300, 50, 100, 233, 77],
+                      data: [100, 25, 170, 290, 120],
                       backgroundColor: [
-                        "rgb(255, 99, 132)",
-                        "rgb(54, 162, 235)",
-                        "rgb(255, 205, 86)",
-                        "rgb(54, 162, 235)",
-                        "rgb(255, 205, 86)",
+                        "#FF3352",
+                        "#D933FF",
+                        "#33FFBD",
+                        "#9BFF33",
+                        "#FFDC33",
                       ],
                       hoverOffset: 4,
                     },
@@ -71,6 +73,7 @@ export default function deviceChart() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
