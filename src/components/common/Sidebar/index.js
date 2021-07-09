@@ -18,6 +18,7 @@ import CalculateBill from "../../../views/customer/CalculateBill";
 import BillCompariosn from "../../../views/customer/BillComparison";
 import myBillPlans from "../../../views/customer/billPlans";
 import InformationTable from "../../../views/InformationTable";
+import DevicewiseUsageCharts from "../../../views/customer/devicewiseChart"
 
 import "../../../assets/css/sidebar-user.css";
 
@@ -114,6 +115,13 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp; Bill Comparison
                   </LinkList>
                 </List>
+
+                <List>
+                  <LinkList to="/devicewise-chart">
+                    <MdEventNote />
+                    &nbsp;&nbsp;&nbsp; Device Vice Usage Charts
+                  </LinkList>
+                </List>
                 
               </UlList>
             </SideNav>
@@ -153,6 +161,11 @@ const Sidebar = ({ show }) => {
                 path="/information"
                 exact={true}
                 component={InformationTable}
+              />
+              <Route
+                path="/devicewise-chart"
+                exact={true}
+                component={DevicewiseUsageCharts}
               />
             </div>
           </div>
