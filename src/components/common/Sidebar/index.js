@@ -19,6 +19,10 @@ import BillCompariosn from "../../../views/customer/BillComparison";
 import myBillPlans from "../../../views/customer/billPlans";
 import InformationTable from "../../../views/InformationTable";
 import DeviceWisePlans from "../../../views/customer/DeviceWisePlans";
+import FixedEventForm from "../../../views/customer/FixedEventForm";
+import { BiUserCircle } from "react-icons/bi";
+import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
+
 
 
 // import BillDetails from "../../../views/customer/BillDetails";
@@ -66,56 +70,34 @@ const Sidebar = ({ show }) => {
                   </LinkList>
                 </List>
 
-                {/* <List>
-                  <LinkList to="/bill-details">
-                    <FiHome />
-                    &nbsp;&nbsp;&nbsp;Bill Details
-                  </LinkList>
-                </List> */}
-
                 <List>
-                  <LinkList to="/calculate-bill">
+                  <LinkList to="/manage-bill">
                     <RiBillLine />
                     &nbsp;&nbsp;&nbsp;Manage Bill
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/device-wise">
-                    <MdEventNote />
-                    &nbsp;&nbsp;&nbsp; Device Vice Usage
+                  <LinkList to="/my-bill-plans">
+                    <RiInformationLine />
+                    &nbsp;&nbsp;&nbsp; My Bill Plans
                   </LinkList>
                 </List>
-
-                <List>
-                  <LinkList to="/device-wise-plans">
-                    <MdEventNote />
-                    &nbsp;&nbsp;&nbsp; Device Vice Usage Plans
-                  </LinkList>
-                </List>
-
              
-
                 <List>
-                  <LinkList to="/special-events">
+                  <LinkList to="/special-event-fixed">
                     <MdEventNote />
                     &nbsp;&nbsp;&nbsp; Special Events
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/TOU-suggestions">
-                    <GiTeamIdea />
-                    &nbsp;&nbsp;&nbsp; View Suggestions
-                  </LinkList>
-                </List>
+                <LinkList to="/user-userprofile">
+                  <BiUserCircle />
+                  &nbsp;&nbsp;&nbsp;User Profile
+                </LinkList>
+              </List>
 
-                <List>
-                  <LinkList to="/calculate-bill">
-                    <GiTeamIdea />
-                    &nbsp;&nbsp;&nbsp; Calculate Bill
-                  </LinkList>
-                </List>
 
                 <List>
                   <LinkList to="/information">
@@ -124,26 +106,6 @@ const Sidebar = ({ show }) => {
                   </LinkList>
                 </List>
 
-                <List>
-                  <LinkList to="/myBillPlans">
-                    <RiInformationLine />
-                    &nbsp;&nbsp;&nbsp; My Bill Plans
-                  </LinkList>
-                </List>
-
-                <List>
-                  <LinkList to="/bill-comparison">
-                    <AiOutlineBook />
-                    &nbsp;&nbsp;&nbsp; Bill Comparison
-                  </LinkList>
-                </List>
-
-                <List>
-                  <LinkList to="/devicewise-chart">
-                    <MdEventNote />
-                    &nbsp;&nbsp;&nbsp; Device Vice Usage Charts
-                  </LinkList>
-                </List>
                 
               </UlList>
             </SideNav>
@@ -165,15 +127,15 @@ const Sidebar = ({ show }) => {
               />
 
               <Route
-                path="/calculate-bill"
+                path="/manage-bill"
                 exact={true}
                 component={CalculateBill}
               />
 
-           <Route
-                path="/device-wise-plans"
+              <Route
+                path="/special-event-fixed"
                 exact={true}
-                component={DeviceWisePlans}
+                component={FixedEventForm}
               />
 
               <Route
@@ -182,9 +144,9 @@ const Sidebar = ({ show }) => {
                 component={TOUSuggestions}
               />
               <Route
-                path="/myBillPlans"
+                path="/my-bill-plans"
                 exact={true}
-                component={myBillPlans}
+                component={DeviceWisePlans}
               />
               <Route
                 path="/bill-comparison"
@@ -201,6 +163,11 @@ const Sidebar = ({ show }) => {
                 exact={true}
                 component={DevicewiseUsageCharts}
               />
+              <Route
+              path="/user-userprofile"
+              exact={true}
+              component={AdminUserProfile}
+            />
             </div>
           </div>
         </div>

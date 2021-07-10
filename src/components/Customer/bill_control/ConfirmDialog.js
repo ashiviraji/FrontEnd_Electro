@@ -21,12 +21,8 @@ const useStyle = makeStyles(theme => ({
         textAlign:'center'
     },
     titleIcon: {
-        backgroundColor: theme.palette.secondary.light,
+        backgroundColor: "#ff7dad",
         color: theme.palette.secondary.main,
-        '&:hover': {
-            backgroundColor: theme.palette.secondary.light,
-            cursor:'default'
-        },
         '& .MuiSvgIcon-root' : {
             fontSize: '6rem',
         }

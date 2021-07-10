@@ -18,6 +18,7 @@ import { DeleteOutline } from "@material-ui/icons";
 import { EditOutlined } from "@material-ui/icons";
 import Notification from "../../components/Customer/bill_control/Notification";
 import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog";
+import { Link } from "react-router-dom";
 
 
 
@@ -67,7 +68,7 @@ export default function CalculateBill() {
         if (target.value == "") return items;
         else
           return items.filter((x) =>
-            x.appliance.toLowerCase().includes(target.value)
+            x.appliance.toLowerCase().includes(target.value.toLowerCase())
           );
       },
     });
@@ -182,14 +183,14 @@ export default function CalculateBill() {
           </TableBody>
         </TblContainer>
         <TblPagination />
+        <Link to="/bill-comparison">
         <button 
             type="button" 
-            className="btn btn-success calculate-button" 
-
-            onClick=""
-            >
+            className="btn btn-success calculate-button" >
               Calculate
           </button>
+        </Link>
+        
       </Paper>
       <Popup
         title = "Add New Device Details"
