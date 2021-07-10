@@ -23,7 +23,7 @@ const initialFvalues = {
   mOffPeak: 0,
   hDay: 0,
   mDay: 0,
-  power: 0,
+  power: "",
   priority: "",
 };
 
@@ -120,7 +120,7 @@ export default function CalculateBillForm(props) {
             id="standard-start-adornment"
             label="Power of Appliance"
             name="power"
-            type="number"
+            // type="number"
             value={values.power}
             onChange={handleInputChange}
             unit="W"

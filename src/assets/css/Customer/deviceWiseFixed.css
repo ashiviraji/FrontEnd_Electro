@@ -119,9 +119,11 @@
 }
 
 .button-device-wise{
-    margin-left: 82%;
+    float: right;
+    margin-right: 13.5%;
     width: 18%;
-    
+    margin-bottom: 20px;
+   
    
     
     

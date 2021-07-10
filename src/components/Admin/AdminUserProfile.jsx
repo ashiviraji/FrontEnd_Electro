@@ -7,7 +7,7 @@ export default function AdminUserProfile() {
     <div className="body-manageengineer">
       <form>
         <div className="ceb-heading">
-          <h1 align="center">User Profile</h1>
+          <h3 align="center">USER PROFILE</h3>
         </div>
 
         <div class="row mb-3">
