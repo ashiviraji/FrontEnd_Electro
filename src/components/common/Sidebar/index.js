@@ -21,6 +21,11 @@ import InformationTable from "../../../views/InformationTable";
 import DeviceWisePlans from "../../../views/customer/DeviceWisePlans";
 
 
+// import BillDetails from "../../../views/customer/BillDetails";
+
+import DevicewiseUsageCharts from "../../../views/customer/devicewiseChart"
+
+
 import "../../../assets/css/sidebar-user.css";
 
 import {
@@ -60,6 +65,13 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
                 </List>
+
+                {/* <List>
+                  <LinkList to="/bill-details">
+                    <FiHome />
+                    &nbsp;&nbsp;&nbsp;Bill Details
+                  </LinkList>
+                </List> */}
 
                 <List>
                   <LinkList to="/calculate-bill">
@@ -125,6 +137,13 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp; Bill Comparison
                   </LinkList>
                 </List>
+
+                <List>
+                  <LinkList to="/devicewise-chart">
+                    <MdEventNote />
+                    &nbsp;&nbsp;&nbsp; Device Vice Usage Charts
+                  </LinkList>
+                </List>
                 
               </UlList>
             </SideNav>
@@ -176,6 +195,11 @@ const Sidebar = ({ show }) => {
                 path="/information"
                 exact={true}
                 component={InformationTable}
+              />
+              <Route
+                path="/devicewise-chart"
+                exact={true}
+                component={DevicewiseUsageCharts}
               />
             </div>
           </div>

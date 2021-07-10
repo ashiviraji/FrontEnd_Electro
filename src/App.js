@@ -24,16 +24,14 @@ import DashNavbar from "./components/common/DashboardNavbar";
 import SidebarAdmin from "./components/common/Sidebar-admin";
 import SidebarEngineer from "./components/common/Sidebar-Engineer";
 
-// import ManageCebEngineer from "./components/Admin/ManageCebEngineer";
-// import AddNewCebEngineer from "./components/Admin/AddNewCebEngineer";
-
-// import { BrowserRouter as Router } from "react-router-dom";
-
 // import Home from "./views/Home";
 import DashbordNavbar from "./components/common/DashboardNavbar/index";
 import ForgotPassword from "./views/ForgotPassword";
 
 import InfoTable from "./views/InformationTable";
+// import DevicewiseChart from "./views/customer/devicewiseChart";
+// import { Bar } from 'react-chartjs-2';
+
 
 function App() {
   return (
@@ -91,7 +89,16 @@ function App() {
         <SidebarAdmin />
       </Route>
 
-     
+      <Route exact path="/cebengineer-details1">
+        <DashbordNavbar />
+        <SidebarAdmin />
+      </Route>
+
+      <Route exact path="/cebengineer-details2">
+        <DashbordNavbar />
+        <SidebarAdmin />
+      </Route>
+
       <Route exact path="/admin-userprofile">
         <DashbordNavbar />
         <SidebarAdmin />
@@ -104,6 +111,16 @@ function App() {
 
       <Route exact path="/dashboard-engineer">
         <DashNavbar />
+        <SidebarEngineer />
+      </Route>
+
+      <Route exact path="/engineer-unit-charges-home">
+        <DashbordNavbar />
+        <SidebarEngineer />
+      </Route>
+
+      <Route exact path="/engineer-userprofile">
+        <DashbordNavbar />
         <SidebarEngineer />
       </Route>
 
@@ -132,13 +149,13 @@ function App() {
         <SidebarAdmin />
       </Route>
 
-      <Route exact path="/manage-unitCharges">
-        <DashbordNavbar />
-        <SidebarEngineer />
+      <Route exact path="/information">
+        <InfoTable />
       </Route>
 
-      <Route exact path="/information">        
-        < InfoTable/>
+      <Route exact path="/devicewise-chart">   
+        <DashbordNavbar />
+        <SidebarUser />
       </Route>
     </div>
   );

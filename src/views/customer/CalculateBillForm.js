@@ -5,7 +5,6 @@ import { Form } from "../../components/Customer/useForm";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import Controls from "../../components/Customer/bill_control/Controls";
-import * as DeviceBill from "./DeviceBill";
 
 
 const priorityList = [
@@ -15,6 +14,7 @@ const priorityList = [
 ];
 
 const initialFvalues = {
+  id:"",
   appliance: "",
   quantity: 0,
   hPeak: 0,
@@ -36,7 +36,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CalculateBillForm() {
+export default function CalculateBillForm(props) {
+
+  const {addOrEdit, recordForEdit} = props
+
   const classes = useStyles();
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
@@ -78,11 +81,18 @@ export default function CalculateBillForm() {
     e.preventDefault();
     console.log("testing...");
     if (validate()) {
-      DeviceBill.insertDevice(values)
-    }
+      addOrEdit(values, resetForm);
       
-    
+    }
   }
+
+  useEffect(() => {
+    if(recordForEdit != null){
+      setValues({
+        ...recordForEdit
+      })
+    }
+  }, [recordForEdit])
 
   return (
     <Form>
