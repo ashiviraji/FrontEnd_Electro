@@ -69,7 +69,7 @@ export default function billcomparison() {
         <div className="text-center">
           <h5> View TOU Suggestions</h5>
           
-          <Link className="btn btn-info btn-lg btn-suggest" to="<TOUSuggestions/>"><FaThList /> Suggestions</Link>
+          <Link className="btn btn-info btn-lg btn-suggest" to="/TOU-suggestions"><FaThList /> Suggestions</Link>
 
         </div>
       </div>
