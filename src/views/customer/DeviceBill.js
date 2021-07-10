@@ -15,7 +15,6 @@ export function insertDevice(data) {
 export function updateDevice(data) {
     let devices=getAllDevices();
     let recordIndex = devices.findIndex(x => x.id === data.id);
-    console.log(data.id)
     devices[recordIndex] = { ...data }
     localStorage.setItem(KEYS.devices, JSON.stringify(devices))
 }
