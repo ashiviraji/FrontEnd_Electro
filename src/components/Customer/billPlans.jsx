@@ -3,12 +3,14 @@ import React from 'react';
 import "../../assets/css/Customer/billPlans.css";
 import img1 from "../../assets/img/bill1.jpg";
 // import { Link } from "react-router-dom";
+
 import {RiDeleteBinFill} from 'react-icons/ri';
 const billPlans = () => {
     const cardDetails = [
         { Bill_Title: "Bill Plan 1", Model: "TOU", Total_amount: "LKR : 3500" },
         { Bill_Title: "Bill Plan 2", Model: "Fixed ", Total_amount: "LKR : 2500" },
         { Bill_Title: "Bill Plan 3", Model: "Fixed ", Total_amount: "LKR : 4500" },
+       
 
     ];
 

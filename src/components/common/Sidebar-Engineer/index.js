@@ -15,6 +15,7 @@ import "../../../assets/css/sidebar-admin.css";
 import EngineerUnitChargesHome from "../../../views/CEBEnginner/EngineerUnitChargesHome";
 import EngineerUserProfile from "../../../views/CEBEnginner/EngineerUserProfile";
 import InformationTable from "../../../views/InformationTable";
+import DashboardEngineer from "../../../views/CEBEnginner/DashboardCEBEngineer";
 
 import {
   SideNav,
@@ -48,7 +49,7 @@ const SidebarEngineer = ({ show }) => {
               </UserName>
               <UlList>
                 <List>
-                  <LinkList to="/dashboard-engineer">
+                  <LinkList to="/dashboard-engineer" >
                     <FiHome />
                     &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
@@ -95,6 +96,11 @@ const SidebarEngineer = ({ show }) => {
                 exact={true}
                 component={InformationTable}
               />
+              <Route
+              path="/dashboard-engineer"
+              exact={true}
+              component={DashboardEngineer}
+            />
             </div>
           </div>
         </div>

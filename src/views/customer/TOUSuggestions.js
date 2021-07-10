@@ -1,14 +1,10 @@
 import React from 'react';
 import '../../assets/css/TOUSuggestions.css';
 import {BsSearch} from 'react-icons/bs';
-
-
+import {IoMdDownload} from "react-icons/io";
 
 
 import TOUSuggestionsPage from './../../components/Customer/TOUSuggestions';
-
-
-
 
 export default function TOUSuggestions() {
 

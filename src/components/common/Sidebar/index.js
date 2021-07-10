@@ -11,13 +11,15 @@ import { GiTeamIdea } from "react-icons/gi";
 import { RiBillLine } from "react-icons/ri";
 import { MdEventNote } from "react-icons/md";
 import { BrowserRouter as Router } from "react-router-dom";
-import DeviceWiseFixed from "../../../views/customer/Devicevicefixed";
+import DeviceWiseFixed from "../../../views/customer/DeviceWiseFixed";
 import TOUSuggestions from "../../../views/customer/TOUSuggestions";
-
+import DashboardUser from "../../../views/customer/DashboardUser";
 import CalculateBill from "../../../views/customer/CalculateBill";
 import BillCompariosn from "../../../views/customer/BillComparison";
 import myBillPlans from "../../../views/customer/billPlans";
 import InformationTable from "../../../views/InformationTable";
+import DeviceWisePlans from "../../../views/customer/DeviceWisePlans";
+
 
 // import BillDetails from "../../../views/customer/BillDetails";
 
@@ -50,7 +52,7 @@ const Sidebar = ({ show }) => {
 
                 <UlDetailList>
                   <NameList> Ms . Ashika </NameList>
-                  <NameList>Customer</NameList>
+                  <NameList className="role">Customer</NameList>
                   <NameList>
                     <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
                   </NameList>
@@ -58,9 +60,9 @@ const Sidebar = ({ show }) => {
               </UserName>
               <UlList>
                 <List>
-                  <LinkList to="/home">
+                  <LinkList to="/dashboard-user">
                     <FiHome />
-                    &nbsp;&nbsp;&nbsp;Home
+                    &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
                 </List>
 
@@ -72,7 +74,7 @@ const Sidebar = ({ show }) => {
                 </List> */}
 
                 <List>
-                  <LinkList to="/manage-bill">
+                  <LinkList to="/calculate-bill">
                     <RiBillLine />
                     &nbsp;&nbsp;&nbsp;Manage Bill
                   </LinkList>
@@ -84,6 +86,15 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp; Device Vice Usage
                   </LinkList>
                 </List>
+
+                <List>
+                  <LinkList to="/device-wise-plans">
+                    <MdEventNote />
+                    &nbsp;&nbsp;&nbsp; Device Vice Usage Plans
+                  </LinkList>
+                </List>
+
+             
 
                 <List>
                   <LinkList to="/special-events">
@@ -148,16 +159,22 @@ const Sidebar = ({ show }) => {
               />
 
               <Route
+                path="/dashboard-user"
+                exact={true}
+                component={DashboardUser}
+              />
+
+              <Route
                 path="/calculate-bill"
                 exact={true}
                 component={CalculateBill}
               />
 
-              {/* <Route
-                path="/bill-details"
+           <Route
+                path="/device-wise-plans"
                 exact={true}
-                component={BillDetails}
-              /> */}
+                component={DeviceWisePlans}
+              />
 
               <Route
                 path="/TOU-suggestions"
