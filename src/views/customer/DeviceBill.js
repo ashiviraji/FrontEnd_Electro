@@ -19,6 +19,14 @@ export function genarateDeviceID() {
     return id;
 }
 
+export function updateDevice(data) {
+    let devices=getAllDevices();
+    let recordIndex = devices.findIndex(x => x.id == data.id);
+    console.log(data.id)
+    devices[recordIndex] = { ...data }
+    localStorage.setItem(KEYS.devices, JSON.stringify(devices))
+}
+
 export function getAllDevices() {
     if(localStorage.getItem(KEYS.devices) == null)
         localStorage.setItem(KEYS.devices, JSON.stringify([]))
