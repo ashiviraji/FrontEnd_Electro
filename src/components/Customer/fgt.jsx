@@ -1,16 +1,12 @@
 import React from 'react';
-import "../../assets/css/deviceViceFixed.css";
+import "../../assets/css/Customer/deviceWiseFixed.css";
 import DevicesIcon from '@material-ui/icons/Devices';
 import FormatListNumberedRtlIcon from '@material-ui/icons/FormatListNumberedRtl';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
-
-
-
-function Devicevicefixed() {
-  
-
-  return (
-    <div className="main">
+export default function DeviceWiseFixed() {
+    return(
+       
+             <div className="main">
       <div className="device-wise-title">
         Your Device Wise Usage
       </div>
@@ -79,7 +75,6 @@ function Devicevicefixed() {
         View Chart Of Usage
       </div>
     </div>
-  )
+        
+    )
 }
-
-export default Devicevicefixed

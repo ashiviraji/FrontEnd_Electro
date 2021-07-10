@@ -18,6 +18,7 @@ import UnitChargesAdminHome from "../../../views/Admin/UnitChargesAdminHome";
 import AdminUnitCharges60plus from "../../../views/Admin/AdminUnitCharges60plus";
 import AdminUnitCharges0to60 from "../../../views/Admin/AdminUnitCharges0to60";
 import AdminUnitChargesToU from "../../../views/Admin/AdminUnitChargesToU";
+import DashboardAdmin from "../../../views/Admin/DashboardAdmin";
 import ManageCEBEngineerHome from "../../../views/Admin/ManageCEBEngineerHome";
 import InformationTable from "../../../views/InformationTable";
 
@@ -46,7 +47,7 @@ const SidebarAdmin = ({ show }) => {
 
               <UlDetailList>
                 <NameList>Ms. Hasini </NameList>
-                <NameList>Administrator</NameList>
+                <NameList className="role">Administrator</NameList>
                 <NameList>
                   <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
                 </NameList>
@@ -142,6 +143,11 @@ const SidebarAdmin = ({ show }) => {
               path="/admin-unitcharges-0to60"
               exact={true}
               component={AdminUnitCharges0to60}
+            />
+              <Route
+              path="/dashboard-admin"
+              exact={true}
+              component={DashboardAdmin}
             />
             <Route
               path="/admin-unitcharges-ToU"

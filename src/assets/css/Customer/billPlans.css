@@ -53,3 +53,27 @@ margin-left: 40%;
     padding: 2px;
     cursor: pointer;
 }
+
+.add-new-bill-plan{
+    font-size: 18px;
+    border-radius: 4px;
+    height: 45px;
+    margin-left: 75%;
+    color: white;
+    width: 200px;
+    border:none;
+    cursor: pointer;
+    background-color: #0096FF;
+    text-align: center;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    
+}
+.add-new-bill-plan:hover{
+    cursor: pointer;
+    background-color: #156DD3;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.new-bill-text{
+    cursor: pointer;
+    margin-left:10px;
+}
