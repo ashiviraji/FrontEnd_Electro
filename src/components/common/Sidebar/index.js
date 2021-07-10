@@ -26,7 +26,7 @@ import DeviceWisePlans from "../../../views/customer/DeviceWisePlans";
 import DevicewiseUsageCharts from "../../../views/customer/devicewiseChart"
 
 
-import "../../../assets/css/sidebar-user.css";
+import "../../../assets/css/Sidebar-user.css";
 
 import {
   SideNav,
