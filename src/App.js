@@ -170,6 +170,16 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
+
+      <Route exact path="/manage-bill">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
+
+      <Route exact path="/my-bill-plans">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
     </div>
   );
 }
