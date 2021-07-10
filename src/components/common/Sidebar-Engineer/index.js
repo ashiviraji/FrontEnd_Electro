@@ -14,6 +14,7 @@ import { Route } from "react-router-dom";
 import "../../../assets/css/sidebar-admin.css";
 import updateUnitCharges from "../../CEBEnginner/updateUnitCharges";
 import InformationTable from "../../../views/InformationTable";
+import DashboardEngineer from "../../../views/CEBEnginner/DashboardCEBEngineer";
 
 import {
   SideNav,
@@ -47,9 +48,9 @@ const SidebarEngineer= ({ show }) => {
               </UserName>
               <UlList>
                 <List>
-                  <LinkList to="/home" >
+                  <LinkList to="/dashboard-engineer" >
                     <FiHome />
-                    &nbsp;&nbsp;&nbsp;Home
+                    &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
                 </List>
 
@@ -100,6 +101,11 @@ const SidebarEngineer= ({ show }) => {
                 exact={true}
                 component={InformationTable}
               />
+              <Route
+              path="/dashboard-engineer"
+              exact={true}
+              component={DashboardEngineer}
+            />
           </div>
         </div>
         </div>

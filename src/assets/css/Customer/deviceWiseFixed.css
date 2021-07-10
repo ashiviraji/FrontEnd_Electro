@@ -119,14 +119,16 @@
 }
 
 .button-device-wise{
-    margin-left: 69%;
+    margin-left: 82%;
     width: 18%;
+    
    
     
     
 }
 
 #device-wise-btn{
-    width:250px
+    width:250px;
+    height:45px;
 }
 
