@@ -1,7 +1,6 @@
 import React,{useState}from 'react';
 
-import Button from '@material-ui/core/Button';
-import { BsFillBarChartFill } from 'react-icons/bs';
+
 import DeviceWiseFixed1   from "../../components/Customer/DeviceWiseFixed";
 import DeviceWiseTOU from "../../components/Customer/TOUDeviceWiseUsage";
 
@@ -61,12 +60,7 @@ export default function DeviceWiseFixed() {
             <b style={{color:"black",marginRight:"4%"}}>&nbsp;&nbsp;Time Of Use Model</b>
 
         </div>
-      <div className="button-device-wise">
-         <Button variant="contained" id="device-wise-btn" color="primary" disableElevation>
-          <BsFillBarChartFill style={{width:'20px',height:'20px'}}></BsFillBarChartFill>
-          &nbsp;&nbsp;&nbsp;View Chart Of Usage
-        </Button>
-      </div>
+      
   </div>
   {(displayModel.model === "DeviceWiseFixed1")?
     <DeviceWiseFixed1/>: <DeviceWiseTOU/>

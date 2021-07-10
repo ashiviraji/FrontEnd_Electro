@@ -1,0 +1,124 @@
+.engineer-unit-body {
+  width: 90%;
+  left: 4%;
+  margin-top: 3%;
+  position: relative;
+}
+
+#engineer-unit-title-heading {
+  margin-left: 20%;
+  margin-top: -1%;
+}
+
+#engineer-tou-title-heading {
+  margin-left: 35%;
+  margin-top: -1%;
+}
+
+.engineer-unit-table {
+  min-width: 100%;
+  margin-left: -1%;
+  margin-top: 2%;
+  position: relative;
+}
+
+.engineer-unit-table-0to60 {
+  min-width: 100%;
+  margin-left: -1%;
+  margin-top: 4%;
+  position: relative;
+}
+
+ul#engineer-unit-horizontal-list {
+  min-width: 90%;
+  list-style: none;
+  padding-top: 1%;
+}
+ul#engineer-unit-horizontal-list li {
+  display: inline;
+  padding-left: 7%;
+  padding-top: 1%;
+  font-weight: bold;
+  padding-right: 8%;
+  margin-left: 3%;
+}
+
+ul#engineer-unit-horizontal-list-inside {
+  min-width: 90%;
+  list-style: none;
+}
+
+ul#engineer-unit-horizontal-list-inside li {
+  display: inline;
+}
+
+.engineer-unit-label-list-inside {
+  background-color: #f6eeee;
+  border-radius: 6%;
+  border-color: black;
+  padding: 1%;
+  text-align: center;
+}
+
+.engineer-unit-label-list-update {
+  background-color: #79dbc4;
+  border-radius: 6%;
+  border-color: #79dbc4;
+  border-width: 0px;
+  padding: 1%;
+  margin-left: 3%;
+  width: 11%;
+  text-align: center;
+}
+
+.card3-body {
+  border-style: solid;
+  border-color: #3b7769;
+  border-width: 2px;
+  margin-left: 7%;
+  width: 90%;
+  height: 80px;
+  border-radius: 8px;
+  margin-top: 28px;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+#engineer-unit-inside-category {
+  margin-left: 0%;
+  width: 10%;
+}
+
+#engineer-unit-inside-unitCharge {
+  margin-left: 17%;
+  width: 10%;
+}
+
+#engineer-unit-inside-fixedCharge {
+  margin-left: 17%;
+  width: 10%;
+}
+
+#engineer-tou-inside-category {
+  width: 20%;
+}
+
+#engineer-tou-inside-unitCharge {
+  margin-left: 15%;
+  width: 8%;
+}
+
+#engineer-tou-inside-fixedCharge {
+  margin-left: 16%;
+  width: 8%;
+}
+
+#engineer-unit-title-category {
+  margin-left: 0%;
+}
+
+.engineer-unit-label-list-inside {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+}
