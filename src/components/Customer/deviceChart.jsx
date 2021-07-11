@@ -5,7 +5,7 @@ import { Pie } from "react-chartjs-2";
 export default function deviceChart() {
   return (
     <div>
-      <h4 className="chartMainTitle text-center"> Device Wise Usage </h4>
+      <h4 className="chartMainTitle text-center"> Device Wise Usage - Fixed Model </h4>
     <div class="devicewiseChart">
       <h5 class="card-title chartTitle1">Cost Usage - Device Wise (LKR/month)</h5>
       <div class="col-sm-8">
