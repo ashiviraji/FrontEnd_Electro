@@ -2,7 +2,7 @@ import React from "react";
 import "../../assets/css/Customer/deviceChart.css";
 import { Pie } from "react-chartjs-2";
 
-export default function deviceChart() {
+export default function DeviceChart() {
   return (
     <div>
       <h4 className="chartMainTitle text-center"> Device Wise Usage </h4>
