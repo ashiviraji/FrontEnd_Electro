@@ -25,7 +25,9 @@ import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
 
 // import BillDetails from "../../../views/customer/BillDetails";
 
+
 import DevicewiseUsageCharts from "../../../views/customer/devicewiseChart";
+
 
 import "../../../assets/css/Sidebar-user.css";
 
