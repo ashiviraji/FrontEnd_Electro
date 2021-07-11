@@ -19,8 +19,7 @@ import { EditOutlined } from "@material-ui/icons";
 import Notification from "../../components/Customer/bill_control/Notification";
 import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog";
 import { Link } from "react-router-dom";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
-import "../../assets/css/breadcrumb.css";
+
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -123,9 +122,11 @@ export default function CalculateBill() {
 
   return (
     <div>
+
       <Breadcrumb className="breadcrumb">
         <Breadcrumb.Item active>Manage Bill</Breadcrumb.Item>
       </Breadcrumb>
+
 
       <Paper className={classes.pageContent}>
         <h2>Your Device Data</h2>
