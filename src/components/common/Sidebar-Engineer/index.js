@@ -13,9 +13,6 @@ import { Route } from "react-router-dom";
 
 import "../../../assets/css/sidebar-admin.css";
 import EngineerUnitChargesHome from "../../../views/CEBEnginner/EngineerUnitChargesHome";
-import EngineerUnitCharges0to60 from "../../../views/CEBEnginner/EngineerUnitCharges0to60";
-import EngineerUnitCharges60plus from "../../../views/CEBEnginner/EngineerUnitCharges60plus";
-import EngineerUnitChargesToU from "../../../views/CEBEnginner/EngineerUnitChargesToU";
 import EngineerUserProfile from "../../../views/CEBEnginner/EngineerUserProfile";
 import InformationTable from "../../../views/InformationTable";
 import DashboardEngineer from "../../../views/CEBEnginner/DashboardCEBEngineer";
@@ -52,7 +49,7 @@ const SidebarEngineer = ({ show }) => {
               </UserName>
               <UlList>
                 <List>
-                  <LinkList to="/dashboard-engineer">
+                  <LinkList to="/dashboard-engineer" >
                     <FiHome />
                     &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
@@ -89,42 +86,21 @@ const SidebarEngineer = ({ show }) => {
                 exact={true}
                 component={EngineerUnitChargesHome}
               />
-
-              <Route
-                path="/engineer-unitcharges-60plus"
-                exact={true}
-                component={EngineerUnitCharges60plus}
-              />
-
-              <Route
-                path="/engineer-unitcharges-0to60"
-                exact={true}
-                component={EngineerUnitCharges0to60}
-              />
-
-              <Route
-                path="/engineer-unitcharges-ToU"
-                exact={true}
-                component={EngineerUnitChargesToU}
-              />
-
               <Route
                 path="/engineer-userprofile"
                 exact={true}
                 component={EngineerUserProfile}
               />
-
               <Route
                 path="/information"
                 exact={true}
                 component={InformationTable}
               />
-
               <Route
-                path="/dashboard-engineer"
-                exact={true}
-                component={DashboardEngineer}
-              />
+              path="/dashboard-engineer"
+              exact={true}
+              component={DashboardEngineer}
+            />
             </div>
           </div>
         </div>

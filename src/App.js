@@ -32,6 +32,7 @@ import InfoTable from "./views/InformationTable";
 // import DevicewiseChart from "./views/customer/devicewiseChart";
 // import { Bar } from 'react-chartjs-2';
 
+
 function App() {
   return (
     <div className="App">
@@ -77,6 +78,7 @@ function App() {
         <SidebarUser />
       </Route>
 
+      
       <Route exact path="/home-user">
         <DashbordNavbar />
         <SidebarUser />
@@ -117,21 +119,6 @@ function App() {
         <SidebarEngineer />
       </Route>
 
-      <Route exact path="/engineer-unitcharges-60plus">
-        <DashbordNavbar />
-        <SidebarEngineer />
-      </Route>
-
-      <Route exact path="/engineer-unitcharges-0to60">
-        <DashbordNavbar />
-        <SidebarEngineer />
-      </Route>
-
-      <Route exact path="/engineer-unitcharges-ToU">
-        <DashbordNavbar />
-        <SidebarEngineer />
-      </Route>
-
       <Route exact path="/engineer-userprofile">
         <DashbordNavbar />
         <SidebarEngineer />
@@ -166,17 +153,7 @@ function App() {
         <InfoTable />
       </Route>
 
-      <Route exact path="/devicewise-chart">
-        <DashbordNavbar />
-        <SidebarUser />
-      </Route>
-
-      <Route exact path="/manage-bill">
-        <DashbordNavbar />
-        <SidebarUser />
-      </Route>
-
-      <Route exact path="/my-bill-plans">
+      <Route exact path="/devicewise-chart">   
         <DashbordNavbar />
         <SidebarUser />
       </Route>
