@@ -27,10 +27,7 @@ import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate
 
 // import BillDetails from "../../../views/customer/BillDetails";
 
-
-import DevicewiseUsageChart from "../../../views/customer/DevicewiseChart";
-
-
+import DevicewiseUsageCharts from "../../../views/customer/DevicewiseChart";
 
 import "../../../assets/css/Sidebar-user.css";
 
@@ -153,13 +150,12 @@ const Sidebar = ({ show }) => {
                 exact={true}
                 component={deviceWiseTOUSeperate}
               />
-               <Route
+              <Route
                 path="/device-wise-seperate"
                 exact={true}
                 component={deviceWiseFixedSeperate}
               />
 
-              
               <Route
                 path="/bill-comparison"
                 exact={true}
@@ -173,7 +169,7 @@ const Sidebar = ({ show }) => {
               <Route
                 path="/devicewise-chart"
                 exact={true}
-                component={DevicewiseUsageChart}
+                component={DevicewiseUsageCharts}
               />
               <Route
                 path="/user-userprofile"
