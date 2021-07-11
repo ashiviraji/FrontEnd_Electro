@@ -31,7 +31,7 @@ const ManageCEBEngineerHome = () => {
               <label>Engineer_ID &nbsp;: &nbsp; {card.Engineer_ID} </label>
             </div>
 
-            <Link to={card.Url}>
+            <Link to={card.Url} className="link-moredetails">
               <div className="admin-manage-view-more">More Details</div>
             </Link>
 

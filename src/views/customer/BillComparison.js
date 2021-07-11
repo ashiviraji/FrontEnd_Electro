@@ -59,9 +59,9 @@ export default function billcomparison() {
           <div className="card-body usage-of-device">
             <h5 className="card-title">Device Wise Usage</h5>
             
-            <Link className="btn btn-success btn-lg btn-tou" to="#">TOU Model</Link>
+            <Link className="btn btn-success btn-lg btn-tou" to="/tou-device-wise-seperate">TOU Model</Link>
 
-            <Link className="btn btn-success btn-lg btn-fixed" to="#">FIXED Model</Link>
+            <Link className="btn btn-success btn-lg btn-fixed" to="/device-wise-seperate">FIXED Model</Link>
 
           </div>
         </div>
