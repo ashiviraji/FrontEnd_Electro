@@ -12,19 +12,31 @@ export default function SignUpForm() {
     const [userpasswordReg, setUserpasswordReg] = useState("");
     const [useremailReg, setUseremailReg] = useState("");
     const [conpasswordReg, setConpasswordReg] = useState("");
-    // let history = useHistory();
-    const userRegister = async () => {
-        await Axios.post("http://localhost:3001/sign-up", {
+    const [emailWarningReg, setemailWarningReg] = useState("");
+
+    let history = useHistory();
+
+    const userRegister = (e) => {
+        e.preventDefault();
+        Axios.post("http://localhost:3001/sign-up", {
             firstName: firstnameReg,
             lastName: lastnameReg,
             userPassword: userpasswordReg,
             userEmail: useremailReg,
         }).then((response) => {
             console.log(response);
-            // history.push("/sign-in")
+            if (response.data.status) {
+                history.push("/sign-in");
+                console.log("registered");
+            } else {
+                history.push("/sign-up");
+                console.log("unregistered");
+                setemailWarningReg("Email  Already Used")
+            }
         }).catch((error) => {
-            console.log(error);
-        })
+            console.log("this is response" + error);
+
+        });
 
 
     };
@@ -32,11 +44,13 @@ export default function SignUpForm() {
 
     return (
 
-        <form className="col" onSubmit={userRegister} method="Post">
+        <form className="col" onSubmit={(e) => { userRegister(e) }} method="POST">
             <div className="frmLogin">
                 <div className="grpLogin">
                     <h3>Sign Up</h3>
-
+                    <div class="alert-danger" role="alert">
+                        {emailWarningReg}
+                    </div>
                     <div className="form-group">
 
                         <input type="text" name="firstName" className="form-control " placeholder="First name" required onChange={(e) => { setFirstnameReg(e.target.value); }} />
