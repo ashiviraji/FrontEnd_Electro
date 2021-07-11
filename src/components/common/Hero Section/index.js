@@ -22,10 +22,7 @@ const HeroSection = () => {
                 <HeroContent>
                     <HeroH1>Electro</HeroH1>
                     <HeroP>
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s, when an unknown
-                        printer took a galle
+                        Sustainable Electricity Model for Domestic Household users to select between normal billing method and Time Of Use (TOU) method
                     </HeroP>
                     <HeroBtnWrapper>
                         <Button to="/sign-in" onMouseEnter={onHover} onMouseLeave={onHover}>
