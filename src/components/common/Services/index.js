@@ -29,17 +29,20 @@ const Services = () => {
                 <ServicesCard>
                     <ServicesIcon src={Icon1} />
                     <ServicesH2>Bill Calculation</ServicesH2>
-                    <ServicesP>printing  and typesetting industryof and industryof the</ServicesP>
+                    <ServicesP>We will calculate your monthly electricity bill using both Normal Billing  method and Time of Use(ToU) method
+                    </ServicesP>
                 </ServicesCard>
                 <ServicesCard>
                     <ServicesIcon src={Icon2} />
                     <ServicesH2>Bill Comparission</ServicesH2>
-                    <ServicesP>printing  and typesetting industryof and industryof the</ServicesP>
+                    <ServicesP>Compare your monthly electricity bill in both methods to select the best method for you
+                    </ServicesP>
                 </ServicesCard>
                 <ServicesCard>
                     <ServicesIcon src={Icon3} />
                     <ServicesH2>Suggestions</ServicesH2>
-                    <ServicesP>printing  and typesetting industryof and industryof the</ServicesP>
+                    <ServicesP>We will provide you suggestions to reduce your monthly electricity bill when using TOU method
+                    </ServicesP>
                 </ServicesCard>
 
             </ServicesWrapper>
