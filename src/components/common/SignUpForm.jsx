@@ -13,6 +13,7 @@ export default function SignUpForm() {
     const [useremailReg, setUseremailReg] = useState("");
     const [conpasswordReg, setConpasswordReg] = useState("");
     const [emailWarningReg, setemailWarningReg] = useState("");
+    const [PassWarningReg, setPassWarningReg] = useState("");
 
     let history = useHistory();
 
@@ -21,7 +22,7 @@ export default function SignUpForm() {
         Axios.post("http://localhost:3001/sign-up", {
             firstName: firstnameReg,
             lastName: lastnameReg,
-            userPassword: userpasswordReg,
+            userPassword: conpasswordReg,
             userEmail: useremailReg,
         }).then((response) => {
             console.log(response);
@@ -42,7 +43,15 @@ export default function SignUpForm() {
     };
 
     const checkPassword = (e) => {
-        setUserpasswordReg(e.target.value);
+        e.preventDefault();
+        const conPass = e.target.value;
+
+        if (userpasswordReg != conPass) {
+            setPassWarningReg("Invalid Password")
+        } else {
+            setPassWarningReg("")
+            setConpasswordReg(conPass);
+        }
     }
 
 
@@ -77,7 +86,10 @@ export default function SignUpForm() {
                     </div>
                     <div className="form-group">
 
-                        <input type="password" name="confirmPassword" className="form-control " placeholder="Confirm password" required onChange={(e) => { checkPassword(e.target.value); }} />
+                        <input type="password" name="confirmPassword" className="form-control " placeholder="Confirm password" required onChange={(e) => { checkPassword(e); }} />
+                    </div>
+                    <div>
+                        <p className="text-warning">{PassWarningReg}</p>
                     </div>
                     <button type="submit" className="submitbtn">Sign Up</button>
 
