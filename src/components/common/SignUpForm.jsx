@@ -77,19 +77,19 @@ export default function SignUpForm() {
                     <div className="form-group">
 
 
-                        <input type="email" name="email" className="form-control " placeholder="Enter email" required onChange={(e) => { setUseremailReg(e.target.value); }} />
+                        <input type="email" name="email" className="form-control " placeholder="E-mail" required onChange={(e) => { setUseremailReg(e.target.value); }} />
                     </div>
 
                     <div className="form-group">
 
-                        <input type="password" name="password" className="form-control " placeholder="Enter password" required onChange={(e) => { setUserpasswordReg(e.target.value); }} />
+                        <input type="password" name="password" className="form-control " placeholder="Password" required onChange={(e) => { setUserpasswordReg(e.target.value); }} />
                     </div>
                     <div className="form-group">
 
                         <input type="password" name="confirmPassword" className="form-control " placeholder="Confirm password" required onChange={(e) => { checkPassword(e); }} />
                     </div>
                     <div>
-                        <p className="text-warning">{PassWarningReg}</p>
+                        <p style={{ color: "red", float: "left", fontSize: 13, marginTop: 17 }}>{PassWarningReg}</p>
                     </div>
                     <button type="submit" className="submitbtn">Sign Up</button>
 
