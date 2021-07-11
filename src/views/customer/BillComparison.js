@@ -1,7 +1,6 @@
 import React from "react";
 import "../../assets/css/billcompare.css";
-import { FaThList } from 'react-icons/fa';
-
+import { FaThList } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
@@ -10,7 +9,7 @@ export default function billcomparison() {
     <div className="frm-billcomparison">
       <div className="grp-billcomparison">
         <div className="text-center main-title ">
-         <h4> Bill Comparison</h4>
+          <h4> Bill Comparison</h4>
         </div>
 
         <div className="row">
@@ -51,26 +50,39 @@ export default function billcomparison() {
         </div>
         <div className="card text-center best-model card border-success mb-3">
           <div className="card-body best">
-          <h5> Best Model : Fixed </h5>
+            <h5> Best Model : Fixed </h5>
           </div>
         </div>
-        
+
         <div className="card text-center card border-success mb-3">
           <div className="card-body usage-of-device">
             <h5 className="card-title">Device Wise Usage</h5>
-            
-            <Link className="btn btn-success btn-lg btn-tou" to="/tou-device-wise-seperate">TOU Model</Link>
 
-            <Link className="btn btn-success btn-lg btn-fixed" to="/device-wise-seperate">FIXED Model</Link>
+            <Link
+              className="btn btn-success btn-lg btn-tou"
+              to="/tou-device-wise-seperate"
+            >
+              TOU Model
+            </Link>
 
+            <Link
+              className="btn btn-success btn-lg btn-fixed"
+              to="/device-wise-seperate"
+            >
+              FIXED Model
+            </Link>
           </div>
         </div>
 
         <div className="text-center">
           <h5> View TOU Suggestions</h5>
-          
-          <Link className="btn btn-info btn-lg btn-suggest" to="<TOUSuggestions/>"><FaThList /> Suggestions</Link>
 
+          <Link
+            className="btn btn-info btn-lg btn-suggest"
+            to="/TOU-suggestions"
+          >
+            <FaThList /> Suggestions
+          </Link>
         </div>
       </div>
     </div>
