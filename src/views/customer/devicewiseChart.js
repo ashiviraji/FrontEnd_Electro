@@ -1,10 +1,10 @@
 import React from "react";
 
-import DeviceChart from '../../components/Customer/deviceChart';
+import DeviceChart from '../../components/Customer/DeviceChart';
 
-export default function devicewiseChart() {
+export default function DevicewiseChart() {
     return (
-      <div>
+      <div>  
           <DeviceChart />
       </div>
     );

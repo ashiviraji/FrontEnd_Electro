@@ -26,7 +26,7 @@
     
 }
 .image-details{
-    margin-top: 50px;
+    /* margin-top: 50px; */
     /* justify-content: center; */
     width: 40%;
     margin-left: 26%;
@@ -42,7 +42,7 @@
 }
 .welcome-note{
     font-size: 40px;
-    margin-top: 25px;
+    /* margin-top: 25px; */
     font-weight: 400;
 }
 
