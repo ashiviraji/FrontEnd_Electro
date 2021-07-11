@@ -58,10 +58,10 @@ font-size:16px;
 display:block;
 padding:10px 15px;
 border-radius:6px;
-// &.active{
+&.active{
     
-//     color:#ffff
-// }
+    color:#ffff
+}
 
 &:hover{
     background:#172b4d;
