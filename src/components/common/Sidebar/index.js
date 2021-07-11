@@ -22,6 +22,8 @@ import DeviceWisePlans from "../../../views/customer/DeviceWisePlans";
 import FixedEventForm from "../../../views/customer/FixedEventForm";
 import { BiUserCircle } from "react-icons/bi";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
+import deviceWiseFixedSeperate from "../../../views/customer/deviceWiseFixedUsageSeperate";
+import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate";
 
 // import BillDetails from "../../../views/customer/BillDetails";
 
@@ -145,6 +147,19 @@ const Sidebar = ({ show }) => {
                 exact={true}
                 component={DeviceWisePlans}
               />
+
+              <Route
+                path="/tou-device-wise-seperate"
+                exact={true}
+                component={deviceWiseTOUSeperate}
+              />
+               <Route
+                path="/device-wise-seperate"
+                exact={true}
+                component={deviceWiseFixedSeperate}
+              />
+
+              
               <Route
                 path="/bill-comparison"
                 exact={true}
