@@ -27,7 +27,9 @@ import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate
 
 // import BillDetails from "../../../views/customer/BillDetails";
 
-import DevicewiseUsageCharts from "../../../views/customer/devicewiseChart";
+import DevicewiseChart from "../../../views/customer/devicewiseChartTOU";
+import SpecialEventBill from "../../../views/customer/SpecialEventBill"
+import DevicewiseChartFixed from "../../../views/customer/devicewiseChartFixed"
 
 import "../../../assets/css/Sidebar-user.css";
 
@@ -167,15 +169,21 @@ const Sidebar = ({ show }) => {
                 component={InformationTable}
               />
               <Route
-                path="/devicewise-chart"
+                path="/devicewise-chart-TOU"
                 exact={true}
-                component={DevicewiseUsageCharts}
+                component={DevicewiseChart}
               />
               <Route
                 path="/user-userprofile"
                 exact={true}
                 component={AdminUserProfile}
               />
+              <Route
+                path="/devicewise-chart-fixed"
+                exact={true}
+                component={DevicewiseChartFixed}
+              />
+              
             </div>
           </div>
         </div>
