@@ -26,7 +26,7 @@ import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
 // import BillDetails from "../../../views/customer/BillDetails";
 
 
-import DevicewiseUsageCharts from "../../../views/customer/devicewiseChart";
+import DevicewiseUsageChart from "../../../views/customer/DevicewiseChart";
 
 
 
@@ -158,7 +158,7 @@ const Sidebar = ({ show }) => {
               <Route
                 path="/devicewise-chart"
                 exact={true}
-                component={DevicewiseUsageCharts}
+                component={DevicewiseUsageChart}
               />
               <Route
                 path="/user-userprofile"
