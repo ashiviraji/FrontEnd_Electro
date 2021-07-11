@@ -7,7 +7,7 @@ import { RiInformationLine } from "react-icons/ri";
 import { AiOutlineBook } from "react-icons/ai";
 import { Route } from "react-router-dom";
 import { GiTeamIdea } from "react-icons/gi";
-
+import {RiDashboardLine} from "react-icons/ri";
 import { RiBillLine } from "react-icons/ri";
 import { MdEventNote } from "react-icons/md";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -17,6 +17,7 @@ import DashboardUser from "../../../views/customer/DashboardUser";
 import CalculateBill from "../../../views/customer/CalculateBill";
 import BillCompariosn from "../../../views/customer/BillComparison";
 import myBillPlans from "../../../views/customer/billPlans";
+import SpecialEventMyBillPlans from "../../../views/customer/SpecialEventBillPlans";
 import InformationTable from "../../../views/InformationTable";
 import DeviceWisePlans from "../../../views/customer/DeviceWisePlans";
 import FixedEventForm from "../../../views/customer/FixedEventForm";
@@ -24,6 +25,7 @@ import { BiUserCircle } from "react-icons/bi";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
 import deviceWiseFixedSeperate from "../../../views/customer/deviceWiseFixedUsageSeperate";
 import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate";
+import SpecialEventDeviceUsage from "../../../views/customer/SpecialEventDeviceUsage";
 
 
 
@@ -67,7 +69,7 @@ const Sidebar = ({ show }) => {
               <UlList>
                 <List>
                   <LinkList to="/dashboard-user">
-                    <FiHome />
+                    <RiDashboardLine />
                     &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
                 </List>
@@ -90,6 +92,12 @@ const Sidebar = ({ show }) => {
                   <LinkList to="/special-event-fixed">
                     <MdEventNote />
                     &nbsp;&nbsp;&nbsp; Special Events
+                  </LinkList>
+                </List>
+                <List>
+                  <LinkList to="/my-special-event-plans">
+                    <MdEventNote />
+                    &nbsp;&nbsp;&nbsp; My Special Events Plans
                   </LinkList>
                 </List>
 
@@ -156,6 +164,19 @@ const Sidebar = ({ show }) => {
                 exact={true}
                 component={deviceWiseTOUSeperate}
               />
+
+
+             <Route
+                path="/my-special-event-plans"
+                exact={true}
+                component={SpecialEventMyBillPlans}
+              />
+
+                 <Route
+                path="/special-event-device-wise"
+                exact={true}
+                component={SpecialEventDeviceUsage}
+              /> 
                <Route
                 path="/device-wise-seperate"
                 exact={true}

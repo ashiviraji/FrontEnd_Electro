@@ -10,95 +10,53 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import Button from "@material-ui/core/Button";
 import { BsFillBarChartFill } from "react-icons/bs";
+
 import "../../assets/css/Customer/deviceWiseFixed.css";
 import { Link } from "react-router-dom";
 
 const columns = [
-  { id: "device_id", label: "#", minWidth: 40 },
-  { id: "applicance", label: "Applicance", minWidth: 120 },
+  { id: "device_id", label: "#", minWidth: 90 },
+  { id: "applicance", label: "Applicance", minWidth: 100 },
 
   {
     id: "quantity",
     label: "Quantity",
-    minWidth: 30,
+    minWidth: 40,
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
-  },
-  
-  {
-    id: "peak_amount",
-    label: "Peak Amount   (LKR)",
-    minWidth: 160,
-    align: "center",
-    format: (value) => value.toFixed(2),
-  },
-
-  {
-    id: "day_amount",
-    label: "Day amount  (LKR)",
-    minWidth: 150,
-    align: "center",
-    format: (value) => value.toFixed(2),
-  },
-  {
-    id: "off_peak_amount",
-    label: "off peak  (LKR)",
-    minWidth: 150,
-    align: "center",
-    format: (value) => value.toFixed(2),
   },
   {
     id: "total_units",
     label: "Total units",
-    minWidth: 100,
+    minWidth: 160,
     align: "center",
     // format: (value) => value.toFixed(2),
   },
-  {
-    id: "total_amount",
-    label: "Total amount  (LKR)",
-    minWidth: 170,
-    align: "center",
-    format: (value) => value.toFixed(2),
-  },
+ 
 ];
 
 function createData(
   device_id,
   applicance,
   quantity,
-  peak_amount,
-  day_amount,
-  off_peak_amount,
   total_units,
   total_amount
 ) {
   //   const density = population / size;
-  return {
-    device_id,
-    applicance,
-    quantity,
-    peak_amount,
-    day_amount,
-    off_peak_amount,
-    total_units,
-    total_amount,
-  };
+  return { device_id, applicance, quantity, total_units };
 }
 
 const rows = [
-  createData(1, "Television", 1, 600, 400, 300, 100, 1300),
-  createData(2, "Rice Cooker", 1, 800, 300, 200, 200, 1300),
-  createData(3, "Radio", 1, 100, 500, 800, 220, 1440),
-  createData(4, "Blender", 1, 100, 890, 780, 210, 1340),
-  createData(5, "Washing Machine", 1, 100, 890, 780, 210, 1340),
-  createData(6, "Multi Cooker", 1, 100, 890, 780, 210, 1340),
-  createData(7, "Computer", 1, 100, 890, 780, 210, 1340),
-  createData(8, "Laptop", 1, 100, 890, 780, 210, 210, 1340),
-  createData(9, "Table Fan", 1, 100, 890, 780, 210, 1340),
-  createData(10, "Iron", 1, 100, 890, 780, 210, 1340),
-  createData(11, "Oven", 1, 100, 890, 780, 210, 1340),
-  createData(12, "", 1, 100, 890, 780, 210, 1340),
+  createData(1, "Generator", 1, 20),
+  createData(2, "Flash Light", 2, 15),
+  createData(3, "Guitar", 1, 10),
+  createData(4, "Sound Speakers", 2, 20),
+  createData(5, "Micks", 1, 25),
+  createData(6, "Drums", 2,30),
+  createData(7, "Coffer Maker", 1,30),
+  createData(8, "Juicer", 1,30),
+  createData(9, "Water Pumps", 1,30),
+  
 ];
 
 const useStyles = makeStyles({
@@ -139,8 +97,9 @@ export default function StickyHeadTable() {
 
   return (
     <Paper className={classes.root}>
+        <label className="duration-label">Duration : 3 days</label>
       <div className="button-device-wise">
-        <Link to="/devicewise-chart" className={classes.linkchartButton}>
+        <Link to="/devicewise-chart" className={classes.linkchartButton}> 
           <Button
             variant="contained"
             id="device-wise-btn"

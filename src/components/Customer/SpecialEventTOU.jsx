@@ -24,7 +24,8 @@ const columns = [
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
-  
+ 
+
   {
     id: "peak_amount",
     label: "Peak Amount   (LKR)",
@@ -87,18 +88,18 @@ function createData(
 }
 
 const rows = [
-  createData(1, "Television", 1, 600, 400, 300, 100, 1300),
-  createData(2, "Rice Cooker", 1, 800, 300, 200, 200, 1300),
-  createData(3, "Radio", 1, 100, 500, 800, 220, 1440),
-  createData(4, "Blender", 1, 100, 890, 780, 210, 1340),
-  createData(5, "Washing Machine", 1, 100, 890, 780, 210, 1340),
-  createData(6, "Multi Cooker", 1, 100, 890, 780, 210, 1340),
-  createData(7, "Computer", 1, 100, 890, 780, 210, 1340),
-  createData(8, "Laptop", 1, 100, 890, 780, 210, 210, 1340),
-  createData(9, "Table Fan", 1, 100, 890, 780, 210, 1340),
-  createData(10, "Iron", 1, 100, 890, 780, 210, 1340),
-  createData(11, "Oven", 1, 100, 890, 780, 210, 1340),
-  createData(12, "", 1, 100, 890, 780, 210, 1340),
+  createData(1, "Generator", 1, 1000, 500, 300, 30,  1800),
+  createData(2, "Flash Light", 4, 400, 200, 100, 12,  700),
+  createData(3, "Guitar", 1, 500, 300, 200, 14,  1000),
+  createData(4, "Sound Speakers", 4, 400, 250, 150, 15,  800),
+  createData(5, "Vacuum cleaner", 1, 400, 250, 150, 15,  800),
+  createData(6, "Coffee Maker ", 1,400, 350, 250, 20,  1000),
+  createData(7, "Juicer", 1, 400, 250, 150, 15,  800),
+  createData(8, "Piano", 1, 400, 350, 250, 20,  1000),
+  createData(9, "Projector", 1, 400, 250, 150, 15,  800),
+  createData(10, "Water pumps", 1, 400, 250, 150, 15,  800),
+  createData(11, "Oven", 1, 400, 350, 250, 20,  1000),
+  
 ];
 
 const useStyles = makeStyles({
@@ -139,6 +140,7 @@ export default function StickyHeadTable() {
 
   return (
     <Paper className={classes.root}>
+       <label className="duration-label">Duration : 3 days</label>
       <div className="button-device-wise">
         <Link to="/devicewise-chart" className={classes.linkchartButton}>
           <Button

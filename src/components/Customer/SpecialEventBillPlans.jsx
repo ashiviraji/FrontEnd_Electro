@@ -6,8 +6,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
-import img1 from "../../assets/img/devicewise.png";
-import "../../assets/css/Customer/deviewisePlans.css";
+import img1 from "../../assets/img/specialEvent.png";
+import "../../assets/css/Customer/specialEventPlans.css";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -62,12 +62,12 @@ const useStyles = makeStyles({
 });
 
 const cardDetails = [
-  { Bill_Title: "Bill Plan 1", Model: "TOU", Total_amount: "LKR : 3500" },
-  { Bill_Title: "Bill Plan 2", Model: "Fixed ", Total_amount: "LKR : 2500" },
-  { Bill_Title: "Bill Plan 3", Model: "Fixed ", Total_amount: "LKR : 4500" },
-  { Bill_Title: "Bill Plan 4", Model: "Fixed ", Total_amount: "LKR : 4500" },
-  { Bill_Title: "Bill Plan 5", Model: "Fixed ", Total_amount: "LKR : 4500" },
-  { Bill_Title: "Bill Plan 6", Model: "Fixed ", Total_amount: "LKR : 4500" },
+  { Bill_Title: "Bill Plan 1", TOU_Model_Amount: "LKR  1500", Fixed_Model_Units: "20",Duration:"3 days"},
+  { Bill_Title: "Bill Plan 2", TOU_Model_Amount: "LKR  800", Fixed_Model_Units: "12",Duration:"2 days" },
+  { Bill_Title: "Bill Plan 3", TOU_Model_Amount: "LKR  1200", Fixed_Model_Units:"16",Duration:"4 days" },
+  { Bill_Title: "Bill Plan 4", TOU_Model_Amount: "LKR  500",Fixed_Model_Units: "5",Duration:"5 days" },
+  { Bill_Title: "Bill Plan 5", TOU_Model_Amount: "LKR  1000", Fixed_Model_Units: "11",Duration:"2 days" },
+  { Bill_Title: "Bill Plan 6", TOU_Model_Amount: "LKR  4500", Fixed_Model_Units: "30",Duration:"5 days" },
 ];
 
 export default function DeviceWisePlans() {
@@ -98,13 +98,14 @@ export default function DeviceWisePlans() {
                     <img src={img1} alt="Image1" className="card-img-top" />
                   </div>
                   <div>
-                    <label>Suitable Model : {card.Model}</label>
-                    <label>Total Amount :  {card.Total_amount}</label>
+                    <label>TOU Model Amount : {card.TOU_Model_Amount}</label>
+                    <label>Fixed Model Units :  {card.Fixed_Model_Units}</label>
+                    <label>Duration :  {card.Duration}</label>
                   </div>
                 </CardContent>
                 <CardActions>
                   <div className="buttonContainer">
-                    <Link className={classes.linkStyle} to="/device-wise">
+                    <Link className={classes.linkStyle} to="/special-event-device-wise">
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
