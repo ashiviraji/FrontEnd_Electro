@@ -23,12 +23,9 @@ import FixedEventForm from "../../../views/customer/FixedEventForm";
 import { BiUserCircle } from "react-icons/bi";
 import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
 
-
-
 // import BillDetails from "../../../views/customer/BillDetails";
 
-import DevicewiseUsageCharts from "../../../views/customer/DevicewiseChart"
-
+import DevicewiseUsageCharts from "../../../views/customer/devicewiseChart";
 
 import "../../../assets/css/Sidebar-user.css";
 
@@ -83,7 +80,7 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp; My Bill Plans
                   </LinkList>
                 </List>
-             
+
                 <List>
                   <LinkList to="/special-event-fixed">
                     <MdEventNote />
@@ -92,12 +89,11 @@ const Sidebar = ({ show }) => {
                 </List>
 
                 <List>
-                <LinkList to="/user-userprofile">
-                  <BiUserCircle />
-                  &nbsp;&nbsp;&nbsp;User Profile
-                </LinkList>
-              </List>
-
+                  <LinkList to="/user-userprofile">
+                    <BiUserCircle />
+                    &nbsp;&nbsp;&nbsp;User Profile
+                  </LinkList>
+                </List>
 
                 <List>
                   <LinkList to="/information">
@@ -105,8 +101,6 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp; Information
                   </LinkList>
                 </List>
-
-                
               </UlList>
             </SideNav>
           </div>
@@ -164,10 +158,10 @@ const Sidebar = ({ show }) => {
                 component={DevicewiseUsageCharts}
               />
               <Route
-              path="/user-userprofile"
-              exact={true}
-              component={AdminUserProfile}
-            />
+                path="/user-userprofile"
+                exact={true}
+                component={AdminUserProfile}
+              />
             </div>
           </div>
         </div>
