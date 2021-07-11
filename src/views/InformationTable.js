@@ -1,8 +1,14 @@
 import React from "react";
 import "../../src/assets/css/informationTable.css";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
+import "../../src/assets/css/breadcrumb.css";
 
 export default function InformationTable() {
   return (
+    <div>
+      <Breadcrumb className="breadcrumb">
+        <Breadcrumb.Item active>Information</Breadcrumb.Item>
+      </Breadcrumb>
     <div className="infotable-form">
       <div className="infotable-grp">
       <div className="infotable-title">
@@ -111,6 +117,7 @@ export default function InformationTable() {
         </table>
       </div>
       </div>
+    </div>
     </div>
   );
 }

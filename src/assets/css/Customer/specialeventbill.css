@@ -1,24 +1,10 @@
-.card1-billcomparison{
+.card-specialeventbill{
     height:90%;
 }
-.card2-billcomparison{
-    /* background-color: turquoise; */
-    background-color: #83fca7;
-    height: 90%;
-}
-/* 
-.usage{
-    background: #83fca7;
-    margin-bottom: 5%;
-} */
 
-.best-model{
-    margin-top: 2%;
-    margin-bottom: 5%;
-}
-
-.grp-billcomparison{
+.grp-specialeventbill{
     width: 60%;
+    margin-top: 5%;
     margin-bottom: 5%;
     text-align: center;
     background: #ffffff;
@@ -27,7 +13,7 @@
     transition: all 0.3s ease-in-out;    
 }
 
-.main-title{
+.main-title-specialevent{
     display: inline-block;  
     padding: 1%;
     border-radius: 30px;
@@ -38,38 +24,29 @@
     margin-left: 10%;
 }
 
-.btn-tou{
+.btn-tou-special{
     margin: 5% ;
     margin-bottom: none;
     font-size: 120%;
 }
 
-.btn-fixed{
+.btn-fixed-special{
     margin: 5% ;
     margin-bottom: none;
     font-size: 120%;
 }
 
-.btn-suggest{
+.btn-suggest-special{
     margin: 2% ;
     margin-bottom: none;
     font-size: 120%;
 }
 
-.frm-billcomparison{
+.frm-specialeventbill{
     align-items: center;
     margin-left: 25%;
 }
 
-.add-new-button{
-    margin-left: 62%;
+.total-unit{
+    margin-top: 25%;
 }
-
-
-.calculate-button{
-    margin-left: 80%;
-    margin-top: 40px;
-    width: 20%;
-    height: 50px;
-}
-    
