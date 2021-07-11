@@ -41,6 +41,10 @@ export default function SignUpForm() {
 
     };
 
+    const checkPassword = (e) => {
+        setUserpasswordReg(e.target.value);
+    }
+
 
     return (
 
@@ -69,11 +73,11 @@ export default function SignUpForm() {
 
                     <div className="form-group">
 
-                        <input type="password" name="password" className="form-control " placeholder="Enter password" required onChange={(e) => { setConpasswordReg(e.target.value); }} />
+                        <input type="password" name="password" className="form-control " placeholder="Enter password" required onChange={(e) => { setUserpasswordReg(e.target.value); }} />
                     </div>
                     <div className="form-group">
 
-                        <input type="password" name="confirmPassword" className="form-control " placeholder="Confirm password" required onChange={(e) => { setUserpasswordReg(e.target.value); }} />
+                        <input type="password" name="confirmPassword" className="form-control " placeholder="Confirm password" required onChange={(e) => { checkPassword(e.target.value); }} />
                     </div>
                     <button type="submit" className="submitbtn">Sign Up</button>
 
