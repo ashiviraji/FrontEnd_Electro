@@ -11,7 +11,7 @@ function SpecialEventBillPlans() {
         <div id="special-bill-plans-title-heading">
           <label>MY SPECIAL EVENT BILL PLANS</label>
         </div>
-        <Link to="/manage-bill">
+        <Link to="/special-event-new-bill">
           <button className="add-new-bill-plan">
             <RiFileAddLine
               style={{ width: "25px", height: "25px" }}

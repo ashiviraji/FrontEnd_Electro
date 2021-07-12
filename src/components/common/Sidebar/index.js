@@ -6,6 +6,7 @@ import { RiInformationLine } from "react-icons/ri";
 
 import { AiOutlineBook } from "react-icons/ai";
 import { Route } from "react-router-dom";
+import {ImInsertTemplate} from "react-icons/im";
 import { GiTeamIdea } from "react-icons/gi";
 import {RiDashboardLine} from "react-icons/ri";
 import { RiBillLine } from "react-icons/ri";
@@ -27,9 +28,13 @@ import deviceWiseFixedSeperate from "../../../views/customer/deviceWiseFixedUsag
 import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate";
 import SpecialEventDeviceUsage from "../../../views/customer/SpecialEventDeviceUsage";
 import TOUEventForm from "../../../views/customer/TOUEventForm";
+import {GrObjectUngroup} from "react-icons/gr";
 
 import DevicewiseChart from "../../../views/customer/devicewiseChartTOU";
 import DevicewiseChartFixed from "../../../views/customer/devicewiseChartFixed"
+import SpecialEventFixedDeviceWise from "../../../views/customer/SpecialEventDeviceWiseFixed";
+import  SpecialEventTouDeviceWise from "../../../views/customer/SpecialEventDeviceWiseTOU";
+import AddSpecialEventBillPlan from "../../../views/customer/AddSpecialEvent"
 import BillMoreDetails from "../../../views/customer/BillMoreDetails";
 
 import "../../../assets/css/Sidebar-user.css";
@@ -81,7 +86,7 @@ const Sidebar = ({ show }) => {
 
                 <List>
                   <LinkList to="/my-bill-plans">
-                    <RiInformationLine />
+                    <ImInsertTemplate style={{color:"White"}} />
                     &nbsp;&nbsp;&nbsp; My Bill Plans
                   </LinkList>
                 </List>
@@ -203,6 +208,26 @@ const Sidebar = ({ show }) => {
                 exact={true}
                 component={TOUEventForm}
               />
+
+             <Route
+                path="/special-tou-device-wise"
+                exact={true}
+                component={SpecialEventTouDeviceWise}
+              />
+
+<Route
+                path="/special-fixed-device-wise"
+                exact={true}
+                component={SpecialEventFixedDeviceWise}
+              />
+
+
+
+               <Route
+                path="/special-event-new-bill"
+                exact={true}
+                component={AddSpecialEventBillPlan}
+                />
               <Route
                 path="/Bill-More-Details"
                 exact={true}
