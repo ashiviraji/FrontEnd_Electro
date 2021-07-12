@@ -84,6 +84,51 @@ export default function ManageCebEngineer() {
           </div>
         </div>
 
+        <div class="row mb-3">
+          <label for="address" class="col-sm-2 col-form-label" align="left">
+            <b>Address</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              value="Pannipitiya, Colombo"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="nicnumber" class="col-sm-2 col-form-label" align="left">
+            <b>NIC Number</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="nicnumber"
+              value="981234567V"
+              disabled
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="designation" class="col-sm-2 col-form-label" align="left">
+            <b>Designation</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="designation"
+              value="CEB Engineer"
+              disabled
+            />
+          </div>
+        </div>
+
         <div className="row mb-3">
           <label for="image" className="col-sm-2 col-form-label" align="left">
             <b>Image</b>

@@ -1,6 +1,6 @@
 import React from "react";
 import "../../assets/css/Admin/admin.css";
-import Engineer1 from "../../assets/img/CEBEngineer1.png";
+import Engineer1 from "../../assets/img/engineer1.png";
 import { GrUserAdd } from "react-icons/gr";
 import { NavLink } from "../common/Sidebar-admin/SidebarElement";
 
@@ -80,6 +80,51 @@ export default function ManageCebEngineer() {
               id="contactnumber"
               value="078 344 1655"
               required
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="address" class="col-sm-2 col-form-label" align="left">
+            <b>Address</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              value="Akuress, Matara"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="nicnumber" class="col-sm-2 col-form-label" align="left">
+            <b>NIC Number</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="nicnumber"
+              value="961234567V"
+              disabled
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="designation" class="col-sm-2 col-form-label" align="left">
+            <b>Designation</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="designation"
+              value="CEB Engineer"
+              disabled
             />
           </div>
         </div>
