@@ -14,6 +14,7 @@ export default function SignUpForm() {
     const [conpasswordReg, setConpasswordReg] = useState("");
     const [emailWarningReg, setemailWarningReg] = useState("");
     const [PassWarningReg, setPassWarningReg] = useState("");
+    const [btnEnable, setbtnEnable] = useState("true");
 
     let history = useHistory();
 
@@ -45,12 +46,14 @@ export default function SignUpForm() {
     const checkPassword = (e) => {
         e.preventDefault();
         const conPass = e.target.value;
-
+        // setbtnEnable(false)
         if (userpasswordReg != conPass) {
-            setPassWarningReg("Invalid Password")
+            setPassWarningReg("Invalid Confirm Password");
+            setbtnEnable(true)
         } else {
             setPassWarningReg("")
             setConpasswordReg(conPass);
+            setbtnEnable(false)
         }
     }
 
@@ -91,7 +94,7 @@ export default function SignUpForm() {
                     <div>
                         <p style={{ color: "red", float: "left", fontSize: 13, marginTop: 17 }}>{PassWarningReg}</p>
                     </div>
-                    <button type="submit" className="submitbtn">Sign Up</button>
+                    <button type="submit" className="submitbtn" disabled={btnEnable} >Sign Up</button>
 
                     <p className="forgot-password ">
                         Already registered<Link className="nav-link" to="/sign-in">sign in?</Link>
