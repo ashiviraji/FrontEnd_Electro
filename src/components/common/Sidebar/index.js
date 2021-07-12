@@ -31,6 +31,7 @@ import TOUEventForm from "../../../views/customer/TOUEventForm";
 import DevicewiseChart from "../../../views/customer/devicewiseChartTOU";
 import SpecialEventBill from "../../../views/customer/SpecialEventBill"
 import DevicewiseChartFixed from "../../../views/customer/devicewiseChartFixed"
+import BillMoreDetails from "../../../views/customer/BillMoreDetails";
 
 import "../../../assets/css/Sidebar-user.css";
 
@@ -202,6 +203,11 @@ const Sidebar = ({ show }) => {
                 path="/TOU-Event-Form"
                 exact={true}
                 component={TOUEventForm}
+              />
+              <Route
+                path="/Bill-More-Details"
+                exact={true}
+                component={BillMoreDetails}
               />
               
             </div>
