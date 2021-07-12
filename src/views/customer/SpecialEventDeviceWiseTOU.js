@@ -1,8 +1,8 @@
 import React,{useState}from 'react';
 
 
-import SpecialEventFixed   from "../../components/Customer/SpecialEventFixed";
 
+import SpecialEventTOU from "../../components/Customer/SpecialEventTOU";
 
 
 
@@ -42,7 +42,7 @@ export default function SpecialEventDeviceUsage() {
       
   </div>
   
-    <SpecialEventFixed/>
+    <SpecialEventTOU/>
 </div>
   );
         

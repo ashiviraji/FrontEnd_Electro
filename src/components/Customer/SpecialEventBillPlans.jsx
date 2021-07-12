@@ -62,12 +62,12 @@ const useStyles = makeStyles({
 });
 
 const cardDetails = [
-  { Bill_Title: "Special Event Plan 1", Choose_model: "TOU Model", Duration:"1 days", moreDetails:"TOU-Event-Form"},
-  { Bill_Title: "Special Event Plan 2", Choose_model: "Fixed Model",Duration:"2 days", moreDetails:"special-event-fixed" },
-  { Bill_Title: "Special Event Plan 3", Choose_model: "Fixed Model", Duration:"2 days", moreDetails:"special-event-fixed" },
-  { Bill_Title: "Special Event Plan 4", Choose_model: "TOU Model",Duration:"1 days", moreDetails:"TOU-Event-Form" },
-  { Bill_Title: "Special Event Plan 5", Choose_model:"Fixed Model", Duration:"2 days", moreDetails:"special-event-fixed" },
-  { Bill_Title: "Special Event Plan 6", Choose_model: "TOU Model", Duration:"1 days", moreDetails:"TOU-Event-Form" },
+  { Bill_Title: "Special Event Plan 1", Choose_model: "TOU Model", Duration:"1 days", moreDetails:"TOU-Event-Form",device_wise:"/special-tou-device-wise"},
+  { Bill_Title: "Special Event Plan 2", Choose_model: "Fixed Model",Duration:"2 days", moreDetails:"special-event-fixed",device_wise:"/special-fixed-device-wise" },
+  { Bill_Title: "Special Event Plan 3", Choose_model: "Fixed Model", Duration:"2 days", moreDetails:"special-event-fixed",device_wise:"/special-fixed-device-wise" },
+  { Bill_Title: "Special Event Plan 4", Choose_model: "TOU Model",Duration:"1 days", moreDetails:"TOU-Event-Form",device_wise:"/special-tou-device-wise" },
+  { Bill_Title: "Special Event Plan 5", Choose_model:"Fixed Model", Duration:"2 days", moreDetails:"special-event-fixed",device_wise:"/special-fixed-device-wise" },
+  { Bill_Title: "Special Event Plan 6", Choose_model: "TOU Model", Duration:"1 days", moreDetails:"TOU-Event-Form",device_wise:"/special-tou-device-wise" },
 ];
 
 export default function DeviceWisePlans() {
@@ -104,7 +104,7 @@ export default function DeviceWisePlans() {
                 </CardContent>
                 <CardActions>
                   <div className="buttonContainer">
-                    <Link className={classes.linkStyle} to="/special-event-device-wise">
+                    <Link className={classes.linkStyle} to={card.device_wise}>
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
