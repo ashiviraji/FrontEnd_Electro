@@ -1,13 +1,13 @@
 import React from "react";
 import "../../assets/css/CEBEngineer/engineer.css";
-import CEBEngineer1 from "../../assets/img/CEBEngineer1.png";
+import Engineer1 from "../../assets/img/engineer1.png";
 
 export default function EngineerUserProfile() {
   return (
     <div className="body-engineer">
       <form>
         <div className="ceb-engineer-heading">
-          <h1 align="center">User Profile</h1>
+          <h2 align="center">USER PROFILE</h2>
         </div>
 
         <div class="row mb-3">
@@ -74,7 +74,7 @@ export default function EngineerUserProfile() {
           </div>
         </div>
 
-        <div class="row mb-3">
+        {/* <div class="row mb-3">
           <label for="username" class="col-sm-2 col-form-label" align="left">
             <b>User Name</b>
           </label>
@@ -87,9 +87,9 @@ export default function EngineerUserProfile() {
               required
             />
           </div>
-        </div>
+        </div> */}
 
-        <div class="row mb-3">
+        {/* <div class="row mb-3">
           <label for="password" class="col-sm-2 col-form-label" align="left">
             <b>Password</b>
           </label>
@@ -102,6 +102,51 @@ export default function EngineerUserProfile() {
               required
             />
           </div>
+        </div> */}
+
+        <div class="row mb-3">
+          <label for="address" class="col-sm-2 col-form-label" align="left">
+            <b>Address</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              value="Akuress, Matara"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="nicnumber" class="col-sm-2 col-form-label" align="left">
+            <b>NIC Number</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="nicnumber"
+              value="961234567V"
+              disabled
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="designation" class="col-sm-2 col-form-label" align="left">
+            <b>Designation</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="designation"
+              value="CEB Engineer"
+              disabled
+            />
+          </div>
         </div>
 
         <div class="row mb-3">
@@ -109,7 +154,7 @@ export default function EngineerUserProfile() {
             <b>Image</b>
           </label>
           <div className="w-50 p-1">
-            <img src={CEBEngineer1} height={150} width={150} />
+            <img src={Engineer1} height={150} width={150} />
           </div>
         </div>
 

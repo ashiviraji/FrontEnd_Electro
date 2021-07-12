@@ -143,7 +143,7 @@ export default function StickyHeadTable() {
       <h2 style={{marginLeft:"3%"}}>TOU Model</h2>
        <label className="duration-label">Duration : 1 days</label>
       <div className="button-device-wise">
-        <Link to="/devicewise-chart" className={classes.linkchartButton}>
+        <Link to="/devicewise-chart-TOU" className={classes.linkchartButton}>
           <Button
             variant="contained"
             id="device-wise-btn"

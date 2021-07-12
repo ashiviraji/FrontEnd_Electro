@@ -1,65 +1,57 @@
-
-.engineer-card-title-name{
-    font-size: 20px;
-    color: white;
-    
+.engineer-card-title-name {
+  font-size: 20px;
+  color: white;
 }
 
-.engineer-svg-icon{
-   color: white;
-   margin-left: 10px;
-   width:48px;
-   height: 48px;
-   
+.engineer-svg-icon {
+  color: white;
+  margin-left: 10px;
+  width: 48px;
+  height: 48px;
 }
 
-.engineer-numeric-value{
-    font-size: 30px;
-    color: white;
-    margin-left: 140px;
-
-  
+.engineer-numeric-value {
+  font-size: 30px;
+  color: white;
+  margin-left: 140px;
 }
 
-.engineer-user-cards-area{
-    display: flex;
-    
-    
+.engineer-user-cards-area {
+  display: flex;
 }
-.engineer-image-details{
-    margin-top: 50px;
-    /* justify-content: center; */
-    width: 40%;
-    margin-left: 26%;
+.engineer-image-details {
+  margin-top: 50px;
+  /* justify-content: center; */
+  width: 40%;
+  margin-left: 26%;
 }
-.engineer-home-user-main{
-    border-color: grey;
-    width: 85%;
-    margin-left: 8%;
-    margin-top: 5px;
-    border-radius: 8px;
-    /* box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
-
+.engineer-home-user-main {
+  border-color: grey;
+  width: 90%;
+  margin-left: 3%;
+  border-radius: 8px;
+  /* box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
 }
-.engineer-welcome-note{
-    font-size: 40px;
-    margin-top: 25px;
-    font-weight: 400;
+.engineer-welcome-note {
+  font-size: 40px;
+  margin-top: 25px;
+  font-weight: 600;
 }
 
-#engineer-card1:hover{
-    background-color: #50A7F7  ;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-
+#engineer-card1:hover {
+  background-color: #50a7f7;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-#engineer-card2:hover{
-    background-color:  #FB5626  ;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+#engineer-card2:hover {
+  background-color: #fb5626;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-#engineer-card3:hover{
-    background-color: #F4BA1E; 
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-
+#engineer-card3:hover {
+  background-color: #f4ba1e;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }

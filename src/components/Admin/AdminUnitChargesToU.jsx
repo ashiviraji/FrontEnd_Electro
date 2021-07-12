@@ -12,7 +12,7 @@ export default function AdminUnitChargesToU(props) {
       <div id="admin-tou-title-heading">
         <h2>
           <b>
-            <label>ToU BILLING MODEL</label>
+            <label>TOU BILLING MODEL</label>
           </b>
         </h2>
       </div>

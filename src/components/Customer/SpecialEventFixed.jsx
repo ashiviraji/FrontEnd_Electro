@@ -101,7 +101,7 @@ export default function StickyHeadTable() {
         <label className="duration-label">Duration : 2 days</label>
        
       <div className="button-device-wise">
-        <Link to="/devicewise-chart" className={classes.linkchartButton}> 
+        <Link to="/devicewise-chart-fixed" className={classes.linkchartButton}> 
           <Button
             variant="contained"
             id="device-wise-btn"

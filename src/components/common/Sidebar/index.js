@@ -31,11 +31,11 @@ import TOUEventForm from "../../../views/customer/TOUEventForm";
 import {GrObjectUngroup} from "react-icons/gr";
 
 import DevicewiseChart from "../../../views/customer/devicewiseChartTOU";
-import SpecialEventBill from "../../../views/customer/SpecialEventBill"
 import DevicewiseChartFixed from "../../../views/customer/devicewiseChartFixed"
 import SpecialEventFixedDeviceWise from "../../../views/customer/SpecialEventDeviceWiseFixed";
 import  SpecialEventTouDeviceWise from "../../../views/customer/SpecialEventDeviceWiseTOU";
 import AddSpecialEventBillPlan from "../../../views/customer/AddSpecialEvent"
+import BillMoreDetails from "../../../views/customer/BillMoreDetails";
 
 import "../../../assets/css/Sidebar-user.css";
 
@@ -227,6 +227,11 @@ const Sidebar = ({ show }) => {
                 path="/special-event-new-bill"
                 exact={true}
                 component={AddSpecialEventBillPlan}
+                />
+              <Route
+                path="/Bill-More-Details"
+                exact={true}
+                component={BillMoreDetails}
               />
               
             </div>
