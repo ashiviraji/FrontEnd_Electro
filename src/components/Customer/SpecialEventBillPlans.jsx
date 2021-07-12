@@ -62,12 +62,12 @@ const useStyles = makeStyles({
 });
 
 const cardDetails = [
-  { Bill_Title: "Bill Plan 1", TOU_Model_Amount: "LKR  1500", Fixed_Model_Units: "20",Duration:"3 days"},
-  { Bill_Title: "Bill Plan 2", TOU_Model_Amount: "LKR  800", Fixed_Model_Units: "12",Duration:"2 days" },
-  { Bill_Title: "Bill Plan 3", TOU_Model_Amount: "LKR  1200", Fixed_Model_Units:"16",Duration:"4 days" },
-  { Bill_Title: "Bill Plan 4", TOU_Model_Amount: "LKR  500",Fixed_Model_Units: "5",Duration:"5 days" },
-  { Bill_Title: "Bill Plan 5", TOU_Model_Amount: "LKR  1000", Fixed_Model_Units: "11",Duration:"2 days" },
-  { Bill_Title: "Bill Plan 6", TOU_Model_Amount: "LKR  4500", Fixed_Model_Units: "30",Duration:"5 days" },
+  { Bill_Title: "Special Event  Plan 1", Choose_model: "TOU Model", Duration:"3 days"},
+  { Bill_Title: "Bill Plan 2", Choose_model: "Fixed Model",Duration:"2 days" },
+  { Bill_Title: "Bill Plan 3", Choose_model: "Fixed Model", Duration:"4 days" },
+  { Bill_Title: "Bill Plan 4", Choose_model: "TOU Model",Duration:"5 days" },
+  { Bill_Title: "Bill Plan 5", Choose_model:"Fixed Model", Duration:"2 days" },
+  { Bill_Title: "Bill Plan 6", Choose_model: "TOU Model", Duration:"5 days" },
 ];
 
 export default function DeviceWisePlans() {
@@ -98,8 +98,7 @@ export default function DeviceWisePlans() {
                     <img src={img1} alt="Image1" className="card-img-top" />
                   </div>
                   <div>
-                    <label>TOU Model Amount : {card.TOU_Model_Amount}</label>
-                    <label>Fixed Model Units :  {card.Fixed_Model_Units}</label>
+                    <label>Your Selected Model : {card.Choose_model}</label>
                     <label>Duration :  {card.Duration}</label>
                   </div>
                 </CardContent>

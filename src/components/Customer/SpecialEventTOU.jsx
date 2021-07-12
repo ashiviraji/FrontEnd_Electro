@@ -88,7 +88,7 @@ function createData(
 }
 
 const rows = [
-  createData(1, "Generator", 1, 1000, 500, 300, 30,  1800),
+  createData(1, "Freezer", 1, 1000, 500, 300, 30,  1800),
   createData(2, "Flash Light", 4, 400, 200, 100, 12,  700),
   createData(3, "Guitar", 1, 500, 300, 200, 14,  1000),
   createData(4, "Sound Speakers", 4, 400, 250, 150, 15,  800),

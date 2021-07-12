@@ -47,11 +47,11 @@ function createData(
 }
 
 const rows = [
-  createData(1, "Generator", 1, 20),
+  createData(1, "Freezer", 1, 20),
   createData(2, "Flash Light", 2, 15),
   createData(3, "Guitar", 1, 10),
   createData(4, "Sound Speakers", 2, 20),
-  createData(5, "Micks", 1, 25),
+  createData(5, "Mics", 1, 25),
   createData(6, "Drums", 2,30),
   createData(7, "Coffer Maker", 1,30),
   createData(8, "Juicer", 1,30),
