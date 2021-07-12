@@ -62,12 +62,12 @@ const useStyles = makeStyles({
 });
 
 const cardDetails = [
-  { Bill_Title: "Special Event  Plan 1", Choose_model: "TOU Model", Duration:"3 days"},
-  { Bill_Title: "Bill Plan 2", Choose_model: "Fixed Model",Duration:"2 days" },
-  { Bill_Title: "Bill Plan 3", Choose_model: "Fixed Model", Duration:"4 days" },
-  { Bill_Title: "Bill Plan 4", Choose_model: "TOU Model",Duration:"5 days" },
-  { Bill_Title: "Bill Plan 5", Choose_model:"Fixed Model", Duration:"2 days" },
-  { Bill_Title: "Bill Plan 6", Choose_model: "TOU Model", Duration:"5 days" },
+  { Bill_Title: "Special Event Plan 1", Choose_model: "TOU Model", Duration:"1 days", moreDetails:"TOU-Event-Form"},
+  { Bill_Title: "Special Event Plan 2", Choose_model: "Fixed Model",Duration:"2 days", moreDetails:"special-event-fixed" },
+  { Bill_Title: "Special Event Plan 3", Choose_model: "Fixed Model", Duration:"2 days", moreDetails:"special-event-fixed" },
+  { Bill_Title: "Special Event Plan 4", Choose_model: "TOU Model",Duration:"1 days", moreDetails:"TOU-Event-Form" },
+  { Bill_Title: "Special Event Plan 5", Choose_model:"Fixed Model", Duration:"2 days", moreDetails:"special-event-fixed" },
+  { Bill_Title: "Special Event Plan 6", Choose_model: "TOU Model", Duration:"1 days", moreDetails:"TOU-Event-Form" },
 ];
 
 export default function DeviceWisePlans() {
@@ -114,7 +114,7 @@ export default function DeviceWisePlans() {
                         Device Wise Usage &nbsp;&nbsp;&nbsp;
                       </Button>
                     </Link>
-                    <Link className={classes.linkStyle} to="#">
+                    <Link className={classes.linkStyle} to={card.moreDetails}>
                       <Button
                         className="iconCardsButtons"
                         variant="contained"

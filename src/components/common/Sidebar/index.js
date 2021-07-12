@@ -26,8 +26,7 @@ import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
 import deviceWiseFixedSeperate from "../../../views/customer/deviceWiseFixedUsageSeperate";
 import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate";
 import SpecialEventDeviceUsage from "../../../views/customer/SpecialEventDeviceUsage";
-
-// import BillDetails from "../../../views/customer/BillDetails";
+import TOUEventForm from "../../../views/customer/TOUEventForm";
 
 import DevicewiseChart from "../../../views/customer/devicewiseChartTOU";
 import SpecialEventBill from "../../../views/customer/SpecialEventBill"
@@ -88,15 +87,9 @@ const Sidebar = ({ show }) => {
                 </List>
 
                 <List>
-                  <LinkList to="/special-event-fixed">
+                  <LinkList to="/special-event">
                     <MdEventNote />
                     &nbsp;&nbsp;&nbsp; Special Events
-                  </LinkList>
-                </List>
-                <List>
-                  <LinkList to="/my-special-event-plans">
-                    <MdEventNote />
-                    &nbsp;&nbsp;&nbsp; My Special Events Plans
                   </LinkList>
                 </List>
 
@@ -163,7 +156,7 @@ const Sidebar = ({ show }) => {
 
 
              <Route
-                path="/my-special-event-plans"
+                path="/special-event"
                 exact={true}
                 component={SpecialEventMyBillPlans}
               />
@@ -204,6 +197,11 @@ const Sidebar = ({ show }) => {
                 path="/devicewise-chart-fixed"
                 exact={true}
                 component={DevicewiseChartFixed}
+              />
+              <Route
+                path="/TOU-Event-Form"
+                exact={true}
+                component={TOUEventForm}
               />
               
             </div>
