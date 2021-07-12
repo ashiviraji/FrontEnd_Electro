@@ -114,7 +114,7 @@ export default function DeviceWisePlans() {
                         Device Wise Usage &nbsp;&nbsp;&nbsp;
                       </Button>
                     </Link>
-                    <Link className={classes.linkStyle} to="#">
+                    <Link className={classes.linkStyle} to="/Bill-More-Details">
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
