@@ -26,7 +26,7 @@
     
 }
 .image-details{
-    margin-top: 50px;
+    /* margin-top: 50px; */
     /* justify-content: center; */
     width: 40%;
     margin-left: 26%;
@@ -35,14 +35,14 @@
     border-color: grey;
     width: 85%;
     margin-left: 8%;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     border-radius: 8px;
     /* box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%); */
 
 }
 .welcome-note{
     font-size: 40px;
-    margin-top: 25px;
+    /* margin-top: 25px; */
     font-weight: 400;
 }
 

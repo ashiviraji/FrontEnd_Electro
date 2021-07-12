@@ -120,7 +120,6 @@ const SidebarEngineer = ({ show }) => {
                 exact={true}
                 component={InformationTable}
               />
-
               <Route
                 path="/dashboard-engineer"
                 exact={true}

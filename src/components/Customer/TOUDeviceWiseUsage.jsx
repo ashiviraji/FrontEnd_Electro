@@ -140,7 +140,7 @@ export default function StickyHeadTable() {
   return (
     <Paper className={classes.root}>
       <div className="button-device-wise">
-        <Link to="/devicewise-chart" className={classes.linkchartButton}>
+        <Link to="/devicewise-chart-TOU" className={classes.linkchartButton}>
           <Button
             variant="contained"
             id="device-wise-btn"

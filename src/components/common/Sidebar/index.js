@@ -27,12 +27,11 @@ import deviceWiseFixedSeperate from "../../../views/customer/deviceWiseFixedUsag
 import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate";
 import SpecialEventDeviceUsage from "../../../views/customer/SpecialEventDeviceUsage";
 
-
-
 // import BillDetails from "../../../views/customer/BillDetails";
 
-import DevicewiseUsageCharts from "../../../views/customer/devicewiseChart"
-
+import DevicewiseChart from "../../../views/customer/devicewiseChartTOU";
+import SpecialEventBill from "../../../views/customer/SpecialEventBill"
+import DevicewiseChartFixed from "../../../views/customer/devicewiseChartFixed"
 
 import "../../../assets/css/Sidebar-user.css";
 
@@ -87,7 +86,7 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp; My Bill Plans
                   </LinkList>
                 </List>
-             
+
                 <List>
                   <LinkList to="/special-event-fixed">
                     <MdEventNote />
@@ -102,12 +101,11 @@ const Sidebar = ({ show }) => {
                 </List>
 
                 <List>
-                <LinkList to="/user-userprofile">
-                  <BiUserCircle />
-                  &nbsp;&nbsp;&nbsp;User Profile
-                </LinkList>
-              </List>
-
+                  <LinkList to="/user-userprofile">
+                    <BiUserCircle />
+                    &nbsp;&nbsp;&nbsp;User Profile
+                  </LinkList>
+                </List>
 
                 <List>
                   <LinkList to="/information">
@@ -115,8 +113,6 @@ const Sidebar = ({ show }) => {
                     &nbsp;&nbsp;&nbsp; Information
                   </LinkList>
                 </List>
-
-                
               </UlList>
             </SideNav>
           </div>
@@ -177,13 +173,13 @@ const Sidebar = ({ show }) => {
                 exact={true}
                 component={SpecialEventDeviceUsage}
               /> 
-               <Route
+               
+              <Route
                 path="/device-wise-seperate"
                 exact={true}
                 component={deviceWiseFixedSeperate}
               />
 
-              
               <Route
                 path="/bill-comparison"
                 exact={true}
@@ -195,15 +191,21 @@ const Sidebar = ({ show }) => {
                 component={InformationTable}
               />
               <Route
-                path="/devicewise-chart"
+                path="/devicewise-chart-TOU"
                 exact={true}
-                component={DevicewiseUsageCharts}
+                component={DevicewiseChart}
               />
               <Route
-              path="/user-userprofile"
-              exact={true}
-              component={AdminUserProfile}
-            />
+                path="/user-userprofile"
+                exact={true}
+                component={AdminUserProfile}
+              />
+              <Route
+                path="/devicewise-chart-fixed"
+                exact={true}
+                component={DevicewiseChartFixed}
+              />
+              
             </div>
           </div>
         </div>
