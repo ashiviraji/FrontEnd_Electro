@@ -1,7 +1,7 @@
 import React from "react";
-import Admin from "../../../assets/img/admin2.png";
+import Admin from "../../../assets/img/Admin.png";
 import active from "../../../assets/img/active.png";
-import {RiDashboardLine} from "react-icons/ri";
+import { RiDashboardLine } from "react-icons/ri";
 
 import { FiHome } from "react-icons/fi";
 import { AiOutlineDollar } from "react-icons/ai";
@@ -57,7 +57,7 @@ const SidebarAdmin = ({ show }) => {
             <UlList>
               <List>
                 <LinkList to="/dashboard-admin">
-                  <RiDashboardLine/>
+                  <RiDashboardLine />
                   &nbsp;&nbsp;&nbsp;Dashboard
                 </LinkList>
               </List>
@@ -145,7 +145,7 @@ const SidebarAdmin = ({ show }) => {
               exact={true}
               component={AdminUnitCharges0to60}
             />
-              <Route
+            <Route
               path="/dashboard-admin"
               exact={true}
               component={DashboardAdmin}
