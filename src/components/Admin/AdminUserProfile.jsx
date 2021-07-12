@@ -7,7 +7,7 @@ export default function AdminUserProfile() {
     <div className="body-manageengineer">
       <form>
         <div className="ceb-heading">
-          <h3 align="center">USER PROFILE</h3>
+          <h2 align="center">USER PROFILE</h2>
         </div>
 
         <div class="row mb-3">
@@ -74,7 +74,7 @@ export default function AdminUserProfile() {
           </div>
         </div>
 
-        <div class="row mb-3">
+        {/* <div class="row mb-3">
           <label for="username" class="col-sm-2 col-form-label" align="left">
             <b>User Name</b>
           </label>
@@ -87,9 +87,9 @@ export default function AdminUserProfile() {
               required
             />
           </div>
-        </div>
+        </div> */}
 
-        <div class="row mb-3">
+        {/* <div class="row mb-3">
           <label for="password" class="col-sm-2 col-form-label" align="left">
             <b>Password</b>
           </label>
@@ -100,6 +100,51 @@ export default function AdminUserProfile() {
               id="firstname"
               value="123456789"
               required
+            />
+          </div>
+        </div> */}
+
+        <div class="row mb-3">
+          <label for="address" class="col-sm-2 col-form-label" align="left">
+            <b>Address</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              value="Elawella Road, Matara"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="nicnumber" class="col-sm-2 col-form-label" align="left">
+            <b>NIC Number</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="nicnumber"
+              value="971234567V"
+              disabled
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="designation" class="col-sm-2 col-form-label" align="left">
+            <b>Designation</b>
+          </label>
+          <div class="w-50 p-1">
+            <input
+              type="text"
+              class="form-control"
+              id="designation"
+              value="Admin"
+              disabled
             />
           </div>
         </div>

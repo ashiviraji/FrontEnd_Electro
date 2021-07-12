@@ -6,7 +6,7 @@ export default function AddNewCebEngineer() {
     <div className="body-manageengineer">
       <form>
         <div className="ceb-heading">
-          <h1 align="center">Add New CEB Engineer</h1>
+          <h2 align="center">ADD NEW CEB ENGINEER</h2>
         </div>
 
         <div class="row mb-3">
@@ -51,6 +51,24 @@ export default function AddNewCebEngineer() {
               id="contactnumber"
               required
             />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="address" class="col-sm-2 col-form-label" align="left">
+            <b>Address</b>
+          </label>
+          <div class="w-50 p-1">
+            <input type="text" class="form-control" id="address" required />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label for="nicnumber" class="col-sm-2 col-form-label" align="left">
+            <b>NIC Number</b>
+          </label>
+          <div class="w-50 p-1">
+            <input type="text" class="form-control" id="nicnumber" required />
           </div>
         </div>
 
