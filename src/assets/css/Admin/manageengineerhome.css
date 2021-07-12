@@ -1,8 +1,9 @@
 #admin-manage-engineer-home {
   font-weight: bold;
-  margin-top: 3%;
+  margin-top: 2%;
   width: 70%;
   margin-left: 30%;
+  font-weight: bold;
 }
 
 .admin-manage-card {
@@ -65,6 +66,6 @@
   background-color: #00af86;
 }
 
-.link-moredetails{
+.link-moredetails {
   text-decoration: none;
 }
