@@ -109,9 +109,9 @@ const useStyles = makeStyles({
     marginTop: "3%",
     paddingTop: "20px",
   },
-  container: {
-    maxHeight: 350,
-  },
+  // container: {
+  //   maxHeight: 350,
+  // },
   linkchartButton: {
     textDecoration:"none",
   }
@@ -140,9 +140,10 @@ export default function StickyHeadTable() {
 
   return (
     <Paper className={classes.root}>
-       <label className="duration-label">Duration : 3 days</label>
+      <h2 style={{marginLeft:"3%"}}>TOU Model</h2>
+       <label className="duration-label">Duration : 1 days</label>
       <div className="button-device-wise">
-        <Link to="/devicewise-chart" className={classes.linkchartButton}>
+        <Link to="/devicewise-chart-TOU" className={classes.linkchartButton}>
           <Button
             variant="contained"
             id="device-wise-btn"

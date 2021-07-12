@@ -108,9 +108,9 @@ const useStyles = makeStyles({
     marginTop: "3%",
     paddingTop: "20px",
   },
-  container: {
-    maxHeight: 350,
-  },
+  // container: {
+  //   maxHeight: 350,
+  // },
   linkchartButton: {
     textDecoration:"none",
   }

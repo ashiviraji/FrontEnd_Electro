@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const noOfDays = 1;
+let noOfDays = 1;
 const noOfUnitPeak = 20;
 const noOfUnitOffPeak = 13;
 const noOfUnitDay = 17;
@@ -40,7 +40,7 @@ export default function TOUEventForm() {
                   <Form.Control
                     type="number"
                     placeholder="Number of Days"
-                    value={noOfDays}
+                    defaultValue={noOfDays}
                   />
                 </Col>
               </Row>
