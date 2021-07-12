@@ -2,18 +2,21 @@ import { Paper } from "@material-ui/core";
 import React from "react";
 import Fixed_event from "../../components/Customer/Special_Event/Fixed_event";
 import { makeStyles } from "@material-ui/core";
-import Controls from "../../components/Customer/bill_control/Controls";
-import { right } from "@popperjs/core";
-import { Label } from "@material-ui/icons";
 import { Col, Form, Row } from "react-bootstrap";
-import TOU_Event from "../../components/Customer/Special_Event/TOU_Event";
+
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
     margin: theme.spacing(5),
     padding: theme.spacing(3),
   },
+  Rowinform: {
+    margin: "10px"
+}
 }));
+
+const noOfDays = 2;
+const addtionalUnits =43;
 
 export default function FixedEentForm() {
   const classes = useStyles();
@@ -26,7 +29,7 @@ export default function FixedEentForm() {
         <Paper className={classes.pageContent}>
           <Form className={classes.formLabelStyle}>
             <Form.Group>
-              <Row>
+              <Row className={classes.Rowinform}>
                 <Col sm="4"></Col>
                 <Form.Label column sm="4">
                   Enter The Number Of Days
@@ -35,37 +38,28 @@ export default function FixedEentForm() {
                   <Form.Control
                     type="number"
                     placeholder="Number of Days"
+                    value={noOfDays}
                   />
                 </Col>
               </Row>
-            </Form.Group>
-          </Form>
-        </Paper>
-        
-        <h1>----------------------------------------------------------</h1>
-        
-        <h1>TOU Model</h1>
-        <TOU_Event/>
-        <Paper className={classes.pageContent}>
-          <Form className={classes.formLabelStyle}>
-            <Form.Group>
-              <Row>
+              <Row className={classes.Rowinform}>
                 <Col sm="4"></Col>
-                <Form.Label column sm="4">
-                  Enter The Number Of Days
+                <Form.Label column sm="4" style={{fontWeight:"550"}}>
+                Additional Units for the Event
                 </Form.Label>
                 <Col sm="4">
                   <Form.Control
-                    type="number"
-                    placeholder="Number of Days"
+                    type="text"
+                    value={addtionalUnits}
+                    disabled
                   />
                 </Col>
               </Row>
             </Form.Group>
           </Form>
         </Paper>
-
-      </Paper>
+        </Paper>
+      
     </div>
   );
 }
