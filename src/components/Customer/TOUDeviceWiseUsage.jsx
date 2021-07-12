@@ -14,50 +14,43 @@ import "../../assets/css/Customer/deviceWiseFixed.css";
 import { Link } from "react-router-dom";
 
 const columns = [
-  { id: "device_id", label: "#", minWidth: 90 },
-  { id: "applicance", label: "Applicance", minWidth: 100 },
+  { id: "device_id", label: "#", minWidth: 40 },
+  { id: "applicance", label: "Applicance", minWidth: 120 },
 
   {
     id: "quantity",
     label: "Quantity",
-    minWidth: 40,
+    minWidth: 30,
     align: "center",
     format: (value) => value.toLocaleString("en-US"),
   },
-  {
-    id: "total_units",
-    label: "Total units",
-    minWidth: 160,
-    align: "center",
-    // format: (value) => value.toFixed(2),
-  },
-
+  
   {
     id: "peak_amount",
     label: "Peak Amount   (LKR)",
     minWidth: 160,
     align: "center",
-    // format: (value) => value.toFixed(2),
+    format: (value) => value.toFixed(2),
   },
 
   {
     id: "day_amount",
     label: "Day amount  (LKR)",
-    minWidth: 170,
+    minWidth: 150,
     align: "center",
     format: (value) => value.toFixed(2),
   },
   {
     id: "off_peak_amount",
     label: "off peak  (LKR)",
-    minWidth: 170,
+    minWidth: 150,
     align: "center",
     format: (value) => value.toFixed(2),
   },
   {
     id: "total_units",
     label: "Total units",
-    minWidth: 160,
+    minWidth: 100,
     align: "center",
     // format: (value) => value.toFixed(2),
   },
@@ -94,7 +87,7 @@ function createData(
 }
 
 const rows = [
-  createData(1, "Television", 1, 600, 400, 300, 100, 200, 1300),
+  createData(1, "Television", 1, 600, 400, 300, 100, 1300),
   createData(2, "Rice Cooker", 1, 800, 300, 200, 200, 1300),
   createData(3, "Radio", 1, 100, 500, 800, 220, 1440),
   createData(4, "Blender", 1, 100, 890, 780, 210, 1340),

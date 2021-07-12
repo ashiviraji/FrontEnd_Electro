@@ -30,11 +30,11 @@ const DashbordNavbar = ({ toggle }) => {
                         <NavItem>
                             <NavLinks to="contactus">Contact Us</NavLinks>
                         </NavItem>
-                        <NavItem>
+                        {/* <NavItem>
                             <NavBtn>
-                                <NavBtnLinks to="/dashboard-user">Dashboard</NavBtnLinks>
+                                <NavBtnLinks to="/information">Information</NavBtnLinks>
                             </NavBtn>
-                        </NavItem>
+                        </NavItem> */}
                         <NavItem>
                             <NavBtn>
                                 <NavBtnLinks to="/log-out">Log Out</NavBtnLinks>

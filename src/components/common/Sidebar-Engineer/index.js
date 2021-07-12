@@ -1,9 +1,10 @@
 import React from "react";
-import CEBEngineer1 from "../../../assets/img/CEBEngineer1.png";
+import CEBEngineer1 from "../../../assets/img/engineer1.png";
 import active from "../../../assets/img/active.png";
-
+import {RiDashboardLine} from "react-icons/ri";
 import { FiHome } from "react-icons/fi";
 import { AiOutlineDollar } from "react-icons/ai";
+
 
 import { BiUserCircle } from "react-icons/bi";
 import { RiInformationLine } from "react-icons/ri";
@@ -53,7 +54,7 @@ const SidebarEngineer = ({ show }) => {
               <UlList>
                 <List>
                   <LinkList to="/dashboard-engineer">
-                    <FiHome />
+                    <RiDashboardLine />
                     &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
                 </List>
