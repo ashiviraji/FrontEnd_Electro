@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CalculateBillForm from "./CalculateBillForm";
 import { Paper, makeStyles } from "@material-ui/core";
-import UseTable from "../../components/Customer/useTable";
+import UseTable from "../../components/Customer/UseTable";
 import * as DeviceBill from "./DeviceBill";
 import { TableBody } from "@material-ui/core";
 import { TableCell } from "@material-ui/core";

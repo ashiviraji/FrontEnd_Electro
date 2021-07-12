@@ -1,6 +1,7 @@
 import React from "react";
-import Admin from "../../../assets/img/Admin.png";
+import Admin from "../../../assets/img/admin2.png";
 import active from "../../../assets/img/active.png";
+import {RiDashboardLine} from "react-icons/ri";
 
 import { FiHome } from "react-icons/fi";
 import { AiOutlineDollar } from "react-icons/ai";
@@ -56,7 +57,7 @@ const SidebarAdmin = ({ show }) => {
             <UlList>
               <List>
                 <LinkList to="/dashboard-admin">
-                  <FiHome />
+                  <RiDashboardLine/>
                   &nbsp;&nbsp;&nbsp;Dashboard
                 </LinkList>
               </List>

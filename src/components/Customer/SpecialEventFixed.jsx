@@ -32,13 +32,7 @@ const columns = [
     align: "center",
     // format: (value) => value.toFixed(2),
   },
-  {
-    id: "total_amount",
-    label: "Total amount  (LKR)",
-    minWidth: 170,
-    align: "center",
-    format: (value) => value.toFixed(2),
-  },
+ 
 ];
 
 function createData(
@@ -49,22 +43,20 @@ function createData(
   total_amount
 ) {
   //   const density = population / size;
-  return { device_id, applicance, quantity, total_units, total_amount };
+  return { device_id, applicance, quantity, total_units };
 }
 
 const rows = [
-  createData(1, "Television", 1, 100, 1340),
-  createData(2, "Rice Cooker", 1, 100, 1340),
-  createData(3, "Radio", 1, 100, 1340),
-  createData(4, "Blender", 1, 100, 1340),
-  createData(5, "Washing Machine", 1, 100, 1340),
-  createData(6, "Multi Cooker", 1, 100, 1340),
-  createData(7, "Computer", 1, 100, 1340),
-  createData(8, "Laptop", 1, 100, 1340),
-  createData(9, "Table Fan", 1, 100, 1340),
-  createData(10, "Iron", 1, 100, 1340),
-  createData(11, "Oven", 1, 100, 1340),
-  createData(12, "", 1, 100, 1340),
+  createData(1, "Freezer", 1, 20),
+  createData(2, "Flash Light", 2, 15),
+  createData(3, "Guitar", 1, 10),
+  createData(4, "Sound Speakers", 2, 20),
+  createData(5, "Mics", 1, 25),
+  createData(6, "Drums", 2,30),
+  createData(7, "Coffer Maker", 1,30),
+  createData(8, "Juicer", 1,30),
+  createData(9, "Water Pumps", 1,30),
+  
 ];
 
 const useStyles = makeStyles({
@@ -74,9 +66,9 @@ const useStyles = makeStyles({
     marginTop: "3%",
     paddingTop: "20px",
   },
-  // container: {
-  //   maxHeight: 350,
-  // },
+  container: {
+    maxHeight: 350,
+  },
   linkchartButton: {
     textDecoration:"none",
   }
@@ -105,8 +97,9 @@ export default function StickyHeadTable() {
 
   return (
     <Paper className={classes.root}>
+        <label className="duration-label">Duration : 3 days</label>
       <div className="button-device-wise">
-        <Link to="/devicewise-chart-fixed" className={classes.linkchartButton}> 
+        <Link to="/devicewise-chart" className={classes.linkchartButton}> 
           <Button
             variant="contained"
             id="device-wise-btn"

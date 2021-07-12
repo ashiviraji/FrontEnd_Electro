@@ -98,6 +98,11 @@ color: #fff;
 	&.active{
 		border-bottom: 3px solid #01bf71;
 	}
+    &:hover{
+        color:#000;
+        transform:scale(1.2);
+        transition: all 0.2s ease-in-out;
+    }
 `
 export const NavBtn = styled.nav`
 display:flex;
