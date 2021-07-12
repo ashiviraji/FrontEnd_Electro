@@ -179,6 +179,11 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
+
+      <Route exact path="/device-wise-seperate">   
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
     </div>
   );
 }

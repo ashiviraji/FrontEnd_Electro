@@ -28,7 +28,6 @@ import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate
 // import BillDetails from "../../../views/customer/BillDetails";
 
 import DevicewiseChart from "../../../views/customer/devicewiseChartTOU";
-import SpecialEventBill from "../../../views/customer/SpecialEventBill"
 import DevicewiseChartFixed from "../../../views/customer/devicewiseChartFixed"
 
 import "../../../assets/css/Sidebar-user.css";
