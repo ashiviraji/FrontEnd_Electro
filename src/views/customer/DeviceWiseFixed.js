@@ -5,10 +5,6 @@ import DeviceWiseFixed1   from "../../components/Customer/DeviceWiseFixed";
 import DeviceWiseTOU from "../../components/Customer/TOUDeviceWiseUsage";
 
 
-
-
-
-
 export default function DeviceWiseFixed() {
 
   // constructor(props){

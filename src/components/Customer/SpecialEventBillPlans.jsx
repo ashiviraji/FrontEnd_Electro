@@ -98,7 +98,7 @@ export default function DeviceWisePlans() {
                     <img src={img1} alt="Image1" className="card-img-top" />
                   </div>
                   <div>
-                    <label>Your Selected Model : {card.Choose_model}</label>
+                    <label>Selected Model : {card.Choose_model}</label>
                     <label>Duration :  {card.Duration}</label>
                   </div>
                 </CardContent>

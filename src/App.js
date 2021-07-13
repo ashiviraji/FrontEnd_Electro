@@ -184,6 +184,22 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
+
+      <Route exact path="/special-event">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
+
+      <Route exact path="/user-userprofile">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
+
+      <Route exact path="/special-event-new-bill">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
+
     </div>
   );
 }

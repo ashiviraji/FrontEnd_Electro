@@ -6,15 +6,10 @@ import BillPlansPage from "./../../components/Customer/billPlans";
 import DeviceWisePlanCard from "../../components/Customer/DeviceWisePlans";
 import "../../assets/css/Customer/deviewisePlans.css";
 import { Link } from "react-router-dom";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
-import "../../assets/css/breadcrumb.css"
 
 export default function DeviceWisePlans() {
   return (
     <div>
-      <Breadcrumb className="breadcrumb">
-        <Breadcrumb.Item active>My Bill Plans</Breadcrumb.Item>
-      </Breadcrumb>
       <div id="bill-plans-title-heading">
         <label>MY BILL PLANS</label>
       </div>
