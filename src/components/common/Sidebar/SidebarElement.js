@@ -6,7 +6,7 @@ export const SideNav = styled.div`
 width:20%;
 background:#011627;
 position:absolute;
-height:770px;
+height:100%;
 padding: 0 30px;
 transition: all 1s;
 position:fixed;

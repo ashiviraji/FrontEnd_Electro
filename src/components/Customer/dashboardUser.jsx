@@ -67,7 +67,7 @@ export default function SimpleCard() {
 
   return (
       <div className="home-user-main">
-          <label className="welcome-note">Welcome Ashika</label>
+          <label className="welcome-note">Welcome Tharindu</label>
       <div className="user-cards-area">
     <Card className={classes.currentRoot} id="card1">
       <CardContent>
