@@ -25,7 +25,7 @@ export default function Footer() {
 
                         <div className="col-md-12 fotterlinks" >
 
-                            <LinkS className="fotterlinks1" to="home">Home</LinkS>
+                            <LinkS className="fotterlinks1" to="electro">Home</LinkS>
                             <LinkS className="fotterlinks1" to="services">Services</LinkS>
                             <LinkS className="fotterlinks1" to="aboutus">Aboutus</LinkS>
                             <LinkS className="fotterlinks1" to="contactus">Contactus</LinkS>
