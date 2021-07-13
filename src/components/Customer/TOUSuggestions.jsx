@@ -13,22 +13,22 @@ import '../../assets/css/TOUSuggestions.css';
 const TOUSuggestions = (props) => {
     console.log(props);
     const cardInfo = [
-        { Applicance: "Television", Quantity: "1", Suggestion1: "Transfer to time peak to off-peak", Save: "200" },
-        { Applicance: "Radio", Quantity: "2", Suggestion1: "Transfer to time peak to day", Save: "100" },
-        { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Washing Machine", Quantity: "1", Suggestion1: "Transfer to time peak to off-peak", Save: "400" },
-        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
-        { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer to time peak to off-peak", Save: "300" },
+        { Applicance: "Television", Quantity: "1", Suggestion1: "Transfer time from peak to off-peak", Save: "200" },
+        { Applicance: "Radio", Quantity: "2", Suggestion1: "Transfer  time  from peak to day", Save: "100" },
+        { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer time from peak to off-peak", Save: "300" },
+        { Applicance: "Washing Machine", Quantity: "1", Suggestion1: "Transfer  time from peak to off-peak", Save: "400" },
+        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
+        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
+        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
+        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
+        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
+        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
+        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
+        { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
+        { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
+        { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
+        { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer  time  from peak to off-peak", Save: "300" },
+        { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
 
 
     ];

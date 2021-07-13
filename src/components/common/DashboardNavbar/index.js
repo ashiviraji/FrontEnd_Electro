@@ -40,7 +40,7 @@ const DashbordNavbar = ({ toggle }) => {
                         </NavItem> */}
             <NavItem>
               <NavBtn>
-                <NavBtnLinks to="/home">Log Out</NavBtnLinks>
+                <NavBtnLinks to="/electro">Log Out</NavBtnLinks>
               </NavBtn>
             </NavItem>
           </NavMenu>

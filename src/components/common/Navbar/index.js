@@ -16,13 +16,13 @@ const Navbar = ({ toggle }) => {
     <>
       <Nav>
         <NavbarContainer>
-          <NavLogo to="home">ELECTRO</NavLogo>
+          <NavLogo to="electro">ELECTRO</NavLogo>
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
           <NavMenu>
             <NavItem>
-              <NavLinks to="home">Home</NavLinks>
+              <NavLinks to="electro">Home</NavLinks>
             </NavItem>
             <NavItem></NavItem>
             <NavItem>
