@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CalculateBillForm from "./CalculateBillForm";
 import { Paper, makeStyles } from "@material-ui/core";
-import UseTable from "../../components/Customer/useTable";
+import UseTable from "../../components/Customer/UseTable";
 import * as DeviceBill from "./DeviceBill";
 import { TableBody } from "@material-ui/core";
 import { TableCell } from "@material-ui/core";
@@ -20,8 +20,7 @@ import Notification from "../../components/Customer/bill_control/Notification";
 import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog";
 import { Link } from "react-router-dom";
 import Breadcrumb from "react-bootstrap/Breadcrumb";
-import "../../assets/css/breadcrumb.css"
-
+import "../../assets/css/breadcrumb.css";
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -124,11 +123,9 @@ export default function CalculateBill() {
 
   return (
     <div>
-
       <Breadcrumb className="breadcrumb">
         <Breadcrumb.Item active>Manage Bill</Breadcrumb.Item>
       </Breadcrumb>
-
 
       <Paper className={classes.pageContent}>
         <h2>Your Device Data</h2>
