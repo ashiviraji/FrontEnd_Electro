@@ -14,8 +14,8 @@ import {
   import { Add, DeleteOutline, EditOutlined, Search } from "@material-ui/icons";
 import { Col, Form, Row } from 'react-bootstrap';
 
-const noOfDays = 2;
-const addtionalUnits =43;
+const noOfDays = 0;
+const addtionalUnits =0;
 
   const useStyles = makeStyles((theme) => ({
     pageContent: {
