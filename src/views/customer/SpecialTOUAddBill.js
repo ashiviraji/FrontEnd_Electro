@@ -49,11 +49,11 @@ const headCells = [
   { id: "action", label: "Actions" },
 ];
 
-let noOfDays = 1;
-const noOfUnitPeak = 20;
-const noOfUnitOffPeak = 13;
-const noOfUnitDay = 17;
-const addtionalChargeBill = 1231;
+let noOfDays = 0;
+const noOfUnitPeak = 0;
+const noOfUnitOffPeak = 0;
+const noOfUnitDay = 0;
+const addtionalChargeBill = 0;
   
 export default function SpecialTOUAddBill() {
     const classes = useStyles();

@@ -53,11 +53,11 @@ export default function CalculateBillForm(props) {
     if ("priority" in fieldValues)
       temp.priority = fieldValues.priority? "" : "Please select priority of device";
     if ("hPeak" in fieldValues)
-      temp.hPeak = ( (fieldValues.hPeak >= 0 && fieldValues.hPeak < 4) ||  fieldValues.hPeak === "") ? "" : "4 >Peak Hours in day >= 0";
+      temp.hPeak = ( (fieldValues.hPeak >= 0 && fieldValues.hPeak <= 4) ||  fieldValues.hPeak === "") ? "" : "4 >Peak Hours in day >= 0";
     if ("hOffPeak" in fieldValues)
-      temp.hOffPeak = ( (fieldValues.hOffPeak >= 0 && fieldValues.hOffPeak < 7) ||  fieldValues.hOffPeak === "") ? "" : "7 >Off Peak Hours in day >= 0";
+      temp.hOffPeak = ( (fieldValues.hOffPeak >= 0 && fieldValues.hOffPeak <= 7) ||  fieldValues.hOffPeak === "") ? "" : "7 >Off Peak Hours in day >= 0";
     if ("hDay" in fieldValues)
-      temp.hDay = ( (fieldValues.hDay >= 0 && fieldValues.hDay < 13) ||  fieldValues.hDay === "") ? "" : "13 >Day Hours in day >= 0";
+      temp.hDay = ( (fieldValues.hDay >= 0 && fieldValues.hDay <= 13) ||  fieldValues.hDay === "") ? "" : "13 >Day Hours in day >= 0";
     if ("mPeak" in fieldValues)
       temp.mPeak = ( (fieldValues.mPeak >= 0 && fieldValues.mPeak < 60) ||  fieldValues.mPeak === "") ? "" : "60 > minutes >= 0";
     if ("mOffPeak" in fieldValues)
@@ -137,7 +137,7 @@ export default function CalculateBillForm(props) {
             value={values.hPeak}
             onChange={handleInputChange}
             error={errors.hPeak}
-            unit="h &"
+            unit="hrs"
           />
 
           <Controls.InputTxt
@@ -148,7 +148,7 @@ export default function CalculateBillForm(props) {
             value={values.hOffPeak}
             onChange={handleInputChange}
             error={errors.hOffPeak}
-            unit="h &"
+            unit="hrs"
           />
 
           <Controls.InputTxt
@@ -159,13 +159,13 @@ export default function CalculateBillForm(props) {
             value={values.hDay}
             onChange={handleInputChange}
             error={errors.hDay}
-            unit="h &"
+            unit="hrs"
           />
         </Grid>
         <Grid item xs={6} sm={3}>
           <Controls.InputTxt
             id="standard-start-adornment"
-            label="Peak"
+            label="(6.30pm - 10.30pm)"
             name="mPeak"
             type="number"
             value={values.mPeak}
@@ -176,7 +176,7 @@ export default function CalculateBillForm(props) {
 
           <Controls.InputTxt
             id="standard-start-adornment"
-            label="Off Peak"
+            label="(10.30pm - 5.30am)"
             name="mOffPeak"
             type="number"
             value={values.mOffPeak}
@@ -187,7 +187,7 @@ export default function CalculateBillForm(props) {
 
           <Controls.InputTxt
             id="standard-start-adornment"
-            label="Day"
+            label="(5.30am - 6.30pm)"
             name="mDay"
             type="number"
             value={values.mDay}
@@ -230,6 +230,7 @@ export default function CalculateBillForm(props) {
           </Button>
         </Grid>
       </Grid>
+      
     </Form>
   );
 }

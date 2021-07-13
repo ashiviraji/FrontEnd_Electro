@@ -167,13 +167,13 @@ export default function CalculateBill() {
                 <TableCell>{item.power}</TableCell>
                 <TableCell>{item.priority}</TableCell>
                 <TableCell>
-                  {item.hPeak}h & {item.mPeak} min
+                  {item.hPeak}hrs : {item.mPeak} min
                 </TableCell>
                 <TableCell>
-                  {item.hOffPeak}h & {item.mOffPeak} min
+                  {item.hOffPeak}hrs : {item.mOffPeak} min
                 </TableCell>
                 <TableCell>
-                  {item.hDay}h & {item.mDay} min
+                  {item.hDay}hrs : {item.mDay} min
                 </TableCell>
                 <TableCell>
                   <button
