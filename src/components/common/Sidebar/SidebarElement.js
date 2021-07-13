@@ -2,14 +2,20 @@ import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
 
 export const SideNav = styled.div`
-  width: 20%;
-  background: #011627;
-  position: absolute;
-  height: 2000px;
-  padding: 0 30px;
-  transition: all 1s;
-  position: fixed;
-`;
+
+width:20%;
+background:#011627;
+position:absolute;
+height:100%;
+padding: 0 30px;
+transition: all 1s;
+position:fixed;
+
+
+
+
+`
+
 
 export const UlList = styled.ul`
   padding: 0;
