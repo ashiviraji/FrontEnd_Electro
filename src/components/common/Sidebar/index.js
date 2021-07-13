@@ -29,6 +29,7 @@ import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate
 import SpecialEventDeviceUsage from "../../../views/customer/SpecialEventDeviceUsage";
 import TOUEventForm from "../../../views/customer/TOUEventForm";
 import {GrObjectUngroup} from "react-icons/gr";
+// import UserProfile from "../../../views/customer/AdminUserProfile"
 
 import DevicewiseChart from "../../../views/customer/devicewiseChartTOU";
 import DevicewiseChartFixed from "../../../views/customer/devicewiseChartFixed"
