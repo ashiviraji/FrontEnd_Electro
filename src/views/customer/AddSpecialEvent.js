@@ -1,6 +1,6 @@
 import React from 'react';
-import SpecialEventFixed   from "../../components/Customer/SpecialEventFixed";
-import SpecialEventTOU from "../../components/Customer/SpecialEventTOU";
+import SpecialTOUAddBill from './SpecialTOUAddBill';
+import SpecialFixedAddBill from './SpecialFixedAddBill';
 import { useState } from 'react';
 
 
@@ -29,7 +29,7 @@ export default function AddSpecialEvent() {
     return (
         <div className="device-wise-usage">
         <div className="title-heading">
-           <label className="tou-headline">DEVICE WISE USAGE</label>
+           <label className="tou-headline">Add New Special Event</label>
               <div style={{fontSize:"20px",marginTop:"3%"}}>
                   <input type="radio" style={{marginLeft:"6%"}} value="DeviceWiseFixed1" name="model"  onChange={handleChange} checked={displayModel.model==="DeviceWiseFixed1"}/>
                   <b style={{color:"black",marginRight:"4%"}}>&nbsp;&nbsp;Fixed Model</b>
@@ -41,7 +41,7 @@ export default function AddSpecialEvent() {
             
         </div>
         {(displayModel.model === "DeviceWiseFixed1")?
-          <SpecialEventFixed/>: <SpecialEventTOU/>
+          <SpecialFixedAddBill/>: <SpecialTOUAddBill/>
           }
         
                </div>
