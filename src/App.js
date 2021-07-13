@@ -38,8 +38,8 @@ import DevicewiseChartFixed from "./views/customer/devicewiseChartFixed"
 function App() {
   return (
     <div className="App">
-      <Route exact path="/home">
-        <Home id="home" />
+      <Route exact path="/electro">
+        <Home id="electro" />
       </Route>
       <Route exact path="/forgotpassword">
         <ForgotPassword />
@@ -80,7 +80,7 @@ function App() {
         <SidebarUser />
       </Route>
 
-      
+
       <Route exact path="/home-user">
         <DashbordNavbar />
         <SidebarUser />
@@ -155,32 +155,32 @@ function App() {
         <InfoTable />
       </Route>
 
-      <Route exact path="/devicewise-chart-TOU">   
+      <Route exact path="/devicewise-chart-TOU">
         <DashbordNavbar />
         <SidebarUser />
       </Route>
 
-      <Route exact path="/devicewise-chart-fixed">   
+      <Route exact path="/devicewise-chart-fixed">
         <DashbordNavbar />
         <SidebarUser />
       </Route>
 
-      <Route exact path="/manage-bill">   
+      <Route exact path="/manage-bill">
         <DashbordNavbar />
         <SidebarUser />
       </Route>
 
-      <Route exact path="/tou-device-wise-seperate">   
+      <Route exact path="/tou-device-wise-seperate">
         <DashbordNavbar />
         <SidebarUser />
       </Route>
 
-      <Route exact path="/my-bill-plans">   
+      <Route exact path="/my-bill-plans">
         <DashbordNavbar />
         <SidebarUser />
       </Route>
 
-      <Route exact path="/device-wise-seperate">   
+      <Route exact path="/device-wise-seperate">
         <DashbordNavbar />
         <SidebarUser />
       </Route>
