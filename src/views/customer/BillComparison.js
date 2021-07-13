@@ -4,16 +4,11 @@ import { FaThList } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
-import Breadcrumb from "react-bootstrap/Breadcrumb";
-import "../../assets/css/breadcrumb.css"
 
 export default function billcomparison() {
   return (
     <div>
-      <Breadcrumb className="breadcrumb">
-        <Breadcrumb.Item href="/manage-bill">Manage Bill</Breadcrumb.Item>
-        <Breadcrumb.Item active>Bill Comparison</Breadcrumb.Item>
-      </Breadcrumb>
+      
     <div className="frm-billcomparison">
       <div className="grp-billcomparison">
         <div className="text-center main-title ">

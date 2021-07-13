@@ -5,10 +5,6 @@ import DeviceWiseFixed   from "../../components/Customer/DeviceWiseFixed";
 
 
 
-
-
-
-
 export default function DeviceWiseFixedUsageSeprate() {
   
   return( 
