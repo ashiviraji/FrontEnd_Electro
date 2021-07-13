@@ -20,6 +20,8 @@ import Notification from "../../components/Customer/bill_control/Notification";
 import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog";
 import { Link } from "react-router-dom";
 
+
+
 const useStyles = makeStyles((theme) => ({
   pageContent: {
     margin: theme.spacing(5),
@@ -121,6 +123,7 @@ export default function CalculateBill() {
 
   return (
     <div>
+      
       <Paper className={classes.pageContent}>
         <h2>Your Device Data</h2>
         <Toolbar>
