@@ -1,10 +1,9 @@
 import React from "react";
 import CEBEngineer1 from "../../../assets/img/engineer1.png";
 import active from "../../../assets/img/active.png";
-import {RiDashboardLine} from "react-icons/ri";
+import { RiDashboardLine } from "react-icons/ri";
 import { FiHome } from "react-icons/fi";
 import { AiOutlineDollar } from "react-icons/ai";
-
 
 import { BiUserCircle } from "react-icons/bi";
 import { RiInformationLine } from "react-icons/ri";
@@ -44,7 +43,7 @@ const SidebarEngineer = ({ show }) => {
                 <UserProfile src={CEBEngineer1} alt="image"></UserProfile>
 
                 <UlDetailList>
-                  <NameList>Mr. Buthsara </NameList>
+                  <NameList>Buthsara </NameList>
                   <NameList>CEB Engineer</NameList>
                   <NameList>
                     <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
