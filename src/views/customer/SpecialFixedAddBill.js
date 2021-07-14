@@ -142,19 +142,6 @@ export default function SpecialFixedAddBill() {
             <Form.Group>
               <Row className={classes.Rowinform}>
                 <Col sm="4"></Col>
-                <Form.Label column sm="4">
-                  Enter The Number Of Days
-                </Form.Label>
-                <Col sm="4">
-                  <Form.Control
-                    type="number"
-                    placeholder="Number of Days"
-                    value={noOfDays}
-                  />
-                </Col>
-              </Row>
-              <Row className={classes.Rowinform}>
-                <Col sm="4"></Col>
                 <Form.Label column sm="4" style={{fontWeight:"550"}}>
                 Additional Units for the Event
                 </Form.Label>
