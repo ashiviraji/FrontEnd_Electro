@@ -230,7 +230,9 @@ export default function CalculateBillForm(props) {
           </Button>
         </Grid>
       </Grid>
-      
+      High : Can not change the device usage time <br/>
+      Mid : Can use moderately in specified time slot <br/>
+      Low : Usage is not mandatory in specified time slot<br/>
     </Form>
   );
 }
