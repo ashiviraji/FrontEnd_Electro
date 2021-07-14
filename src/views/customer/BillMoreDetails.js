@@ -2,6 +2,8 @@ import { InputAdornment, makeStyles, Paper, TextField, Toolbar } from '@material
 import { Add, Search } from '@material-ui/icons';
 import React from 'react'
 import BillMoreDetailsTable from '../../components/Customer/bill_control/BillMoreDetailsTable'
+import "../../assets/css/Customer/billCalculate.css";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     pageContent: {
@@ -47,6 +49,11 @@ export default function BillMoreDetails() {
           </button>
         </Toolbar>
             <BillMoreDetailsTable/>
+            <Link to="/bill-comparison">
+          <button type="button" className="btn btn-success calculate-button">
+            Calculate
+          </button>
+        </Link>
 
             </Paper>
         </div>

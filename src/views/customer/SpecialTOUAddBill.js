@@ -19,7 +19,9 @@ import { EditOutlined } from "@material-ui/icons";
 import Notification from "../../components/Customer/bill_control/Notification";
 import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog";
 import { Link } from "react-router-dom";
-
+import "../../assets/css/breadcrumb.css"
+import { Col, Form, Row } from "react-bootstrap";
+import "../../assets/css/Customer/specialEvent.css"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     right: "10px",
   },
+  Rowinform: {
+    margin: "10px"
+}
 }));
 
 const headCells = [
@@ -44,8 +49,14 @@ const headCells = [
   { id: "action", label: "Actions" },
 ];
 
-export default function CalculateBill() {
-  const classes = useStyles();
+let noOfDays = 0;
+const noOfUnitPeak = 0;
+const noOfUnitOffPeak = 0;
+const noOfUnitDay = 0;
+const addtionalChargeBill = 0;
+  
+export default function SpecialTOUAddBill() {
+    const classes = useStyles();
   const [recordForEdit, setRecordForEdit] = useState(null);
   const [records, setRecords] = useState(DeviceBill.getAllDevices());
   const [filterFn, setFilterFn] = useState({
@@ -121,10 +132,9 @@ export default function CalculateBill() {
     });
   };
 
-  return (
-    <div>
-      
-      <Paper className={classes.pageContent}>
+    return (
+        <div>
+            <Paper className={classes.pageContent}>
         <h2>Your Device Data</h2>
         <Toolbar>
           <TextField
@@ -161,13 +171,13 @@ export default function CalculateBill() {
                 <TableCell>{item.power}</TableCell>
                 <TableCell>{item.priority}</TableCell>
                 <TableCell>
-                  {item.hPeak}hrs : {item.mPeak} min
+                  {item.hPeak}h & {item.mPeak} min
                 </TableCell>
                 <TableCell>
-                  {item.hOffPeak}hrs : {item.mOffPeak} min
+                  {item.hOffPeak}h & {item.mOffPeak} min
                 </TableCell>
                 <TableCell>
-                  {item.hDay}hrs : {item.mDay} min
+                  {item.hDay}h & {item.mDay} min
                 </TableCell>
                 <TableCell>
                   <button
@@ -205,11 +215,94 @@ export default function CalculateBill() {
           </TableBody>
         </TblContainer>
         <TblPagination />
-        <Link to="/bill-comparison">
-          <button type="button" className="btn btn-success calculate-button">
-            Calculate
-          </button>
-        </Link>
+        <Paper className={classes.pageContent}>
+        
+          <Form className="main-calculate-form">
+            <Form.Group>
+              <Row className="RowInForm-noOfDays">
+                <Form.Label column sm="4" style={{fontWeight:"550"}}>
+                  Number Of Days
+                </Form.Label>
+                <Col sm="4">
+                  <Form.Control
+                    type="number"
+                    placeholder="Number of Days"
+                    defaultValue={noOfDays}
+                  />
+                </Col>
+                <Col sm="4">
+                <button type="button" className="btn btn-success calculate-button-special-event">
+                    Calculate
+                </button>
+                </Col>
+              </Row>
+              </Form.Group>
+          </Form>
+          
+
+          <Form className={classes.formLabelStyle}>
+            <Form.Group>
+              
+              <Row>
+                  <Col></Col>
+              </Row>
+              <Row className={classes.Rowinform}>
+                <Col sm="4"></Col>
+                <Form.Label column sm="4">
+                  No of Units In Peak Time
+                </Form.Label>
+                <Col sm="4">
+                  <Form.Control
+                    type="text"
+                    value={noOfUnitPeak}
+                    disabled
+                  />
+                </Col>
+              </Row>
+              <Row className={classes.Rowinform}>
+                <Col sm="4"></Col>
+                <Form.Label column sm="4">
+                No of Units In Off Peak Time
+                </Form.Label>
+                <Col sm="4">
+                  <Form.Control
+                    type="text"
+                    value={noOfUnitOffPeak}
+                    disabled
+                  />
+                </Col>
+              </Row>
+              <Row className={classes.Rowinform}>
+                <Col sm="4"></Col>
+                <Form.Label column sm="4">
+                No of Units In Day Time
+                </Form.Label>
+                <Col sm="4">
+                  <Form.Control
+                    type="text"
+                    value={noOfUnitDay}
+                    disabled
+                  />
+                </Col>
+              </Row>
+              <Row className={classes.Rowinform}>
+                <Col sm="4"></Col>
+                <Form.Label column sm="4" style={{fontWeight:"550"}}>
+                Additional Amount for the Event
+                </Form.Label>
+                <Col sm="4">
+                  <Form.Control
+                    type="text"
+                    value={"LKR : "+addtionalChargeBill}
+                    disabled
+                  />
+                </Col>
+              </Row>
+            </Form.Group>
+          </Form>
+        </Paper>
+
+
       </Paper>
       <Popup
         title="Add New Device Details"
@@ -226,6 +319,6 @@ export default function CalculateBill() {
         confirmDialog={confirmDialog}
         setConfirmDialog={setConfirmDialog}
       />
-    </div>
-  );
+        </div>
+    )
 }

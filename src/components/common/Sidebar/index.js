@@ -23,7 +23,8 @@ import InformationTable from "../../../views/InformationTable";
 import DeviceWisePlans from "../../../views/customer/DeviceWisePlans";
 import FixedEventForm from "../../../views/customer/FixedEventForm";
 import { BiUserCircle } from "react-icons/bi";
-import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
+// import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
+import CustomerUserProfile from "../../Customer/CustomerUserProfile";
 import deviceWiseFixedSeperate from "../../../views/customer/deviceWiseFixedUsageSeperate";
 import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate";
 import SpecialEventDeviceUsage from "../../../views/customer/SpecialEventDeviceUsage";
@@ -197,7 +198,7 @@ const Sidebar = ({ show }) => {
               <Route
                 path="/user-userprofile"
                 exact={true}
-                component={AdminUserProfile}
+                component={CustomerUserProfile}
               />
               <Route
                 path="/devicewise-chart-fixed"

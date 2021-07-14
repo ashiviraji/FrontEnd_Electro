@@ -1,0 +1,32 @@
+.body-customeruser {
+    width: 90%;
+    left: 15%;
+    position: relative;
+    padding: 25px 100px 75px;
+  }
+  
+  .ceb-heading {
+    width: 100%;
+    margin-top: 1%;
+    left: -13%;
+    padding-bottom: 4%;
+    position: relative;
+  }
+  
+  .admin-add-update-btn {
+    background-color: #01bf71;
+    border-radius: 50px;
+    box-shadow: #049665;
+    border: none;
+    width: 200px;
+    font-weight: bold;
+    font-size: medium;
+    padding: 7px;
+    left: 18%;
+    position: relative;
+  }
+  .admin-add-update-btn:hover {
+    background-color: #00af86;
+    color: beige;
+  }
+  
