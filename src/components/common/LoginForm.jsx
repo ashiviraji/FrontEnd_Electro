@@ -24,15 +24,25 @@ export default function LoginForm() {
       userPassword: userpasswordLog,
       userEmail: useremailLog,
     }).then((response) => {
-      console.log(response.data.data);
+      console.log(response.data.token);
       // history.push("/sign-in")
       console.log("this is response", response);
       if (response.data.status) {
-        if (response.data.data == "customer") {
+        document.cookie = `name=${response.data.data[0].First_name}`;
+        document.cookie = `token=${response.data.token}`;
+        console.log(document.cookie);
+
+        // console.log(document.cookie
+        //   .split(';')
+        //   .map(cookie => cookie.split('='))
+        //   .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).name
+        // );
+
+        if (response.data.data[0].Role == "customer") {
           history.push("/dashboard-user");
           console.log("successfully login customer");
         } else {
-          if (response.data.data == "admin") {
+          if (response.data.data[0].Role == "admin") {
             history.push("/dashboard-admin");
             console.log("successfully login admin");
           } else {
