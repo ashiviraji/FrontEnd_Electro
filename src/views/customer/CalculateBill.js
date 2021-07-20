@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CalculateBillForm from "./CalculateBillForm";
 import { Paper, makeStyles } from "@material-ui/core";
-import UseTable from "../../components/Customer/UseTable";
+import UseTable from "../../components/Customer/useTable";
 import * as DeviceBill from "./DeviceBill";
 import { TableBody } from "@material-ui/core";
 import { TableCell } from "@material-ui/core";
@@ -123,7 +123,7 @@ export default function CalculateBill() {
 
   return (
     <div>
-      
+
       <Paper className={classes.pageContent}>
         <h2>Your Device Data</h2>
         <Toolbar>
