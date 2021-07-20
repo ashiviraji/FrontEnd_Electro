@@ -65,7 +65,10 @@ export default function SimpleCard() {
 
   return (
     <div className="engineer-home-user-main">
-      <label className="engineer-welcome-note">Welcome Buthsara</label>
+      <label className="engineer-welcome-note">Welcome {document.cookie
+        .split(';')
+        .map(cookie => cookie.split('='))
+        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).name}</label>
       <div className="engineer-user-cards-area">
         <Card className={classes.engineerCurrentRoot} id="engineer-card1">
           <CardContent>
