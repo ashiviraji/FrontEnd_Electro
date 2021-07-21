@@ -1,12 +1,79 @@
 import React from "react";
+import { useState } from "react";
+import { useHistory } from "react-router";
 // import "../../assets/css/Admin/admin.css";
 import "../../assets/css/Customer/customer.css";
 import Admin from "../../assets/img/Admin.png";
+import Axios from 'axios';
 
 export default function CustomerUserProfile() {
+  let history = useHistory();
+
+  const [userFirstName, setUserFirstName] = useState("");
+  const [useremail, setUseremai] = useState("");
+  const [userLastName, setUserLastName] = useState("");
+  // const [ParamsUserId, setParamsUserId] = useState("");
+
+
+  const getUser = (e) => {
+    e.preventDefault();
+    var ParamsUserId = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+    // console.log(ParamsUserId);
+
+    var token = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+    Axios.get(`http://localhost:3001/user-profile/${ParamsUserId}`, {
+      headers: {
+        authorization: `Token ${token}`
+      }
+    })
+      .then((response) => {
+        // console.log(response.data.status);
+        // history.push("/sign-in")
+        // console.log("this is response", response);
+        if (response.data.status) {
+
+          setUserFirstName(response.data.data[0].First_name);
+          setUserLastName(response.data.data[0].Last_name);
+          setUseremai(response.data.data[0].Email);
+
+          console.log("successfully get user profile of customer");
+
+        } else {
+
+          history.push("/sign-in");
+          window.location.reload();//reload browser
+          deleteAllCookies();//delete all cookies
+        }
+      }).catch((error) => {
+        console.log("this is 1c response", error);
+      });
+  };
+
+  /**
+   * function of delete all cookies
+   */
+  function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+  }
+
   return (
     <div className="body-customeruser">
-      <form>
+      <form onLoad={(e) => { getUser(e) }}>
         <div className="ceb-heading">
           <h2 align="center">USER PROFILE</h2>
         </div>
@@ -20,7 +87,7 @@ export default function CustomerUserProfile() {
               type="text"
               class="form-control"
               id="firstname"
-              value="Minuri"
+              value={userFirstName}
               required
             />
           </div>
@@ -35,7 +102,7 @@ export default function CustomerUserProfile() {
               type="text"
               class="form-control"
               id="lastname"
-              value="Wickramanayaka"
+              value={userLastName}
               required
             />
           </div>
@@ -50,7 +117,7 @@ export default function CustomerUserProfile() {
               type="email"
               class="form-control"
               id="email"
-              value="minuri@gmail.com"
+              value={useremail}
               required
             />
           </div>
@@ -119,7 +186,7 @@ export default function CustomerUserProfile() {
             />
           </div>
         </div> */}
-{/* 
+        {/* 
         <div class="row mb-3">
           <label for="nicnumber" class="col-sm-2 col-form-label" align="left">
             <b>NIC Number</b>

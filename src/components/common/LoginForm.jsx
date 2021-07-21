@@ -30,6 +30,7 @@ export default function LoginForm() {
       if (response.data.status) {
         document.cookie = `name=${response.data.data[0].First_name}`;
         document.cookie = `token=${response.data.token}`;
+
         console.log(document.cookie);
 
         // console.log(document.cookie
@@ -39,15 +40,24 @@ export default function LoginForm() {
         // );
 
         if (response.data.data[0].Role == "customer") {
+          document.cookie = `userId=${response.data.data[0].Cust_id}`;
+
           history.push("/dashboard-user");
           console.log("successfully login customer");
+
         } else {
           if (response.data.data[0].Role == "admin") {
+
+            document.cookie = `userId=${response.data.data[0].Emp_id}`;
             history.push("/dashboard-admin");
             console.log("successfully login admin");
+
           } else {
+
+            document.cookie = `userId=${response.data.data[0].Emp_id}`;
             history.push("/dashboard-engineer");
             console.log("successfully login ceb engineer");
+
           }
         }
 
