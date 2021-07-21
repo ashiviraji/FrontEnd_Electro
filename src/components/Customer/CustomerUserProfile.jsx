@@ -14,20 +14,21 @@ export default function CustomerUserProfile() {
   const [userLastName, setUserLastName] = useState("");
   // const [ParamsUserId, setParamsUserId] = useState("");
 
+  var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+  // console.log(ParamsUserId);
+
+  var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
   const getUser = (e) => {
     e.preventDefault();
-    var ParamsUserId = document.cookie
-      .split(';')
-      .map(cookie => cookie.split('='))
-      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
 
-    // console.log(ParamsUserId);
-
-    var token = document.cookie
-      .split(';')
-      .map(cookie => cookie.split('='))
-      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
     Axios.get(`http://localhost:3001/user-profile/${ParamsUserId}`, {
       headers: {
@@ -35,9 +36,7 @@ export default function CustomerUserProfile() {
       }
     })
       .then((response) => {
-        // console.log(response.data.status);
-        // history.push("/sign-in")
-        // console.log("this is response", response);
+
         if (response.data.status) {
 
           setUserFirstName(response.data.data[0].First_name);
@@ -57,6 +56,37 @@ export default function CustomerUserProfile() {
       });
   };
 
+  const updateUser = (e) => {
+    e.preventDefault();
+
+
+    Axios.put(`http://localhost:3001/user-profile/${ParamsUserId}`, {
+      firstName: userFirstName,
+      userEmail: useremail,
+      lastName: userLastName
+    }, {
+      headers: {
+        authorization: `Token ff ${token}`
+      },
+    })
+      .then((response) => {
+
+        if (response.data.status) {
+          document.cookie = `name=${userFirstName}`;
+
+          console.log("successfully update user profile of customer");
+
+        } else {
+
+          history.push("/sign-in");
+          window.location.reload();//reload browser
+          deleteAllCookies();//delete all cookies
+        }
+      }).catch((error) => {
+        console.log("This is  response", error);
+      });
+  };
+
   /**
    * function of delete all cookies
    */
@@ -73,7 +103,7 @@ export default function CustomerUserProfile() {
 
   return (
     <div className="body-customeruser">
-      <form onLoad={(e) => { getUser(e) }}>
+      <form onLoad={(e) => { getUser(e) }} onSubmit={(e) => { updateUser(e) }}>
         <div className="ceb-heading">
           <h2 align="center">USER PROFILE</h2>
         </div>
@@ -88,6 +118,7 @@ export default function CustomerUserProfile() {
               class="form-control"
               id="firstname"
               value={userFirstName}
+              onChange={(e) => { setUserFirstName(e.target.value); }}
               required
             />
           </div>
@@ -103,6 +134,8 @@ export default function CustomerUserProfile() {
               class="form-control"
               id="lastname"
               value={userLastName}
+              onChange={(e) => { setUserLastName(e.target.value); }}
+
               required
             />
           </div>
@@ -118,6 +151,8 @@ export default function CustomerUserProfile() {
               class="form-control"
               id="email"
               value={useremail}
+              onChange={(e) => { setUseremai(e.target.value); }}
+
               required
             />
           </div>
