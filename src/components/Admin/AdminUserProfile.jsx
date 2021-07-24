@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import "../../assets/css/CEBEngineer/engineer.css";
 import Engineer1 from "../../assets/img/engineer1.png";
 import Axios from 'axios';
-
+// var Crouton = require('react-crouton');
 
 export default function EngineerUserProfile() {
 
@@ -120,6 +120,11 @@ export default function EngineerUserProfile() {
         <div className="ceb-engineer-heading">
           <h2 align="center">USER PROFILE</h2>
         </div>
+
+        {/* <div class="alert alert-success w-25 mx-auto p-3" role="alert">
+
+          <strong> Updated successfully!</strong>
+        </div> */}
 
         <div class="row mb-3">
           <label for="firstname" class="col-sm-2 col-form-label" align="left">

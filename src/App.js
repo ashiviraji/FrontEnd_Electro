@@ -126,6 +126,11 @@ function App() {
         <SidebarEngineer />
       </Route>
 
+      <Route exact path="/engineer-unitcharges-0to60">
+        <DashbordNavbar />
+        <SidebarEngineer />
+      </Route>
+
       <Route exact path="/calculate-bill">
         <DashbordNavbar />
         <SidebarUser />
