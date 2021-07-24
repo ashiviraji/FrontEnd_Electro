@@ -4,125 +4,194 @@ import "../../assets/css/CEBEngineer/engineerupdateunitcharges.css";
 import { MdNotificationsActive } from "react-icons/md";
 import { Modal, Button } from "react-bootstrap";
 import "../../assets/css/CEBEngineer/engineerpopup.css";
+import { useState } from "react";
+import { useHistory } from "react-router";
+import Axios from 'axios';
+
 
 export default function EngineerUnitCharges0to60(props) {
   const [modalShow, setModalShow] = React.useState(false);
+
+  let history = useHistory();
+
+  const [UnitCharge0to30, setUnitCharge0to30] = useState("");
+  const [UnitCharge31to60, setUnitCharge31to60] = useState("");
+  const [FixedCharge0to30, setFixedCharge0to30] = useState("");
+  const [FixedCharge31to60, setFixedCharge31to60] = useState("");
+
+  var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+
+  Axios.get(`http://localhost:3001/unit-charges0to60`, {
+    headers: {
+      authorization: `Token ${token}`
+    }
+  })
+    .then((response) => {
+      // console.log(response.data.data[1]);
+
+      if (response.data.status) {
+
+
+        setUnitCharge0to30(response.data.data[0].Unit_charge);
+        setFixedCharge0to30(response.data.data[0].Fixed_charge);
+
+
+        setUnitCharge31to60(response.data.data[1].Unit_charge);
+
+        setFixedCharge31to60(response.data.data[1].Fixed_charge);
+
+
+
+
+      } else {
+
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();//delete all cookies
+      }
+    }).catch((error) => {
+      console.log("this is 1c response", error);
+    });
+
+
+  /**
+   * function of delete all cookies
+   */
+  function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+  }
+
+
   return (
     <div className="engineer-unit-body">
-      <div id="engineer-unit-title-heading">
-        <h2>
-          <b>
-            <label>FIXED BILLING MODEL (BETWEEN 0-60 kWh)</label>
-          </b>
-        </h2>
-      </div>
+      <form>
+        <div id="engineer-unit-title-heading">
+          <h2>
+            <b>
+              <label>FIXED BILLING MODEL (BETWEEN 0-60 kWh)</label>
+            </b>
+          </h2>
+        </div>
 
-      <div class="engineer-unit-table-0to60">
-        <ul id="engineer-unit-horizontal-list">
-          <li id="engineer-unit-title-category">Category</li>
-          <li>Unit Charge(LKR/kWh)</li>
-          <li>Fixed Charge(LKR/month)</li>
-        </ul>
-      </div>
-
-      <card3>
-        <card3.Body className="card3-body">
-          <ul id="engineer-unit-horizontal-list-inside">
-            <li>
-              <label
-                className="engineer-unit-label-list-inside"
-                id="engineer-unit-inside-category"
-              >
-                00-30
-              </label>
-            </li>
-            <li>
-              <label
-                className="engineer-unit-label-list-inside"
-                id="engineer-unit-inside-unitCharge"
-              >
-                2.50
-              </label>
-            </li>
-            <li>
-              <button
-                className="engineer-unit-label-list-update"
-                onClick={() => setModalShow(true)}
-              >
-                UPDATE
-              </button>
-
-              <MyVerticallyCenteredModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-              />
-            </li>
-            <li>
-              <label
-                className="engineer-unit-label-list-inside"
-                id="engineer-unit-inside-fixedCharge"
-              >
-                30.00
-              </label>
-            </li>
-            <li>
-              <button
-                className="engineer-unit-label-list-update"
-                onClick={() => setModalShow(true)}
-              >
-                UPDATE
-              </button>
-            </li>
+        <div class="engineer-unit-table-0to60">
+          <ul id="engineer-unit-horizontal-list">
+            <li id="engineer-unit-title-category">Category</li>
+            <li>Unit Charge(LKR/kWh)</li>
+            <li>Fixed Charge(LKR/month)</li>
           </ul>
-        </card3.Body>
-      </card3>
+        </div>
 
-      <card3>
-        <card3.Body className="card3-body">
-          <ul id="engineer-unit-horizontal-list-inside">
-            <li>
-              <label
-                className="engineer-unit-label-list-inside"
-                id="engineer-unit-inside-category"
-              >
-                31-60
-              </label>
-            </li>
-            <li>
-              <label
-                className="engineer-unit-label-list-inside"
-                id="engineer-unit-inside-unitCharge"
-              >
-                4.85
-              </label>
-            </li>
-            <li>
-              <button
-                className="engineer-unit-label-list-update"
-                onClick={() => setModalShow(true)}
-              >
-                UPDATE
-              </button>
-            </li>
-            <li>
-              <label
-                className="engineer-unit-label-list-inside"
-                id="engineer-unit-inside-fixedCharge"
-              >
-                60.00
-              </label>
-            </li>
-            <li>
-              <button
-                className="engineer-unit-label-list-update"
-                onClick={() => setModalShow(true)}
-              >
-                UPDATE
-              </button>
-            </li>
-          </ul>
-        </card3.Body>
-      </card3>
+        <card3>
+          <card3.Body className="card3-body">
+            <ul id="engineer-unit-horizontal-list-inside">
+              <li>
+                <label
+                  className="engineer-unit-label-list-inside"
+                  id="engineer-unit-inside-category"
+                >
+                  00-30
+                </label>
+              </li>
+              <li>
+                <label
+                  className="engineer-unit-label-list-inside"
+                  id="engineer-unit-inside-unitCharge"
+                >
+                  {UnitCharge0to30}
+                </label>
+              </li>
+              <li>
+                <button
+                  className="engineer-unit-label-list-update"
+                  onClick={() => setModalShow(true)}
+                >
+                  UPDATE
+                </button>
+
+                <MyVerticallyCenteredModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+              </li>
+              <li>
+                <label
+                  className="engineer-unit-label-list-inside"
+                  id="engineer-unit-inside-fixedCharge"
+                >
+                  {FixedCharge0to30}
+                </label>
+              </li>
+              <li>
+                <button
+                  className="engineer-unit-label-list-update"
+                  onClick={() => setModalShow(true)}
+                >
+                  UPDATE
+                </button>
+              </li>
+            </ul>
+          </card3.Body>
+        </card3>
+
+        <card3>
+          <card3.Body className="card3-body">
+            <ul id="engineer-unit-horizontal-list-inside">
+              <li>
+                <label
+                  className="engineer-unit-label-list-inside"
+                  id="engineer-unit-inside-category"
+                >
+                  31-60
+                </label>
+              </li>
+              <li>
+                <label
+                  className="engineer-unit-label-list-inside"
+                  id="engineer-unit-inside-unitCharge"
+                >
+                  {UnitCharge31to60}
+                </label>
+              </li>
+              <li>
+                <button
+                  className="engineer-unit-label-list-update"
+                  onClick={() => setModalShow(true)}
+                >
+                  UPDATE
+                </button>
+              </li>
+              <li>
+                <label
+                  className="engineer-unit-label-list-inside"
+                  id="engineer-unit-inside-fixedCharge"
+                >
+                  {FixedCharge31to60}
+                </label>
+              </li>
+              <li>
+                <button
+                  className="engineer-unit-label-list-update"
+                  onClick={() => setModalShow(true)}
+                >
+                  UPDATE
+                </button>
+              </li>
+            </ul>
+          </card3.Body>
+        </card3>
+      </form>
     </div>
   );
 }
