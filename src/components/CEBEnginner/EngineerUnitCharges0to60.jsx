@@ -24,9 +24,9 @@ export default function EngineerUnitCharges0to60(props) {
     .map(cookie => cookie.split('='))
     .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
+  var category = "0-60";
 
-
-  Axios.get(`http://localhost:3001/unit-charges0to60`, {
+  Axios.get(`${process.env.REACT_APP_BASE_URL}/unit-charges/${category}`, {
     headers: {
       authorization: `Token ${token}`
     }

@@ -30,7 +30,7 @@ export default function CustomerUserProfile() {
     e.preventDefault();
 
 
-    Axios.get(`http://localhost:3001/user-profile/${ParamsUserId}`, {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
       headers: {
         authorization: `Token ${token}`
       }
@@ -60,7 +60,7 @@ export default function CustomerUserProfile() {
     e.preventDefault();
 
 
-    Axios.put(`http://localhost:3001/user-profile/${ParamsUserId}`, {
+    Axios.put(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
       firstName: userFirstName,
       userEmail: useremail,
       lastName: userLastName
