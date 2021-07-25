@@ -20,7 +20,7 @@ export default function SignUpForm() {
 
     const userRegister = (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:3001/sign-up", {
+        Axios.post(`${process.env.REACT_APP_BASE_URL}/sign-up`, {
             firstName: firstnameReg,
             lastName: lastnameReg,
             userPassword: conpasswordReg,

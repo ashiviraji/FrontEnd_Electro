@@ -5,9 +5,100 @@ import "../../assets/css/CEBEngineer/engineerupdateunitcharges.css";
 import { MdNotificationsActive } from "react-icons/md";
 import { Modal, Button } from "react-bootstrap";
 import "../../assets/css/CEBEngineer/engineerpopup.css";
+import { useState } from "react";
+import { useHistory } from "react-router";
+import Axios from 'axios';
 
 export default function EngineerUnitCharges60plus(props) {
   const [modalShow, setModalShow] = React.useState(false);
+
+
+  let history = useHistory();
+
+  const [UnitCharge0to60, setUnitCharge0to60] = useState("");
+  const [UnitCharge61to90, setUnitCharge61to90] = useState("");
+  const [UnitCharge91to120, setUnitCharge91to120] = useState("");
+
+  const [UnitCharge121to180, setUnitCharge121to180] = useState("");
+  const [UnitCharge180plus, setUnitCharge180plus] = useState("");
+
+  const [FixedCharge0to60, setFixedCharge0to60] = useState("");
+  const [FixedCharge61to90, setFixedCharge61to90] = useState("");
+  const [FixedCharge91to120, setFixedCharge91to120] = useState("");
+
+  const [FixedCharge121to180, setFixedCharge121to180] = useState("");
+  const [FixedCharge180plus, setFixedCharge180plus] = useState("");
+
+
+
+  var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+  var category = "60+";
+
+  Axios.get(`${process.env.REACT_APP_BASE_URL}/unit-charges/${category}`, {
+    headers: {
+      authorization: `Token ${token}`
+    }
+  })
+    .then((response) => {
+      // console.log(response.data.data[1]);
+
+      if (response.data.status) {
+
+
+        setUnitCharge0to60(response.data.data[0].Unit_charge);
+        setFixedCharge0to60(response.data.data[0].Fixed_charge);
+
+
+        setUnitCharge121to180(response.data.data[1].Unit_charge);
+
+        setFixedCharge121to180(response.data.data[1].Fixed_charge);
+
+
+        setUnitCharge61to90(response.data.data[2].Unit_charge);
+
+        setFixedCharge61to90(response.data.data[2].Fixed_charge);
+
+
+        setUnitCharge91to120(response.data.data[3].Unit_charge);
+
+        setFixedCharge91to120(response.data.data[3].Fixed_charge);
+
+
+        setUnitCharge180plus(response.data.data[4].Unit_charge);
+
+        setFixedCharge180plus(response.data.data[4].Fixed_charge);
+
+
+      } else {
+
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();//delete all cookies
+      }
+    }).catch((error) => {
+      console.log("this is 1c response", error);
+    });
+
+
+  /**
+   * function of delete all cookies
+   */
+  function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+  }
+
+
   return (
     <div className="engineer-unit-body">
       <div id="engineer-unit-title-heading">
@@ -42,7 +133,7 @@ export default function EngineerUnitCharges60plus(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-unitCharge"
               >
-                7.85
+                {UnitCharge0to60}
               </label>
             </li>
             <li>
@@ -63,7 +154,7 @@ export default function EngineerUnitCharges60plus(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-fixedCharge"
               >
-                N/A
+                {FixedCharge0to60}
               </label>
             </li>
             <li>
@@ -94,7 +185,7 @@ export default function EngineerUnitCharges60plus(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-unitCharge"
               >
-                10.00
+                {UnitCharge61to90}
               </label>
             </li>
             <li>
@@ -110,7 +201,7 @@ export default function EngineerUnitCharges60plus(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-fixedCharge"
               >
-                90.00
+                {FixedCharge61to90}
               </label>
             </li>
             <li>
@@ -140,7 +231,7 @@ export default function EngineerUnitCharges60plus(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-unitCharge"
               >
-                27.75
+                {UnitCharge91to120}
               </label>
             </li>
             <li>
@@ -156,7 +247,7 @@ export default function EngineerUnitCharges60plus(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-fixedCharge"
               >
-                480.00
+                {FixedCharge91to120}
               </label>
             </li>
             <li>
@@ -186,7 +277,7 @@ export default function EngineerUnitCharges60plus(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-unitCharge"
               >
-                32.00
+                {UnitCharge121to180}
               </label>
             </li>
             <li>
@@ -202,7 +293,7 @@ export default function EngineerUnitCharges60plus(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-fixedCharge"
               >
-                480.00
+                {FixedCharge121to180}
               </label>
             </li>
             <li>
@@ -233,7 +324,7 @@ export default function EngineerUnitCharges60plus(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-unitCharge"
               >
-                45.00
+                {UnitCharge180plus}
               </label>
             </li>
             <li>
@@ -249,7 +340,7 @@ export default function EngineerUnitCharges60plus(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-fixedCharge"
               >
-                540.00
+                {FixedCharge180plus}
               </label>
             </li>
             <li>

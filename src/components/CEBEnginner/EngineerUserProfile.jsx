@@ -35,7 +35,7 @@ export default function EngineerUserProfile() {
     e.preventDefault();
 
 
-    Axios.get(`http://localhost:3001/user-profile/${ParamsUserId}`, {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
       headers: {
         authorization: `Token ${token}`
       }
@@ -72,7 +72,7 @@ export default function EngineerUserProfile() {
     e.preventDefault();
 
 
-    Axios.put(`http://localhost:3001/user-profile/${ParamsUserId}`, {
+    Axios.put(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
       firstName: userFirstName,
       lastName: userLastName,
       contact: userContact,
