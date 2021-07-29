@@ -26,7 +26,7 @@ export default function LoginForm() {
       userPassword: userpasswordLog,
       userEmail: useremailLog,
     }).then((response) => {
-      console.log(response.data.token);
+      // console.log(response.data.token);
       // history.push("/sign-in")
       console.log("this is response", response);
       if (response.data.status) {

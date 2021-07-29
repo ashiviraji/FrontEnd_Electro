@@ -66,7 +66,7 @@ export default function CustomerUserProfile() {
       lastName: userLastName
     }, {
       headers: {
-        authorization: `Token  ${token}`
+        authorization: `Token ${token}`
       },
     })
       .then((response) => {
