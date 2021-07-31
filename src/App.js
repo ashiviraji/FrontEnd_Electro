@@ -121,6 +121,11 @@ function App() {
         <SidebarEngineer />
       </Route>
 
+      <Route exact path="/engineer-unitcharges-60plus">
+        <DashbordNavbar />
+        <SidebarEngineer />
+      </Route>
+
       <Route exact path="/engineer-unitcharges-ToU">
         <DashbordNavbar />
         <SidebarEngineer />
