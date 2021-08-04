@@ -3,6 +3,8 @@ import React from "react";
 import { Route } from "react-router-dom";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
+import ResetPassword from "./views/ResetPassword";
+
 import Home from "./views/Home";
 
 import {
@@ -53,6 +55,9 @@ function App() {
       </Route>
       <Route exact path="/sign-up">
         <SignUp />
+      </Route>
+      <Route exact path="/reset-password">
+        <ResetPassword />
       </Route>
 
       <Route exact path="/device-wise">
