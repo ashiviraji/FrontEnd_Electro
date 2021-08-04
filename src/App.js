@@ -43,7 +43,7 @@ function App() {
       <Route exact path="/electro">
         <Home id="electro" />
       </Route>
-      <Route exact path="/forgotpassword">
+      <Route exact path="/forgot-password">
         <ForgotPassword />
       </Route>
       <Route exact path="/dashboard-user">
