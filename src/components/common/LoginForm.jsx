@@ -115,7 +115,7 @@ export default function LoginForm() {
           </div>
           <div>
             <p className="forgot-password">
-              Forgot <a href="forgotpassword">password?</a>
+              Forgot <a href="forgot-password">password?</a>
             </p>
           </div>
           <hr />
