@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import Axios from 'axios';
 import '../../assets/css/Authentication/loginForm.css';
@@ -12,12 +12,12 @@ export default function ResetPasswordForm() {
     const [conpasswordReg, setConpasswordReg] = useState("");
     const [PassWarningReg, setPassWarningReg] = useState("");
     const [btnEnable, setbtnEnable] = useState("true");
-
+    const { eid } = useParams();
     let history = useHistory();
-
+    console.log("email:", eid);
     const passwordReset = (e) => {
         e.preventDefault();
-        Axios.post(`${process.env.REACT_APP_BASE_URL}/reset-password`, {
+        Axios.post(`${process.env.REACT_APP_BASE_URL}/reset-password/${eid}`, {
             userPassword: conpasswordReg,
 
         }).then((response) => {
@@ -63,11 +63,11 @@ export default function ResetPasswordForm() {
                     </div>
                     <div className="form-group">
 
-                        <input type="password" name="password" className="form-control " placeholder="Password" required onChange={(e) => { setUserpasswordReg(e.target.value); }} />
+                        <input type="password" name="password" className="form-control " placeholder=" New Password" required onChange={(e) => { setUserpasswordReg(e.target.value); }} />
                     </div>
                     <div className="form-group">
 
-                        <input type="password" name="confirmPassword" className="form-control " placeholder="Confirm password" required onChange={(e) => { checkPassword(e); }} />
+                        <input type="password" name="confirmPassword" className="form-control " placeholder="Confirm New Password" required onChange={(e) => { checkPassword(e); }} />
                     </div>
                     <div>
                         <p style={{ color: "red", float: "left", fontSize: 13, marginTop: 17 }}>{PassWarningReg}</p>

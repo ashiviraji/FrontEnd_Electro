@@ -56,7 +56,7 @@ function App() {
       <Route exact path="/sign-up">
         <SignUp />
       </Route>
-      <Route exact path="/reset-password">
+      <Route exact path="/reset-password/:eid">
         <ResetPassword />
       </Route>
 
