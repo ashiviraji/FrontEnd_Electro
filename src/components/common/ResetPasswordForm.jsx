@@ -4,7 +4,10 @@ import { FaFacebook, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa
 import Axios from 'axios';
 import '../../assets/css/Authentication/loginForm.css';
 import { useState } from 'react';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
+toast.configure();
 
 export default function ResetPasswordForm() {
 
@@ -24,6 +27,14 @@ export default function ResetPasswordForm() {
             console.log(response);
             if (response.data.status) {
                 history.push("/sign-in");
+                toast.success('Successfully Reset Your Password ', {
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
                 console.log("password reset successfully");
             } else {
                 history.push("/reset-password");
