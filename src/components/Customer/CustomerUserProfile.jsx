@@ -5,6 +5,10 @@ import { useHistory } from "react-router";
 import "../../assets/css/Customer/customer.css";
 import Admin from "../../assets/img/Admin.png";
 import Axios from 'axios';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure();
 
 export default function CustomerUserProfile() {
   let history = useHistory();
@@ -73,7 +77,14 @@ export default function CustomerUserProfile() {
 
         if (response.data.status) {
           document.cookie = `name=${userFirstName}`;
-
+          toast.success('User Profile Updated', {
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           console.log("successfully update user profile of customer");
 
         } else {
