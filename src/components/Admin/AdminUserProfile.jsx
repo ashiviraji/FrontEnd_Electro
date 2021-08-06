@@ -4,7 +4,10 @@ import { useHistory } from "react-router";
 import "../../assets/css/CEBEngineer/engineer.css";
 import Engineer1 from "../../assets/img/engineer1.png";
 import Axios from 'axios';
-// var Crouton = require('react-crouton');
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure();
 
 export default function EngineerUserProfile() {
 
@@ -87,7 +90,14 @@ export default function EngineerUserProfile() {
 
         if (response.data.status) {
           document.cookie = `name=${userFirstName}`;
-
+          toast.success('User Profile Updated', {
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           console.log("successfully update user profile of ceb engineer");
 
         } else {
