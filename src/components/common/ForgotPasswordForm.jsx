@@ -4,14 +4,15 @@ import { FaFacebook, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa
 import { Link, useHistory } from "react-router-dom";
 import Axios from 'axios';
 import { useState } from 'react';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
+toast.configure();
 
 export default function ForgotPasswordForm() {
 
   let history = useHistory();
   const [useremail, setUseremail] = useState("");
-  const [emailWarning, setemailWarning] = useState("");
-  const [emailValidity, setemailValidity] = useState("");
 
 
   const sendEmail = (e) => {
@@ -24,13 +25,27 @@ export default function ForgotPasswordForm() {
 
       console.log("this is response", response);
       if (response.data.status) {
-
+        toast.success('Please Check Your Mails', {
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         history.push("/forgot-password");
-        setemailValidity("Please Check your Email ")
 
       } else {
+        toast.error('Please Enter Valid Email', {
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
 
-        setemailWarning("Please Enter Valid Email ")
+
         history.push("/forgot-password");
 
       }
@@ -48,12 +63,8 @@ export default function ForgotPasswordForm() {
 
 
           <h3>Forgot Password</h3>
-          <div class="alert-danger" role="alert">
-            {emailWarning}
-          </div>
-          <div class="alert-success" role="alert">
-            {emailValidity}
-          </div>
+
+
           <div className="form-group1">
 
             <input type="email" name="email" className="form-control my-4" placeholder="Enter email" required
