@@ -7,6 +7,10 @@ import "../../assets/css/CEBEngineer/engineerpopup.css";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Axios from 'axios';
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure();
 
 export default function EngineerUnitChargesToU(props) {
   const [modalShow, setModalShow] = React.useState(false);
@@ -306,8 +310,15 @@ function MyVerticallyCenteredModal(props) {
         // console.log(response.data.data[1]);
 
         if (response.data.status) {
-          window.location.reload();//reload browser
-
+          // window.location.reload();//reload browser
+          toast.success('Admin Notified successfuly', {
+            autoClose: 7000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         } else {
 
           history.push("/sign-in");
