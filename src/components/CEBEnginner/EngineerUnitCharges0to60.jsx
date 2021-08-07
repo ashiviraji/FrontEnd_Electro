@@ -14,10 +14,10 @@ export default function EngineerUnitCharges0to60(props) {
 
   let history = useHistory();
 
-  const [UnitCharge0to30, setUnitCharge0to30] = useState("");
-  const [UnitCharge31to60, setUnitCharge31to60] = useState("");
-  const [FixedCharge0to30, setFixedCharge0to30] = useState("");
-  const [FixedCharge31to60, setFixedCharge31to60] = useState("");
+  const [Charge0to30, setCharge0to30] = useState("");
+  const [Charge31to60, setCharge31to60] = useState("");
+  // const [FixedCharge0to30, setFixedCharge0to30] = useState("");
+  // const [FixedCharge31to60, setFixedCharge31to60] = useState("");
 
   const [normalUCharge, setNormalUCharge] = useState("");
   const [normalUnitPeriod, setNormalUnitPeriod] = useState("");
@@ -29,37 +29,40 @@ export default function EngineerUnitCharges0to60(props) {
     .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
   var categoryId = "0-60";
-  Axios.get(`${process.env.REACT_APP_BASE_URL}/unit-charges/${categoryId}`, {
-    headers: {
-      authorization: `Token ${token}`
-    }
-  })
-    .then((response) => {
-      // console.log(response.data.data[1]);
-
-      if (response.data.status) {
-
-
-        setUnitCharge0to30(response.data.data[0].Unit_charge);
-        setFixedCharge0to30(response.data.data[0].Fixed_charge);
-
-
-        setUnitCharge31to60(response.data.data[1].Unit_charge);
-
-        setFixedCharge31to60(response.data.data[1].Fixed_charge);
-
-
-
-
-      } else {
-
-        history.push("/sign-in");
-        window.location.reload();//reload browser
-        deleteAllCookies();//delete all cookies
+  function getNormalUnitdata() {
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/unit-charges/${categoryId}`, {
+      headers: {
+        authorization: `Token ${token}`
       }
-    }).catch((error) => {
-      console.log("this is 1c response", error);
-    });
+    })
+      .then((response) => {
+        // console.log(response.data.data[1]);
+
+        if (response.data.status) {
+
+
+          setCharge0to30(response.data.data[0]);
+          // setFixedCharge0to30(response.data.data[0].Fixed_charge);
+
+
+          setCharge31to60(response.data.data[1]);
+
+          // setFixedCharge31to60(response.data.data[1].Fixed_charge);
+
+
+
+
+        } else {
+
+          history.push("/sign-in");
+          window.location.reload();//reload browser
+          deleteAllCookies();//delete all cookies
+        }
+      }).catch((error) => {
+        console.log("this is 1c response", error);
+      });
+  }
+
   /**
      * function of delete all cookies
      */
@@ -73,6 +76,12 @@ export default function EngineerUnitCharges0to60(props) {
       document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
   }
+
+  useEffect(() => {
+    getNormalUnitdata();
+  }, []);
+
+
   function setDataToPopup(value, unitPeriod, categ) {
     setModalShow(true);
     setNormalUCharge(value);
@@ -107,7 +116,7 @@ export default function EngineerUnitCharges0to60(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-category"
               >
-                00-30
+                {Charge0to30.Unit_category}
               </label>
             </li>
             <li>
@@ -115,13 +124,13 @@ export default function EngineerUnitCharges0to60(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-unitCharge"
               >
-                {UnitCharge0to30}
+                {Charge0to30.Unit_charge}
               </label>
             </li>
             <li>
               <button
                 className="engineer-unit-label-list-update"
-                onClick={() => setDataToPopup(UnitCharge0to30, "00-30", "Unit")}
+                onClick={() => setDataToPopup(Charge0to30.Unit_charge, Charge0to30.Unit_category, "Unit")}
               >
                 UPDATE
               </button>
@@ -139,13 +148,13 @@ export default function EngineerUnitCharges0to60(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-fixedCharge"
               >
-                {FixedCharge0to30}
+                {Charge0to30.Fixed_charge}
               </label>
             </li>
             <li>
               <button
                 className="engineer-unit-label-list-update"
-                onClick={() => setDataToPopup(FixedCharge0to30, "00-30", "Fixed")}
+                onClick={() => setDataToPopup(Charge0to30.Fixed_charge, Charge0to30.Unit_category, "Fixed")}
               >
                 UPDATE
               </button>
@@ -162,7 +171,7 @@ export default function EngineerUnitCharges0to60(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-category"
               >
-                31-60
+                {Charge31to60.Unit_category}
               </label>
             </li>
             <li>
@@ -170,13 +179,13 @@ export default function EngineerUnitCharges0to60(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-unitCharge"
               >
-                {UnitCharge31to60}
+                {Charge31to60.Unit_charge}
               </label>
             </li>
             <li>
               <button
                 className="engineer-unit-label-list-update"
-                onClick={() => setDataToPopup(UnitCharge31to60, "31-60", "Unit")}
+                onClick={() => setDataToPopup(Charge31to60.Unit_charge, Charge31to60.Unit_category, "Unit")}
               >
                 UPDATE
               </button>
@@ -186,13 +195,13 @@ export default function EngineerUnitCharges0to60(props) {
                 className="engineer-unit-label-list-inside"
                 id="engineer-unit-inside-fixedCharge"
               >
-                {FixedCharge31to60}
+                {Charge31to60.Fixed_charge}
               </label>
             </li>
             <li>
               <button
                 className="engineer-unit-label-list-update"
-                onClick={() => setDataToPopup(FixedCharge31to60, "31-60", "Fixed")}
+                onClick={() => setDataToPopup(Charge31to60.Fixed_charge, Charge31to60.Unit_category, "Fixed")}
               >
                 UPDATE
               </button>
