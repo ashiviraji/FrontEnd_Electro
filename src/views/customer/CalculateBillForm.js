@@ -13,8 +13,10 @@ const priorityList = [
   { id: "low", title: "Low" },
 ];
 
+
 const initialFvalues = {
-  id:"",
+  id:0,
+  bill_id:1,
   appliance: "",
   quantity: 0,
   hPeak: 0,
@@ -25,6 +27,18 @@ const initialFvalues = {
   mDay: 0,
   power: "",
   priority: "",
+  using_minutes_peak_time:0,
+  using_minutes_off_peak_time:0,
+  using_minutes_day_time:0,
+  total_units_fixed:0,
+  units_peak_time:0,
+  units_off_peak_time:0,
+  units_day_time:0,
+  total_cost_TOU:0,
+  cost_peak_time:0,
+  cost_off_peak_time:0,
+  cost_day_time:0,
+  Cust_id:1019
 };
 
 const useStyles = makeStyles((theme) => ({
