@@ -1,3 +1,5 @@
+import Axios from 'axios';
+
 const KEYS = {
     devices:'devices',
     deviceID:'deviceID'
@@ -5,6 +7,30 @@ const KEYS = {
 
 
 export function insertDevice(data) {
+
+    var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+    // e.preventDefault();
+        Axios.post(`${process.env.REACT_APP_BASE_URL}/add-device-main-bill`, {
+        data: data    
+        }, {
+            headers: {
+              authorization: `Token ${token}`
+            },
+          }).then((response) => {
+            console.log(response);
+            if (response.data.status) {
+                console.log("Add device");
+            } 
+        }).catch((error) => {
+            console.log("this is response" + error);
+
+        });
+
     let devices=getAllDevices();
     console.log(devices);
     data['id'] = genarateDeviceID();
