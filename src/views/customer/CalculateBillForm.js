@@ -6,17 +6,21 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import Controls from "../../components/Customer/bill_control/Controls";
 
-
 const priorityList = [
   { id: "high", title: "High" },
   { id: "mid", title: "Mid" },
   { id: "low", title: "Low" },
 ];
 
+var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
 
 const initialFvalues = {
-  id:0,
-  bill_id:1,
+  id: 0,
+  bill_id: 1,
   appliance: "",
   quantity: 0,
   hPeak: 0,
@@ -27,18 +31,18 @@ const initialFvalues = {
   mDay: 0,
   power: "",
   priority: "",
-  using_minutes_peak_time:0,
-  using_minutes_off_peak_time:0,
-  using_minutes_day_time:0,
-  total_units_fixed:0,
-  units_peak_time:0,
-  units_off_peak_time:0,
-  units_day_time:0,
-  total_cost_TOU:0,
-  cost_peak_time:0,
-  cost_off_peak_time:0,
-  cost_day_time:0,
-  Cust_id:1019
+  using_minutes_peak_time: 0,
+  using_minutes_off_peak_time: 0,
+  using_minutes_day_time: 0,
+  total_units_fixed: 0,
+  units_peak_time: 0,
+  units_off_peak_time: 0,
+  units_day_time: 0,
+  total_cost_TOU: 0,
+  cost_peak_time: 0,
+  cost_off_peak_time: 0,
+  cost_day_time: 0,
+  Cust_id: ParamsUserId
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -51,41 +55,67 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CalculateBillForm(props) {
-
-  const {addOrEdit, recordForEdit} = props
+  const { addOrEdit, recordForEdit } = props;
 
   const classes = useStyles();
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     // || ("quantity" in fieldValues) || ("power" in fieldValues) || ("priority" in fieldValues)
-   if ("appliance" in fieldValues)
-      temp.appliance = fieldValues.appliance? "": "This field is required";
+    if ("appliance" in fieldValues)
+      temp.appliance = fieldValues.appliance ? "" : "This field is required";
     if ("quantity" in fieldValues)
-      temp.quantity = fieldValues.quantity > 0 ? "" : "Quantity is required and > 0";
+      temp.quantity =
+        fieldValues.quantity > 0 ? "" : "Quantity is required and > 0";
     if ("power" in fieldValues)
-      temp.power = fieldValues.power > 0 ? "" : "power should be a number and > 0";
+      temp.power =
+        fieldValues.power > 0 ? "" : "power should be a number and > 0";
     if ("priority" in fieldValues)
-      temp.priority = fieldValues.priority? "" : "Please select priority of device";
+      temp.priority = fieldValues.priority
+        ? ""
+        : "Please select priority of device";
     if ("hPeak" in fieldValues)
-      temp.hPeak = ( (fieldValues.hPeak >= 0 && fieldValues.hPeak <= 4) ||  fieldValues.hPeak === "") ? "" : "4 >Peak Hours in day >= 0";
+      temp.hPeak =
+        (fieldValues.hPeak >= 0 && fieldValues.hPeak <= 4) ||
+        fieldValues.hPeak === ""
+          ? ""
+          : "4 >Peak Hours in day >= 0";
     if ("hOffPeak" in fieldValues)
-      temp.hOffPeak = ( (fieldValues.hOffPeak >= 0 && fieldValues.hOffPeak <= 7) ||  fieldValues.hOffPeak === "") ? "" : "7 >Off Peak Hours in day >= 0";
+      temp.hOffPeak =
+        (fieldValues.hOffPeak >= 0 && fieldValues.hOffPeak <= 7) ||
+        fieldValues.hOffPeak === ""
+          ? ""
+          : "7 >Off Peak Hours in day >= 0";
     if ("hDay" in fieldValues)
-      temp.hDay = ( (fieldValues.hDay >= 0 && fieldValues.hDay <= 13) ||  fieldValues.hDay === "") ? "" : "13 >Day Hours in day >= 0";
+      temp.hDay =
+        (fieldValues.hDay >= 0 && fieldValues.hDay <= 13) ||
+        fieldValues.hDay === ""
+          ? ""
+          : "13 >Day Hours in day >= 0";
     if ("mPeak" in fieldValues)
-      temp.mPeak = ( (fieldValues.mPeak >= 0 && fieldValues.mPeak < 60) ||  fieldValues.mPeak === "") ? "" : "60 > minutes >= 0";
+      temp.mPeak =
+        (fieldValues.mPeak >= 0 && fieldValues.mPeak < 60) ||
+        fieldValues.mPeak === ""
+          ? ""
+          : "60 > minutes >= 0";
     if ("mOffPeak" in fieldValues)
-      temp.mOffPeak = ( (fieldValues.mOffPeak >= 0 && fieldValues.mOffPeak < 60) ||  fieldValues.mOffPeak === "")  ? "" : "60 > minutes >= 0";
+      temp.mOffPeak =
+        (fieldValues.mOffPeak >= 0 && fieldValues.mOffPeak < 60) ||
+        fieldValues.mOffPeak === ""
+          ? ""
+          : "60 > minutes >= 0";
     if ("mDay" in fieldValues)
-      temp.mDay = ( (fieldValues.mDay >= 0 && fieldValues.mDay < 60) ||  fieldValues.mDay === "")  ? "" : "60 > minutes >= 0";
+      temp.mDay =
+        (fieldValues.mDay >= 0 && fieldValues.mDay < 60) ||
+        fieldValues.mDay === ""
+          ? ""
+          : "60 > minutes >= 0";
     setErrors({
-      ...temp
-    })
+      ...temp,
+    });
 
     if (fieldValues == values) {
-      return Object.values(temp).every(x => x == "");
+      return Object.values(temp).every((x) => x == "");
     }
-      
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -96,17 +126,16 @@ export default function CalculateBillForm(props) {
     console.log("testing...");
     if (validate()) {
       addOrEdit(values, resetForm);
-      
     }
-  }
+  };
 
   useEffect(() => {
-    if(recordForEdit != null){
+    if (recordForEdit != null) {
       setValues({
-        ...recordForEdit
-      })
+        ...recordForEdit,
+      });
     }
-  }, [recordForEdit])
+  }, [recordForEdit]);
 
   return (
     <Form>
@@ -244,9 +273,10 @@ export default function CalculateBillForm(props) {
           </Button>
         </Grid>
       </Grid>
-      High : Can not change the device usage time <br/>
-      Mid : Can use moderately in specified time slot <br/>
-      Low : Usage is not mandatory in specified time slot<br/>
+      High : Can not change the device usage time <br />
+      Mid : Can use moderately in specified time slot <br />
+      Low : Usage is not mandatory in specified time slot
+      <br />
     </Form>
   );
 }
