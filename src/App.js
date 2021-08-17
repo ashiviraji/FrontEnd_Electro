@@ -3,6 +3,8 @@ import React from "react";
 import { Route } from "react-router-dom";
 import SignIn from "./views/SignIn";
 import SignUp from "./views/SignUp";
+import ResetPassword from "./views/ResetPassword";
+
 import Home from "./views/Home";
 
 import {
@@ -41,7 +43,7 @@ function App() {
       <Route exact path="/electro">
         <Home id="electro" />
       </Route>
-      <Route exact path="/forgotpassword">
+      <Route exact path="/forgot-password">
         <ForgotPassword />
       </Route>
       <Route exact path="/dashboard-user">
@@ -53,6 +55,9 @@ function App() {
       </Route>
       <Route exact path="/sign-up">
         <SignUp />
+      </Route>
+      <Route exact path="/reset-password/:eid">
+        <ResetPassword />
       </Route>
 
       <Route exact path="/device-wise">
@@ -121,7 +126,22 @@ function App() {
         <SidebarEngineer />
       </Route>
 
+      <Route exact path="/engineer-unitcharges-60plus">
+        <DashbordNavbar />
+        <SidebarEngineer />
+      </Route>
+
+      <Route exact path="/engineer-unitcharges-ToU">
+        <DashbordNavbar />
+        <SidebarEngineer />
+      </Route>
+
       <Route exact path="/engineer-userprofile">
+        <DashbordNavbar />
+        <SidebarEngineer />
+      </Route>
+
+      <Route exact path="/engineer-unitcharges-0to60">
         <DashbordNavbar />
         <SidebarEngineer />
       </Route>
@@ -199,6 +219,7 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
+
 
     </div>
   );

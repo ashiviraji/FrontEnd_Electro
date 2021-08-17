@@ -19,25 +19,47 @@ export default function LoginForm() {
 
   const userLogedIn = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/sign-in", {
+    // console.log(process.env.REACT_APP_BASE_URL);
+
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/sign-in`, {
 
       userPassword: userpasswordLog,
       userEmail: useremailLog,
     }).then((response) => {
-      console.log(response.data.data);
+      // console.log(response.data.token);
       // history.push("/sign-in")
       console.log("this is response", response);
       if (response.data.status) {
-        if (response.data.data == "customer") {
+        document.cookie = `name=${response.data.data[0].First_name}`;
+        document.cookie = `token=${response.data.token}`;
+
+        console.log(document.cookie);
+
+        // console.log(document.cookie
+        //   .split(';')
+        //   .map(cookie => cookie.split('='))
+        //   .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).name
+        // );
+
+        if (response.data.data[0].Role == "customer") {
+          document.cookie = `userId=${response.data.data[0].Cust_id}`;
+
           history.push("/dashboard-user");
           console.log("successfully login customer");
+
         } else {
-          if (response.data.data == "admin") {
+          if (response.data.data[0].Role == "admin") {
+
+            document.cookie = `userId=${response.data.data[0].Emp_id}`;
             history.push("/dashboard-admin");
             console.log("successfully login admin");
+
           } else {
+
+            document.cookie = `userId=${response.data.data[0].Emp_id}`;
             history.push("/dashboard-engineer");
             console.log("successfully login ceb engineer");
+
           }
         }
 
@@ -93,7 +115,7 @@ export default function LoginForm() {
           </div>
           <div>
             <p className="forgot-password">
-              Forgot <a href="forgotpassword">password?</a>
+              Forgot <a href="forgot-password">password?</a>
             </p>
           </div>
           <hr />
