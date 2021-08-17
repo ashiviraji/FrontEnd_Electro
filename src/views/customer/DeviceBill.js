@@ -79,7 +79,7 @@ export function getAllDevices() {
 
             if (response.data.status) {
                 console.log(response.data);
-                KEYS.devices = response;
+                // KEYS.devices = response;
                 console.log("successfully get device-main-bill");
 
             } else {
@@ -92,8 +92,9 @@ export function getAllDevices() {
             console.log("this is 1c response", error);
         });
 
-    // if (localStorage.getItem(KEYS.devices) == null)
-    //     localStorage.setItem(KEYS.devices, JSON.stringify([]))
+    if (localStorage.getItem(KEYS.devices) == null)
+        localStorage.setItem(KEYS.devices, JSON.stringify([]))
+    
     return JSON.parse(localStorage.getItem(KEYS.devices));
 }
 
