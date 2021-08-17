@@ -18,6 +18,7 @@ var ParamsUserId = document.cookie
     .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
 
 
+    console.log("customer id :"+ParamsUserId);
 const initialFvalues = {
   id: 0,
   bill_id: 1,

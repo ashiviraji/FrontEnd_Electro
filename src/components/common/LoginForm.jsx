@@ -41,14 +41,14 @@ export default function LoginForm() {
         //   .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).name
         // );
 
-        if (response.data.data[0].Role == "customer") {
+        if (response.data.data[0].Role === "customer") {
           document.cookie = `userId=${response.data.data[0].Cust_id}`;
 
           history.push("/dashboard-user");
           console.log("successfully login customer");
 
         } else {
-          if (response.data.data[0].Role == "admin") {
+          if (response.data.data[0].Role === "admin") {
 
             document.cookie = `userId=${response.data.data[0].Emp_id}`;
             history.push("/dashboard-admin");
