@@ -31,7 +31,6 @@ export function insertDevice(data) {
             console.log("Add device");
         } else {
             // history.push("/sign-in");
-            // window.location.reload();//reload browser
             deleteAllCookies();//delete all cookies
         }
     }).catch((error) => {
