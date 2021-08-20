@@ -13,9 +13,11 @@ const priorityList = [
 ];
 
 var ParamsUserId = document.cookie
-    .split(';')
-    .map(cookie => cookie.split('='))
-    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  .split(';')
+  .map(cookie => cookie.split('='))
+  .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+    console.log("User id is" +ParamsUserId);
 
 
     console.log("customer id :"+ParamsUserId);
@@ -43,7 +45,7 @@ const initialFvalues = {
   cost_peak_time: 0,
   cost_off_peak_time: 0,
   cost_day_time: 0,
-  Cust_id: ParamsUserId
+  // Cust_id: ParamsUserId
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -77,37 +79,37 @@ export default function CalculateBillForm(props) {
     if ("hPeak" in fieldValues)
       temp.hPeak =
         (fieldValues.hPeak >= 0 && fieldValues.hPeak <= 4) ||
-        fieldValues.hPeak === ""
+          fieldValues.hPeak === ""
           ? ""
           : "4 >Peak Hours in day >= 0";
     if ("hOffPeak" in fieldValues)
       temp.hOffPeak =
         (fieldValues.hOffPeak >= 0 && fieldValues.hOffPeak <= 7) ||
-        fieldValues.hOffPeak === ""
+          fieldValues.hOffPeak === ""
           ? ""
           : "7 >Off Peak Hours in day >= 0";
     if ("hDay" in fieldValues)
       temp.hDay =
         (fieldValues.hDay >= 0 && fieldValues.hDay <= 13) ||
-        fieldValues.hDay === ""
+          fieldValues.hDay === ""
           ? ""
           : "13 >Day Hours in day >= 0";
     if ("mPeak" in fieldValues)
       temp.mPeak =
         (fieldValues.mPeak >= 0 && fieldValues.mPeak < 60) ||
-        fieldValues.mPeak === ""
+          fieldValues.mPeak === ""
           ? ""
           : "60 > minutes >= 0";
     if ("mOffPeak" in fieldValues)
       temp.mOffPeak =
         (fieldValues.mOffPeak >= 0 && fieldValues.mOffPeak < 60) ||
-        fieldValues.mOffPeak === ""
+          fieldValues.mOffPeak === ""
           ? ""
           : "60 > minutes >= 0";
     if ("mDay" in fieldValues)
       temp.mDay =
         (fieldValues.mDay >= 0 && fieldValues.mDay < 60) ||
-        fieldValues.mDay === ""
+          fieldValues.mDay === ""
           ? ""
           : "60 > minutes >= 0";
     setErrors({
