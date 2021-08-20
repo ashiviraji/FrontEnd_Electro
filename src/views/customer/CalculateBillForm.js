@@ -23,7 +23,7 @@ var ParamsUserId = document.cookie
     console.log("customer id :"+ParamsUserId);
 const initialFvalues = {
   id: 0,
-  bill_id: 1,
+  bill_id: 0,
   appliance: "",
   quantity: 0,
   hPeak: 0,
@@ -59,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CalculateBillForm(props) {
   const { addOrEdit, recordForEdit } = props;
+
+  initialFvalues.bill_id = props.billId;
+  console.log(initialFvalues.bill_id);
 
   const classes = useStyles();
   const validate = (fieldValues = values) => {
@@ -131,6 +134,8 @@ export default function CalculateBillForm(props) {
       addOrEdit(values, resetForm);
     }
   };
+
+
 
   useEffect(() => {
     if (recordForEdit != null) {
