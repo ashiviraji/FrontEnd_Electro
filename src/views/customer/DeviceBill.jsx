@@ -74,7 +74,7 @@ export function Deletedevice(appliance) {
 
 export function getAllDevices() {
     // let History = useHistory();
-
+    
     Axios.get(`${process.env.REACT_APP_BASE_URL}/get-device-main-bill/${ParamsUserId}`, {
         headers: {
             authorization: `Token ${token}`

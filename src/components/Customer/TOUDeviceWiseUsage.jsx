@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const columns = [
   { id: "device_id", label: "#", minWidth: 40 },
-  { id: "applicance", label: "Applicance", minWidth: 120 },
+  { id: "applicance", label: "Appliance", minWidth: 120 },
 
   {
     id: "quantity",
