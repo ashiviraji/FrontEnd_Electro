@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import Axios from 'axios';
 import CalculateBillForm from "./CalculateBillForm";
 import { Paper, makeStyles } from "@material-ui/core";
 import UseTable from "../../components/Customer/useTable";
@@ -44,6 +45,45 @@ const headCells = [
   { id: "action", label: "Actions" },
 ];
 
+
+
+var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+
+ function getBillId(){
+  Axios.get(`${process.env.REACT_APP_BASE_URL}/get-bill-id/${ParamsUserId}`, {
+    headers: {
+        authorization: `Token ${token}`
+    }
+}).then((response) => {
+
+    if (response.data.status) {
+
+        console.log("successfully get devices data");
+        console.log(response.data.data);
+    } else {
+        console.log(response.data.message);
+        // history.push("/sign-in");
+        // window.location.reload();//reload browser
+        // deleteAllCookies();//delete all cookies
+    }
+}).catch((error) => {
+    console.log("this is 1c response", error);
+});
+
+}
+
+
+
 export default function CalculateBill() {
   const classes = useStyles();
   const [recordForEdit, setRecordForEdit] = useState(null);
@@ -54,6 +94,11 @@ export default function CalculateBill() {
     },
   });
 
+  useEffect(() => {
+  
+    getBillId();
+  },[]);
+  
   const [openPopup, setOpenPopup] = useState(false);
   const [notify, setNotify] = useState({
     isOpen: false,
