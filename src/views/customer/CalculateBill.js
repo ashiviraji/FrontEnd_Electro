@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from "react";
+import { Redirect, useHistory } from 'react-router-dom'
 import Axios from 'axios';
 import CalculateBillForm from "./CalculateBillForm";
 import { Paper, makeStyles } from "@material-ui/core";
@@ -58,35 +59,15 @@ var ParamsUserId = document.cookie
     .map(cookie => cookie.split('='))
     .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
 
-
- function getBillId(){
-  Axios.get(`${process.env.REACT_APP_BASE_URL}/get-bill-id/${ParamsUserId}`, {
-    headers: {
-        authorization: `Token ${token}`
-    }
-}).then((response) => {
-
-    if (response.data.status) {
-
-        console.log("successfully get devices data");
-        console.log(response.data.data);
-    } else {
-        console.log(response.data.message);
-        // history.push("/sign-in");
-        // window.location.reload();//reload browser
-        // deleteAllCookies();//delete all cookies
-    }
-}).catch((error) => {
-    console.log("this is 1c response", error);
-});
-
-}
-
+console.log("Front End eken yanawada id eka :- "+ ParamsUserId);
+ 
 
 
 export default function CalculateBill() {
   const classes = useStyles();
+  let history = useHistory();
   const [recordForEdit, setRecordForEdit] = useState(null);
+  const [newBillId, setNewBillId] = useState(null);
   const [records, setRecords] = useState(DeviceBill.getAllDevices());
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
@@ -97,14 +78,17 @@ export default function CalculateBill() {
   useEffect(() => {
   
     getBillId();
+
   },[]);
   
   const [openPopup, setOpenPopup] = useState(false);
+
   const [notify, setNotify] = useState({
     isOpen: false,
     message: "",
     variant: "",
   });
+
   const [confirmDialog, setConfirmDialog] = useState({
     isOpen: false,
     title: "",
@@ -165,6 +149,50 @@ export default function CalculateBill() {
       variant: "danger",
     });
   };
+
+  function getBillId(){
+
+
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/get-bill-id/${ParamsUserId}`, {
+      headers: {
+          authorization: `Token ${token}`
+      }
+  }).then((response) => {
+  
+      if (response.data.status) {
+  
+          console.log("successfully get devices data");
+          var oldBillId = response.data.data;
+          oldBillId++;
+          var new_bill_id = oldBillId;
+          setNewBillId(new_bill_id);
+          console.log("get new bill id for front end :- " + new_bill_id);
+      } else {
+          console.log(response.data.message);
+          history.push("/sign-in");
+          window.location.reload();//reload browser
+           deleteAllCookies();//delete all cookies
+      }
+  }).catch((error) => {
+      console.log("this is 1c response", error);
+  });
+  
+  }
+
+  /**
+  * function of delete all cookies
+//   */
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+  
 
   return (
     <div>
@@ -264,6 +292,7 @@ export default function CalculateBill() {
         <CalculateBillForm
           recordForEdit={recordForEdit}
           addOrEdit={addOrEdit}
+          billId={newBillId}
         />
       </Popup>
       <Notification notify={notify} setNotify={setNotify} />
