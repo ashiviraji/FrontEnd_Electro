@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 
 const columns = [
   { id: "device_id", label: "#", minWidth: 90 },
-  { id: "applicance", label: "Applicance", minWidth: 100 },
+  { id: "appliance", label: "Appliance", minWidth: 100 },
 
   {
     id: "quantity",
@@ -43,13 +43,13 @@ const columns = [
 
 function createData(
   device_id,
-  applicance,
+  appliance,
   quantity,
   total_units,
   total_amount
 ) {
   //   const density = population / size;
-  return { device_id, applicance, quantity, total_units, total_amount };
+  return { device_id, appliance, quantity, total_units, total_amount };
 }
 
 const rows = [

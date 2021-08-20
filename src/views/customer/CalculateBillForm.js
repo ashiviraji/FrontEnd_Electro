@@ -20,6 +20,7 @@ var ParamsUserId = document.cookie
     console.log("User id is" +ParamsUserId);
 
 
+    console.log("customer id :"+ParamsUserId);
 const initialFvalues = {
   id: 0,
   bill_id: 1,
