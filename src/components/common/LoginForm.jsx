@@ -61,7 +61,10 @@ export default function LoginForm() {
             console.log("successfully login ceb engineer");
 
           }
+
         }
+        
+        window.location.reload();//reload browser
 
       } else {
         history.push("/sign-in");
