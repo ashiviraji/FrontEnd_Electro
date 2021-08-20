@@ -13,13 +13,18 @@ var token = document.cookie
     .map(cookie => cookie.split('='))
     .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
+
+var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
 export function insertDevice(data) {
 
 
 
     // let History = useHistory();
     // e.preventDefault();
-    Axios.post(`${process.env.REACT_APP_BASE_URL}/add-device-main-bill`, {
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/add-device-main-bill/${ParamsUserId}`, {
         data: data
     }, {
         headers: {
@@ -31,7 +36,7 @@ export function insertDevice(data) {
             console.log("Add device");
         } else {
             // history.push("/sign-in");
-            deleteAllCookies();//delete all cookies
+            // deleteAllCookies();//delete all cookies
         }
     }).catch((error) => {
         console.log("this is response" + error);
@@ -69,45 +74,43 @@ export function Deletedevice(appliance) {
 
 export function getAllDevices() {
     // let History = useHistory();
-    console.log("response.data");
-    Axios.get(`${process.env.REACT_APP_BASE_URL}/get-device-main-bill`, {
+
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/get-device-main-bill/${ParamsUserId}`, {
         headers: {
             authorization: `Token ${token}`
-        },
-    })
-        .then((response) => {
+        }
+    }).then((response) => {
 
-            if (response.data.status) {
-                console.log(response.data);
-                // KEYS.devices = response;
-                console.log("successfully get device-main-bill");
+        if (response.data.status) {
 
-            } else {
+            console.log("successfully get devices data");
+            console.log(response.data.data);
+        } else {
+            console.log(response.data.message);
+            // history.push("/sign-in");
+            // window.location.reload();//reload browser
+            // deleteAllCookies();//delete all cookies
+        }
+    }).catch((error) => {
+        console.log("this is 1c response", error);
+    });
 
-                // History.push("/sign-in");
-                // window.location.reload();//reload browser
-                deleteAllCookies();//delete all cookies
-            }
-        }).catch((error) => {
-            console.log("this is 1c response", error);
-        });
 
     if (localStorage.getItem(KEYS.devices) == null)
         localStorage.setItem(KEYS.devices, JSON.stringify([]))
-    
     return JSON.parse(localStorage.getItem(KEYS.devices));
 }
 
 /**
   * function of delete all cookies
-  */
-function deleteAllCookies() {
-    var cookies = document.cookie.split(";");
+//   */
+// function deleteAllCookies() {
+//     var cookies = document.cookie.split(";");
 
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        var eqPos = cookie.indexOf("=");
-        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-}
+//     for (var i = 0; i < cookies.length; i++) {
+//         var cookie = cookies[i];
+//         var eqPos = cookie.indexOf("=");
+//         var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+//         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+//     }
+// }
