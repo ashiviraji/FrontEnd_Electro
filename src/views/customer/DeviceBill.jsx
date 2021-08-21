@@ -45,14 +45,14 @@ export function insertDevice(data) {
 
     let devices = getAllDevices();
     console.log(devices);
-    data['id'] = genarateDeviceID();
+    data['device_id'] = genarateDeviceID();
     devices.push(data);
     localStorage.setItem(KEYS.devices, JSON.stringify(devices))
 }
 
 export function updateDevice(data) {
     let devices = getAllDevices();
-    let recordIndex = devices.findIndex(x => x.id === data.id);
+    let recordIndex = devices.findIndex(x => x.device_id === data.device_id);
     devices[recordIndex] = { ...data }
     localStorage.setItem(KEYS.devices, JSON.stringify(devices))
 }
@@ -60,10 +60,10 @@ export function updateDevice(data) {
 export function genarateDeviceID() {
     if (localStorage.getItem(KEYS.deviceID) == null)
         localStorage.setItem(KEYS.deviceID, '0')
-    var id = parseInt(localStorage.getItem(KEYS.deviceID))
-    localStorage.setItem(KEYS.deviceID, (++id).toString())
-    console.log(id);
-    return id;
+    var device_id = parseInt(localStorage.getItem(KEYS.deviceID))
+    localStorage.setItem(KEYS.deviceID, (++device_id).toString())
+    console.log(device_id);
+    return device_id;
 }
 
 export function Deletedevice(appliance) {
