@@ -274,6 +274,55 @@ function MyVerticallyCenteredModal(props) {
       });
   }
 
+  function rejectedUpdatedata(e) {
+    rejectUpdatedata(e);
+    props.onHide();
+  }
+
+  function rejectUpdatedata(e) {
+    // console.log(NewAmount, props.categoryName, props.timePeriod);
+    e.preventDefault();
+
+    var token = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+    var categoryId = "normal";
+
+
+
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/reject-unit-charges-update/${categoryId}`, {
+      categoryName: props.categoryName,
+      unitPeriod: props.unitPeriod
+    }, {
+      headers: {
+        authorization: `Token ${token}`
+      }
+    })
+      .then((response) => {
+        // console.log(response.data.data[1]);
+
+        if (response.data.status) {
+          window.location.reload();//reload browser
+          toast.success('rejected successfuly', {
+            autoClose: 7000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else {
+
+          history.push("/sign-in");
+          window.location.reload();//reload browser
+          deleteAllCookies();//delete all cookies
+        }
+      }).catch((error) => {
+        console.log("this is error  response", error);
+      });
+  }
   /**
         * function of delete all cookies
         */
@@ -333,7 +382,7 @@ function MyVerticallyCenteredModal(props) {
           <Button type="submit" onClick={props.onHide} className="engineer-UpdateButton" >
             UPDATE
           </Button>
-          <Button onClick={props.onHide} className="engineer-CancelButton">
+          <Button onClick={(e) => { rejectedUpdatedata(e) }} className="engineer-CancelButton">
             CANCEL
           </Button>
         </Modal.Footer>
