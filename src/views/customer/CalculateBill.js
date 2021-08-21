@@ -112,10 +112,10 @@ export default function CalculateBill() {
   };
 
   const addOrEdit = (device, resetForm) => {
-    if (device.id == 0) {
+    if (device.device_id == 0) {
       DeviceBill.insertDevice(device);
     } else {
-      console.log(device.id);
+      console.log(device.device_id);
       DeviceBill.updateDevice(device);
     }
 
@@ -131,7 +131,7 @@ export default function CalculateBill() {
   };
 
   const openInPopup = (item) => {
-    console.log(item.id);
+    console.log(item.device_id);
     setRecordForEdit(item);
     setOpenPopup(true);
   };
@@ -228,7 +228,7 @@ function deleteAllCookies() {
           <TblHead />
           <TableBody>
             {recordsAfterPagingAndSorting().map((item) => (
-              <TableRow key={item.id}>
+              <TableRow key={item.device_id}>
                 <TableCell>{item.appliance}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
                 <TableCell>{item.power}</TableCell>

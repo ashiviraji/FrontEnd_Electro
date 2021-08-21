@@ -22,7 +22,7 @@ var ParamsUserId = document.cookie
 
     console.log("customer id :"+ParamsUserId);
 const initialFvalues = {
-  id: 0,
+  device_id: 0,
   bill_id: 0,
   appliance: "",
   quantity: 0,
