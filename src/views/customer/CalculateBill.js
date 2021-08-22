@@ -172,7 +172,7 @@ async  function getBillId(){
 
   const addOrEdit = async (device, resetForm) => {
     if (device.device_id == 0) {
-      DeviceBill.insertDevice(device);
+      await DeviceBill.insertDevice(device);
     } else {
       console.log(device.device_id);
       DeviceBill.updateDevice(device);
