@@ -45,10 +45,29 @@ export function insertDevice(data) {
 }
 
 export async function updateDevice(data) {
-    let devices = getAllDevices();
-    let recordIndex = devices.findIndex(x => x.device_id === data.device_id);
-    devices[recordIndex] = { ...data }
-    localStorage.setItem(KEYS.devices, JSON.stringify(devices))
+    // let devices = getAllDevices();
+    // let recordIndex = devices.findIndex(x => x.device_id === data.device_id);
+    // devices[recordIndex] = { ...data }
+    // localStorage.setItem(KEYS.devices, JSON.stringify(devices))
+
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/update-device-main-bill/${ParamsUserId}`, {
+        data: data
+    }, {
+        headers: {
+            authorization: `Token ${token}`
+        },
+    }).then((response) => {
+        console.log(response);
+        if (response.data.status) {
+            console.log("Update device");
+        } else {
+            // history.push("/sign-in");
+            // deleteAllCookies();//delete all cookies
+        }
+    }).catch((error) => {
+        console.log("this is response" + error);
+
+    });
 }
 
 export function genarateDeviceID() {
@@ -60,10 +79,29 @@ export function genarateDeviceID() {
     return device_id;
 }
 
-export function Deletedevice(appliance) {
-    let devices = getAllDevices();
-    devices = devices.filter(x => x.appliance != appliance)
-    localStorage.setItem(KEYS.devices, JSON.stringify(devices));
+export function Deletedevice(device_id,newBillId) {
+    // let devices = getAllDevices();
+    // devices = devices.filter(x => x.appliance != appliance)
+    // localStorage.setItem(KEYS.devices, JSON.stringify(devices));
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/delete-device-main-bill/${ParamsUserId}`, {
+        device_id: device_id,
+        bill_id:newBillId
+    }, {
+        headers: {
+            authorization: `Token ${token}`
+        },
+    }).then((response) => {
+        console.log(response);
+        if (response.data.status) {
+            console.log("Delete device");
+        } else {
+            // history.push("/sign-in");
+            // deleteAllCookies();//delete all cookies
+        }
+    }).catch((error) => {
+        console.log("this is response" + error);
+
+    });
 }
 
 export async function getAllDevices(newBillId) {

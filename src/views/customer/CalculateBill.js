@@ -175,7 +175,7 @@ async  function getBillId(){
       DeviceBill.insertDevice(device);
     } else {
       console.log(device.device_id);
-      DeviceBill.updateDevice(device);
+      await DeviceBill.updateDevice(device);
     }
 
     resetForm();
@@ -196,12 +196,12 @@ async  function getBillId(){
     setOpenPopup(true);
   };
 
-  const onDeletedevice = async (appliance) => {
+  const onDeletedevice = async (device_id) => {
     setConfirmDialog({
       ...confirmDialog,
       isOpen: false,
     });
-    DeviceBill.Deletedevice(appliance);
+    DeviceBill.Deletedevice(device_id,newBillId);
     const recordDetails = await DeviceBill.getAllDevices(newBillId);
     setRecords(recordDetails);
     setNotify({
@@ -297,7 +297,7 @@ function deleteAllCookies() {
                         title: "Are You sure delete this record",
                         subTitle: "You can't  undo this operation",
                         onConfirm: () => {
-                          onDeletedevice(item.appliance);
+                          onDeletedevice(item.device_id);
                         },
                       });
                     }}
