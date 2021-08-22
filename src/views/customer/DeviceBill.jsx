@@ -21,8 +21,6 @@ var ParamsUserId = document.cookie
     .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
 export function insertDevice(data) {
 
-
-
     // let History = useHistory();
     // e.preventDefault();
     Axios.post(`${process.env.REACT_APP_BASE_URL}/add-device-main-bill/${ParamsUserId}`, {
@@ -44,14 +42,9 @@ export function insertDevice(data) {
 
     });
 
-    // let devices = getAllDevices();
-    // console.log(devices);
-    // data['device_id'] = genarateDeviceID();
-    // devices.push(data);
-    // localStorage.setItem(KEYS.devices, JSON.stringify(devices))
 }
 
-export function updateDevice(data) {
+export async function updateDevice(data) {
     let devices = getAllDevices();
     let recordIndex = devices.findIndex(x => x.device_id === data.device_id);
     devices[recordIndex] = { ...data }
@@ -73,11 +66,14 @@ export function Deletedevice(appliance) {
     localStorage.setItem(KEYS.devices, JSON.stringify(devices));
 }
 
-export async function getAllDevices() {
+export async function getAllDevices(newBillId) {
     // let History = useHistory();
     console.log("call get all device function 1")
-    
-    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/get-device-main-bill/${ParamsUserId}`, {
+    console.log("bill id come for get all device" + newBillId)
+
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-device-main-bill/${ParamsUserId}`, {
+        newBillId: newBillId
+    }, {
         headers: {
             authorization: `Token ${token}`
         }
@@ -85,26 +81,6 @@ export async function getAllDevices() {
 
     console.log(response.data.data);
     return response.data.data;
-    
-    // .then((response) => {
-
-    //     if (response.data.status) {
-
-    //         console.log("successfully get devices data");
-    //         console.log(typeof response.data.data);
-    //         console.log("call get all device function 2")
-    //         //return(response.data.data);
-    //     } else {
-    //         console.log(response.data.message);
-    //         // history.push("/sign-in");
-    //         // window.location.reload();//reload browser
-    //         // deleteAllCookies();//delete all cookies
-    //     }
-    // }).catch((error) => {
-    //     console.log("this is 1c response", error);
-    // });
-
-    console.log("call get all device function 3")
 
 
     // if (localStorage.getItem(KEYS.devices) == null)
