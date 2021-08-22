@@ -67,8 +67,48 @@ export default function CalculateBill() {
   const classes = useStyles();
   let history = useHistory();
   const [recordForEdit, setRecordForEdit] = useState(null);
-  const [newBillId, setNewBillId] = useState(null);
+  const [newBillId, setNewBillId] = useState(0);
 
+async  function getBillId(){
+
+
+    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/get-bill-id/${ParamsUserId}`, {
+      headers: {
+          authorization: `Token ${token}`
+      }
+  })
+  if (response.data.status){
+    var oldBillId = response.data.data;
+    oldBillId++;
+    var new_bill_id = oldBillId;
+    return new_bill_id;
+  }else {
+    console.log(response.data.message);
+    history.push("/sign-in");
+    window.location.reload();//reload browser
+    deleteAllCookies();//delete all cookies
+  }
+        
+
+  // .then((response) => {
+  
+  //     if (response.data.status) {
+  //         var oldBillId = response.data.data;
+  //         oldBillId++;
+  //         var new_bill_id = oldBillId;
+  //         setNewBillId(new_bill_id);
+  //         console.log("get new bill id for front end :- " + new_bill_id);
+  //     } else {
+  //         console.log(response.data.message);
+  //         history.push("/sign-in");
+  //         window.location.reload();//reload browser
+  //          deleteAllCookies();//delete all cookies
+  //     }
+  // }).catch((error) => {
+  //     console.log("this is 1c response", error);
+  // });
+  
+  }
 
   const [records, setRecords] = useState([]);
   const [filterFn, setFilterFn] = useState({
@@ -97,13 +137,21 @@ export default function CalculateBill() {
     UseTable(records, headCells, filterFn);
 
   useEffect( async () => {
-    const recordDetails = await DeviceBill.getAllDevices();
-    setRecords(recordDetails);
+    const new_bill_id = await getBillId();
+    setNewBillId(new_bill_id);
+    console.log("inside of useEffect");
+    console.log(new_bill_id);
+    const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
+    if(recordDetails==null){
+      setRecords([]);
+    }else{
+      setRecords(recordDetails);
+    }
+    
     // const RecordData = await recordsAfterPagingAndSorting();
     // console.log(RecordData);
     // setRecordsPaging(RecordData);
     // console.log("inside of useEffect" , pagingAndSortingData );
-    getBillId();
     console.log("inside of useEffect" , recordDetails);
 
   },[]);
@@ -133,7 +181,7 @@ export default function CalculateBill() {
     resetForm();
     setRecordForEdit(null);
     setOpenPopup(false);
-    const recordDetails = await DeviceBill.getAllDevices();
+    const recordDetails = await DeviceBill.getAllDevices(newBillId);
     setRecords(recordDetails);
     setNotify({
       isOpen: true,
@@ -154,7 +202,7 @@ export default function CalculateBill() {
       isOpen: false,
     });
     DeviceBill.Deletedevice(appliance);
-    const recordDetails = await DeviceBill.getAllDevices();
+    const recordDetails = await DeviceBill.getAllDevices(newBillId);
     setRecords(recordDetails);
     setNotify({
       isOpen: true,
@@ -163,34 +211,7 @@ export default function CalculateBill() {
     });
   };
 
-  function getBillId(){
 
-
-    Axios.get(`${process.env.REACT_APP_BASE_URL}/get-bill-id/${ParamsUserId}`, {
-      headers: {
-          authorization: `Token ${token}`
-      }
-  }).then((response) => {
-  
-      if (response.data.status) {
-  
-          console.log("successfully get devices data");
-          var oldBillId = response.data.data;
-          oldBillId++;
-          var new_bill_id = oldBillId;
-          setNewBillId(new_bill_id);
-          console.log("get new bill id for front end :- " + new_bill_id);
-      } else {
-          console.log(response.data.message);
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-           deleteAllCookies();//delete all cookies
-      }
-  }).catch((error) => {
-      console.log("this is 1c response", error);
-  });
-  
-  }
 
   /**
   * function of delete all cookies
