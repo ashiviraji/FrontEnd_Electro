@@ -327,6 +327,61 @@ function MyVerticallyCenteredModal(props) {
       });
   }
 
+
+  /**
+   * Rejected unit charges update TOU by admin
+   * @param {*} e 
+   */
+  function rejectUpdatedata(e) {
+    console.log(props.newAmount, props.categoryName, props.timePeriod);
+    e.preventDefault();
+
+    var token = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+    var categoryId = "tou";
+
+
+
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/reject-unit-charges-update/${categoryId}`, {
+      categoryName: props.categoryName,
+      timePeriod: props.timePeriod
+    }, {
+      headers: {
+        authorization: `Token ${token}`
+      }
+    })
+      .then((response) => {
+
+        if (response.data.status) {
+          window.location.reload();//reload browser
+          toast.success('Rejected successfuly', {
+            autoClose: 7000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else {
+
+          history.push("/sign-in");
+          window.location.reload();//reload browser
+          deleteAllCookies();//delete all cookies
+        }
+      }).catch((error) => {
+        console.log("this is error  response", error);
+      });
+  }
+
+
+  function rejectedUpdatedata(e) {
+    rejectUpdatedata(e);
+    props.onHide();
+  }
+
   /**
         * function of delete all cookies
         */
@@ -389,7 +444,7 @@ function MyVerticallyCenteredModal(props) {
           <Button type="submit" onClick={props.onHide} className="engineer-UpdateButton">
             UPDATE
           </Button>
-          <Button onClick={props.onHide} className="engineer-CancelButton">
+          <Button onClick={(e) => { rejectedUpdatedata(e) }} className="engineer-CancelButton">
             CANCEL
           </Button>
         </Modal.Footer>
