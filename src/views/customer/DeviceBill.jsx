@@ -19,11 +19,13 @@ var ParamsUserId = document.cookie
     .split(';')
     .map(cookie => cookie.split('='))
     .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
-export function insertDevice(data) {
+
+
+export async function insertDevice(data) {
 
     // let History = useHistory();
     // e.preventDefault();
-    Axios.post(`${process.env.REACT_APP_BASE_URL}/add-device-main-bill/${ParamsUserId}`, {
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/add-device-main-bill/${ParamsUserId}`, {
         data: data
     }, {
         headers: {
