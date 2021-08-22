@@ -1,3 +1,4 @@
+import { ContactsOutlined } from '@material-ui/icons';
 import Axios from 'axios';
 import React from "react";
 
@@ -43,11 +44,11 @@ export function insertDevice(data) {
 
     });
 
-    let devices = getAllDevices();
-    console.log(devices);
-    data['device_id'] = genarateDeviceID();
-    devices.push(data);
-    localStorage.setItem(KEYS.devices, JSON.stringify(devices))
+    // let devices = getAllDevices();
+    // console.log(devices);
+    // data['device_id'] = genarateDeviceID();
+    // devices.push(data);
+    // localStorage.setItem(KEYS.devices, JSON.stringify(devices))
 }
 
 export function updateDevice(data) {
@@ -72,33 +73,44 @@ export function Deletedevice(appliance) {
     localStorage.setItem(KEYS.devices, JSON.stringify(devices));
 }
 
-export function getAllDevices() {
+export async function getAllDevices() {
     // let History = useHistory();
+    console.log("call get all device function 1")
     
-    Axios.get(`${process.env.REACT_APP_BASE_URL}/get-device-main-bill/${ParamsUserId}`, {
+    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/get-device-main-bill/${ParamsUserId}`, {
         headers: {
             authorization: `Token ${token}`
         }
-    }).then((response) => {
+    })
 
-        if (response.data.status) {
+    console.log(response.data.data);
+    return response.data.data;
+    
+    // .then((response) => {
 
-            console.log("successfully get devices data");
-            console.log(response.data.data);
-        } else {
-            console.log(response.data.message);
-            // history.push("/sign-in");
-            // window.location.reload();//reload browser
-            // deleteAllCookies();//delete all cookies
-        }
-    }).catch((error) => {
-        console.log("this is 1c response", error);
-    });
+    //     if (response.data.status) {
+
+    //         console.log("successfully get devices data");
+    //         console.log(typeof response.data.data);
+    //         console.log("call get all device function 2")
+    //         //return(response.data.data);
+    //     } else {
+    //         console.log(response.data.message);
+    //         // history.push("/sign-in");
+    //         // window.location.reload();//reload browser
+    //         // deleteAllCookies();//delete all cookies
+    //     }
+    // }).catch((error) => {
+    //     console.log("this is 1c response", error);
+    // });
+
+    console.log("call get all device function 3")
 
 
-    if (localStorage.getItem(KEYS.devices) == null)
-        localStorage.setItem(KEYS.devices, JSON.stringify([]))
-    return JSON.parse(localStorage.getItem(KEYS.devices));
+    // if (localStorage.getItem(KEYS.devices) == null)
+    //     localStorage.setItem(KEYS.devices, JSON.stringify([]))
+    // console.log(typeof JSON.parse(localStorage.getItem(KEYS.devices)))
+    //  return JSON.parse(localStorage.getItem(KEYS.devices));
 }
 
 /**

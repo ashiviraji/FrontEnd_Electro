@@ -26,9 +26,9 @@ export default function UseTable(records, headcells, filterFn) {
 
     const classes = useStyles();
 
-    const pages = [5,10,25]
-    const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage]=useState(pages[page])
+    // const pages = [5,10,25]
+    // const [page, setPage] = useState(0);
+    // const [rowsPerPage, setRowsPerPage]=useState(pages[page])
     
     const TblContainer = props => (
         <Table className={classes.table}>
@@ -48,34 +48,37 @@ export default function UseTable(records, headcells, filterFn) {
         </TableHead>)
     }
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    }
+    // const handleChangePage = (event, newPage) => {
+    //     setPage(newPage);
+    // }
 
-    const handleChangeRowsPerPage = event => {
-        setRowsPerPage(parseInt(event.target.value,10))
-        setPage(0);
-    }
+    // const handleChangeRowsPerPage = event => {
+    //     setRowsPerPage(parseInt(event.target.value,10))
+    //     setPage(0);
+    // }
     
-    const TblPagination = () => (<TablePagination
-        component = "div"
-        page = {page}
-        rowsPerPageOptions = {pages}
-        rowsPerPage={rowsPerPage}
-        count = {records.length}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage = {handleChangeRowsPerPage}
-    />)
+    // const TblPagination = () => (<TablePagination
+    //     component = "div"
+    //     page = {page}
+    //     rowsPerPageOptions = {pages}
+    //     rowsPerPage={rowsPerPage}
+    //     count = {records.length}
+    //     onChangePage={handleChangePage}
+    //     onChangeRowsPerPage = {handleChangeRowsPerPage}
+    // />)
 
 
-    const recordsAfterPagingAndSorting = () => {
-        return filterFn.fn(records).slice(page*rowsPerPage, (page+1)*rowsPerPage)
-    }
+    // const recordsAfterPagingAndSorting = async () => {
+    //     const result_records = records;
+    //     console.log(result_records);
+    //     return result_records;
+    //     //.slice(page*rowsPerPage, (page+1)*rowsPerPage)
+    // }
 
     return {
         TblContainer,
-        TblHead,
-        TblPagination,
-        recordsAfterPagingAndSorting
+        TblHead
+        //TblPagination,
+        //recordsAfterPagingAndSorting
     }
 }
