@@ -68,18 +68,16 @@ export default function CalculateBill() {
   let history = useHistory();
   const [recordForEdit, setRecordForEdit] = useState(null);
   const [newBillId, setNewBillId] = useState(null);
-  const [records, setRecords] = useState(DeviceBill.getAllDevices());
+
+
+  const [records, setRecords] = useState([]);
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
     },
   });
 
-  useEffect(() => {
   
-    getBillId();
-
-  },[]);
   
   const [openPopup, setOpenPopup] = useState(false);
 
@@ -95,12 +93,25 @@ export default function CalculateBill() {
     subTitle: "",
   });
 
-  const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
+  const { TblContainer, TblHead, TblPagination, /*recordsAfterPagingAndSorting*/ } =
     UseTable(records, headCells, filterFn);
 
-  const handleSearch = (e) => {
+  useEffect( async () => {
+    const recordDetails = await DeviceBill.getAllDevices();
+    setRecords(recordDetails);
+    // const RecordData = await recordsAfterPagingAndSorting();
+    // console.log(RecordData);
+    // setRecordsPaging(RecordData);
+    // console.log("inside of useEffect" , pagingAndSortingData );
+    getBillId();
+    console.log("inside of useEffect" , recordDetails);
+
+  },[]);
+// const [pagingAndSortingData, setRecordsPaging] = useState([]);
+
+  const handleSearch = async (e) => {
     let target = e.target;
-    setFilterFn({
+    await setFilterFn({
       fn: (items) => {
         if (target.value == "") return items;
         else
@@ -111,7 +122,7 @@ export default function CalculateBill() {
     });
   };
 
-  const addOrEdit = (device, resetForm) => {
+  const addOrEdit = async (device, resetForm) => {
     if (device.device_id == 0) {
       DeviceBill.insertDevice(device);
     } else {
@@ -122,7 +133,8 @@ export default function CalculateBill() {
     resetForm();
     setRecordForEdit(null);
     setOpenPopup(false);
-    setRecords(DeviceBill.getAllDevices());
+    const recordDetails = await DeviceBill.getAllDevices();
+    setRecords(recordDetails);
     setNotify({
       isOpen: true,
       message: "Submitted Successfully",
@@ -136,13 +148,14 @@ export default function CalculateBill() {
     setOpenPopup(true);
   };
 
-  const onDeletedevice = (appliance) => {
+  const onDeletedevice = async (appliance) => {
     setConfirmDialog({
       ...confirmDialog,
       isOpen: false,
     });
     DeviceBill.Deletedevice(appliance);
-    setRecords(DeviceBill.getAllDevices());
+    const recordDetails = await DeviceBill.getAllDevices();
+    setRecords(recordDetails);
     setNotify({
       isOpen: true,
       message: "Deleted Successfully",
@@ -227,7 +240,8 @@ function deleteAllCookies() {
         <TblContainer>
           <TblHead />
           <TableBody>
-            {recordsAfterPagingAndSorting().map((item) => (
+            
+            {records.map((item) => (
               <TableRow key={item.device_id}>
                 <TableCell>{item.appliance}</TableCell>
                 <TableCell>{item.quantity}</TableCell>
@@ -277,7 +291,7 @@ function deleteAllCookies() {
             ))}
           </TableBody>
         </TblContainer>
-        <TblPagination />
+        {/* <TblPagination /> */}
         <Link to="/bill-comparison">
           <button type="button" className="btn btn-success calculate-button">
             Calculate
