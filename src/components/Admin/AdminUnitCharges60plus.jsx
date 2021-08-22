@@ -460,9 +460,60 @@ function MyVerticallyCenteredModal(props) {
       });
   }
 
+
   /**
-        * function of delete all cookies
-        */
+   * Rejected unit charges update normal model by admin
+   * @param {*} e 
+   */
+  function rejectUpdatedata(e) {
+    e.preventDefault();
+
+    var token = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+    var categoryId = "normal";
+
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/reject-unit-charges-update/${categoryId}`, {
+      categoryName: props.categoryName,
+      unitPeriod: props.unitPeriod
+    }, {
+      headers: {
+        authorization: `Token ${token}`
+      }
+    })
+      .then((response) => {
+
+        if (response.data.status) {
+          window.location.reload();//reload browser
+          toast.success('rejected successfuly', {
+            autoClose: 7000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        } else {
+
+          history.push("/sign-in");
+          window.location.reload();//reload browser
+          deleteAllCookies();//delete all cookies
+        }
+      }).catch((error) => {
+        console.log("this is error  response", error);
+      });
+  }
+
+  function rejectedUpdatedata(e) {
+    rejectUpdatedata(e);
+    props.onHide();
+  }
+
+  /**
+   * delete all cookies 
+   */
   function deleteAllCookies() {
     var cookies = document.cookie.split(";");
 
@@ -519,7 +570,7 @@ function MyVerticallyCenteredModal(props) {
           <Button type="submit" onClick={props.onHide} className="engineer-UpdateButton" >
             UPDATE
           </Button>
-          <Button onClick={props.onHide} className="engineer-CancelButton">
+          <Button onClick={(e) => { rejectedUpdatedata(e) }} className="engineer-CancelButton">
             CANCEL
           </Button>
         </Modal.Footer>
