@@ -1,11 +1,87 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../assets/css/billcompare.css";
 import { FaThList } from "react-icons/fa";
+import  {useHistory}  from 'react-router-dom'
+import { Link, useParams } from "react-router-dom";
+import Axios from 'axios';
 
-import { Link } from "react-router-dom";
 
 
-export default function billcomparison() {
+export default function Billcomparison(props) {
+
+  const calculatedBillId  = props.location.calculatedBillId;
+  console.log("Bill id eka awaaaa" , calculatedBillId )
+
+  const [calculatedData, setCalculatedData] = useState(" ");
+
+  let history = useHistory();
+
+
+  async  function getCalculatedData(){
+
+    var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+
+
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-bill-id/${ParamsUserId}`, {
+      
+      bill_id:calculatedBillId
+  }, {
+      headers: {
+          authorization: `Token ${token}`
+      }
+  })
+  if (response.data.status){
+    setCalculatedData(response.data.data)
+    
+  }else {
+    console.log(response.data.message);
+    history.push("/sign-in");
+    window.location.reload();//reload browser
+    deleteAllCookies();//delete all cookies
+  }
+        
+  } 
+
+  function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+
+
+
+
+  useEffect( async () => {
+
+    await getCalculatedData();
+    
+    // const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
+    // if(recordDetails==null){
+    //   setRecords([]);
+    // }else{
+    //   setRecords(recordDetails);
+    // }
+    
+    // console.log("inside of useEffect" , recordDetails);
+
+  },[]);
+
+
   return (
     <div>
       
