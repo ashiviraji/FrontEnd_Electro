@@ -89,24 +89,6 @@ async  function getBillId(){
     deleteAllCookies();//delete all cookies
   }
         
-
-  // .then((response) => {
-  
-  //     if (response.data.status) {
-  //         var oldBillId = response.data.data;
-  //         oldBillId++;
-  //         var new_bill_id = oldBillId;
-  //         setNewBillId(new_bill_id);
-  //         console.log("get new bill id for front end :- " + new_bill_id);
-  //     } else {
-  //         console.log(response.data.message);
-  //         history.push("/sign-in");
-  //         window.location.reload();//reload browser
-  //          deleteAllCookies();//delete all cookies
-  //     }
-  // }).catch((error) => {
-  //     console.log("this is 1c response", error);
-  // });
   
   }
 
@@ -148,10 +130,6 @@ async  function getBillId(){
       setRecords(recordDetails);
     }
     
-    // const RecordData = await recordsAfterPagingAndSorting();
-    // console.log(RecordData);
-    // setRecordsPaging(RecordData);
-    // console.log("inside of useEffect" , pagingAndSortingData );
     console.log("inside of useEffect" , recordDetails);
 
   },[]);
@@ -174,7 +152,6 @@ async  function getBillId(){
     if (device.device_id == 0) {
       await DeviceBill.insertDevice(device);
     } else {
-      console.log(device.device_id);
       await DeviceBill.updateDevice(device);
     }
 
@@ -201,7 +178,7 @@ async  function getBillId(){
       ...confirmDialog,
       isOpen: false,
     });
-    DeviceBill.Deletedevice(device_id,newBillId);
+    await DeviceBill.Deletedevice(device_id,newBillId);
     const recordDetails = await DeviceBill.getAllDevices(newBillId);
     setRecords(recordDetails);
     setNotify({
@@ -313,7 +290,14 @@ function deleteAllCookies() {
           </TableBody>
         </TblContainer>
         {/* <TblPagination /> */}
-        <Link to="/bill-comparison">
+        {/* <Link to="/bill-comparison"> */}
+        <Link   to={
+       {     
+         pathname: '/bill-comparison',
+         calculatedBillId:newBillId
+        }
+  }>
+
           <button type="button" className="btn btn-success calculate-button">
             Calculate
           </button>
