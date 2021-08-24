@@ -63,10 +63,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard() {
-
+export default function SimpleCard(e) {
+  // e.prevent
   let history = useHistory();
-  const [dashboardData, setDashboardData] = useState("");
+  const [requestCount, setRequestCount] = useState("");
+  const [userCount, setUserCount] = useState("");
+
   const classes = useStyles();
 
   var ParamsUserId = document.cookie
@@ -82,6 +84,8 @@ export default function SimpleCard() {
 
 
   const getDashboardData = () => {
+    // console.log("this is 1c getDashboardData",);
+    // e.preventDefault();
 
     Axios.get(`${process.env.REACT_APP_BASE_URL}/dashboard-details/${ParamsUserId}`, {
       headers: {
@@ -89,7 +93,10 @@ export default function SimpleCard() {
       }
     }).then((response) => {
       if (response.data.status) {
-        setDashboardData(response.data.data);
+        // setDashboardData(response.data.data);
+        setRequestCount(parseInt(response.data.data.result1[0].request_count) + parseInt(response.data.data.result2[0].request_count));
+        setUserCount(response.data.data.result3[0].user_count);
+        // console.log("dashboard data--->>", requestCount, userCount);
 
       } else {
 
@@ -117,12 +124,13 @@ export default function SimpleCard() {
   }
 
   useEffect(() => {
-    getDashboardData();
+    getDashboardData(e);
   }, []);
 
 
   return (
     <div className="admin-home-user-main">
+
       <label className="admin-welcome-note">Welcome {document.cookie
         .split(';')
         .map(cookie => cookie.split('='))
@@ -135,7 +143,7 @@ export default function SimpleCard() {
           </CardContent>
           <div>
             <FaUsers className="admin-svg-icon"></FaUsers>
-            <label className="admin-numeric-value">{parseInt(dashboardData.result3[0].user_count)} </label>
+            <label className="admin-numeric-value">{userCount} </label>
           </div>
           <CardActions>
 
@@ -149,7 +157,7 @@ export default function SimpleCard() {
           </CardContent>
           <div>
             <IoIosNotifications className="admin-svg-icon"></IoIosNotifications>
-            <label className="admin-numeric-value">{parseInt(dashboardData.result1[0].request_count) + parseInt(dashboardData.result2[0].request_count)}</label>
+            <label className="admin-numeric-value">{requestCount}</label>
           </div>
           <CardActions>
 
