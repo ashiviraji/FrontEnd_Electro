@@ -67,7 +67,9 @@ export default function SimpleCard() {
   let history = useHistory();
 
 
-  const [dashboardData, setDashboardData] = useState("");
+
+  const [requestCount, setRequestCount] = useState("");
+  const [userCount, setUserCount] = useState("");
 
   const classes = useStyles();
   var ParamsUserId = document.cookie
@@ -93,10 +95,8 @@ export default function SimpleCard() {
       }
     }).then((response) => {
       if (response.data.status) {
-        setDashboardData(response.data.data);
-        console.log("successfully get user dashboard data of ceb engineer");
-        console.log("successfully get user dashboard data of ceb engineer---->", response.data.data);
-        console.log("successfully get user dashboard data of ceb engineer---->>>", response.data.data.result1[0].request_count);
+        setRequestCount(parseInt(response.data.data.result1[0].request_count) + parseInt(response.data.data.result2[0].request_count));
+        setUserCount(response.data.data.result3[0].user_count);
 
       } else {
 
@@ -140,7 +140,7 @@ export default function SimpleCard() {
           </CardContent>
           <div>
             <FaUsers className="engineer-svg-icon"></FaUsers>
-            <label className="engineer-numeric-value">{dashboardData.result3[0].user_count} </label>
+            <label className="engineer-numeric-value">{userCount} </label>
           </div>
           <CardActions></CardActions>
         </Card>
@@ -153,7 +153,7 @@ export default function SimpleCard() {
           </CardContent>
           <div>
             <GoRequestChanges className="engineer-svg-icon"></GoRequestChanges>
-            <label className="engineer-numeric-value">{parseInt(dashboardData.result1[0].request_count) + parseInt(dashboardData.result2[0].request_count)}</label>
+            <label className="engineer-numeric-value">{requestCount}</label>
           </div>
           <CardActions></CardActions>
         </Card>
