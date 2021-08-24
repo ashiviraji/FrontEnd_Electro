@@ -12,45 +12,6 @@ export default function DeviceChartfixed() {
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
-              <h6 class="card-title text-center"> Cost Usage - Device Wise (LKR/month)</h6>
-              <div class="col-sm-12">
-                <div class="card chart-fixed">
-                  <div class="card-body">
-                    <div className="chart-devicewise">
-                      <Pie
-                        data={{
-                          labels: [
-                            "Television",
-                            "Rice Cooker",
-                            "Radio",
-                            "Washing Machine",
-                            "Multi Cooker",
-                          ],
-                          datasets: [
-                            {
-                              data: [1340, 500, 6100, 9700, 4200],
-                              backgroundColor: [
-                                "#C7FF33",
-                                "#33BDFF",
-                                "#FFE633",
-                                "#DC33FF",
-                                "#33FFBD",
-                              ],
-                              hoverOffset: 4,
-                            },
-                          ],
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
               <h6 class="card-title text-center">Unit Usage - Device Wise (kWh)</h6>
               <div class="col-sm-12">
                 <div class="card chart-fixed">
