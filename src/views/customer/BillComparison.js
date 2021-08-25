@@ -10,9 +10,10 @@ import Axios from 'axios';
 export default function Billcomparison(props) {
 
   const calculatedBillId  = props.location.calculatedBillId;
-  console.log("Bill id eka awaaaa" , calculatedBillId )
+  // console.log("Bill id eka awaaaa" , calculatedBillId )
 
   const [calculatedData, setCalculatedData] = useState(" ");
+
 
   let history = useHistory();
 
@@ -32,7 +33,7 @@ var ParamsUserId = document.cookie
 
 
 
-    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-bill-id/${ParamsUserId}`, {
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/calculate-main-bill/${ParamsUserId}`, {
       
       bill_id:calculatedBillId
   }, {
@@ -40,8 +41,10 @@ var ParamsUserId = document.cookie
           authorization: `Token ${token}`
       }
   })
+  // console.log(response.data);
   if (response.data.status){
     setCalculatedData(response.data.data)
+    
     
   }else {
     console.log(response.data.message);
@@ -51,6 +54,33 @@ var ParamsUserId = document.cookie
   }
         
   } 
+
+//  console.log("Get calculated data for front end");
+    var TOU_cost = "LKR " + calculatedData[0].TOU_bill_cost;
+    var fixed_cost = "LKR " + calculatedData[0].fixed_bill_cost;
+    var best_model ;
+    var fixed_className;
+    var TOU_className;
+  // console.log(calculatedData[0].TotalUnits);
+
+  if(calculatedData[0].fixed_bill_cost > calculatedData[0].TOU_bill_cost){
+    console.log("best = TOU");
+    best_model = "TOU";
+    TOU_className = "best_model";
+    fixed_className = "bad_model";
+  }else if(calculatedData[0].fixed_bill_cost == calculatedData[0].TOU_bill_cost){
+    console.log("best = Both");
+    best_model = "Both";
+    TOU_className = "best_model";
+    fixed_className = "best_model";
+  }else{
+    console.log("best = Fixed");
+    best_model = "Fixed";
+    TOU_className = "bad_model";
+    fixed_className = "best_model";
+  }
+  
+  // console.log(calculatedData);
 
   function deleteAllCookies() {
     var cookies = document.cookie.split(";");
@@ -93,7 +123,8 @@ var ParamsUserId = document.cookie
 
         <div className="row">
           <div className="col-sm-6">
-            <div className="card1-billcomparison card border-success mb-3">
+            <div className=" card border-success mb-3">
+              <div className={TOU_className}> 
               <div className="card-body tou-billcomparison">
                 <h5 className="card-title text-center">TOU MODEL</h5>
                 <div className="form-group">
@@ -101,16 +132,18 @@ var ParamsUserId = document.cookie
                     type="text"
                     name="lastName"
                     className="form-control my-3 text-center"
-                    value="LKR: 4590"
+                    value= {TOU_cost}
                     required
                     disabled
                   />
                 </div>
               </div>
+              </div>
             </div>
           </div>
           <div className="col-sm-6">
-            <div className="card2-billcomparison card border-success mb-3">
+            <div className=" card border-success mb-3">
+            <div className={fixed_className}>
               <div className="card-body fixed-billcomparison">
                 <h5 className="card-title text-center">FIXED MODEL</h5>
                 <div className="form-group">
@@ -118,18 +151,19 @@ var ParamsUserId = document.cookie
                     type="text"
                     name="lastName"
                     className="form-control my-3 text-center"
-                    value="LKR: 3320"
+                    value={fixed_cost}
                     required
                     disabled
                   />
                 </div>
+              </div>
               </div>
             </div>
           </div>
         </div>
         <div className="card text-center best-model card border-success mb-3">
           <div className="card-body best">
-            <h5> Best Model : Fixed </h5>
+            <h5> Best Model : {best_model} </h5>
           </div>
         </div>
 
