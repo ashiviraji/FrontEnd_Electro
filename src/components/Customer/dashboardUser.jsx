@@ -10,6 +10,9 @@ import { MdEventAvailable } from 'react-icons/md';
 import { MdFolderSpecial } from 'react-icons/md';
 import { BsFillPersonFill } from 'react-icons/bs';
 import dashboardUser from "../../assets/img/dashboardUser.svg";
+import Axios from 'axios';
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
   currentRoot: {
@@ -61,8 +64,69 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard() {
+export default function SimpleCard(e) {
   const classes = useStyles();
+  let history = useHistory();
+  const [normalBillPlanCount, setNormalBillPlanCount] = useState(0);
+  const [specialBillPlanCount, setspecialBillPlanCount] = useState(0);
+
+
+
+  var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+
+  var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+  const getDashboardData = () => {
+    // console.log("this is 1c getDashboardData",);
+    // e.preventDefault();
+
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/dashboard-details/${ParamsUserId}`, {
+      headers: {
+        authorization: `Token ${token}`
+      }
+    }).then((response) => {
+      if (response.data.status) {
+        setNormalBillPlanCount(parseInt(response.data.data.result1[0].normalBill_count));
+        setspecialBillPlanCount(parseInt(response.data.data.result2[0].specialBill_count));
+        // console.log("dashboard data--->>", requestCount, userCount);
+
+      } else {
+
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();//delete all cookies
+      }
+    }).catch((error) => {
+      console.log("this is 1c response", error);
+    });
+  };
+
+  /**
+   * function of delete all cookies
+   */
+  function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+  }
+
+  useEffect(() => {
+    getDashboardData(e);
+  }, []);
+
 
 
   return (
@@ -79,7 +143,7 @@ export default function SimpleCard() {
           </CardContent>
           <div>
             <MdEventAvailable className="svg-icon"></MdEventAvailable>
-            <label className="numeric-value">3 </label>
+            <label className="numeric-value">{normalBillPlanCount} </label>
           </div>
           <CardActions>
 
@@ -93,7 +157,7 @@ export default function SimpleCard() {
           </CardContent>
           <div>
             <MdFolderSpecial className="svg-icon"></MdFolderSpecial>
-            <label className="numeric-value">5</label>
+            <label className="numeric-value">{specialBillPlanCount}</label>
           </div>
           <CardActions>
 
