@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect, useHistory } from 'react-router-dom'
 import Axios from 'axios';
 import CalculateBillForm from "./CalculateBillForm";
@@ -49,18 +49,18 @@ const headCells = [
 
 
 var token = document.cookie
-    .split(';')
-    .map(cookie => cookie.split('='))
-    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+  .split(';')
+  .map(cookie => cookie.split('='))
+  .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
 
 var ParamsUserId = document.cookie
-    .split(';')
-    .map(cookie => cookie.split('='))
-    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  .split(';')
+  .map(cookie => cookie.split('='))
+  .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
 
-console.log("Front End eken yanawada id eka :- "+ ParamsUserId);
- 
+console.log("Front End eken yanawada id eka :- " + ParamsUserId);
+
 
 
 export default function CalculateBill() {
@@ -69,13 +69,14 @@ export default function CalculateBill() {
   const [recordForEdit, setRecordForEdit] = useState(null);
   const [newBillId, setNewBillId] = useState(0);
 
-async  function getBillId(){
+  async function getBillId() {
 
 
     const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/get-bill-id/${ParamsUserId}`, {
       headers: {
-          authorization: `Token ${token}`
+        authorization: `Token ${token}`
       }
+
   })
   if (response.data.status){
     var oldBillId = response.data.data;
@@ -90,6 +91,7 @@ async  function getBillId(){
   }
         
   
+
   }
 
   const [records, setRecords] = useState([]);
@@ -99,8 +101,8 @@ async  function getBillId(){
     },
   });
 
-  
-  
+
+
   const [openPopup, setOpenPopup] = useState(false);
 
   const [notify, setNotify] = useState({
@@ -118,22 +120,24 @@ async  function getBillId(){
   const { TblContainer, TblHead, TblPagination, /*recordsAfterPagingAndSorting*/ } =
     UseTable(records, headCells, filterFn);
 
-  useEffect( async () => {
+  useEffect(async () => {
     const new_bill_id = await getBillId();
     setNewBillId(new_bill_id);
     console.log("inside of useEffect");
     console.log(new_bill_id);
     const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
-    if(recordDetails==null){
+    if (recordDetails == null) {
       setRecords([]);
-    }else{
+    } else {
       setRecords(recordDetails);
     }
+
     
     console.log("inside of useEffect" , recordDetails);
 
-  },[]);
-// const [pagingAndSortingData, setRecordsPaging] = useState([]);
+
+  }, []);
+  // const [pagingAndSortingData, setRecordsPaging] = useState([]);
 
   const handleSearch = async (e) => {
     let target = e.target;
@@ -193,17 +197,17 @@ async  function getBillId(){
   /**
   * function of delete all cookies
 //   */
-function deleteAllCookies() {
+  function deleteAllCookies() {
     var cookies = document.cookie.split(";");
 
     for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        var eqPos = cookie.indexOf("=");
-        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
-}
-  
+  }
+
 
   return (
     <div>
@@ -238,7 +242,7 @@ function deleteAllCookies() {
         <TblContainer>
           <TblHead />
           <TableBody>
-            
+
             {records.map((item) => (
               <TableRow key={item.device_id}>
                 <TableCell>{item.appliance}</TableCell>

@@ -10,6 +10,9 @@ import { GoRequestChanges } from "react-icons/go";
 import { FaUsers } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import dashboardUser from "../../assets/img/dashboardUser.svg";
+import Axios from 'axios';
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
   engineerCurrentRoot: {
@@ -61,7 +64,68 @@ const useStyles = makeStyles({
 });
 
 export default function SimpleCard() {
+  let history = useHistory();
+
+
+
+  const [requestCount, setRequestCount] = useState("");
+  const [userCount, setUserCount] = useState("");
+
   const classes = useStyles();
+  var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+  // console.log(ParamsUserId);
+
+  var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+  const getDashboardData = () => {
+    // e.preventDefault();
+
+
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/dashboard-details/${ParamsUserId}`, {
+      headers: {
+        authorization: `Token ${token}`
+      }
+    }).then((response) => {
+      if (response.data.status) {
+        setRequestCount(parseInt(response.data.data.result1[0].request_count) + parseInt(response.data.data.result2[0].request_count));
+        setUserCount(response.data.data.result3[0].user_count);
+
+      } else {
+
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();//delete all cookies
+      }
+    }).catch((error) => {
+      console.log("this is 1c response", error);
+    });
+  };
+
+  /**
+   * function of delete all cookies
+   */
+  function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+  }
+
+  useEffect(() => {
+    getDashboardData();
+  }, []);
 
   return (
     <div className="engineer-home-user-main">
@@ -76,7 +140,7 @@ export default function SimpleCard() {
           </CardContent>
           <div>
             <FaUsers className="engineer-svg-icon"></FaUsers>
-            <label className="engineer-numeric-value">150 </label>
+            <label className="engineer-numeric-value">{userCount} </label>
           </div>
           <CardActions></CardActions>
         </Card>
@@ -89,7 +153,7 @@ export default function SimpleCard() {
           </CardContent>
           <div>
             <GoRequestChanges className="engineer-svg-icon"></GoRequestChanges>
-            <label className="engineer-numeric-value">6</label>
+            <label className="engineer-numeric-value">{requestCount}</label>
           </div>
           <CardActions></CardActions>
         </Card>

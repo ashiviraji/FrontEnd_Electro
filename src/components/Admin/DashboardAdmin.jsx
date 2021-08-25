@@ -4,12 +4,14 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography';
 import "../../assets/css/Admin/dashboardAdmin.css";
 import { IoIosNotifications } from 'react-icons/io';
 import { FaUsers } from 'react-icons/fa';
 import { BsFillPersonFill } from 'react-icons/bs';
 import dashboardUser from "../../assets/img/dashboardUser.svg";
+import Axios from 'axios';
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
   adminCurrentRoot: {
@@ -61,12 +63,74 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard() {
+export default function SimpleCard(e) {
+  // e.prevent
+  let history = useHistory();
+  const [requestCount, setRequestCount] = useState("");
+  const [userCount, setUserCount] = useState("");
+
   const classes = useStyles();
+
+  var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+
+  var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+  const getDashboardData = () => {
+    // console.log("this is 1c getDashboardData",);
+    // e.preventDefault();
+
+    Axios.get(`${process.env.REACT_APP_BASE_URL}/dashboard-details/${ParamsUserId}`, {
+      headers: {
+        authorization: `Token ${token}`
+      }
+    }).then((response) => {
+      if (response.data.status) {
+        // setDashboardData(response.data.data);
+        setRequestCount(parseInt(response.data.data.result1[0].request_count) + parseInt(response.data.data.result2[0].request_count));
+        setUserCount(response.data.data.result3[0].user_count);
+        // console.log("dashboard data--->>", requestCount, userCount);
+
+      } else {
+
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();//delete all cookies
+      }
+    }).catch((error) => {
+      console.log("this is 1c response", error);
+    });
+  };
+
+  /**
+   * function of delete all cookies
+   */
+  function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+  }
+
+  useEffect(() => {
+    getDashboardData(e);
+  }, []);
 
 
   return (
     <div className="admin-home-user-main">
+
       <label className="admin-welcome-note">Welcome {document.cookie
         .split(';')
         .map(cookie => cookie.split('='))
@@ -79,7 +143,7 @@ export default function SimpleCard() {
           </CardContent>
           <div>
             <FaUsers className="admin-svg-icon"></FaUsers>
-            <label className="admin-numeric-value">150 </label>
+            <label className="admin-numeric-value">{userCount} </label>
           </div>
           <CardActions>
 
@@ -93,7 +157,7 @@ export default function SimpleCard() {
           </CardContent>
           <div>
             <IoIosNotifications className="admin-svg-icon"></IoIosNotifications>
-            <label className="admin-numeric-value">6</label>
+            <label className="admin-numeric-value">{requestCount}</label>
           </div>
           <CardActions>
 
