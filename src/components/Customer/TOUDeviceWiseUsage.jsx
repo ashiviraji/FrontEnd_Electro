@@ -18,8 +18,8 @@ import Axios from 'axios';
 
 
 const columns = [
-  { id: "device_id", label: "#", minWidth: 40 },
-  { id: "applicance", label: "Appliance", minWidth: 120 },
+  // { id: "device_id", label: "Device Id", minWidth: 40 },
+  { id: "appliance", label: "Appliance", minWidth: 120 },
 
   {
     id: "quantity",
@@ -30,7 +30,7 @@ const columns = [
   },
   
   {
-    id: "peak_amount",
+    id: "cost_peak_time",
     label: "Peak Amount   (LKR)",
     minWidth: 160,
     align: "center",
@@ -38,28 +38,28 @@ const columns = [
   },
 
   {
-    id: "day_amount",
+    id: "cost_day_time",
     label: "Day amount  (LKR)",
     minWidth: 150,
     align: "center",
     format: (value) => value.toFixed(2),
   },
   {
-    id: "off_peak_amount",
+    id: "cost_off_peak_time",
     label: "off peak  (LKR)",
     minWidth: 150,
     align: "center",
     format: (value) => value.toFixed(2),
   },
   {
-    id: "total_units",
+    id: "total_units_fixed",
     label: "Total units",
     minWidth: 100,
     align: "center",
     // format: (value) => value.toFixed(2),
   },
   {
-    id: "total_amount",
+    id: "total_cost_TOU",
     label: "Total amount  (LKR)",
     minWidth: 170,
     align: "center",
@@ -67,43 +67,43 @@ const columns = [
   },
 ];
 
-function createData(
-  device_id,
-  applicance,
-  quantity,
-  peak_amount,
-  day_amount,
-  off_peak_amount,
-  total_units,
-  total_amount
-) {
-  //   const density = population / size;
-  return {
-    device_id,
-    applicance,
-    quantity,
-    peak_amount,
-    day_amount,
-    off_peak_amount,
-    total_units,
-    total_amount,
-  };
-}
+// function createData(
+//   device_id,
+//   applicance,
+//   quantity,
+//   peak_amount,
+//   day_amount,
+//   off_peak_amount,
+//   total_units,
+//   total_amount
+// ) {
+//   //   const density = population / size;
+//   return {
+//     device_id,
+//     applicance,
+//     quantity,
+//     peak_amount,
+//     day_amount,
+//     off_peak_amount,
+//     total_units,
+//     total_amount,
+//   };
+// }
 
-const rows = [
-  createData(1, "Television", 1, 600, 400, 300, 100, 1300),
-  createData(2, "Rice Cooker", 1, 800, 300, 200, 200, 1300),
-  createData(3, "Radio", 1, 100, 500, 800, 220, 1440),
-  createData(4, "Blender", 1, 100, 890, 780, 210, 1340),
-  createData(5, "Washing Machine", 1, 100, 890, 780, 210, 1340),
-  createData(6, "Multi Cooker", 1, 100, 890, 780, 210, 1340),
-  createData(7, "Computer", 1, 100, 890, 780, 210, 1340),
-  createData(8, "Laptop", 1, 100, 890, 780, 210, 210, 1340),
-  createData(9, "Table Fan", 1, 100, 890, 780, 210, 1340),
-  createData(10, "Iron", 1, 100, 890, 780, 210, 1340),
-  createData(11, "Oven", 1, 100, 890, 780, 210, 1340),
-  createData(12, "", 1, 100, 890, 780, 210, 1340),
-];
+// const rows = [
+//   createData(1, "Television", 1, 600, 400, 300, 100, 1300),
+//   createData(2, "Rice Cooker", 1, 800, 300, 200, 200, 1300),
+//   createData(3, "Radio", 1, 100, 500, 800, 220, 1440),
+//   createData(4, "Blender", 1, 100, 890, 780, 210, 1340),
+//   createData(5, "Washing Machine", 1, 100, 890, 780, 210, 1340),
+//   createData(6, "Multi Cooker", 1, 100, 890, 780, 210, 1340),
+//   createData(7, "Computer", 1, 100, 890, 780, 210, 1340),
+//   createData(8, "Laptop", 1, 100, 890, 780, 210, 210, 1340),
+//   createData(9, "Table Fan", 1, 100, 890, 780, 210, 1340),
+//   createData(10, "Iron", 1, 100, 890, 780, 210, 1340),
+//   createData(11, "Oven", 1, 100, 890, 780, 210, 1340),
+//   createData(12, "", 1, 100, 890, 780, 210, 1340),
+// ];
 
 const useStyles = makeStyles({
   root: {
@@ -126,7 +126,7 @@ export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [selected, setSelected] = React.useState("");
-  // const [rows, setDeviceData] = useState([]);
+  const [rows, setDeviceData] = useState([]);
 
   let area = null;
   const changeSelectOptionHandler = (event) => {
@@ -179,7 +179,7 @@ export default function StickyHeadTable() {
   useEffect( async () => {
 
     var devices_data = await getDeviceDetails(1);
-    // setDeviceData(devices_data);
+    setDeviceData(devices_data);
   },[]);
 
 
