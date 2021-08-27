@@ -34,13 +34,7 @@ const columns = [
     align: "center",
     // format: (value) => value.toFixed(2),
   },
-  {
-    id: "total_cost_fixed",
-    label: "Total amount  (LKR)",
-    minWidth: 170,
-    align: "center",
-    format: (value) => value.toFixed(2),
-  },
+  
 ];
 
 // function createData(
