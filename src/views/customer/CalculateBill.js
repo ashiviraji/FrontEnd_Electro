@@ -67,6 +67,7 @@ export default function CalculateBill() {
   const classes = useStyles();
   let history = useHistory();
   const [recordForEdit, setRecordForEdit] = useState(null);
+  const [buttonState, setButtonState] = useState(true);
   const [newBillId, setNewBillId] = useState(0);
 
   async function getBillId() {
@@ -121,6 +122,7 @@ export default function CalculateBill() {
     UseTable(records, headCells, filterFn);
 
   useEffect(async () => {
+
     const new_bill_id = await getBillId();
     setNewBillId(new_bill_id);
     console.log("inside of useEffect");
@@ -128,8 +130,10 @@ export default function CalculateBill() {
     const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
     if (recordDetails == null) {
       setRecords([]);
+      setButtonState(true);
     } else {
       setRecords(recordDetails);
+      setButtonState(false);
     }
 
     
@@ -163,7 +167,13 @@ export default function CalculateBill() {
     setRecordForEdit(null);
     setOpenPopup(false);
     const recordDetails = await DeviceBill.getAllDevices(newBillId);
-    setRecords(recordDetails);
+    if (recordDetails == null) {
+      setRecords([]);
+      setButtonState(true);
+    } else {
+      setRecords(recordDetails);
+      setButtonState(false);
+    }
     setNotify({
       isOpen: true,
       message: "Submitted Successfully",
@@ -184,7 +194,13 @@ export default function CalculateBill() {
     });
     await DeviceBill.Deletedevice(device_id,newBillId);
     const recordDetails = await DeviceBill.getAllDevices(newBillId);
-    setRecords(recordDetails);
+    if (recordDetails == null) {
+      setRecords([]);
+      setButtonState(true);
+    } else {
+      setRecords(recordDetails);
+      setButtonState(false);
+    }
     setNotify({
       isOpen: true,
       message: "Deleted Successfully",
@@ -207,6 +223,44 @@ export default function CalculateBill() {
       document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
   }
+
+    async  function calculateDevice(){
+
+      var token = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+  
+  
+  var ParamsUserId = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  
+  
+  
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/calculate-main-bill/${ParamsUserId}`, {
+        
+        bill_id:newBillId
+    }, {
+        headers: {
+            authorization: `Token ${token}`
+        }
+    })
+    // console.log(response.data);
+    if (response.data.status){
+      // setCalculatedData(response.data.data)
+      
+      
+    }else {
+      console.log(response.data.message);
+      history.push("/sign-in");
+      window.location.reload();//reload browser
+      deleteAllCookies();//delete all cookies
+    }
+          
+    } 
+
 
 
   return (
@@ -294,15 +348,13 @@ export default function CalculateBill() {
           </TableBody>
         </TblContainer>
         {/* <TblPagination /> */}
-        {/* <Link to="/bill-comparison"> */}
+        
+              
         <Link   to={
-       {     
-         pathname: '/bill-comparison',
-         calculatedBillId:newBillId
-        }
-  }>
+          `/bill-comparison?bill_id=${newBillId}`
+       }>
 
-          <button type="button" className="btn btn-success calculate-button">
+          <button type="button" className="btn btn-success calculate-button" onClick={calculateDevice} disabled={buttonState}>
             Calculate
           </button>
         </Link>

@@ -12,6 +12,9 @@ import 'react-toastify/dist/ReactToastify.css'
 toast.configure();
 export default function ManageCebEngineer() {
 
+  const params = new URLSearchParams(window.location.search)
+  const ParamsUserId = params.get('emp_id');
+
   let history = useHistory();
 
   const [cebEngineerDetails, setCebEngineerDetails] = useState("");
@@ -28,7 +31,7 @@ export default function ManageCebEngineer() {
     .map(cookie => cookie.split('='))
     .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
-  var ParamsUserId = 6;
+
 
   const getUser = (e) => {
     e.preventDefault();

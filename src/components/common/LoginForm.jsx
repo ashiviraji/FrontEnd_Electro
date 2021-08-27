@@ -63,7 +63,7 @@ export default function LoginForm() {
           }
 
         }
-        
+
         window.location.reload();//reload browser
 
       } else {
@@ -118,9 +118,15 @@ export default function LoginForm() {
           </div>
           <div>
             <p className="forgot-password">
+              Not Registerd <a href="sign-up">Register</a>
+            </p>
+          </div>
+          <div>
+            <p className="forgot-password">
               Forgot <a href="forgot-password">password?</a>
             </p>
           </div>
+
           <hr />
           <div className="signIcons">
             <FaFacebook />

@@ -122,6 +122,9 @@ const useStyles = makeStyles({
 
 export default function StickyHeadTable() {
 
+  const params = new URLSearchParams(window.location.search)
+  const calculatedBillId  = params.get('bill_id');
+
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -178,7 +181,7 @@ export default function StickyHeadTable() {
 
   useEffect( async () => {
 
-    var devices_data = await getDeviceDetails(1);
+    var devices_data = await getDeviceDetails(calculatedBillId);
     setDeviceData(devices_data);
   },[]);
 
