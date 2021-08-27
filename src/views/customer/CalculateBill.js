@@ -67,6 +67,7 @@ export default function CalculateBill() {
   const classes = useStyles();
   let history = useHistory();
   const [recordForEdit, setRecordForEdit] = useState(null);
+  const [buttonState, setButtonState] = useState(true);
   const [newBillId, setNewBillId] = useState(0);
 
   async function getBillId() {
@@ -121,6 +122,7 @@ export default function CalculateBill() {
     UseTable(records, headCells, filterFn);
 
   useEffect(async () => {
+
     const new_bill_id = await getBillId();
     setNewBillId(new_bill_id);
     console.log("inside of useEffect");
@@ -128,8 +130,10 @@ export default function CalculateBill() {
     const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
     if (recordDetails == null) {
       setRecords([]);
+      setButtonState(true);
     } else {
       setRecords(recordDetails);
+      setButtonState(false);
     }
 
     
@@ -163,7 +167,13 @@ export default function CalculateBill() {
     setRecordForEdit(null);
     setOpenPopup(false);
     const recordDetails = await DeviceBill.getAllDevices(newBillId);
-    setRecords(recordDetails);
+    if (recordDetails == null) {
+      setRecords([]);
+      setButtonState(true);
+    } else {
+      setRecords(recordDetails);
+      setButtonState(false);
+    }
     setNotify({
       isOpen: true,
       message: "Submitted Successfully",
@@ -184,7 +194,13 @@ export default function CalculateBill() {
     });
     await DeviceBill.Deletedevice(device_id,newBillId);
     const recordDetails = await DeviceBill.getAllDevices(newBillId);
-    setRecords(recordDetails);
+    if (recordDetails == null) {
+      setRecords([]);
+      setButtonState(true);
+    } else {
+      setRecords(recordDetails);
+      setButtonState(false);
+    }
     setNotify({
       isOpen: true,
       message: "Deleted Successfully",
@@ -244,6 +260,7 @@ export default function CalculateBill() {
     }
           
     } 
+
 
 
   return (
@@ -337,7 +354,7 @@ export default function CalculateBill() {
           `/bill-comparison?bill_id=${newBillId}`
        }>
 
-          <button type="button" className="btn btn-success calculate-button" onClick={calculateDevice}>
+          <button type="button" className="btn btn-success calculate-button" onClick={calculateDevice} disabled={buttonState}>
             Calculate
           </button>
         </Link>
