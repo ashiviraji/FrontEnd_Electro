@@ -111,7 +111,7 @@ function App() {
         <SidebarAdmin />
       </Route>
 
-      <Route exact path="/bill-comparison">
+      <Route exact path="/bill-comparison/:bill_id">
         <DashbordNavbar />
         <SidebarUser />
       </Route>
