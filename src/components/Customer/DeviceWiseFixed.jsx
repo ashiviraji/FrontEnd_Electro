@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import * as React from "react";
+import { useHistory } from "react-router";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -10,12 +12,12 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import Button from "@material-ui/core/Button";
 import { BsFillBarChartFill } from "react-icons/bs";
-
 import "../../assets/css/Customer/deviceWiseFixed.css";
 import { Link } from "react-router-dom";
+import Axios from 'axios';
+
 
 const columns = [
-  { id: "device_id", label: "#", minWidth: 90 },
   { id: "appliance", label: "Appliance", minWidth: 100 },
 
   {
@@ -52,20 +54,20 @@ function createData(
   return { device_id, appliance, quantity, total_units, total_amount };
 }
 
-const rows = [
-  createData(1, "Television", 1, 100, 1340),
-  createData(2, "Rice Cooker", 1, 100, 1340),
-  createData(3, "Radio", 1, 100, 1340),
-  createData(4, "Blender", 1, 100, 1340),
-  createData(5, "Washing Machine", 1, 100, 1340),
-  createData(6, "Multi Cooker", 1, 100, 1340),
-  createData(7, "Computer", 1, 100, 1340),
-  createData(8, "Laptop", 1, 100, 1340),
-  createData(9, "Table Fan", 1, 100, 1340),
-  createData(10, "Iron", 1, 100, 1340),
-  createData(11, "Oven", 1, 100, 1340),
-  createData(12, "", 1, 100, 1340),
-];
+// const rows = [
+//   createData(1, "Television", 1, 100, 1340),
+//   createData(2, "Rice Cooker", 1, 100, 1340),
+//   createData(3, "Radio", 1, 100, 1340),
+//   createData(4, "Blender", 1, 100, 1340),
+//   createData(5, "Washing Machine", 1, 100, 1340),
+//   createData(6, "Multi Cooker", 1, 100, 1340),
+//   createData(7, "Computer", 1, 100, 1340),
+//   createData(8, "Laptop", 1, 100, 1340),
+//   createData(9, "Table Fan", 1, 100, 1340),
+//   createData(10, "Iron", 1, 100, 1340),
+//   createData(11, "Oven", 1, 100, 1340),
+//   createData(12, "", 1, 100, 1340),
+// ];
 
 const useStyles = makeStyles({
   root: {
@@ -87,6 +89,7 @@ export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [selected, setSelected] = React.useState("");
+  const [rows, setDeviceData] = useState([]);
 
   let area = null;
   const changeSelectOptionHandler = (event) => {
@@ -102,6 +105,46 @@ export default function StickyHeadTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  let history = useHistory();
+
+  async function getDeviceDetailsFixed(newBillId) {
+
+    var ParamsUserId = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  
+  
+    var token = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+  
+  
+      // let History = useHistory();
+      console.log("call device detail fixed function")
+  
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-device-wise-usage-fixed-main/${ParamsUserId}`, {
+          newBillId: newBillId
+      }, {
+          headers: {
+              authorization: `Token ${token}`
+          }
+      })
+  
+      console.log(response.data.data);
+      return response.data.data;
+  
+  }
+  
+  
+    useEffect( async () => {
+  
+      var devices_data_fixed = await getDeviceDetailsFixed(1);
+      setDeviceData(devices_data_fixed);
+    },[]);
+
 
   return (
     <Paper className={classes.root}>
