@@ -13,8 +13,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-var name = "kamal";
 const useStyles = makeStyles({
   root: {
     // minWidth: 275,
@@ -88,7 +89,34 @@ const ManageCEBEngineerHome = () => {
       return (response.data.data);
 
     } else {
-      console.log(response.data.message);
+      history.push("/sign-in");
+      window.location.reload();//reload browser
+      deleteAllCookies();//delete all cookies
+    }
+
+  }
+
+  const removeCebengineer = async (emp_id) => {
+    // e.preventDefault();
+    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/remove-cebengineer/${emp_id}`, {
+      headers: {
+        authorization: `Token ${token}`
+      }
+
+    })
+    if (response.data.status) {
+      window.location.reload();//reload browser
+      toast.success('CEB Engineer Removed', {
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+    } else {
+
       history.push("/sign-in");
       window.location.reload();//reload browser
       deleteAllCookies();//delete all cookies
@@ -117,44 +145,6 @@ const ManageCEBEngineerHome = () => {
     }
   }
 
-  // const cardDetails = [
-  //   {
-  //     Name: "W.K.B.K.Madhushanka",
-  //     Engineer_ID: "E 01",
-  //     Url: "/cebengineer-details1",
-  //   },
-  //   {
-  //     Name: "T.M.Jayalath",
-  //     Engineer_ID: "E 02 ",
-  //     Url: `/cebengineer-details2?name=${name}`,
-  //   },
-  // ];
-
-  // return cardDetails.map((card) => (
-  //   <div className="col-md-4">
-  //     <div>
-  //       <div className="card text-center admin-manage-card-size">
-  //         <div className="overFlow">
-  //           <img src={Engineers} alt="Image1" className="card-img-top" />
-  //         </div>
-  //         <div className="card-body text-dark admin-manage-card">
-  //           <h4 className="card-title">{card.Name}</h4>
-  //           <div>
-  //             <label>Engineer_ID &nbsp;: &nbsp; {card.Engineer_ID} </label>
-  //           </div>
-
-  //           <Link to={card.Url} className="link-moredetails">
-  //             <div className="admin-manage-view-more">More Details</div>
-  //           </Link>
-
-  //           <div className="admin-deactivate-engineer">
-  //             <RiDeleteBinFill /> Deactivate
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // ));
 
   return (
     <div className={classes.gridMain}>
@@ -188,7 +178,7 @@ const ManageCEBEngineerHome = () => {
                 <CardActions>
                   <div className="buttonContainer">
 
-                    <Link className={classes.linkStyle} to={`/Bill-More-Details?emp_id=${card.Emp_id}`}>
+                    <Link className={classes.linkStyle} to={`/cebengineer-details1?emp_id=${card.Emp_id}`}>
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
@@ -197,12 +187,13 @@ const ManageCEBEngineerHome = () => {
                         More Details &nbsp;&nbsp;&nbsp;
                       </Button>
                     </Link>
-                    <Link className={classes.linkStyle} to="my-bill-plans">
+                    <Link className={classes.linkStyle} to="manage-cebengineer">
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
                         color="secondary"
                         className={classes.button}
+                        onClick={() => { removeCebengineer(card.Emp_id) }}
                       >
                         Remove User &nbsp;&nbsp;&nbsp;
                       </Button>
