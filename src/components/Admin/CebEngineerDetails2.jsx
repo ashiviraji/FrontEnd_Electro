@@ -5,6 +5,8 @@ import { GrUserAdd } from "react-icons/gr";
 import { NavLink } from "../common/Sidebar-admin/SidebarElement";
 
 export default function ManageCebEngineer() {
+  const params = new URLSearchParams(window.location.search)
+  console.log(params.get('name'));
   return (
     <div className="body-manageengineer">
       <form>
