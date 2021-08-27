@@ -136,7 +136,7 @@ export default function SimpleCard() {
       <div className="engineer-user-cards-area">
         <Card className={classes.engineerCurrentRoot} id="engineer-card1">
           <CardContent>
-            <label className="engineer-card-title-name">Register Users</label>
+            <label className="engineer-card-title-name">Registered Users</label>
           </CardContent>
           <div>
             <FaUsers className="engineer-svg-icon"></FaUsers>
@@ -148,7 +148,7 @@ export default function SimpleCard() {
         <Card className={classes.engineerSpecialRoot} id="engineer-card2">
           <CardContent>
             <label className="engineer-card-title-name">
-              Unit Charge Requests
+              Unit Charge Notifications
             </label>
           </CardContent>
           <div>

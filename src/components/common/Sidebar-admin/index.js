@@ -47,7 +47,10 @@ const SidebarAdmin = ({ show }) => {
               <UserProfile src={Admin} alt="Admin"></UserProfile>
 
               <UlDetailList>
-                <NameList>Hasini</NameList>
+                <NameList>{document.cookie
+                  .split(';')
+                  .map(cookie => cookie.split('='))
+                  .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).name}</NameList>
                 <NameList className="role">Administrator</NameList>
                 <NameList>
                   <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
