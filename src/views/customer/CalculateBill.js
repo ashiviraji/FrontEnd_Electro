@@ -208,6 +208,43 @@ export default function CalculateBill() {
     }
   }
 
+    async  function calculateDevice(){
+
+      var token = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+  
+  
+  var ParamsUserId = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  
+  
+  
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/calculate-main-bill/${ParamsUserId}`, {
+        
+        bill_id:newBillId
+    }, {
+        headers: {
+            authorization: `Token ${token}`
+        }
+    })
+    // console.log(response.data);
+    if (response.data.status){
+      // setCalculatedData(response.data.data)
+      
+      
+    }else {
+      console.log(response.data.message);
+      history.push("/sign-in");
+      window.location.reload();//reload browser
+      deleteAllCookies();//delete all cookies
+    }
+          
+    } 
+
 
   return (
     <div>
@@ -294,15 +331,13 @@ export default function CalculateBill() {
           </TableBody>
         </TblContainer>
         {/* <TblPagination /> */}
-        {/* <Link to="/bill-comparison"> */}
+        
+              
         <Link   to={
-       {     
-         pathname: '/bill-comparison',
-         calculatedBillId:newBillId
-        }
-  }>
+          `/bill-comparison?bill_id=${newBillId}`
+       }>
 
-          <button type="button" className="btn btn-success calculate-button">
+          <button type="button" className="btn btn-success calculate-button" onClick={calculateDevice}>
             Calculate
           </button>
         </Link>
