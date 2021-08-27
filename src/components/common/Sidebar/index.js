@@ -6,9 +6,9 @@ import { RiInformationLine } from "react-icons/ri";
 
 import { AiOutlineBook } from "react-icons/ai";
 import { Route } from "react-router-dom";
-import {ImInsertTemplate} from "react-icons/im";
+import { ImInsertTemplate } from "react-icons/im";
 import { GiTeamIdea } from "react-icons/gi";
-import {RiDashboardLine} from "react-icons/ri";
+import { RiDashboardLine } from "react-icons/ri";
 import { RiBillLine } from "react-icons/ri";
 import { MdEventNote } from "react-icons/md";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -29,13 +29,13 @@ import deviceWiseFixedSeperate from "../../../views/customer/deviceWiseFixedUsag
 import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate";
 import SpecialEventDeviceUsage from "../../../views/customer/SpecialEventDeviceUsage";
 import TOUEventForm from "../../../views/customer/TOUEventForm";
-import {GrObjectUngroup} from "react-icons/gr";
+import { GrObjectUngroup } from "react-icons/gr";
 // import UserProfile from "../../../views/customer/AdminUserProfile"
 
 import DevicewiseChart from "../../../views/customer/devicewiseChartTOU";
 import DevicewiseChartFixed from "../../../views/customer/devicewiseChartFixed"
 import SpecialEventFixedDeviceWise from "../../../views/customer/SpecialEventDeviceWiseFixed";
-import  SpecialEventTouDeviceWise from "../../../views/customer/SpecialEventDeviceWiseTOU";
+import SpecialEventTouDeviceWise from "../../../views/customer/SpecialEventDeviceWiseTOU";
 import AddSpecialEventBillPlan from "../../../views/customer/AddSpecialEvent"
 import BillMoreDetails from "../../../views/customer/BillMoreDetails";
 
@@ -64,7 +64,10 @@ const Sidebar = ({ show }) => {
                 <UserProfile src={image} alt="image"></UserProfile>
 
                 <UlDetailList>
-                  <NameList> Tharindu </NameList>
+                  <NameList> {document.cookie
+                    .split(';')
+                    .map(cookie => cookie.split('='))
+                    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).name} </NameList>
                   <NameList className="role">Customer</NameList>
                   <NameList>
                     <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
@@ -88,7 +91,7 @@ const Sidebar = ({ show }) => {
 
                 <List>
                   <LinkList to="/my-bill-plans">
-                    <ImInsertTemplate style={{color:"White"}} />
+                    <ImInsertTemplate style={{ color: "White" }} />
                     &nbsp;&nbsp;&nbsp; My Bill Plans
                   </LinkList>
                 </List>
@@ -162,18 +165,18 @@ const Sidebar = ({ show }) => {
               />
 
 
-             <Route
+              <Route
                 path="/special-event"
                 exact={true}
                 component={SpecialEventMyBillPlans}
               />
 
-                 <Route
+              <Route
                 path="/special-event-device-wise"
                 exact={true}
                 component={SpecialEventDeviceUsage}
-              /> 
-               
+              />
+
               <Route
                 path="/device-wise-seperate"
                 exact={true}
@@ -211,13 +214,13 @@ const Sidebar = ({ show }) => {
                 component={TOUEventForm}
               />
 
-             <Route
+              <Route
                 path="/special-tou-device-wise"
                 exact={true}
                 component={SpecialEventTouDeviceWise}
               />
 
-<Route
+              <Route
                 path="/special-fixed-device-wise"
                 exact={true}
                 component={SpecialEventFixedDeviceWise}
@@ -225,17 +228,17 @@ const Sidebar = ({ show }) => {
 
 
 
-               <Route
+              <Route
                 path="/special-event-new-bill"
                 exact={true}
                 component={AddSpecialEventBillPlan}
-                />
+              />
               <Route
                 path="/Bill-More-Details"
                 exact={true}
                 component={BillMoreDetails}
               />
-              
+
             </div>
           </div>
         </div>
