@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SpecialFixedCalculateBillForm(props) {
   const { addOrEdit, recordForEdit } = props;
-
+  console.log(props);
   initialFvalues.bill_id = props.billId;
   console.log(initialFvalues.bill_id);
 

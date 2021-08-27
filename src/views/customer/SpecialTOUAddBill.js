@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CalculateBillForm from "./CalculateBillForm";
 import { Paper, makeStyles } from "@material-ui/core";
 import SpecialTOUCalculateBillForm from "./SpecialTOUCalculateBillForm";
-import * as SpecialDeviceBill from "./SpecialEventDeviceBill";
+import * as SpecialDeviceBill from "./SpecialEventTOUDeviceBill";
 import UseTable from "../../components/Customer/useTable";
 import * as DeviceBill from "./DeviceBill";
 import { Table,TableHead } from "@material-ui/core";

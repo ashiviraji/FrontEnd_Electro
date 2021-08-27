@@ -23,7 +23,8 @@ export function insertDevice(data) {
 
     // let History = useHistory();
     // e.preventDefault();
-    Axios.post(`${process.env.REACT_APP_BASE_URL}/add-device-main-bill/${ParamsUserId}`, {
+    console.log(data);
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/add-device-special-Fixedbill/${ParamsUserId}`, {
         data: data
     }, {
         headers: {
@@ -50,7 +51,7 @@ export async function updateDevice(data) {
     // devices[recordIndex] = { ...data }
     // localStorage.setItem(KEYS.devices, JSON.stringify(devices))
 
-    await Axios.post(`${process.env.REACT_APP_BASE_URL}/update-device-main-bill/${ParamsUserId}`, {
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/update-device-special-Fixedbill/${ParamsUserId}`, {
         data: data
     }, {
         headers: {
@@ -83,7 +84,7 @@ export function Deletedevice(device_id,newBillId) {
     // let devices = getAllDevices();
     // devices = devices.filter(x => x.appliance != appliance)
     // localStorage.setItem(KEYS.devices, JSON.stringify(devices));
-    Axios.post(`${process.env.REACT_APP_BASE_URL}/delete-device-main-bill/${ParamsUserId}`, {
+    Axios.post(`${process.env.REACT_APP_BASE_URL}/delete-device-special-Fixedbill/${ParamsUserId}`, {
         device_id: device_id,
         bill_id:newBillId
     }, {
@@ -109,7 +110,7 @@ export async function getAllDevices(newBillId) {
     console.log("call get all device function 1")
     console.log("bill id come for get all device" + newBillId)
 
-    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-device-main-bill/${ParamsUserId}`, {
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-device-special-Fixedbill/${ParamsUserId}`, {
         newBillId: newBillId
     }, {
         headers: {

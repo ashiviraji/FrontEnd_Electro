@@ -1,6 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect } from 'react';
+import { Redirect, useHistory } from 'react-router-dom'
+import Axios from 'axios';
+
 import Popup from "../../components/Customer/bill_control/Popup";
-import * as SpecialDeviceBill from "./SpecialEventDeviceBill";
+import * as SpecialDeviceBill from "./SpecialEventFixedDeviceBill";
 import SpecialFixedCalculateBillForm from "./SpecialFixedCalculateBillForm";
 import {
     InputAdornment,
@@ -44,9 +47,52 @@ const addtionalUnits =0;
 }
   }));
 
-export default function SpecialFixedAddBill() {
+  var token = document.cookie
+  .split(';')
+  .map(cookie => cookie.split('='))
+  .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+  var ParamsUserId = document.cookie
+  .split(';')
+  .map(cookie => cookie.split('='))
+  .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+  console.log("Front End eken yanawada Special Evevnt id eka :- " + ParamsUserId);
+
+  export default function SpecialFixedAddBill() {
 
     const classes = useStyles();
+    let history = useHistory();
+    const [recordForEdit, setRecordForEdit] = useState(null);
+    const [records, setRecords] = useState([]);
+    const [newBillId, setNewBillId] = useState(0);
+
+    async function getBillId() {
+
+
+      const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/get-special-event-fix-bill-id/${ParamsUserId}`, {
+        headers: {
+          authorization: `Token ${token}`
+        }
+  
+    })
+    if (response.data.status){
+      var oldBillId = response.data.data;
+      oldBillId++;
+      var new_bill_id = oldBillId;
+      return new_bill_id;
+    }else {
+      console.log(response.data.message);
+      history.push("/sign-in");
+      window.location.reload();//reload browser
+      deleteAllCookies();//delete all cookies
+    }
+          
+    
+  
+    }
+
     const [openPopup, setOpenPopup] = useState(false);
 
     const [notify, setNotify] = useState({
@@ -54,24 +100,23 @@ export default function SpecialFixedAddBill() {
       message: "",
       variant: "",
     });
-    const [recordForEdit, setRecordForEdit] = useState(null);
-    const [records, setRecords] = useState([]);
+   
+    useEffect( async () => {
+     const new_bill_id = await getBillId();
+     setNewBillId(new_bill_id);
+     console.log("useEffect "+new_bill_id);
+     const recordDetails = await SpecialDeviceBill.getAllDevices(new_bill_id);
+     console.log("record details:"+recordDetails);
+     if(recordDetails==null){
+      setRecords([]);
+    }else{
+      
+       setRecords(recordDetails);
+    }
 
-    // useEffect( async () => {
-    //  // const new_bill_id = await getBillId();
-    //  // setNewBillId(new_bill_id);
-    //   console.log("inside of useEffect");
-    //   //console.log(new_bill_id);
-    //  // const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
-    //   // if(recordDetails==null){
-    //   //   setRecords([]);
-    //   // }else{
-    //   //   setRecords(recordDetails);
-    //   // }
-
-    //   //console.log("inside of useEffect" , recordDetails);
+    console.log("inside of useEffect" , recordDetails);
   
-    // },[]);
+    },[]);
   
 
     const addOrEdit = async (device, resetForm) => {
@@ -85,7 +130,7 @@ export default function SpecialFixedAddBill() {
       resetForm();
       setRecordForEdit(null);
       setOpenPopup(false);
-      const recordDetails = await SpecialDeviceBill.getAllDevices();
+      const recordDetails = await SpecialDeviceBill.getAllDevices(newBillId);
       setRecords(recordDetails);
       setNotify({
         isOpen: true,
@@ -99,6 +144,17 @@ export default function SpecialFixedAddBill() {
       setRecordForEdit(item);
       setOpenPopup(true);
     };
+
+    function deleteAllCookies() {
+      var cookies = document.cookie.split(";");
+  
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      }
+    }
 
     return (
         <div>
@@ -221,7 +277,7 @@ export default function SpecialFixedAddBill() {
         <SpecialFixedCalculateBillForm
           recordForEdit={recordForEdit}
           addOrEdit={addOrEdit}
-         // billId={newBillId}
+         billId={newBillId}
         />
       </Popup>
         </div>
