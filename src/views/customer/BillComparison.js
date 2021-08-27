@@ -9,8 +9,13 @@ import Axios from 'axios';
 
 export default function Billcomparison(props) {
 
-  const calculatedBillId  = props.location.calculatedBillId;
+  
   // console.log("Bill id eka awaaaa" , calculatedBillId )
+
+  const params = new URLSearchParams(window.location.search)
+  const calculatedBillId  = params.get('bill_id');
+  console.log(params.get('bill_id'));
+
 
   const [calculatedData, setCalculatedData] = useState(" ");
 
@@ -33,7 +38,7 @@ var ParamsUserId = document.cookie
 
 
 
-    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/calculate-main-bill/${ParamsUserId}`, {
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-calculated-main-bill/${ParamsUserId}`, {
       
       bill_id:calculatedBillId
   }, {
@@ -98,19 +103,13 @@ var ParamsUserId = document.cookie
 
   useEffect( async () => {
 
-    await getCalculatedData();
+     await getCalculatedData();
     
-    // const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
-    // if(recordDetails==null){
-    //   setRecords([]);
-    // }else{
-    //   setRecords(recordDetails);
-    // }
     
-    // console.log("inside of useEffect" , recordDetails);
 
   },[]);
-
+  console.log("front end bill comparison");
+  console.log(calculatedData);
 
   return (
     <div>
@@ -173,14 +172,14 @@ var ParamsUserId = document.cookie
 
             <Link
               className="btn btn-success btn-lg btn-tou"
-              to="/tou-device-wise-seperate"
+              to={`/tou-device-wise-seperate?bill_id=${calculatedBillId}`}
             >
               TOU Model
             </Link>
 
             <Link
               className="btn btn-success btn-lg btn-fixed"
-              to="/device-wise-seperate"
+              to={`/device-wise-seperate?bill_id=${calculatedBillId}`}
             >
               FIXED Model
             </Link>

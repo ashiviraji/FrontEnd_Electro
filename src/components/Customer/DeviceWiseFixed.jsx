@@ -34,25 +34,19 @@ const columns = [
     align: "center",
     // format: (value) => value.toFixed(2),
   },
-  {
-    id: "total_amount",
-    label: "Total amount  (LKR)",
-    minWidth: 170,
-    align: "center",
-    format: (value) => value.toFixed(2),
-  },
+  
 ];
 
-function createData(
-  device_id,
-  appliance,
-  quantity,
-  total_units,
-  total_amount
-) {
-  //   const density = population / size;
-  return { device_id, appliance, quantity, total_units, total_amount };
-}
+// function createData(
+//   device_id,
+//   appliance,
+//   quantity,
+//   total_units,
+//   total_amount
+// ) {
+//   //   const density = population / size;
+//   return { device_id, appliance, quantity, total_units, total_amount };
+// }
 
 // const rows = [
 //   createData(1, "Television", 1, 100, 1340),
@@ -85,6 +79,10 @@ const useStyles = makeStyles({
 });
 
 export default function StickyHeadTable() {
+
+  const params = new URLSearchParams(window.location.search)
+  const calculatedBillId  = params.get('bill_id');
+
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -141,7 +139,7 @@ export default function StickyHeadTable() {
   
     useEffect( async () => {
   
-      var devices_data_fixed = await getDeviceDetailsFixed(1);
+      var devices_data_fixed = await getDeviceDetailsFixed(calculatedBillId);
       setDeviceData(devices_data_fixed);
     },[]);
 
