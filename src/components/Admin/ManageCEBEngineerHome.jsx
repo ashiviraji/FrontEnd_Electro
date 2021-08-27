@@ -3,8 +3,59 @@ import "../../assets/css/Admin/manageengineerhome.css";
 import Engineers from "../../assets/img/Engineers.png";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
+import { useState, useEffect } from "react";
+import Axios from 'axios';
 
+var name = "kamal";
 const ManageCEBEngineerHome = () => {
+
+  let history = useHistory();
+  var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+  const getCebengineer = async () => {
+    // e.preventDefault();
+    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/manager-cebengineer`, {
+      headers: {
+        authorization: `Token ${token}`
+      }
+
+    })
+    if (response.data.status) {
+      return (response.data.data);
+
+    } else {
+      console.log(response.data.message);
+      history.push("/sign-in");
+      window.location.reload();//reload browser
+      deleteAllCookies();//delete all cookies
+    }
+
+  }
+
+  useEffect(async () => {
+    var details = await getCebengineer();
+    console.log("successfully get ceb engineer", details);
+  }, []);
+
+  /**
+    * function of delete all cookies
+    */
+  function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+  }
+
   const cardDetails = [
     {
       Name: "W.K.B.K.Madhushanka",
@@ -14,7 +65,7 @@ const ManageCEBEngineerHome = () => {
     {
       Name: "T.M.Jayalath",
       Engineer_ID: "E 02 ",
-      Url: "/cebengineer-details2",
+      Url: `/cebengineer-details2?name=${name}`,
     },
   ];
 
