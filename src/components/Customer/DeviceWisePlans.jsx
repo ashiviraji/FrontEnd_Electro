@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -9,6 +9,9 @@ import { Grid } from "@material-ui/core";
 import img1 from "../../assets/img/devicewise.png";
 import "../../assets/css/Customer/deviewisePlans.css";
 import { Link } from "react-router-dom";
+import  {useHistory}  from 'react-router-dom'
+import { useParams } from "react-router-dom";
+import Axios from 'axios';
 
 const useStyles = makeStyles({
   root: {
@@ -61,17 +64,74 @@ const useStyles = makeStyles({
 
 });
 
-const cardDetails = [
-  { Bill_Title: "Bill Plan 1", Model: "TOU", Total_amount: "LKR : 3500" },
-  { Bill_Title: "Bill Plan 2", Model: "Fixed ", Total_amount: "LKR : 2500" },
-  { Bill_Title: "Bill Plan 3", Model: "Fixed ", Total_amount: "LKR : 4500" },
-  { Bill_Title: "Bill Plan 4", Model: "Fixed ", Total_amount: "LKR : 4500" },
-  { Bill_Title: "Bill Plan 5", Model: "Fixed ", Total_amount: "LKR : 4500" },
-  { Bill_Title: "Bill Plan 6", Model: "Fixed ", Total_amount: "LKR : 4500" },
-];
+// const cardDetails = [
+//   { Bill_Title: "Bill Plan 1", Model: "TOU", Total_amount: "LKR : 3500" },
+//   { Bill_Title: "Bill Plan 2", Model: "Fixed ", Total_amount: "LKR : 2500" },
+//   { Bill_Title: "Bill Plan 3", Model: "Fixed ", Total_amount: "LKR : 4500" },
+//   { Bill_Title: "Bill Plan 4", Model: "Fixed ", Total_amount: "LKR : 4500" },
+//   { Bill_Title: "Bill Plan 5", Model: "Fixed ", Total_amount: "LKR : 4500" },
+//   { Bill_Title: "Bill Plan 6", Model: "Fixed ", Total_amount: "LKR : 4500" },
+// ];
 
 export default function DeviceWisePlans() {
   const classes = useStyles();
+  const [cardDetails, setCardDetails] = useState([]);
+
+  let history = useHistory();
+
+  async  function getCalculatedData(){
+
+    var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+    var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+
+
+    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/get-all-monthly-bill-plans/${ParamsUserId}`,  {
+      headers: {
+          authorization: `Token ${token}`
+      }
+  })
+  // console.log(response.data);
+  if (response.data.status){
+    setCardDetails(response.data.data);
+    console.log(response.data.data);
+    
+    
+  }else {
+    console.log(response.data.message);
+    history.push("/sign-in");
+    window.location.reload();//reload browser
+    deleteAllCookies();//delete all cookies
+  }
+        
+  } 
+
+  useEffect( async () => {
+
+    await getCalculatedData();
+   
+ },[]);
+
+
+ //delete cookies function
+ function deleteAllCookies() {
+  var cookies = document.cookie.split(";");
+
+  for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
+}
 
   return (
     <div className={classes.gridMain}>
@@ -92,19 +152,19 @@ export default function DeviceWisePlans() {
                     gutterBottom
                     key={index}
                   >
-                    {card.Bill_Title}
+                    Bill Plan {card.bill_id}
                   </Typography>
                   <div>
                     <img src={img1} alt="Image1" className="card-img-top" />
                   </div>
                   <div>
-                    <label>Suitable Model : {card.Model}</label>
-                    <label>Total Amount :  {card.Total_amount}</label>
+                    <label>Suitable Model : {card.Best_model}</label>
+                    <label>Total Amount : LKR  {card.total_cost.toFixed(2)}</label>
                   </div>
                 </CardContent>
                 <CardActions>
                   <div className="buttonContainer">
-                    <Link className={classes.linkStyle} to="/device-wise">
+                    <Link className={classes.linkStyle} to={`/device-wise?bill_id=${card.bill_id}`}>
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
@@ -123,7 +183,7 @@ export default function DeviceWisePlans() {
                         More Details &nbsp;&nbsp;&nbsp;
                       </Button>
                     </Link>
-                    <Link className={classes.linkStyle} to="#">
+                    <Link className={classes.linkStyle} to="my-bill-plans">
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
