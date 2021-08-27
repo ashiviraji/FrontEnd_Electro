@@ -35,7 +35,7 @@ const columns = [
     // format: (value) => value.toFixed(2),
   },
   {
-    id: "total_amount",
+    id: "total_cost_fixed",
     label: "Total amount  (LKR)",
     minWidth: 170,
     align: "center",
@@ -43,16 +43,16 @@ const columns = [
   },
 ];
 
-function createData(
-  device_id,
-  appliance,
-  quantity,
-  total_units,
-  total_amount
-) {
-  //   const density = population / size;
-  return { device_id, appliance, quantity, total_units, total_amount };
-}
+// function createData(
+//   device_id,
+//   appliance,
+//   quantity,
+//   total_units,
+//   total_amount
+// ) {
+//   //   const density = population / size;
+//   return { device_id, appliance, quantity, total_units, total_amount };
+// }
 
 // const rows = [
 //   createData(1, "Television", 1, 100, 1340),
