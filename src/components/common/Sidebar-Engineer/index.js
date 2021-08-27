@@ -43,7 +43,10 @@ const SidebarEngineer = ({ show }) => {
                 <UserProfile src={CEBEngineer1} alt="image"></UserProfile>
 
                 <UlDetailList>
-                  <NameList>Buthsara </NameList>
+                  <NameList>{document.cookie
+                    .split(';')
+                    .map(cookie => cookie.split('='))
+                    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).name} </NameList>
                   <NameList>CEB Engineer</NameList>
                   <NameList>
                     <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
