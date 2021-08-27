@@ -75,6 +75,7 @@ const useStyles = makeStyles({
 });
 
 export default function StickyHeadTable() {
+  console.log("TOU awa!!");
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);

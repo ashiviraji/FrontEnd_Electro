@@ -1,4 +1,7 @@
-import React from 'react'
+import React,{useState} from 'react'
+import Popup from "../../components/Customer/bill_control/Popup";
+import * as SpecialDeviceBill from "./SpecialEventDeviceBill";
+import SpecialFixedCalculateBillForm from "./SpecialFixedCalculateBillForm";
 import {
     InputAdornment,
     makeStyles,
@@ -44,6 +47,59 @@ const addtionalUnits =0;
 export default function SpecialFixedAddBill() {
 
     const classes = useStyles();
+    const [openPopup, setOpenPopup] = useState(false);
+
+    const [notify, setNotify] = useState({
+      isOpen: false,
+      message: "",
+      variant: "",
+    });
+    const [recordForEdit, setRecordForEdit] = useState(null);
+    const [records, setRecords] = useState([]);
+
+    // useEffect( async () => {
+    //  // const new_bill_id = await getBillId();
+    //  // setNewBillId(new_bill_id);
+    //   console.log("inside of useEffect");
+    //   //console.log(new_bill_id);
+    //  // const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
+    //   // if(recordDetails==null){
+    //   //   setRecords([]);
+    //   // }else{
+    //   //   setRecords(recordDetails);
+    //   // }
+
+    //   //console.log("inside of useEffect" , recordDetails);
+  
+    // },[]);
+  
+
+    const addOrEdit = async (device, resetForm) => {
+      if (device.device_id == 0) {
+        SpecialDeviceBill.insertDevice(device);
+      } else {
+        console.log(device.device_id);
+        await SpecialDeviceBill.updateDevice(device);
+      }
+  
+      resetForm();
+      setRecordForEdit(null);
+      setOpenPopup(false);
+      const recordDetails = await SpecialDeviceBill.getAllDevices();
+      setRecords(recordDetails);
+      setNotify({
+        isOpen: true,
+        message: "Submitted Successfully",
+        variant: "success",
+      });
+    };
+
+    const openInPopup = (item) => {
+      console.log(item.device_id);
+      setRecordForEdit(item);
+      setOpenPopup(true);
+    };
+
     return (
         <div>
             
@@ -66,10 +122,10 @@ export default function SpecialFixedAddBill() {
           <button
             type="button"
             className="btn btn-info add-new-button"
-            // onClick={() => {
-            //   setOpenPopup(true);
-            //   setRecordForEdit(null);
-            // }}
+            onClick={() => {
+              setOpenPopup(true);
+              setRecordForEdit(null);
+            }}
           >
             <Add />
             Add New
@@ -156,9 +212,18 @@ export default function SpecialFixedAddBill() {
             </Form.Group>
           </Form>
         </Paper>
-
-
       </Paper>
+      <Popup
+        title="Add New Device Details"
+        openPopup={openPopup}
+        setOpenPopup={setOpenPopup}
+      >
+        <SpecialFixedCalculateBillForm
+          recordForEdit={recordForEdit}
+          addOrEdit={addOrEdit}
+         // billId={newBillId}
+        />
+      </Popup>
         </div>
     )
 }
