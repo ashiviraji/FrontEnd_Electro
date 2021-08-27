@@ -52,7 +52,7 @@ const columns = [
     format: (value) => value.toFixed(2),
   },
   {
-    id: "total_units_fixed",
+    id: "total_units",
     label: "Total units",
     minWidth: 100,
     align: "center",
