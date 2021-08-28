@@ -96,15 +96,15 @@ function App() {
         <SidebarAdmin />
       </Route>
 
-      <Route exact path="/cebengineer-details1">
+      <Route exact path="/cebengineer-details">
         <DashbordNavbar />
         <SidebarAdmin />
       </Route>
 
-      <Route exact path="/cebengineer-details2">
+      {/* <Route exact path="/cebengineer-details2">
         <DashbordNavbar />
         <SidebarAdmin />
-      </Route>
+      </Route> */}
 
       <Route exact path="/admin-userprofile">
         <DashbordNavbar />

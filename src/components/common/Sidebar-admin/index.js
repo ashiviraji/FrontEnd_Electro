@@ -47,7 +47,10 @@ const SidebarAdmin = ({ show }) => {
               <UserProfile src={Admin} alt="Admin"></UserProfile>
 
               <UlDetailList>
-                <NameList>Hasini</NameList>
+                <NameList>{document.cookie
+                  .split(';')
+                  .map(cookie => cookie.split('='))
+                  .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).name}</NameList>
                 <NameList className="role">Administrator</NameList>
                 <NameList>
                   <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
@@ -111,15 +114,15 @@ const SidebarAdmin = ({ show }) => {
               component={ManageCEBEngineerHome}
             />
             <Route
-              path="/cebengineer-details1"
+              path="/cebengineer-details"
               exact={true}
               component={CebEngineerDetails1}
             />
-            <Route
+            {/* <Route
               path="/cebengineer-details2"
               exact={true}
               component={CebEngineerDetails2}
-            />
+            /> */}
             <Route
               path="/addnewcebengineer"
               exact={true}

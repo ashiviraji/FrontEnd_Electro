@@ -7,6 +7,8 @@ import Admin from "../../assets/img/Admin.png";
 import Axios from 'axios';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
+import ConfirmationBox from "../common/ConfirmationBox";
 
 toast.configure();
 
@@ -16,8 +18,16 @@ export default function CustomerUserProfile() {
   const [userFirstName, setUserFirstName] = useState("");
   const [useremail, setUseremai] = useState("");
   const [userLastName, setUserLastName] = useState("");
-  // const [ParamsUserId, setParamsUserId] = useState("");
-
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
+  const [confirmationBox, setConfirmationBox] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
   var ParamsUserId = document.cookie
     .split(';')
     .map(cookie => cookie.split('='))
@@ -32,7 +42,10 @@ export default function CustomerUserProfile() {
 
   const getUser = (e) => {
     e.preventDefault();
-
+    setConfirmationBox({
+      ...confirmationBox,
+      isOpen: false,
+    });
 
     Axios.get(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
       headers: {
@@ -51,9 +64,7 @@ export default function CustomerUserProfile() {
 
         } else {
 
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
+          confirmation();
         }
       }).catch((error) => {
         console.log("this is 1c response", error);
@@ -62,8 +73,14 @@ export default function CustomerUserProfile() {
 
   const updateUser = (e) => {
     e.preventDefault();
-
-
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
+    setConfirmationBox({
+      ...confirmationBox,
+      isOpen: false,
+    });
     Axios.put(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
       firstName: userFirstName,
       userEmail: useremail,
@@ -88,15 +105,27 @@ export default function CustomerUserProfile() {
           console.log("successfully update user profile of customer");
 
         } else {
+          confirmation();
 
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
         }
       }).catch((error) => {
         console.log("This is  response", error);
       });
   };
+
+  function confirmation() {
+    setConfirmationBox({
+      isOpen: true,
+      title: "Can Not Perform This Action!",
+      subTitle: "Your session has timed out. Please log in again.",
+      btnStatus: "warning",
+      onConfirm: () => {
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();
+      },
+    });
+  }
 
   /**
    * function of delete all cookies
@@ -114,7 +143,7 @@ export default function CustomerUserProfile() {
 
   return (
     <div className="body-customeruser">
-      <form onLoad={(e) => { getUser(e) }} onSubmit={(e) => { updateUser(e) }}>
+      <form onLoad={(e) => { getUser(e) }} >
         <div className="ceb-heading">
           <h2 align="center">USER PROFILE</h2>
         </div>
@@ -287,11 +316,29 @@ export default function CustomerUserProfile() {
         </div>
 
         <div>
-          <button type="submit" className="admin-add-update-btn">
+          <button type="button" className="admin-add-update-btn" onClick={(e) => {
+            setConfirmDialog({
+              isOpen: true,
+              title: "Are You Sure Update Profile",
+              subTitle: "Click  'Yes'  To Update Profile",
+              btnStatus: "success",
+              onConfirm: () => {
+                updateUser(e);
+              },
+            });
+          }}>
             Update
           </button>
         </div>
       </form>
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
+      <ConfirmationBox
+        confirmationBox={confirmationBox}
+        setConfirmationBox={setConfirmationBox}
+      />
     </div>
   );
 }

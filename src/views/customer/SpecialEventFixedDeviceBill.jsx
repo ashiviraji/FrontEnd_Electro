@@ -83,9 +83,7 @@ export function genarateDeviceID() {
 }
 
 export async function Deletedevice(device_id,newBillId) {
-    // let devices = getAllDevices();
-    // devices = devices.filter(x => x.appliance != appliance)
-    // localStorage.setItem(KEYS.devices, JSON.stringify(devices));
+   
     await Axios.post(`${process.env.REACT_APP_BASE_URL}/delete-device-special-Fixedbill/${ParamsUserId}`, {
         device_id: device_id,
         bill_id:newBillId
@@ -127,10 +125,7 @@ export async function getAllDevices(newBillId) {
     return response.data.data;
 
 
-    // if (localStorage.getItem(KEYS.devices) == null)
-    //     localStorage.setItem(KEYS.devices, JSON.stringify([]))
-    // console.log(typeof JSON.parse(localStorage.getItem(KEYS.devices)))
-    //  return JSON.parse(localStorage.getItem(KEYS.devices));
+   
 }
 
 /**

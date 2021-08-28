@@ -4,7 +4,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button'
 import { makeStyles } from '@material-ui/core'
 import { NotListedLocation } from '@material-ui/icons'
-
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 const useStyle = makeStyles(theme => ({
     dialog: {
         padding: theme.spacing(2),
@@ -21,7 +21,7 @@ const useStyle = makeStyles(theme => ({
         textAlign: 'center'
     },
     titleIcon: {
-        backgroundColor: "#ff7dad",
+        backgroundColor: "",
         color: theme.palette.secondary.main,
         '& .MuiSvgIcon-root': {
             fontSize: '6rem',
@@ -30,29 +30,29 @@ const useStyle = makeStyles(theme => ({
 }))
 
 
-export default function ConfirmDialog(props) {
+export default function ConfirmationBox(props) {
 
-    const { confirmDialog, setConfirmDialog } = props;
+    const { confirmationBox, setConfirmationBox } = props;
     const classes = useStyle()
 
     return (
-        <Dialog open={confirmDialog.isOpen} classes={{ paper: classes.dialog }}>
+        <Dialog open={confirmationBox.isOpen} classes={{ paper: classes.dialog }}>
             <DialogTitle className={classes.Dialogtitle}>
                 <IconButton disableRipple className={classes.titleIcon}>
-                    <NotListedLocation />
+                    <ExitToAppIcon />
                 </IconButton>
             </DialogTitle>
             <DialogContent className={classes.DialogContent}>
                 <Typography variant="h6">
-                    {confirmDialog.title}
+                    {confirmationBox.title}
                 </Typography>
                 <Typography variant="subtitle2">
-                    {confirmDialog.subTitle}
+                    {confirmationBox.subTitle}
                 </Typography>
             </DialogContent>
             <DialogActions className={classes.DialogActions}>
-                <Button variant="secondary" onClick={() => setConfirmDialog({ ...confirmDialog, isOpen: false })}>No</Button>
-                <Button variant={confirmDialog.btnStatus} onClick={confirmDialog.onConfirm}>Yes</Button>
+                {/* <Button variant="secondary" onClick={() => setConfirmDialog({ ...confirmDialog, isOpen: false })}>No</Button> */}
+                <Button variant={confirmationBox.btnStatus} onClick={confirmationBox.onConfirm}>Login</Button>
             </DialogActions>
         </Dialog>
     )

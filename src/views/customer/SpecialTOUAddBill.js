@@ -175,6 +175,17 @@ export default function SpecialTOUAddBill() {
                   </button>
                   <button
                     className="btn deleteActionButtonIcon"
+                    onClick={() => {
+                      setConfirmDialog({
+                        isOpen: true,
+                        title: "Are You sure delete this record",
+                        subTitle: "You can't  undo this operation",
+                        btnStatus: "danger",
+                        onConfirm: () => {
+                          onDeletedevice(item.appliance);
+                        },
+                      });
+                    }}
                   >
                     <DeleteOutline
                       fontSize="small"
