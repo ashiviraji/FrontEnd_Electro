@@ -6,6 +6,7 @@ import Engineer1 from "../../assets/img/engineer1.png";
 import Axios from 'axios';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 
 toast.configure();
 
@@ -20,13 +21,17 @@ export default function EngineerUserProfile() {
   const [userAddress, setUserAddress] = useState("");
   const [userDesignation, setUserDesignation] = useState("");
   const [userNic, setUserNic] = useState("");
-
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
   var ParamsUserId = document.cookie
     .split(';')
     .map(cookie => cookie.split('='))
     .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
 
-  // console.log(ParamsUserId);
+
 
   var token = document.cookie
     .split(';')
@@ -73,7 +78,10 @@ export default function EngineerUserProfile() {
 
   const updateUser = (e) => {
     e.preventDefault();
-
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
 
     Axios.put(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
       firstName: userFirstName,
@@ -126,7 +134,7 @@ export default function EngineerUserProfile() {
 
   return (
     <div className="body-engineer">
-      <form onLoad={(e) => { getUser(e) }} onSubmit={(e) => { updateUser(e) }}>
+      <form onLoad={(e) => { getUser(e) }}>
         <div className="ceb-engineer-heading">
           <h2 align="center">USER PROFILE</h2>
         </div>
@@ -311,11 +319,25 @@ export default function EngineerUserProfile() {
         </div>
 
         <div>
-          <button type="submit" className="admin-add-update-btn">
+          <button type="button" className="admin-add-update-btn" onClick={(e) => {
+            setConfirmDialog({
+              isOpen: true,
+              title: "Are You Sure Update Profile",
+              subTitle: "You can't  undo this operation",
+              btnStatus: "success",
+              onConfirm: () => {
+                updateUser(e);
+              },
+            });
+          }}>
             Update
           </button>
         </div>
       </form>
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
     </div>
   );
 }
