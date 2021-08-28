@@ -1,4 +1,6 @@
 import * as React from "react";
+import Axios from 'axios';
+import { useState,useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
@@ -46,18 +48,18 @@ function createData(
   return { device_id, appliance, quantity, total_units };
 }
 
-const rows = [
-  createData(1, "Freezer", 1, 20),
-  createData(2, "Flash Light", 2, 15),
-  createData(3, "Guitar", 1, 10),
-  createData(4, "Sound Speakers", 2, 20),
-  createData(5, "Mics", 1, 25),
-  createData(6, "Drums", 2,30),
-  createData(7, "Coffer Maker", 1,30),
-  createData(8, "Juicer", 1,30),
-  createData(9, "Water Pumps", 1,30),
+// const rows = [
+//   createData(1, "Freezer", 1, 20),
+//   createData(2, "Flash Light", 2, 15),
+//   createData(3, "Guitar", 1, 10),
+//   createData(4, "Sound Speakers", 2, 20),
+//   createData(5, "Mics", 1, 25),
+//   createData(6, "Drums", 2,30),
+//   createData(7, "Coffer Maker", 1,30),
+//   createData(8, "Juicer", 1,30),
+//   createData(9, "Water Pumps", 1,30),
   
-];
+// ];
 
 const useStyles = makeStyles({
   root: {
@@ -76,10 +78,13 @@ const useStyles = makeStyles({
 
 export default function StickyHeadTable() {
   console.log("TOU awa!!");
+  const params = new URLSearchParams(window.location.search)
+  const calculatedSpecialEventBillId  = params.get('bill_id');
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [selected, setSelected] = React.useState("");
+  const [rows, setDeviceData] = useState([]);
 
   let area = null;
   const changeSelectOptionHandler = (event) => {
@@ -95,6 +100,42 @@ export default function StickyHeadTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  async function getSpecialEventDeviceDetailsFixed(newBillId) {
+
+    var ParamsUserId = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  
+  
+    var token = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+  
+  
+      // let History = useHistory();
+      console.log("call device detail fixed function")
+  
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-specialEvent-detailsfixed/${ParamsUserId}`, {
+          newBillId: newBillId
+      }, {
+          headers: {
+              authorization: `Token ${token}`
+          }
+      })
+  
+      console.log(response.data.data);
+      return response.data.data;
+  
+  }
+   
+  useEffect( async () => {
+  
+    var special_event_data_fixed = await getSpecialEventDeviceDetailsFixed(1);
+    setDeviceData(special_event_data_fixed );
+  },[]);
 
   return (
     <Paper className={classes.root}>

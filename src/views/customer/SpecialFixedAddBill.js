@@ -4,6 +4,8 @@ import Axios from 'axios';
 
 import Popup from "../../components/Customer/bill_control/Popup";
 import * as SpecialDeviceBill from "./SpecialEventFixedDeviceBill";
+import Notification from "../../components/Customer/bill_control/Notification";
+import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog";
 import SpecialFixedCalculateBillForm from "./SpecialFixedCalculateBillForm";
 import {
     InputAdornment,
@@ -64,8 +66,9 @@ const addtionalUnits =0;
 
     const classes = useStyles();
     let history = useHistory();
+    const [buttonState, setButtonState] = useState(true);
     const [recordForEdit, setRecordForEdit] = useState(null);
-    const [records, setRecords] = useState([]);
+    
     const [newBillId, setNewBillId] = useState(0);
 
     async function getBillId() {
@@ -92,15 +95,30 @@ const addtionalUnits =0;
     
   
     }
+    const [records, setRecords] = useState([]);
+    
+
+    // const [filterFn, setFilterFn] = useState({
+    //   fn: (items) => {
+    //     return items;
+    //   },
+    // });
 
     const [openPopup, setOpenPopup] = useState(false);
+
+    const [confirmDialog, setConfirmDialog] = useState({
+      isOpen: false,
+      title: "",
+      subTitle: "",
+    });
 
     const [notify, setNotify] = useState({
       isOpen: false,
       message: "",
       variant: "",
     });
-   
+
+    
     useEffect( async () => {
      const new_bill_id = await getBillId();
      setNewBillId(new_bill_id);
@@ -108,10 +126,13 @@ const addtionalUnits =0;
      const recordDetails = await SpecialDeviceBill.getAllDevices(new_bill_id);
      console.log("record details:"+recordDetails);
      if(recordDetails==null){
+      console.log("awaaa ne!!");
       setRecords([]);
+      setButtonState(true);
     }else{
-      
+      console.log("awaaa!!");
        setRecords(recordDetails);
+       setButtonState(false);
     }
 
     console.log("inside of useEffect" , recordDetails);
@@ -121,17 +142,26 @@ const addtionalUnits =0;
 
     const addOrEdit = async (device, resetForm) => {
       if (device.device_id == 0) {
-        SpecialDeviceBill.insertDevice(device);
+        await SpecialDeviceBill.insertDevice(device);
+        console.log("hy");
       } else {
-        console.log(device.device_id);
-        await SpecialDeviceBill.updateDevice(device);
+        //console.log(device.device_id);
+        await SpecialDeviceBill.updateDevice(device,newBillId);
       }
   
       resetForm();
       setRecordForEdit(null);
       setOpenPopup(false);
+      console.log("addoredit");
       const recordDetails = await SpecialDeviceBill.getAllDevices(newBillId);
-      setRecords(recordDetails);
+      //setRecords(recordDetails);
+      if (recordDetails == null) {
+        setRecords([]);
+        setButtonState(true);
+      } else {
+        setRecords(recordDetails);
+        setButtonState(false);
+      }
       setNotify({
         isOpen: true,
         message: "Submitted Successfully",
@@ -144,6 +174,28 @@ const addtionalUnits =0;
       setRecordForEdit(item);
       setOpenPopup(true);
     };
+
+    const onDeletedevice = async (device_id) => {
+     
+      setConfirmDialog({
+        ...confirmDialog,
+        isOpen: false,
+      });
+      await SpecialDeviceBill.Deletedevice(device_id,newBillId);
+      const recordDetails = await SpecialDeviceBill.getAllDevices(newBillId);
+      if (recordDetails == null) {
+        setRecords([]);
+        setButtonState(true);
+      } else {
+        setRecords(recordDetails);
+        setButtonState(false);
+      }
+      setNotify({
+        isOpen: true,
+        message: "Deleted Successfully",
+        variant: "danger",
+      });
+    }
 
     function deleteAllCookies() {
       var cookies = document.cookie.split(";");
@@ -191,23 +243,29 @@ const addtionalUnits =0;
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Appliance</TableCell>
-              <TableCell>Quantity</TableCell>
-              <TableCell>Power</TableCell>
-              <TableCell>Time Duration</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell style={{textAlign:"center"}}>Appliance</TableCell>
+              <TableCell style={{textAlign:"center"}}>Quantity</TableCell>
+              <TableCell style={{textAlign:"center"}}>Power</TableCell>
+              <TableCell style={{textAlign:"center"}}>Time Duration</TableCell>
+              <TableCell style={{textAlign:"center"}}>No Of Days</TableCell>
+              <TableCell style={{textAlign:"center"}}>Actions</TableCell>
+
             </TableRow>
           </TableHead>
-            {/* <TableBody>
-            {record.map((item) => (
-              <TableRow key={item.id}>
-                <TableCell>{item.appliance}</TableCell>
-                <TableCell>{item.quantity}</TableCell>
-                <TableCell>{item.power}</TableCell>
-                <TableCell>{item.hour}hrs : {item.min}mins </TableCell>
-                <TableCell>
-                  <button
+            <TableBody>
+            {records.map((item) => (
+              <TableRow key={item.device_id}>
+                <TableCell style={{textAlign:"center"}}>{item.appliance}</TableCell>
+                <TableCell style={{textAlign:"center"}}>{item.quantity}</TableCell>
+                <TableCell style={{textAlign:"center"}}>{item.power}</TableCell>
+                <TableCell style={{textAlign:"center"}}>{item.hfixed}hrs : {item.mfixed}mins </TableCell>
+                <TableCell style={{textAlign:"center"}}>5</TableCell>
+                <TableCell style={{textAlign:"center"}}>
+                <button
                     className="btn editActionButtonIcon"
+                    onClick={() => {
+                      openInPopup(item);
+                    }}
                   >
                     <EditOutlined
                       fontSize="small"
@@ -216,6 +274,16 @@ const addtionalUnits =0;
                   </button>
                   <button
                     className="btn deleteActionButtonIcon"
+                    onClick={() => {
+                      setConfirmDialog({
+                        isOpen: true,
+                        title: "Are You sure delete this record",
+                        subTitle: "You can't  undo this operation",
+                        onConfirm: () => {
+                          onDeletedevice(item.device_id);
+                        },
+                      });
+                    }}
                   >
                     <DeleteOutline
                       fontSize="small"
@@ -225,7 +293,7 @@ const addtionalUnits =0;
                 </TableCell>
               </TableRow>
             ))}
-          </TableBody> */}
+          </TableBody>
         </Table>
 
         <Paper className={classes.pageContent}>
@@ -233,12 +301,12 @@ const addtionalUnits =0;
             <Form.Group>
               <Row className="RowInForm-noOfDays">
                 <Form.Label column sm="4" style={{fontWeight:"550"}}>
-                  Number Of Days
+                  Special Event Bill Name 
                 </Form.Label>
                 <Col sm="4">
                   <Form.Control
-                    type="number"
-                    placeholder="Number of Days"
+                    type="text"
+                    placeholder=" Special Event Bill Name"
                     // defaultValue={noOfDays}
                   />
                 </Col>
@@ -280,6 +348,13 @@ const addtionalUnits =0;
          billId={newBillId}
         />
       </Popup>
+      <Notification notify={notify} setNotify={setNotify} />
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
         </div>
-    )
-}
+    );
+                  }
+                
+

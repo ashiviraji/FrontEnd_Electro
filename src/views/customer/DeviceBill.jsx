@@ -115,7 +115,7 @@ export async function getAllDevices(newBillId) {
             authorization: `Token ${token}`
         }
     })
-
+   console.log("getAlldevices!!");
     console.log(response.data.data);
     return response.data.data;
 
