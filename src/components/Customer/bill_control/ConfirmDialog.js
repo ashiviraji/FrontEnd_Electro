@@ -6,24 +6,24 @@ import { makeStyles } from '@material-ui/core'
 import { NotListedLocation } from '@material-ui/icons'
 
 const useStyle = makeStyles(theme => ({
-    dialog:{
-        padding:theme.spacing(2),
-        position:'absolute',
-        top:theme.spacing(5)
+    dialog: {
+        padding: theme.spacing(2),
+        position: 'absolute',
+        top: theme.spacing(5)
     },
     DialogContent: {
-        textAlign:'center'
+        textAlign: 'center'
     },
-    DialogActions:{
-        justifyContent:'center'
+    DialogActions: {
+        justifyContent: 'center'
     },
-    Dialogtitle:{
-        textAlign:'center'
+    Dialogtitle: {
+        textAlign: 'center'
     },
     titleIcon: {
         backgroundColor: "#ff7dad",
         color: theme.palette.secondary.main,
-        '& .MuiSvgIcon-root' : {
+        '& .MuiSvgIcon-root': {
             fontSize: '6rem',
         }
     }
@@ -32,14 +32,14 @@ const useStyle = makeStyles(theme => ({
 
 export default function ConfirmDialog(props) {
 
-    const { confirmDialog, setConfirmDialog} = props;
+    const { confirmDialog, setConfirmDialog } = props;
     const classes = useStyle()
 
     return (
-        <Dialog open={confirmDialog.isOpen} classes={{paper:classes.dialog}}>
+        <Dialog open={confirmDialog.isOpen} classes={{ paper: classes.dialog }}>
             <DialogTitle className={classes.Dialogtitle}>
                 <IconButton disableRipple className={classes.titleIcon}>
-                    <NotListedLocation/>
+                    <NotListedLocation />
                 </IconButton>
             </DialogTitle>
             <DialogContent className={classes.DialogContent}>
@@ -51,8 +51,8 @@ export default function ConfirmDialog(props) {
                 </Typography>
             </DialogContent>
             <DialogActions className={classes.DialogActions}>
-            <Button variant="secondary" onClick={()=> setConfirmDialog({ ...confirmDialog, isOpen:false})}>No</Button>
-            <Button variant="danger" onClick = {confirmDialog.onConfirm}>Yes</Button>
+                <Button variant="secondary" onClick={() => setConfirmDialog({ ...confirmDialog, isOpen: false })}>No</Button>
+                <Button variant={confirmDialog.btnStatus} onClick={confirmDialog.onConfirm}>Yes</Button>
             </DialogActions>
         </Dialog>
     )

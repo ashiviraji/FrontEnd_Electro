@@ -78,20 +78,20 @@ export default function CalculateBill() {
         authorization: `Token ${token}`
       }
 
-  })
-  if (response.data.status){
-    var oldBillId = response.data.data;
-    oldBillId++;
-    var new_bill_id = oldBillId;
-    return new_bill_id;
-  }else {
-    console.log(response.data.message);
-    history.push("/sign-in");
-    window.location.reload();//reload browser
-    deleteAllCookies();//delete all cookies
-  }
-        
-  
+    })
+    if (response.data.status) {
+      var oldBillId = response.data.data;
+      oldBillId++;
+      var new_bill_id = oldBillId;
+      return new_bill_id;
+    } else {
+      console.log(response.data.message);
+      history.push("/sign-in");
+      window.location.reload();//reload browser
+      deleteAllCookies();//delete all cookies
+    }
+
+
 
   }
 
@@ -136,8 +136,8 @@ export default function CalculateBill() {
       setButtonState(false);
     }
 
-    
-    console.log("inside of useEffect" , recordDetails);
+
+    console.log("inside of useEffect", recordDetails);
 
 
   }, []);
@@ -192,7 +192,7 @@ export default function CalculateBill() {
       ...confirmDialog,
       isOpen: false,
     });
-    await DeviceBill.Deletedevice(device_id,newBillId);
+    await DeviceBill.Deletedevice(device_id, newBillId);
     const recordDetails = await DeviceBill.getAllDevices(newBillId);
     if (recordDetails == null) {
       setRecords([]);
@@ -224,42 +224,42 @@ export default function CalculateBill() {
     }
   }
 
-    async  function calculateDevice(){
+  async function calculateDevice() {
 
-      var token = document.cookie
+    var token = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
-  
-  
-  var ParamsUserId = document.cookie
+
+
+    var ParamsUserId = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
-  
-  
-  
-      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/calculate-main-bill/${ParamsUserId}`, {
-        
-        bill_id:newBillId
+
+
+
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/calculate-main-bill/${ParamsUserId}`, {
+
+      bill_id: newBillId
     }, {
-        headers: {
-            authorization: `Token ${token}`
-        }
+      headers: {
+        authorization: `Token ${token}`
+      }
     })
     // console.log(response.data);
-    if (response.data.status){
+    if (response.data.status) {
       // setCalculatedData(response.data.data)
-      
-      
-    }else {
+
+
+    } else {
       console.log(response.data.message);
       history.push("/sign-in");
       window.location.reload();//reload browser
       deleteAllCookies();//delete all cookies
     }
-          
-    } 
+
+  }
 
 
 
@@ -331,6 +331,7 @@ export default function CalculateBill() {
                         isOpen: true,
                         title: "Are You sure delete this record",
                         subTitle: "You can't  undo this operation",
+                        btnStatus: "danger",
                         onConfirm: () => {
                           onDeletedevice(item.device_id);
                         },
@@ -348,11 +349,11 @@ export default function CalculateBill() {
           </TableBody>
         </TblContainer>
         {/* <TblPagination /> */}
-        
-              
-        <Link   to={
+
+
+        <Link to={
           `/bill-comparison?bill_id=${newBillId}`
-       }>
+        }>
 
           <button type="button" className="btn btn-success calculate-button" onClick={calculateDevice} disabled={buttonState}>
             Calculate
