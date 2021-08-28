@@ -185,7 +185,7 @@ const ManageCEBEngineerHome = () => {
                 <CardActions>
                   <div className="buttonContainer">
 
-                    <Link className={classes.linkStyle} to={`/cebengineer-details1?emp_id=${card.Emp_id}`}>
+                    <Link className={classes.linkStyle} to={`/cebengineer-details?emp_id=${card.Emp_id}`}>
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
