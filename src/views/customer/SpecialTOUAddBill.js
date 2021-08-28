@@ -198,6 +198,7 @@ export default function SpecialTOUAddBill() {
                         isOpen: true,
                         title: "Are You sure delete this record",
                         subTitle: "You can't  undo this operation",
+                        btnStatus: "danger",
                         onConfirm: () => {
                           onDeletedevice(item.appliance);
                         },

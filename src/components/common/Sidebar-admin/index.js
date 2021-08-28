@@ -114,15 +114,15 @@ const SidebarAdmin = ({ show }) => {
               component={ManageCEBEngineerHome}
             />
             <Route
-              path="/cebengineer-details1"
+              path="/cebengineer-details"
               exact={true}
               component={CebEngineerDetails1}
             />
-            <Route
+            {/* <Route
               path="/cebengineer-details2"
               exact={true}
               component={CebEngineerDetails2}
-            />
+            /> */}
             <Route
               path="/addnewcebengineer"
               exact={true}
