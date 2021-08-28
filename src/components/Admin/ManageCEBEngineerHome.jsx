@@ -1,7 +1,5 @@
 import React from "react";
-import img1 from "../../assets/img/devicewise.png";
-import Engineers from "../../assets/img/Engineers.png";
-import { RiDeleteBinFill } from "react-icons/ri";
+import img1 from "../../assets/img/undraw_Add_user_re_5oib.png";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import { useState, useEffect } from "react";
@@ -15,6 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 
 const useStyles = makeStyles({
   root: {
@@ -69,7 +68,11 @@ const useStyles = makeStyles({
 const ManageCEBEngineerHome = () => {
   const classes = useStyles();
   const [cardDetails, setCardDetails] = useState([]);
-
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
   let history = useHistory();
   var token = document.cookie
     .split(';')
@@ -98,6 +101,10 @@ const ManageCEBEngineerHome = () => {
 
   const removeCebengineer = async (emp_id) => {
     // e.preventDefault();
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
     const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/remove-cebengineer/${emp_id}`, {
       headers: {
         authorization: `Token ${token}`
@@ -193,7 +200,17 @@ const ManageCEBEngineerHome = () => {
                         variant="contained"
                         color="secondary"
                         className={classes.button}
-                        onClick={() => { removeCebengineer(card.Emp_id) }}
+                        onClick={() => {
+                          setConfirmDialog({
+                            isOpen: true,
+                            title: "Are You sure delete CEB engineer",
+                            subTitle: "You can't  undo this operation",
+                            onConfirm: () => {
+                              removeCebengineer(card.Emp_id);
+                            },
+                          });
+                        }}
+                      // onClick={() => { removeCebengineer(card.Emp_id) }}
                       >
                         Remove User &nbsp;&nbsp;&nbsp;
                       </Button>
@@ -205,6 +222,10 @@ const ManageCEBEngineerHome = () => {
           );
         })}
       </Grid>
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
     </div>
   );
 
