@@ -22,8 +22,8 @@ const initialFvalues = {
   bill_id: 0,
   appliance: "",
   quantity: 0,
-  hours: 0,
-  minutes: 0,
+  hfixed: 0,
+  mfixed: 0,
   power: "",
   using_total_minutes: 0,
   total_units_fixed: 0,
@@ -57,16 +57,16 @@ export default function SpecialFixedCalculateBillForm(props) {
     if ("power" in fieldValues)
       temp.power =
         fieldValues.power > 0 ? "" : "power should be a number and > 0";
-    if ("hours" in fieldValues)
-      temp.hours =
-        (fieldValues.hours >= 0 && fieldValues.hours <= 24) ||
-          fieldValues.hours === ""
+    if ("hfixed" in fieldValues)
+      temp.hfixed =
+        (fieldValues.hfixed >= 0 && fieldValues.hfixed <= 24) ||
+          fieldValues.hfixed === ""
           ? ""
           : "24 > Hours in day >= 0";
-    if ("minutes" in fieldValues)
-      temp.minutes =
-        (fieldValues.minutes >= 0 && fieldValues.minutes < 60) ||
-          fieldValues.minutes === ""
+    if ("mfixed" in fieldValues)
+      temp.mfixed =
+        (fieldValues.mfixed >= 0 && fieldValues.mfixed < 60) ||
+          fieldValues.mfixed === ""
           ? ""
           : "60 > minutes >= 0";
     setErrors({
@@ -137,9 +137,9 @@ export default function SpecialFixedCalculateBillForm(props) {
           <Controls.InputTxt
             id="standard-start-adornment"
             label="Hours"
-            name="hours"
+            name="hfixed"
             type="number"
-            value={values.hours}
+            value={values.hfixed}
             onChange={handleInputChange}
             error={errors.hours}
             unit="hrs"
@@ -151,9 +151,9 @@ export default function SpecialFixedCalculateBillForm(props) {
           <Controls.InputTxt
             id="standard-start-adornment"
             label="Minutes"
-            name="minutes"
+            name="mfixed"
             type="number"
-            value={values.minutes}
+            value={values.mfixed}
             onChange={handleInputChange}
             error={errors.minutes}
             unit="min"
