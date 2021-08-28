@@ -30,7 +30,7 @@ export default function SpecialEventDeviceUsage() {
       [name]:value
     })
   }
-  console.log(displayModel);
+  console.log("Model is: "+displayModel);
 
   
   return( 

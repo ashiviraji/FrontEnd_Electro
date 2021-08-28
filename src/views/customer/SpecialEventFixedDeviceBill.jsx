@@ -19,13 +19,12 @@ var ParamsUserId = document.cookie
     .split(';')
     .map(cookie => cookie.split('='))
     .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
-
-
 export async function insertDevice(data) {
 
     // let History = useHistory();
     // e.preventDefault();
-    await Axios.post(`${process.env.REACT_APP_BASE_URL}/add-device-main-bill/${ParamsUserId}`, {
+    console.log(data);
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/add-device-special-Fixedbill/${ParamsUserId}`, {
         data: data
     }, {
         headers: {
@@ -46,11 +45,16 @@ export async function insertDevice(data) {
 
 }
 
-export async function updateDevice(data) {
+export async function updateDevice(data,id) {
+    // let devices = getAllDevices();
+    // let recordIndex = devices.findIndex(x => x.device_id === data.device_id);
+    // devices[recordIndex] = { ...data }
+    // localStorage.setItem(KEYS.devices, JSON.stringify(devices))
     
-
-    await Axios.post(`${process.env.REACT_APP_BASE_URL}/update-device-main-bill/${ParamsUserId}`, {
-        data: data
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/update-device-special-Fixedbill/${ParamsUserId}`, {
+        data: data,
+        bill_id:id
+       
     }, {
         headers: {
             authorization: `Token ${token}`
@@ -79,10 +83,8 @@ export function genarateDeviceID() {
 }
 
 export async function Deletedevice(device_id,newBillId) {
-    // let devices = getAllDevices();
-    // devices = devices.filter(x => x.appliance != appliance)
-    // localStorage.setItem(KEYS.devices, JSON.stringify(devices));
-    await Axios.post(`${process.env.REACT_APP_BASE_URL}/delete-device-main-bill/${ParamsUserId}`, {
+   
+    await Axios.post(`${process.env.REACT_APP_BASE_URL}/delete-device-special-Fixedbill/${ParamsUserId}`, {
         device_id: device_id,
         bill_id:newBillId
     }, {
@@ -107,23 +109,23 @@ export async function getAllDevices(newBillId) {
     // let History = useHistory();
     console.log("call get all device function 1")
     console.log("bill id come for get all device" + newBillId)
+   console.log("GetAllDevicesFixed");
 
-    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-device-main-bill/${ParamsUserId}`, {
+
+   
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-specialEvent-fixedDetails/${ParamsUserId}`, {
         newBillId: newBillId
     }, {
         headers: {
             authorization: `Token ${token}`
         }
     })
-   console.log("getAlldevices!!");
+    
     console.log(response.data.data);
     return response.data.data;
 
 
-    // if (localStorage.getItem(KEYS.devices) == null)
-    //     localStorage.setItem(KEYS.devices, JSON.stringify([]))
-    // console.log(typeof JSON.parse(localStorage.getItem(KEYS.devices)))
-    //  return JSON.parse(localStorage.getItem(KEYS.devices));
+   
 }
 
 /**
