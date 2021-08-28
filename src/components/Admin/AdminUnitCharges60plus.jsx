@@ -10,6 +10,7 @@ import { useHistory } from "react-router";
 import Axios from 'axios';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 
 toast.configure();
 
@@ -412,12 +413,22 @@ export default function AdminUnitCharges60plus(props) {
 function MyVerticallyCenteredModal(props) {
 
   let history = useHistory();
-
-
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
+  function acceptUpdatedata(e) {
+    getUpdatedata(e);
+    props.onHide();
+  }
   function getUpdatedata(e) {
     // console.log(NewAmount, props.categoryName, props.timePeriod);
     e.preventDefault();
-
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
     var token = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
@@ -467,7 +478,10 @@ function MyVerticallyCenteredModal(props) {
    */
   function rejectUpdatedata(e) {
     e.preventDefault();
-
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
     var token = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
@@ -511,6 +525,8 @@ function MyVerticallyCenteredModal(props) {
     props.onHide();
   }
 
+
+
   /**
    * delete all cookies 
    */
@@ -532,7 +548,7 @@ function MyVerticallyCenteredModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <form onSubmit={(e) => { getUpdatedata(e) }}>
+      <form>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
             Update {props.categoryName} Charges - {props.unitPeriod}
@@ -567,14 +583,38 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Body>
 
         <Modal.Footer id="engineer-accept-reject-button">
-          <Button type="submit" onClick={props.onHide} className="engineer-UpdateButton" >
-            UPDATE
+          <Button type="button" className="engineer-UpdateButton" onClick={(e) => {
+            setConfirmDialog({
+              isOpen: true,
+              title: "Are You Sure Accept Changes",
+              subTitle: "You can't  undo this operation",
+              btnStatus: "success",
+              onConfirm: () => {
+                acceptUpdatedata(e);
+              },
+            });
+          }}>
+            ACCEPT
           </Button>
-          <Button onClick={(e) => { rejectedUpdatedata(e) }} className="engineer-CancelButton">
-            CANCEL
+          <Button className="engineer-CancelButton" onClick={(e) => {
+            setConfirmDialog({
+              isOpen: true,
+              title: "Are You Sure Reject Changes",
+              subTitle: "You can't  undo this operation",
+              btnStatus: "danger",
+              onConfirm: () => {
+                rejectedUpdatedata(e);
+              },
+            });
+          }}>
+            REJECT
           </Button>
         </Modal.Footer>
       </form>
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
     </Modal>
   );
 }
