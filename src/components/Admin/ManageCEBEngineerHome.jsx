@@ -205,6 +205,7 @@ const ManageCEBEngineerHome = () => {
                             isOpen: true,
                             title: "Are You sure delete CEB engineer",
                             subTitle: "You can't  undo this operation",
+                            btnStatus: "danger",
                             onConfirm: () => {
                               removeCebengineer(card.Emp_id);
                             },
