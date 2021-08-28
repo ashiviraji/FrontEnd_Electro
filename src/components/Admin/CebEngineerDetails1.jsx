@@ -8,13 +8,18 @@ import { useState } from "react";
 import Axios from 'axios';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 
 toast.configure();
 export default function ManageCebEngineer() {
 
   const params = new URLSearchParams(window.location.search)
   const ParamsUserId = params.get('emp_id');
-
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
   let history = useHistory();
 
   const [cebEngineerDetails, setCebEngineerDetails] = useState("");
@@ -74,7 +79,10 @@ export default function ManageCebEngineer() {
 
   const updateCebEngineer = (e) => {
     e.preventDefault();
-
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
 
     Axios.put(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
       firstName: userFirstName,
@@ -127,7 +135,7 @@ export default function ManageCebEngineer() {
   return (
 
     <div className="body-engineer">
-      <form onLoad={(e) => { getUser(e) }} onSubmit={(e) => { updateCebEngineer(e) }}>
+      <form onLoad={(e) => { getUser(e) }} >
         <div className="ceb-engineer-heading">
           <h2 align="center">USER PROFILE</h2>
         </div>
@@ -283,11 +291,25 @@ export default function ManageCebEngineer() {
         </div>
 
         <div>
-          <button type="submit" className="admin-add-update-btn">
+          <button type="button" className="admin-add-update-btn" onClick={(e) => {
+            setConfirmDialog({
+              isOpen: true,
+              title: "Are You sure update CEB engineer",
+              subTitle: "You can't  undo this operation",
+              btnStatus: "success",
+              onConfirm: (e) => {
+                updateCebEngineer(e);
+              },
+            });
+          }}>
             Update
           </button>
         </div>
       </form>
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
     </div>
   );
 }
