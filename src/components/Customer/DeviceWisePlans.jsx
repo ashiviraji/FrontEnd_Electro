@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import  {useHistory}  from 'react-router-dom'
 import { useParams } from "react-router-dom";
 import Axios from 'axios';
+import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
+import Notification from "../Customer/bill_control/Notification";
 
 const useStyles = makeStyles({
   root: {
@@ -76,8 +78,21 @@ const useStyles = makeStyles({
 export default function DeviceWisePlans() {
   const classes = useStyles();
   const [cardDetails, setCardDetails] = useState([]);
+  const [recordForEdit, setRecordForEdit] = useState(null);
+  const [openPopup, setOpenPopup] = useState(false);
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    variant: "",
+  });
 
   let history = useHistory();
+
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
 
   async  function getCalculatedData(){
 
@@ -101,8 +116,14 @@ export default function DeviceWisePlans() {
   })
   // console.log(response.data);
   if (response.data.status){
-    setCardDetails(response.data.data);
-    console.log(response.data.data);
+    if(response.data.data){
+      setCardDetails(response.data.data);
+      console.log(response.data.data);
+    }else{
+      setCardDetails([]);
+      console.log("No any bill details");
+    }
+    
     
     
   }else {
@@ -113,6 +134,61 @@ export default function DeviceWisePlans() {
   }
         
   } 
+
+  async  function DeleteBillPlan(bill_id){
+
+    var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+    var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+
+
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/delete-bill-main-plan/${ParamsUserId}`, {
+      bill_id:bill_id
+    }, {
+      headers: {
+          authorization: `Token ${token}`
+      },
+    })
+  console.log(response.data);
+  if (response.data.status){
+     console.log("Delete Device")
+  }else {
+    console.log(response.data.message);
+    history.push("/sign-in");
+    window.location.reload();//reload browser
+    deleteAllCookies();//delete all cookies
+  }
+        
+  } 
+
+  // const openInPopup = (item) => {
+  //   console.log(item.device_id);
+  //   setRecordForEdit(item);
+  //   setOpenPopup(true);
+  // };
+
+  const onDeletebill = async (bill_id) => {
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
+    await DeleteBillPlan(bill_id);
+    await getCalculatedData();
+    
+    setNotify({
+      isOpen: true,
+      message: "Deleted Successfully",
+      variant: "danger",
+    });
+  };
 
   useEffect( async () => {
 
@@ -183,7 +259,16 @@ export default function DeviceWisePlans() {
                         More Details &nbsp;&nbsp;&nbsp;
                       </Button>
                     </Link>
-                    <Link className={classes.linkStyle} to="my-bill-plans">
+                    <Link className={classes.linkStyle} onClick={() => {
+                      setConfirmDialog({
+                        isOpen: true,
+                        title: "Are You sure delete this Bill Plan",
+                        subTitle: "You can't  undo this operation",
+                        onConfirm: () => {
+                          onDeletebill(card.bill_id);
+                        },
+                      });
+                    }}>
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
@@ -200,6 +285,13 @@ export default function DeviceWisePlans() {
           );
         })}
       </Grid>
+
+      <Notification notify={notify} setNotify={setNotify} />
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
+
     </div>
   );
 }
