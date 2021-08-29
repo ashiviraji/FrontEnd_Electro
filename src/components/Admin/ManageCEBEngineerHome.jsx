@@ -15,6 +15,7 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 import ConfirmationBox from "../common/ConfirmationBox";
+toast.configure();
 
 const useStyles = makeStyles({
   root: {
