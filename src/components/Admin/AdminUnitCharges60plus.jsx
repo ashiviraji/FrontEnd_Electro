@@ -11,6 +11,7 @@ import Axios from 'axios';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
+import ConfirmationBox from "../common/ConfirmationBox";
 
 toast.configure();
 
@@ -29,7 +30,11 @@ export default function AdminUnitCharges60plus(props) {
   const [normalUnitPeriod, setNormalUnitPeriod] = useState("");
   const [Category, setCategory] = useState("");
   const [NewAmount, setNewAmount] = useState("");
-
+  const [confirmationBox, setConfirmationBox] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
   var token = document.cookie
     .split(';')
     .map(cookie => cookie.split('='))
@@ -37,6 +42,10 @@ export default function AdminUnitCharges60plus(props) {
 
   var categoryId = "60+";
   function getNormalUnitdata() {
+    setConfirmationBox({
+      ...confirmationBox,
+      isOpen: false,
+    });
     Axios.get(`${process.env.REACT_APP_BASE_URL}/unit-charges/${categoryId}`, {
       headers: {
         authorization: `Token ${token}`
@@ -57,9 +66,7 @@ export default function AdminUnitCharges60plus(props) {
 
         } else {
 
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
+          confirmation()
         }
       }).catch((error) => {
         console.log("this is 1c response", error);
@@ -96,7 +103,19 @@ export default function AdminUnitCharges60plus(props) {
     setNewAmount(newValue);
   }
 
-
+  function confirmation() {
+    setConfirmationBox({
+      isOpen: true,
+      title: "Can Not Perform This Action!",
+      subTitle: "Your session has timed out. Please log in again.",
+      btnStatus: "warning",
+      onConfirm: () => {
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();
+      },
+    });
+  }
 
   return (
     <div className="admin-unit-body">
@@ -152,6 +171,7 @@ export default function AdminUnitCharges60plus(props) {
                 categoryName={Category}
                 newAmount={NewAmount}
                 show={modalShow}
+                getFunc={getNormalUnitdata}
                 onHide={() => setModalShow(false)}
               />
             </li>
@@ -406,6 +426,10 @@ export default function AdminUnitCharges60plus(props) {
           </ul>
         </card2.Body>
       </card2>
+      <ConfirmationBox
+        confirmationBox={confirmationBox}
+        setConfirmationBox={setConfirmationBox}
+      />
     </div>
   );
 }
@@ -414,6 +438,11 @@ function MyVerticallyCenteredModal(props) {
 
   let history = useHistory();
   const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
+  const [confirmationBox, setConfirmationBox] = useState({
     isOpen: false,
     title: "",
     subTitle: "",
@@ -427,6 +456,10 @@ function MyVerticallyCenteredModal(props) {
     e.preventDefault();
     setConfirmDialog({
       ...confirmDialog,
+      isOpen: false,
+    });
+    setConfirmationBox({
+      ...confirmationBox,
       isOpen: false,
     });
     var token = document.cookie
@@ -451,8 +484,9 @@ function MyVerticallyCenteredModal(props) {
         // console.log(response.data.data[1]);
 
         if (response.data.status) {
-          window.location.reload();//reload browser
-          toast.success('Updated successfuly', {
+          // window.location.reload();//reload browser
+          props.getFunc();
+          toast.success('Updated Successfuly', {
             autoClose: 7000,
             hideProgressBar: true,
             closeOnClick: true,
@@ -462,9 +496,7 @@ function MyVerticallyCenteredModal(props) {
           });
         } else {
 
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
+          confirmation()
         }
       }).catch((error) => {
         console.log("this is error  response", error);
@@ -480,6 +512,10 @@ function MyVerticallyCenteredModal(props) {
     e.preventDefault();
     setConfirmDialog({
       ...confirmDialog,
+      isOpen: false,
+    });
+    setConfirmationBox({
+      ...confirmationBox,
       isOpen: false,
     });
     var token = document.cookie
@@ -500,8 +536,9 @@ function MyVerticallyCenteredModal(props) {
       .then((response) => {
 
         if (response.data.status) {
-          window.location.reload();//reload browser
-          toast.success('rejected successfuly', {
+          // window.location.reload();//reload browser
+          props.getFunc();
+          toast.success('Rejected Successfuly', {
             autoClose: 7000,
             hideProgressBar: true,
             closeOnClick: true,
@@ -511,9 +548,7 @@ function MyVerticallyCenteredModal(props) {
           });
         } else {
 
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
+          confirmation()
         }
       }).catch((error) => {
         console.log("this is error  response", error);
@@ -541,6 +576,19 @@ function MyVerticallyCenteredModal(props) {
     }
   }
 
+  function confirmation() {
+    setConfirmationBox({
+      isOpen: true,
+      title: "Can Not Perform This Action!",
+      subTitle: "Your session has timed out. Please log in again.",
+      btnStatus: "warning",
+      onConfirm: () => {
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();
+      },
+    });
+  }
   return (
     <Modal
       {...props}
@@ -614,6 +662,10 @@ function MyVerticallyCenteredModal(props) {
       <ConfirmDialog
         confirmDialog={confirmDialog}
         setConfirmDialog={setConfirmDialog}
+      />
+      <ConfirmationBox
+        confirmationBox={confirmationBox}
+        setConfirmationBox={setConfirmationBox}
       />
     </Modal>
   );

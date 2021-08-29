@@ -5,6 +5,8 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useState } from "react";
 import { useHistory } from "react-router";
+import ConfirmationBox from "../common/ConfirmationBox";
+
 toast.configure();
 export default function AddNewCebEngineer() {
 
@@ -17,7 +19,11 @@ export default function AddNewCebEngineer() {
   const [userAddress, setUserAddress] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userNic, setUserNic] = useState("");
-
+  const [confirmationBox, setConfirmationBox] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
   var token = document.cookie
     .split(';')
     .map(cookie => cookie.split('='))
@@ -25,7 +31,10 @@ export default function AddNewCebEngineer() {
 
   const AddNewCebEngineer = (e) => {
     e.preventDefault();
-
+    setConfirmationBox({
+      ...confirmationBox,
+      isOpen: false,
+    });
 
     Axios.post(`${process.env.REACT_APP_BASE_URL}/add-cebengineer`, {
       firstName: userFirstName,
@@ -41,8 +50,9 @@ export default function AddNewCebEngineer() {
       },
     })
       .then((response) => {
-        history.push("/manage-cebengineer");
+
         if (response.data.status) {
+          history.push("/manage-cebengineer");
           toast.success('New CEB Engineer Added Successfully', {
             autoClose: 5000,
             hideProgressBar: true,
@@ -55,9 +65,7 @@ export default function AddNewCebEngineer() {
 
         } else {
 
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
+          confirmation()
         }
       }).catch((error) => {
         console.log("This is  response", error);
@@ -75,6 +83,20 @@ export default function AddNewCebEngineer() {
       var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
       document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
+  }
+
+  function confirmation() {
+    setConfirmationBox({
+      isOpen: true,
+      title: "Can Not Perform This Action!",
+      subTitle: "Your session has timed out. Please log in again.",
+      btnStatus: "warning",
+      onConfirm: () => {
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();
+      },
+    });
   }
 
   return (
@@ -184,6 +206,10 @@ export default function AddNewCebEngineer() {
           </button>
         </div>
       </form>
+      <ConfirmationBox
+        confirmationBox={confirmationBox}
+        setConfirmationBox={setConfirmationBox}
+      />
     </div>
   );
 }
