@@ -259,7 +259,7 @@ const addtionalUnits =0;
                 <TableCell style={{textAlign:"center"}}>{item.quantity}</TableCell>
                 <TableCell style={{textAlign:"center"}}>{item.power}</TableCell>
                 <TableCell style={{textAlign:"center"}}>{item.hfixed}hrs : {item.mfixed}mins </TableCell>
-                <TableCell style={{textAlign:"center"}}>5</TableCell>
+                <TableCell style={{textAlign:"center"}}>{item.numberOfDays}</TableCell>
                 <TableCell style={{textAlign:"center"}}>
                 <button
                     className="btn editActionButtonIcon"
