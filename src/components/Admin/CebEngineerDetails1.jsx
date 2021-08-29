@@ -1,14 +1,15 @@
 import React from "react";
 import "../../assets/css/Admin/admin.css";
 import Engineer1 from "../../assets/img/engineer1.png";
-import { GrUserAdd } from "react-icons/gr";
-import { NavLink } from "../common/Sidebar-admin/SidebarElement";
+// import { GrUserAdd } from "react-icons/gr";
+// import { NavLink } from "../common/Sidebar-admin/SidebarElement";
 import { useHistory } from "react-router";
 import { useState } from "react";
 import Axios from 'axios';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
+import ConfirmationBox from "../common/ConfirmationBox";
 
 toast.configure();
 export default function ManageCebEngineer() {
@@ -16,6 +17,11 @@ export default function ManageCebEngineer() {
   const params = new URLSearchParams(window.location.search)
   const ParamsUserId = params.get('emp_id');
   const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
+  const [confirmationBox, setConfirmationBox] = useState({
     isOpen: false,
     title: "",
     subTitle: "",
@@ -40,7 +46,10 @@ export default function ManageCebEngineer() {
 
   const getUser = (e) => {
     e.preventDefault();
-
+    setConfirmationBox({
+      ...confirmationBox,
+      isOpen: false,
+    });
 
     Axios.get(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
       headers: {
@@ -64,13 +73,11 @@ export default function ManageCebEngineer() {
 
 
 
-          console.log("successfully get user profile of ceb engineer");
+          // console.log("successfully get user profile of ceb engineer");
 
         } else {
 
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
+          confirmation()
         }
       }).catch((error) => {
         console.log("this is 1c response", error);
@@ -83,7 +90,10 @@ export default function ManageCebEngineer() {
       ...confirmDialog,
       isOpen: false,
     });
-
+    setConfirmationBox({
+      ...confirmationBox,
+      isOpen: false,
+    });
     Axios.put(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
       firstName: userFirstName,
       lastName: userLastName,
@@ -106,13 +116,11 @@ export default function ManageCebEngineer() {
             draggable: true,
             progress: undefined,
           });
-          console.log("successfully update user profile of ceb engineer");
+          // console.log("successfully update user profile of ceb engineer");
 
         } else {
 
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
+          confirmation()
         }
       }).catch((error) => {
         console.log("This is  response", error);
@@ -130,6 +138,20 @@ export default function ManageCebEngineer() {
       var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
       document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
+  }
+
+  function confirmation() {
+    setConfirmationBox({
+      isOpen: true,
+      title: "Can Not Perform This Action!",
+      subTitle: "Your session has timed out. Please log in again.",
+      btnStatus: "warning",
+      onConfirm: () => {
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();
+      },
+    });
   }
 
   return (
@@ -309,6 +331,10 @@ export default function ManageCebEngineer() {
       <ConfirmDialog
         confirmDialog={confirmDialog}
         setConfirmDialog={setConfirmDialog}
+      />
+      <ConfirmationBox
+        confirmationBox={confirmationBox}
+        setConfirmationBox={setConfirmationBox}
       />
     </div>
   );

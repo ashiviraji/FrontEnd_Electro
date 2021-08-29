@@ -110,7 +110,7 @@ export default function SimpleCard(e) {
           // setDashboardData(response.data.data);
           setRequestCount(
             parseInt(response.data.data.result1[0].request_count) +
-              parseInt(response.data.data.result2[0].request_count)
+            parseInt(response.data.data.result2[0].request_count)
           );
           setUserCount(response.data.data.result3[0].user_count);
           // console.log("dashboard data--->>", requestCount, userCount);

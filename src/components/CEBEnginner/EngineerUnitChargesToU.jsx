@@ -9,7 +9,8 @@ import { useHistory } from "react-router";
 import Axios from 'axios';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
+import ConfirmationBox from "../common/ConfirmationBox";
+import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 toast.configure();
 
 export default function EngineerUnitChargesToU(props) {
@@ -23,7 +24,11 @@ export default function EngineerUnitChargesToU(props) {
   const [touUCharge, setTouUCharge] = useState("");
   const [touTimePeriod, setTouTimePeriod] = useState("");
   const [Category, setCategory] = useState("");
-
+  const [confirmationBox, setConfirmationBox] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
 
 
 
@@ -36,7 +41,10 @@ export default function EngineerUnitChargesToU(props) {
 
   var categoryId = "tou";
   function getToudata() {
-
+    setConfirmationBox({
+      ...confirmationBox,
+      isOpen: false,
+    });
 
     Axios.get(`${process.env.REACT_APP_BASE_URL}/unit-charges/${categoryId}`, {
       headers: {
@@ -59,9 +67,7 @@ export default function EngineerUnitChargesToU(props) {
 
         } else {
 
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
+          confirmation()
         }
       }).catch((error) => {
         console.log("this is error  response", error);
@@ -94,6 +100,19 @@ export default function EngineerUnitChargesToU(props) {
 
   }
 
+  function confirmation() {
+    setConfirmationBox({
+      isOpen: true,
+      title: "Can Not Perform This Action!",
+      subTitle: "Your session has timed out. Please log in again.",
+      btnStatus: "warning",
+      onConfirm: () => {
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();
+      },
+    });
+  }
 
   return (
     <div className="engineer-unit-body">
@@ -261,6 +280,10 @@ export default function EngineerUnitChargesToU(props) {
           </ul>
         </card2.Body>
       </card2>
+      <ConfirmationBox
+        confirmationBox={confirmationBox}
+        setConfirmationBox={setConfirmationBox}
+      />
     </div>
   );
 }
@@ -269,24 +292,41 @@ function MyVerticallyCenteredModal(props) {
 
   const [increasingAmount, setIncreasingAmount] = useState("");
   const [NewAmount, setNewAmount] = useState("");
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
+  const [confirmationBox, setConfirmationBox] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
 
-  // const priceChanges = (e) => {
-  //    e.preventDefault();
-
-  //   // document.getElementById("resultado").innerHTML = parseFloat(document.getElementById("incamnt").value) + parseFloat(props.unitPrice);
-
-
-  //   console.log('rgrgr');
-  //   setIncreasingAmount(e.target.value);
-  //   setNewAmount(parseFloat(props.unitPrice) + parseFloat(increasingAmount));
-  // }
 
   let history = useHistory();
 
+  function updateData(e) {
+
+    e.preventDefault();
+    getTouUpdatedata(e);
+    props.onHide();
+
+  }
 
   function getTouUpdatedata(e) {
-    console.log(NewAmount, props.categoryName, props.timePeriod);
+    // console.log(NewAmount, props.categoryName, props.timePeriod);
     e.preventDefault();
+
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
+
+    setConfirmationBox({
+      ...confirmationBox,
+      isOpen: false,
+    });
 
     var token = document.cookie
       .split(';')
@@ -311,7 +351,7 @@ function MyVerticallyCenteredModal(props) {
 
         if (response.data.status) {
           // window.location.reload();//reload browser
-          toast.success('Admin Notified successfuly', {
+          toast.success('Admin Notified Successfuly', {
             autoClose: 7000,
             hideProgressBar: true,
             closeOnClick: true,
@@ -321,9 +361,7 @@ function MyVerticallyCenteredModal(props) {
           });
         } else {
 
-          history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
+          confirmation()
         }
       }).catch((error) => {
         console.log("this is error  response", error);
@@ -344,6 +382,20 @@ function MyVerticallyCenteredModal(props) {
     }
   }
 
+  function confirmation() {
+    setConfirmationBox({
+      isOpen: true,
+      title: "Can Not Perform This Action!",
+      subTitle: "Your session has timed out. Please log in again.",
+      btnStatus: "warning",
+      onConfirm: () => {
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();
+      },
+    });
+  }
+
   return (
     <Modal
       {...props}
@@ -352,7 +404,7 @@ function MyVerticallyCenteredModal(props) {
       centered
 
     >
-      <form onSubmit={(e) => { getTouUpdatedata(e) }}>
+      <form >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
 
@@ -384,12 +436,22 @@ function MyVerticallyCenteredModal(props) {
             style={{ display: "flex" }}
           >
             <h4>New  {props.categoryName} Price </h4>
-            <input className="engineer-new-unit-price" required onChange={(e) => { setNewAmount(e.target.value); }} placeholder="LKR" /*value={NewAmount} */></input>
+            <input className="engineer-new-unit-price" required onChange={(e) => { setNewAmount(e.target.value); }} placeholder="LKR" required></input>
           </div>
         </Modal.Body>
 
         <Modal.Footer id="engineer-accept-reject-button">
-          <Button type="submit" onClick={props.onHide} className="engineer-UpdateButton">
+          <Button type="button" className="engineer-UpdateButton" onClick={(e) => {
+            setConfirmDialog({
+              isOpen: true,
+              title: "Are You Sure Make Changes",
+              subTitle: `Current Price: ${props.unitPrice} New Price: ${NewAmount}`,
+              btnStatus: "success",
+              onConfirm: (e) => {
+                updateData(e);
+              },
+            })
+          }}>
             UPDATE
           </Button>
           <Button onClick={props.onHide} className="engineer-CancelButton">
@@ -398,6 +460,14 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Footer>
 
       </form>
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
+      <ConfirmationBox
+        confirmationBox={confirmationBox}
+        setConfirmationBox={setConfirmationBox}
+      />
     </Modal>
   );
 }
