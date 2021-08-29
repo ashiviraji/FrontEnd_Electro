@@ -14,6 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
+import ConfirmationBox from "../common/ConfirmationBox";
 
 const useStyles = makeStyles({
   root: {
@@ -73,6 +74,11 @@ const ManageCEBEngineerHome = () => {
     title: "",
     subTitle: "",
   });
+  const [confirmationBox, setConfirmationBox] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
   let history = useHistory();
   var token = document.cookie
     .split(';')
@@ -82,6 +88,11 @@ const ManageCEBEngineerHome = () => {
 
   const getCebengineer = async () => {
     // e.preventDefault();
+
+    setConfirmationBox({
+      ...confirmationBox,
+      isOpen: false,
+    });
     const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/manager-cebengineer`, {
       headers: {
         authorization: `Token ${token}`
@@ -92,9 +103,10 @@ const ManageCEBEngineerHome = () => {
       return (response.data.data);
 
     } else {
-      history.push("/sign-in");
-      window.location.reload();//reload browser
-      deleteAllCookies();//delete all cookies
+      confirmation()
+      return ([]);
+
+
     }
 
   }
@@ -103,6 +115,10 @@ const ManageCEBEngineerHome = () => {
     // e.preventDefault();
     setConfirmDialog({
       ...confirmDialog,
+      isOpen: false,
+    });
+    setConfirmationBox({
+      ...confirmationBox,
       isOpen: false,
     });
     const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/remove-cebengineer/${emp_id}`, {
@@ -124,16 +140,14 @@ const ManageCEBEngineerHome = () => {
 
     } else {
 
-      history.push("/sign-in");
-      window.location.reload();//reload browser
-      deleteAllCookies();//delete all cookies
+      confirmation()
     }
 
   }
 
   useEffect(async () => {
     var details = await getCebengineer();
-    console.log("successfully get ceb engineer", details);
+    // console.log("successfully get ceb engineer", details);
     setCardDetails(details);
 
   }, []);
@@ -152,6 +166,19 @@ const ManageCEBEngineerHome = () => {
     }
   }
 
+  function confirmation() {
+    setConfirmationBox({
+      isOpen: true,
+      title: "Can Not Perform This Action!",
+      subTitle: "Your session has timed out. Please log in again.",
+      btnStatus: "warning",
+      onConfirm: () => {
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();
+      },
+    });
+  }
 
   return (
     <div className={classes.gridMain}>
@@ -226,6 +253,10 @@ const ManageCEBEngineerHome = () => {
       <ConfirmDialog
         confirmDialog={confirmDialog}
         setConfirmDialog={setConfirmDialog}
+      />
+      <ConfirmationBox
+        confirmationBox={confirmationBox}
+        setConfirmationBox={setConfirmationBox}
       />
     </div>
   );

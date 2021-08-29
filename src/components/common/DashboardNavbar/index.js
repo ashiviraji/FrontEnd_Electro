@@ -1,4 +1,5 @@
 import React from "react";
+import ConfirmDialog from "../../Customer/bill_control/ConfirmDialog";
 
 import { FaBars } from "react-icons/fa";
 
@@ -13,15 +14,27 @@ import {
   NavLinks,
   NavItem,
 } from "./DashboardElement";
-
+import { useHistory } from "react-router";
+import { useState } from "react";
 
 
 const DashbordNavbar = ({ toggle }) => {
+  let history = useHistory();
 
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
   /**
     * function of delete all cookies when user log out
     */
   function deleteAllCookies() {
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
+    history.push("/electro");
     var cookies = document.cookie.split(";");
 
     for (var i = 0; i < cookies.length; i++) {
@@ -59,12 +72,26 @@ const DashbordNavbar = ({ toggle }) => {
                         </NavItem> */}
             <NavItem>
               <NavBtn>
-                <NavBtnLinks onClick={deleteAllCookies} to="/electro">Log Out</NavBtnLinks>
+                <NavBtnLinks onClick={() => {
+                  setConfirmDialog({
+                    isOpen: true,
+                    title: "Do You Want Leave From Electro",
+                    subTitle: "Click 'Yes' to Sign Out",
+                    btnStatus: "success",
+                    onConfirm: () => {
+                      deleteAllCookies();
+                    },
+                  });
+                }}>Log Out</NavBtnLinks>
               </NavBtn>
             </NavItem>
           </NavMenu>
         </NavbarContainer>
       </Nav>
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
     </>
   );
 };
