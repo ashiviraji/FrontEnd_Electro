@@ -25,7 +25,7 @@ export default function AddSpecialEvent() {
           [name]:value
         })
       }
-      console.log(displayModel);
+      console.log("Model is:"+displayModel.model);
     return (
         <div className="device-wise-usage">
         <div className="title-heading">
