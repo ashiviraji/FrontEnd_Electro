@@ -290,7 +290,7 @@ export default function CalculateBill() {
             }}
           >
             <Add />
-            Add New
+            New Appliance
           </button>
         </Toolbar>
         <TblContainer>
