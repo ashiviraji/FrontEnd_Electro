@@ -33,8 +33,6 @@ import "../../assets/css/Customer/specialEvent.css"
 
 
 const noOfDays = 0;
-const addtionalUnits =0;
-const addtionalCost=0;
 
   const useStyles = makeStyles((theme) => ({
     pageContent: {
@@ -87,6 +85,9 @@ export default function SpecialTOUAddBill() {
     const [recordForEdit, setRecordForEdit] = useState(null);
     const [records, setRecords] = useState([]);
     const [newBillId, setNewBillId] = useState(0);
+    //const[additionalCostUnit,setAddtionalCostUnit]=useState([]);
+    const [addtionalUnits,setAddtionalUnit] =useState(0);
+    const [addtionalCost,setAdditionalCost]=useState(0);
 
 
 
@@ -248,7 +249,12 @@ export default function SpecialTOUAddBill() {
       })
        console.log("Calculate Special Event:",response.data);
       if (response.data.status) {
-        console.log(response.data);
+        
+       
+        setAddtionalUnit(response.data.data[0].Total_units.toFixed(2));
+        setAdditionalCost(response.data.data[0].TOU_bill_sum.toFixed(2));
+        console.log(response.data.data);
+        
        // setRecords([]);
         //setCalculatedData(response.data.data)
   
@@ -399,7 +405,7 @@ export default function SpecialTOUAddBill() {
                 <Col sm="4">
                   <Form.Control
                     type="text"
-                    value={addtionalCost}
+                    value={addtionalCost} 
                     disabled
                   />
                 </Col>
