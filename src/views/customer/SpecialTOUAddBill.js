@@ -34,6 +34,7 @@ import "../../assets/css/Customer/specialEvent.css"
 
 const noOfDays = 0;
 const addtionalUnits =0;
+const addtionalCost=0;
 
   const useStyles = makeStyles((theme) => ({
     pageContent: {
@@ -77,6 +78,7 @@ export default function SpecialTOUAddBill() {
     const [openPopup, setOpenPopup] = useState(false);
     let history = useHistory();
     const [buttonState, setButtonState] = useState(true);
+    
     const [notify, setNotify] = useState({
       isOpen: false,
       message: "",
@@ -192,6 +194,22 @@ export default function SpecialTOUAddBill() {
       });
     }
 
+    // useEffect( async () => {
+      
+     
+    // const recordDetails = await SpecialDeviceBill.getAllDevices(new_bill_id);
+    // if(recordDetails==null){
+    //     setRecords([]);
+    //     setButtonState(true);
+    //   }else{
+    //     setRecords(recordDetails);
+    //     setButtonState(false);
+    //  }
+ 
+    //  console.log("inside of useEffect" , recordDetails);
+   
+    //  },[]);
+
 
     function deleteAllCookies() {
       var cookies = document.cookie.split(";");
@@ -204,6 +222,7 @@ export default function SpecialTOUAddBill() {
       }
     }
 
+    
     async function calculateSpecialEventTOUDevice() {
 
       var token = document.cookie
@@ -227,16 +246,18 @@ export default function SpecialTOUAddBill() {
           authorization: `Token ${token}`
         }
       })
-       console.log(response.data);
+       console.log("Calculate Special Event:",response.data);
       if (response.data.status) {
-        // setCalculatedData(response.data.data)
+        console.log(response.data);
+       // setRecords([]);
+        //setCalculatedData(response.data.data)
   
   
       } else {
-        console.log(response.data.message);
-        history.push("/sign-in");
-        window.location.reload();//reload browser
-        deleteAllCookies();//delete all cookies
+        // console.log(response.data.message);
+        // history.push("/sign-in");
+        // window.location.reload();//reload browser
+        // deleteAllCookies();//delete all cookies
       }
   
     }
@@ -378,7 +399,7 @@ export default function SpecialTOUAddBill() {
                 <Col sm="4">
                   <Form.Control
                     type="text"
-                    value={addtionalUnits}
+                    value={addtionalCost}
                     disabled
                   />
                 </Col>

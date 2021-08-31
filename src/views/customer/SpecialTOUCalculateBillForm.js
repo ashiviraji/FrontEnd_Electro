@@ -18,16 +18,30 @@ var ParamsUserId = document.cookie
 
     console.log("customer id :"+ParamsUserId);
 const initialFvalues = {
+  
+  numberOfDays:0,
   device_id: 0,
   bill_id: 0,
   appliance: "",
   quantity: 0,
-  hours: 0,
-  minutes: 0,
+  hPeak: 0,
+  mPeak: 0,
+  hOffPeak: 0,
+  mOffPeak: 0,
+  hDay: 0,
+  mDay: 0,
   power: "",
-  numberOfDays:0,
-  using_total_minutes: 0,
-  total_units_fixed: 0,
+  priority: "",
+  using_minutes_peak_time: 0,
+  using_minutes_off_peak_time: 0,
+  using_minutes_day_time: 0,
+  units_peak_time: 0,
+  units_off_peak_time: 0,
+  units_day_time: 0,
+  total_cost_TOU: 0,
+  cost_peak_time: 0,
+  cost_off_peak_time: 0,
+  cost_day_time: 0,
   // Cust_id: ParamsUserId
 };
 
