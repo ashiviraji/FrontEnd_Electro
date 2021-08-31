@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import Axios from 'axios';
+import { Redirect, useHistory } from 'react-router-dom'
 import CalculateBillForm from "./CalculateBillForm";
 import { Paper, makeStyles } from "@material-ui/core";
 import SpecialTOUCalculateBillForm from "./SpecialTOUCalculateBillForm";
@@ -7,7 +9,7 @@ import UseTable from "../../components/Customer/useTable";
 import * as DeviceBill from "./DeviceBill";
 import { Table,TableHead } from "@material-ui/core";
 import { TableCell } from "@material-ui/core";
-import { TableRow } from "@material-ui/core";
+import { TableRow,TableBody } from "@material-ui/core";
 import { Toolbar } from "@material-ui/core";
 import { InputAdornment } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
@@ -32,6 +34,7 @@ import "../../assets/css/Customer/specialEvent.css"
 
 const noOfDays = 0;
 const addtionalUnits =0;
+const addtionalCost=0;
 
   const useStyles = makeStyles((theme) => ({
     pageContent: {
@@ -57,11 +60,25 @@ const addtionalUnits =0;
 }
   }));
 
+  var token = document.cookie
+  .split(';')
+  .map(cookie => cookie.split('='))
+  .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+  var ParamsUserId = document.cookie
+  .split(';')
+  .map(cookie => cookie.split('='))
+  .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+  console.log("Front End eken yanawada Special Evevnt  TOU id eka :- " + ParamsUserId);
+
 export default function SpecialTOUAddBill() {
 
     const classes = useStyles();
     const [openPopup, setOpenPopup] = useState(false);
-
+    let history = useHistory();
+    const [buttonState, setButtonState] = useState(true);
+    
     const [notify, setNotify] = useState({
       isOpen: false,
       message: "",
@@ -69,37 +86,79 @@ export default function SpecialTOUAddBill() {
     });
     const [recordForEdit, setRecordForEdit] = useState(null);
     const [records, setRecords] = useState([]);
+    const [newBillId, setNewBillId] = useState(0);
 
-    // useEffect( async () => {
-    //  // const new_bill_id = await getBillId();
-    //  // setNewBillId(new_bill_id);
-    //   console.log("inside of useEffect");
-    //   //console.log(new_bill_id);
-    //  // const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
-    //   // if(recordDetails==null){
-    //   //   setRecords([]);
-    //   // }else{
-    //   //   setRecords(recordDetails);
-    //   // }
 
-    //   //console.log("inside of useEffect" , recordDetails);
+
+    async function getBillId() {
+
+
+      const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/get-special-event-tou-bill-id/${ParamsUserId}`, {
+        headers: {
+          authorization: `Token ${token}`
+        }
   
-    // },[]);
+    })
+    console.log("TOU get Bill Id:",newBillId);
+    if (response.data.status){
+      var oldBillId = response.data.data;
+      oldBillId++;
+      var new_bill_id = oldBillId;
+      console.log("The id is :",new_bill_id);
+      return new_bill_id;
+    }else {
+      console.log(response.data.message);
+      history.push("/sign-in");
+      window.location.reload();//reload browser
+      deleteAllCookies();//delete all cookies
+    }
+  }
+
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
+
+
+    useEffect( async () => {
+     const new_bill_id = await getBillId();
+    setNewBillId(new_bill_id);
+      console.log("inside of useEffect");
+    console.log(new_bill_id);
+   const recordDetails = await SpecialDeviceBill.getAllDevices(new_bill_id);
+   if(recordDetails==null){
+       setRecords([]);
+       setButtonState(true);
+     }else{
+       setRecords(recordDetails);
+       setButtonState(false);
+    }
+
+    console.log("inside of useEffect" , recordDetails);
+  
+    },[]);
   
 
     const addOrEdit = async (device, resetForm) => {
       if (device.device_id == 0) {
-        SpecialDeviceBill.insertDevice(device);
+        await SpecialDeviceBill.insertDevice(device);
       } else {
         console.log(device.device_id);
-        await SpecialDeviceBill.updateDevice(device);
+        await SpecialDeviceBill.updateDevice(device,newBillId);
       }
   
       resetForm();
       setRecordForEdit(null);
       setOpenPopup(false);
-      const recordDetails = await SpecialDeviceBill.getAllDevices();
-      setRecords(recordDetails);
+      const recordDetails = await SpecialDeviceBill.getAllDevices(newBillId);
+      if (recordDetails == null) {
+        setRecords([]);
+        setButtonState(true);
+      } else {
+        setRecords(recordDetails);
+        setButtonState(false);
+      }
       setNotify({
         isOpen: true,
         message: "Submitted Successfully",
@@ -112,6 +171,96 @@ export default function SpecialTOUAddBill() {
       setRecordForEdit(item);
       setOpenPopup(true);
     };
+
+    const onDeletedevice = async (device_id) => {
+     
+      setConfirmDialog({
+        ...confirmDialog,
+        isOpen: false,
+      });
+      await SpecialDeviceBill.Deletedevice(device_id,newBillId);
+      const recordDetails = await SpecialDeviceBill.getAllDevices(newBillId);
+      if (recordDetails == null) {
+        setRecords([]);
+        setButtonState(true);
+      } else {
+        setRecords(recordDetails);
+        setButtonState(false);
+      }
+      setNotify({
+        isOpen: true,
+        message: "Deleted Successfully",
+        variant: "danger",
+      });
+    }
+
+    // useEffect( async () => {
+      
+     
+    // const recordDetails = await SpecialDeviceBill.getAllDevices(new_bill_id);
+    // if(recordDetails==null){
+    //     setRecords([]);
+    //     setButtonState(true);
+    //   }else{
+    //     setRecords(recordDetails);
+    //     setButtonState(false);
+    //  }
+ 
+    //  console.log("inside of useEffect" , recordDetails);
+   
+    //  },[]);
+
+
+    function deleteAllCookies() {
+      var cookies = document.cookie.split(";");
+  
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      }
+    }
+
+    
+    async function calculateSpecialEventTOUDevice() {
+
+      var token = document.cookie
+        .split(';')
+        .map(cookie => cookie.split('='))
+        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+  
+  
+      var ParamsUserId = document.cookie
+        .split(';')
+        .map(cookie => cookie.split('='))
+        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  
+  
+  
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/calculate-special-event-TOUbill/${ParamsUserId}`, {
+  
+        bill_id: newBillId
+      }, {
+        headers: {
+          authorization: `Token ${token}`
+        }
+      })
+       console.log("Calculate Special Event:",response.data);
+      if (response.data.status) {
+        console.log(response.data);
+       // setRecords([]);
+        //setCalculatedData(response.data.data)
+  
+  
+      } else {
+        // console.log(response.data.message);
+        // history.push("/sign-in");
+        // window.location.reload();//reload browser
+        // deleteAllCookies();//delete all cookies
+      }
+  
+    }
 
     return (
         <div>
@@ -148,25 +297,32 @@ export default function SpecialTOUAddBill() {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Appliance</TableCell>
-              <TableCell>Quantity</TableCell>
-              <TableCell>Power</TableCell>
-              <TableCell>Peak Hour</TableCell>
-              <TableCell>Off Peak Hour</TableCell>
-              <TableCell>Day Hour</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell style={{textAlign:"center"}}>Appliance</TableCell>
+              <TableCell style={{textAlign:"center"}}>Quantity</TableCell>
+              <TableCell style={{textAlign:"center"}}>Power</TableCell>
+              <TableCell style={{textAlign:"center"}}>Peak Hour</TableCell>
+              <TableCell style={{textAlign:"center"}}>Off Peak Hour</TableCell>
+              <TableCell style={{textAlign:"center"}}>Day Hour</TableCell>
+              <TableCell style={{textAlign:"center"}}>No Of Days</TableCell>
+              <TableCell style={{textAlign:"center"}}>Actions</TableCell>
             </TableRow>
           </TableHead>
-            {/* <TableBody>
-            {record.map((item) => (
-              <TableRow key={item.id}>
-                <TableCell>{item.appliance}</TableCell>
-                <TableCell>{item.quantity}</TableCell>
-                <TableCell>{item.power}</TableCell>
-                <TableCell>{item.hour}hrs : {item.min}mins </TableCell>
-                <TableCell>
-                  <button
+             <TableBody>
+             {records.map((item) => (
+              <TableRow key={item.device_id}>
+                <TableCell style={{textAlign:"center"}}>{item.appliance}</TableCell>
+                <TableCell style={{textAlign:"center"}}>{item.quantity}</TableCell>
+                <TableCell style={{textAlign:"center"}}>{item.power}</TableCell>
+                <TableCell style={{textAlign:"center"}}>{item.hPeak}hrs : {item.mPeak}mins </TableCell>
+                <TableCell style={{textAlign:"center"}}>{item.hOffPeak}hrs : {item.mOffPeak}mins </TableCell>
+                <TableCell style={{textAlign:"center"}}>{item.hDay}hrs : {item.mDay}mins </TableCell>
+                <TableCell style={{textAlign:"center"}}>{item.numberOfDays}</TableCell>
+                <TableCell style={{textAlign:"center"}}>
+                <button
                     className="btn editActionButtonIcon"
+                    onClick={() => {
+                      openInPopup(item);
+                    }}
                   >
                     <EditOutlined
                       fontSize="small"
@@ -180,9 +336,8 @@ export default function SpecialTOUAddBill() {
                         isOpen: true,
                         title: "Are You sure delete this record",
                         subTitle: "You can't  undo this operation",
-                        btnStatus: "danger",
                         onConfirm: () => {
-                          onDeletedevice(item.appliance);
+                          onDeletedevice(item.device_id);
                         },
                       });
                     }}
@@ -195,7 +350,7 @@ export default function SpecialTOUAddBill() {
                 </TableCell>
               </TableRow>
             ))}
-          </TableBody> */}
+          </TableBody> 
         </Table>
 
         <Paper className={classes.pageContent}>
@@ -213,7 +368,7 @@ export default function SpecialTOUAddBill() {
                   />
                 </Col>
                 <Col sm="4">
-                <button type="button" className="btn btn-success calculate-button-special-event">
+                <button type="button" className="btn btn-success calculate-button-special-event" onClick={calculateSpecialEventTOUDevice}>
                     Calculate
                 </button>
                 </Col>
@@ -244,7 +399,7 @@ export default function SpecialTOUAddBill() {
                 <Col sm="4">
                   <Form.Control
                     type="text"
-                    value={addtionalUnits}
+                    value={addtionalCost}
                     disabled
                   />
                 </Col>
@@ -261,309 +416,15 @@ export default function SpecialTOUAddBill() {
         <SpecialTOUCalculateBillForm
           recordForEdit={recordForEdit}
           addOrEdit={addOrEdit}
-         // billId={newBillId}
+          billId={newBillId}
         />
       </Popup>
+      <Notification notify={notify} setNotify={setNotify} />
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
         </div>
     )
 }
 
-
-// const useStyles = makeStyles((theme) => ({
-//   pageContent: {
-//     margin: theme.spacing(5),
-//     padding: theme.spacing(3),
-//   },
-//   newButton: {
-//     position: "absolute",
-//     right: "10px",
-//   },
-//   Rowinform: {
-//     margin: "10px"
-//   }
-// }));
-
-// const headCells = [
-//   { id: "appliance", label: "Appliance" },
-//   { id: "quantity", label: "Quantity" },
-//   { id: "power", label: "Power" },
-//   { id: "priority", label: "Priority" },
-//   { id: "hPeak", label: "Peak Hour" },
-//   { id: "hOffPeak", label: "Off Peak Hour" },
-//   { id: "hDay", label: "Day Hour" },
-//   { id: "action", label: "Actions" },
-// ];
-
-// let noOfDays = 0;
-// const noOfUnitPeak = 0;
-// const noOfUnitOffPeak = 0;
-// const noOfUnitDay = 0;
-// const addtionalChargeBill = 0;
-
-// export default function SpecialTOUAddBill() {
-//   const classes = useStyles();
-//   const [recordForEdit, setRecordForEdit] = useState(null);
-//   const [records, setRecords] = useState(DeviceBill.getAllDevices());
-//   const [filterFn, setFilterFn] = useState({
-//     fn: (items) => {
-//       return items;
-//     },
-//   });
-
-//   const [openPopup, setOpenPopup] = useState(false);
-//   const [notify, setNotify] = useState({
-//     isOpen: false,
-//     message: "",
-//     variant: "",
-//   });
-//   const [confirmDialog, setConfirmDialog] = useState({
-//     isOpen: false,
-//     title: "",
-//     subTitle: "",
-//   });
-
-//   const { TblContainer, TblHead, TblPagination, recordsAfterPagingAndSorting } =
-//     UseTable(records, headCells, filterFn);
-
-//   const handleSearch = (e) => {
-//     let target = e.target;
-//     setFilterFn({
-//       fn: (items) => {
-//         if (target.value == "") return items;
-//         else
-//           return items.filter((x) =>
-//             x.appliance.toLowerCase().includes(target.value.toLowerCase())
-//           );
-//       },
-//     });
-//   };
-
-//   const addOrEdit = (device, resetForm) => {
-//     if (device.id == 0) {
-//       DeviceBill.insertDevice(device);
-//     } else {
-//       console.log(device.id);
-//       DeviceBill.updateDevice(device);
-//     }
-
-//     resetForm();
-//     setRecordForEdit(null);
-//     setOpenPopup(false);
-//     setRecords(DeviceBill.getAllDevices());
-//     setNotify({
-//       isOpen: true,
-//       message: "Submitted Successfully",
-//       variant: "success",
-//     });
-//   };
-
-//   const openInPopup = (item) => {
-//     console.log(item.id);
-//     setRecordForEdit(item);
-//     setOpenPopup(true);
-//   };
-
-//   const onDeletedevice = (appliance) => {
-//     setConfirmDialog({
-//       ...confirmDialog,
-//       isOpen: false,
-//     });
-//     DeviceBill.Deletedevice(appliance);
-//     setRecords(DeviceBill.getAllDevices());
-//     setNotify({
-//       isOpen: true,
-//       message: "Deleted Successfully",
-//       variant: "danger",
-//     });
-//   };
-
-//   return (
-//     <div>
-//       <Paper className={classes.pageContent}>
-//         <h2>Your Device Data</h2>
-//         <Toolbar>
-//           <TextField
-//             label="Search Device"
-//             className="Search-bar-in-form"
-//             onChange={handleSearch}
-//             InputProps={{
-//               endAdornment: (
-//                 <InputAdornment position="start">
-//                   <Search />
-//                 </InputAdornment>
-//               ),
-//             }}
-//           />
-//           <button
-//             type="button"
-//             className="btn btn-info add-new-button"
-//             onClick={() => {
-//               setOpenPopup(true);
-//               setRecordForEdit(null);
-//             }}
-//           >
-//             <Add />
-//             Add New
-//           </button>
-//         </Toolbar>
-//         <TblContainer>
-//           <TblHead />
-//           <TableBody>
-//             {/* {recordsAfterPagingAndSorting().map((item) => (
-//               <TableRow key={item.id}>
-//                 <TableCell>{item.appliance}</TableCell>
-//                 <TableCell>{item.quantity}</TableCell>
-//                 <TableCell>{item.power}</TableCell>
-//                 <TableCell>{item.priority}</TableCell>
-//                 <TableCell>
-//                   {item.hPeak}h & {item.mPeak} min
-//                 </TableCell>
-//                 <TableCell>
-//                   {item.hOffPeak}h & {item.mOffPeak} min
-//                 </TableCell>
-//                 <TableCell>
-//                   {item.hDay}h & {item.mDay} min
-//                 </TableCell>
-//                 <TableCell>
-//                   <button
-//                     className="btn editActionButtonIcon"
-//                     onClick={() => {
-//                       openInPopup(item);
-//                     }}
-//                   >
-//                     <EditOutlined
-//                       fontSize="small"
-//                       ClassName={classes.actionButtonIcon}
-//                     />
-//                   </button>
-//                   <button
-//                     className="btn deleteActionButtonIcon"
-//                     onClick={() => {
-//                       setConfirmDialog({
-//                         isOpen: true,
-//                         title: "Are You sure delete this record",
-//                         subTitle: "You can't  undo this operation",
-//                         onConfirm: () => {
-//                           onDeletedevice(item.appliance);
-//                         },
-//                       });
-//                     }}
-//                   >
-//                     <DeleteOutline
-//                       fontSize="small"
-//                       ClassName={classes.actionButtonIcon}
-//                     />
-//                   </button>
-//                 </TableCell>
-//               </TableRow>
-//             ))} */}
-//           </TableBody>
-//         </TblContainer>
-//         <TblPagination />
-//         <Paper className={classes.pageContent}>
-
-//           <Form className="main-calculate-form">
-//             <Form.Group>
-//               <Row className="RowInForm-noOfDays">
-//                 <Form.Label column sm="4" style={{ fontWeight: "550" }}>
-//                   Number Of Days
-//                 </Form.Label>
-//                 <Col sm="4">
-//                   <Form.Control
-//                     type="number"
-//                     placeholder="Number of Days"
-//                     defaultValue={noOfDays}
-//                   />
-//                 </Col>
-//                 <Col sm="4">
-//                   <button type="button" className="btn btn-success calculate-button-special-event">
-//                     Calculate
-//                   </button>
-//                 </Col>
-//               </Row>
-//             </Form.Group>
-//           </Form>
-
-
-//           <Form className={classes.formLabelStyle}>
-//             <Form.Group>
-
-//               <Row>
-//                 <Col></Col>
-//               </Row>
-//               <Row className={classes.Rowinform}>
-//                 <Col sm="4"></Col>
-//                 <Form.Label column sm="4">
-//                   No of Units In Peak Time
-//                 </Form.Label>
-//                 <Col sm="4">
-//                   <Form.Control
-//                     type="text"
-//                     value={noOfUnitPeak}
-//                     disabled
-//                   />
-//                 </Col>
-//               </Row>
-//               <Row className={classes.Rowinform}>
-//                 <Col sm="4"></Col>
-//                 <Form.Label column sm="4">
-//                   No of Units In Off Peak Time
-//                 </Form.Label>
-//                 <Col sm="4">
-//                   <Form.Control
-//                     type="text"
-//                     value={noOfUnitOffPeak}
-//                     disabled
-//                   />
-//                 </Col>
-//               </Row>
-//               <Row className={classes.Rowinform}>
-//                 <Col sm="4"></Col>
-//                 <Form.Label column sm="4">
-//                   No of Units In Day Time
-//                 </Form.Label>
-//                 <Col sm="4">
-//                   <Form.Control
-//                     type="text"
-//                     value={noOfUnitDay}
-//                     disabled
-//                   />
-//                 </Col>
-//               </Row>
-//               <Row className={classes.Rowinform}>
-//                 <Col sm="4"></Col>
-//                 <Form.Label column sm="4" style={{ fontWeight: "550" }}>
-//                   Additional Amount for the Event
-//                 </Form.Label>
-//                 <Col sm="4">
-//                   <Form.Control
-//                     type="text"
-//                     value={"LKR : " + addtionalChargeBill}
-//                     disabled
-//                   />
-//                 </Col>
-//               </Row>
-//             </Form.Group>
-//           </Form>
-//         </Paper>
-
-
-//       </Paper>
-//       <Popup
-//         title="Add New Device Details"
-//         openPopup={openPopup}
-//         setOpenPopup={setOpenPopup}
-//       >
-//         <CalculateBillForm
-//           recordForEdit={recordForEdit}
-//           addOrEdit={addOrEdit}
-//         />
-//       </Popup>
-//       <Notification notify={notify} setNotify={setNotify} />
-//       <ConfirmDialog
-//         confirmDialog={confirmDialog}
-//         setConfirmDialog={setConfirmDialog}
-//       />
-//     </div>
-//   )
-// }
