@@ -25,6 +25,7 @@ const initialFvalues = {
   hours: 0,
   minutes: 0,
   power: "",
+  numberOfDays:0,
   using_total_minutes: 0,
   total_units_fixed: 0,
   // Cust_id: ParamsUserId
@@ -93,6 +94,14 @@ export default function SpecialTOUCalculateBillForm(props) {
             fieldValues.mDay === ""
             ? ""
             : "60 > minutes >= 0";
+
+      if ("numberOfDays" in fieldValues)
+          temp.numberOfDays =
+            (fieldValues.numberOfDays >= 0 && fieldValues.numberOfDays < 30) ||
+              fieldValues.numberOfDays === ""
+              ? ""
+              : "30 > Number Of Days >= 0";
+    
     setErrors({
       ...temp,
     });
@@ -189,6 +198,17 @@ export default function SpecialTOUCalculateBillForm(props) {
             onChange={handleInputChange}
             error={errors.hDay}
             unit="hrs"
+          />
+
+         <Controls.InputTxt
+            id="standard-start-adornment"
+            label="No Of Days"
+            name="numberOfDays"
+            type="number"
+            value={values.numberOfDays}
+            onChange={handleInputChange}
+            error={errors.numberOfDays}
+            unit="Days"
           />
         </Grid>
         <Grid item xs={6} sm={3}>
