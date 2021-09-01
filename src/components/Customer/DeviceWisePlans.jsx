@@ -250,7 +250,7 @@ export default function DeviceWisePlans() {
                         Device Wise Usage &nbsp;&nbsp;&nbsp;
                       </Button>
                     </Link>
-                    <Link className={classes.linkStyle} to="/Bill-More-Details">
+                    <Link className={classes.linkStyle} to={`/my-bill-plans-moreAndEdit?bill_id=${card.bill_id}`}>
                       <Button
                         className="iconCardsButtons"
                         variant="contained"

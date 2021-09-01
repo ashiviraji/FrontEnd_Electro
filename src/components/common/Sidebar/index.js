@@ -38,6 +38,7 @@ import SpecialEventFixedDeviceWise from "../../../views/customer/SpecialEventDev
 import SpecialEventTouDeviceWise from "../../../views/customer/SpecialEventDeviceWiseTOU";
 import AddSpecialEventBillPlan from "../../../views/customer/AddSpecialEvent"
 import BillMoreDetails from "../../../views/customer/BillMoreDetails";
+import BillPlansMoreAndEdit from "../../../views/customer/BillPlansMoreAndEdit";
 
 import "../../../assets/css/Sidebar-user.css";
 
@@ -157,7 +158,12 @@ const Sidebar = ({ show }) => {
                 exact={true}
                 component={DeviceWisePlans}
               />
-
+              <Route
+                path="/my-bill-plans-moreAndEdit"
+                exact={true}
+                component={BillPlansMoreAndEdit}
+              />
+              
               <Route
                 path="/tou-device-wise-seperate"
                 exact={true}

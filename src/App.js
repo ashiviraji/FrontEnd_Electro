@@ -65,6 +65,11 @@ function App() {
         <SidebarUser />
       </Route>
 
+      <Route exact path="/my-bill-plans-moreAndEdit">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
+
       <Route exact path="/TOU-suggestions">
         <DashbordNavbar />
         <SidebarUser />
