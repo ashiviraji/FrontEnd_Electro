@@ -33,7 +33,7 @@ import "../../assets/css/Customer/specialEvent.css"
 
 
 const noOfDays = 0;
-
+var touPlanName=" ";
   const useStyles = makeStyles((theme) => ({
     pageContent: {
       margin: theme.spacing(5),
@@ -76,7 +76,9 @@ export default function SpecialTOUAddBill() {
     const [openPopup, setOpenPopup] = useState(false);
     let history = useHistory();
     const [buttonState, setButtonState] = useState(true);
-    
+    const [inputValue, setInputValue] = useState (' ');
+
+
     const [notify, setNotify] = useState({
       isOpen: false,
       message: "",
@@ -87,6 +89,7 @@ export default function SpecialTOUAddBill() {
     const [newBillId, setNewBillId] = useState(0);
     //const[additionalCostUnit,setAddtionalCostUnit]=useState([]);
     const [addtionalUnits,setAddtionalUnit] =useState(0);
+    
     const [addtionalCost,setAdditionalCost]=useState(0);
 
 
@@ -195,21 +198,7 @@ export default function SpecialTOUAddBill() {
       });
     }
 
-    // useEffect( async () => {
-      
-     
-    // const recordDetails = await SpecialDeviceBill.getAllDevices(new_bill_id);
-    // if(recordDetails==null){
-    //     setRecords([]);
-    //     setButtonState(true);
-    //   }else{
-    //     setRecords(recordDetails);
-    //     setButtonState(false);
-    //  }
- 
-    //  console.log("inside of useEffect" , recordDetails);
-   
-    //  },[]);
+    
 
 
     function deleteAllCookies() {
@@ -255,8 +244,51 @@ export default function SpecialTOUAddBill() {
         setAdditionalCost(response.data.data[0].TOU_bill_sum.toFixed(2));
         console.log(response.data.data);
         
-       // setRecords([]);
-        //setCalculatedData(response.data.data)
+      
+  
+  
+      } else {
+        // console.log(response.data.message);
+        // history.push("/sign-in");
+        // window.location.reload();//reload browser
+        // deleteAllCookies();//delete all cookies
+      }
+  
+    }
+
+
+    async function saveSpecialEventTOUDevice() {
+
+      var token = document.cookie
+        .split(';')
+        .map(cookie => cookie.split('='))
+        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+  
+  
+      var ParamsUserId = document.cookie
+        .split(';')
+        .map(cookie => cookie.split('='))
+        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  
+  
+  
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/save-special-event-TOUbill/${ParamsUserId}`, {
+  
+        bill_id: newBillId,
+        tou_plan_name:inputValue
+      }, {
+        headers: {
+          authorization: `Token ${token}`
+        }
+      })
+       console.log("Calculate Special Event:",response.data);
+      if (response.data.status) {
+        
+       
+       
+        console.log(response.data.data);
+        
+      
   
   
       } else {
@@ -363,17 +395,18 @@ export default function SpecialTOUAddBill() {
         <Form className="main-calculate-form">
             <Form.Group>
               <Row className="RowInForm-noOfDays">
-                <Form.Label column sm="4" style={{fontWeight:"550"}}>
-                  Number Of Days
-                </Form.Label>
-                <Col sm="4">
+                {/* <Form.Label column sm="4" style={{fontWeight:"550"}}>
+                 Name Of Plan
+                </Form.Label> */}
+                {/* <Col sm="4">
                   <Form.Control
-                    type="number"
+                    type="text"
                     placeholder="Number of Days"
+                    value="Plan 1"
                     // defaultValue={noOfDays}
                   />
-                </Col>
-                <Col sm="4">
+                </Col> */}
+                <Col sm="4" style={{marginLeft:"624px"}}>
                 <button type="button" className="btn btn-success calculate-button-special-event" onClick={calculateSpecialEventTOUDevice}>
                     Calculate
                 </button>
@@ -410,6 +443,42 @@ export default function SpecialTOUAddBill() {
                   />
                 </Col>
               </Row>
+
+              <Row className={classes.Rowinform}>
+                <Col sm="4"></Col>
+                <Form.Label column sm="4" style={{fontWeight:"550"}}>
+               Name Of Your Plan
+                </Form.Label>
+                <Col sm="4">
+                  
+
+      <input
+         type="text"
+         value={inputValue}
+         placeholder="Enter a plan"
+         onChange={e => setInputValue(e.target.value)}
+       />
+
+                     
+                     
+                    
+               
+                </Col>
+              </Row>
+
+              <Row className={classes.Rowinform}>
+                <Col sm="4"></Col>
+               
+                <Col sm="4" style={{marginLeft:"624px"}}>
+                <Link to="/special-event">
+                <button type="button" className="btn btn-success calculate-button-special-event" onClick={saveSpecialEventTOUDevice}>
+                    Save Plan
+                </button>
+                </Link>
+                </Col>
+              </Row>
+               
+
             </Form.Group>
           </Form>
         </Paper>
