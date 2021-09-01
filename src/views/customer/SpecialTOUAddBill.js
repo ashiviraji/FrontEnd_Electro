@@ -410,6 +410,18 @@ export default function SpecialTOUAddBill() {
                   />
                 </Col>
               </Row>
+
+              <Row className={classes.Rowinform}>
+                <Col sm="4"></Col>
+               
+                <Col sm="4" style={{marginLeft:"624px"}}>
+                <button type="button" className="btn btn-success calculate-button-special-event" onClick={calculateSpecialEventTOUDevice}>
+                    Save Plan
+                </button>
+                </Col>
+              </Row>
+               
+
             </Form.Group>
           </Form>
         </Paper>
