@@ -10,35 +10,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Axios from "axios";
 import { useHistory } from "react-router";
 
-const columns = [
-  // { id: "device_id", label: "Device Id", minWidth: 40 },
-  { id: "date", label: "Date", minWidth: 50 },
-
-  {
-    id: "unit_category",
-    label: "Unit Category",
-    minWidth: 50,
-    align: "center",
-    format: (value) => value.toFixed(2),
-  },
-
-  {
-    id: "current_value",
-    label: "Current Value (LKR)",
-    minWidth: 30,
-    align: "center",
-    format: (value) => value.toLocaleString("en-US"),
-  },
-
-  {
-    id: "new_value",
-    label: "New Value (LKR)",
-    minWidth: 30,
-    align: "center",
-    format: (value) => value.toFixed(2),
-  },
-];
-
 const useStyles = makeStyles({
   root: {
     width: "40%",
@@ -56,17 +27,37 @@ const useStyles = makeStyles({
 
 function PendingNormalUnitCharges() {
   const [pendingNormalUnitCharges, setPendingNormalUnitCharges] = useState("");
+  const columns = [
+    // { id: "device_id", label: "Device Id", minWidth: 40 },
+    { id: "date", label: "Date", minWidth: 50 },
+
+    {
+      id: "unit_category",
+      label: "Unit Category",
+      minWidth: 50,
+      align: "center",
+      format: (value) => value.toFixed(2),
+    },
+
+    {
+      id: "current_value",
+      label: "Current Value (LKR)",
+      minWidth: 30,
+      align: "center",
+      format: (value) => value.toLocaleString("en-US"),
+    },
+
+    {
+      id: "new_value",
+      label: "New Value (LKR)",
+      minWidth: 30,
+      align: "center",
+      format: (value) => value.toFixed(2),
+    },
+  ];
+
   let history = useHistory();
-  var ParamsUserId = document.cookie
-    .split(";")
-    .map((cookie) => cookie.split("="))
-    .reduce(
-      (accumulator, [key, value]) => ({
-        ...accumulator,
-        [key.trim()]: decodeURIComponent(value),
-      }),
-      {}
-    ).userId;
+  var ParamsUserId = "unit";
 
   // console.log(ParamsUserId);
 
@@ -81,29 +72,26 @@ function PendingNormalUnitCharges() {
       {}
     ).token;
 
-  const getDashboardData = () => {
+  const getDashboardData = async () => {
     // e.preventDefault();
+    console.log("inside getDashboardData");
 
-    Axios.get(
+    const response = await Axios.get(
       `${process.env.REACT_APP_BASE_URL}/dashboard-pending-normal-unit-charges/${ParamsUserId}`,
       {
         headers: {
           authorization: `Token ${token}`,
         },
       }
-    )
-      .then((response) => {
-        if (response.data.status) {
-          setPendingNormalUnitCharges(response.data.data);
-        } else {
-          history.push("/sign-in");
-          window.location.reload(); //reload browser
-          deleteAllCookies(); //delete all cookies
-        }
-      })
-      .catch((error) => {
-        console.log("this is 1c response", error);
-      });
+    );
+
+    if (response.data.status) {
+      return response.data.data;
+    } else {
+      history.push("/sign-in");
+      window.location.reload(); //reload browser
+      deleteAllCookies(); //delete all cookies
+    }
   };
 
   /**
@@ -120,8 +108,10 @@ function PendingNormalUnitCharges() {
     }
   }
 
-  useEffect(() => {
-    getDashboardData();
+  useEffect(async () => {
+    var pendingnormalunit = await getDashboardData();
+    setPendingNormalUnitCharges(pendingnormalunit);
+    console.log("Get Unit", pendingnormalunit);
   }, []);
 
   const classes = useStyles();
