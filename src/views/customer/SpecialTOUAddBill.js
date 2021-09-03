@@ -76,6 +76,7 @@ export default function SpecialTOUAddBill() {
     const [openPopup, setOpenPopup] = useState(false);
     let history = useHistory();
     const [buttonState, setButtonState] = useState(true);
+    const [buttonStatesave, setbuttonStatesave] = useState(true);
     const [inputValue, setInputValue] = useState (' ');
 
 
@@ -134,9 +135,11 @@ export default function SpecialTOUAddBill() {
    if(recordDetails==null){
        setRecords([]);
        setButtonState(true);
+       setbuttonStatesave(true);
      }else{
        setRecords(recordDetails);
        setButtonState(false);
+       setbuttonStatesave(false);
     }
 
     console.log("inside of useEffect" , recordDetails);
@@ -159,9 +162,11 @@ export default function SpecialTOUAddBill() {
       if (recordDetails == null) {
         setRecords([]);
         setButtonState(true);
+        setbuttonStatesave(true);
       } else {
         setRecords(recordDetails);
         setButtonState(false);
+        setbuttonStatesave(false);
       }
       setNotify({
         isOpen: true,
@@ -187,9 +192,11 @@ export default function SpecialTOUAddBill() {
       if (recordDetails == null) {
         setRecords([]);
         setButtonState(true);
+        setbuttonStatesave(true);
       } else {
         setRecords(recordDetails);
         setButtonState(false);
+        setbuttonStatesave(false);
       }
       setNotify({
         isOpen: true,
@@ -407,7 +414,7 @@ export default function SpecialTOUAddBill() {
                   />
                 </Col> */}
                 <Col sm="4" style={{marginLeft:"624px"}}>
-                <button type="button" className="btn btn-success calculate-button-special-event" onClick={calculateSpecialEventTOUDevice}>
+                <button type="button" className="btn btn-success calculate-button-special-event" onClick={calculateSpecialEventTOUDevice} disabled={buttonState}>
                     Calculate
                 </button>
                 </Col>
@@ -471,7 +478,7 @@ export default function SpecialTOUAddBill() {
                
                 <Col sm="4" style={{marginLeft:"624px"}}>
                 <Link to="/special-event">
-                <button type="button" className="btn btn-success calculate-button-special-event" onClick={saveSpecialEventTOUDevice}>
+                <button type="button" className="btn btn-success calculate-button-special-event" onClick={saveSpecialEventTOUDevice} disabled={buttonStatesave}>
                     Save Plan
                 </button>
                 </Link>
