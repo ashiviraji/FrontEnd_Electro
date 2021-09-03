@@ -292,7 +292,7 @@ const noOfDays = 0;
             }}
           >
             <Add />
-            Add New
+            New Appliance
           </button>
         </Toolbar>
 
