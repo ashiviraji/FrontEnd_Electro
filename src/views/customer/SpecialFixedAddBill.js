@@ -23,7 +23,6 @@ import {
 import { Col, Form, Row } from 'react-bootstrap';
 
 const noOfDays = 0;
-const addtionalUnits =0;
 
   const useStyles = makeStyles((theme) => ({
     pageContent: {
@@ -68,6 +67,9 @@ const addtionalUnits =0;
     let history = useHistory();
     const [buttonState, setButtonState] = useState(true);
     const [recordForEdit, setRecordForEdit] = useState(null);
+
+    
+    const [addtionalUnit, setAddtionalUnit] = useState(0);
     
     const [newBillId, setNewBillId] = useState(0);
 
@@ -208,6 +210,45 @@ const addtionalUnits =0;
       }
     }
 
+    async function calculateSpecialEventFixedDevice() {
+
+      var token = document.cookie
+        .split(';')
+        .map(cookie => cookie.split('='))
+        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+  
+  
+      var ParamsUserId = document.cookie
+        .split(';')
+        .map(cookie => cookie.split('='))
+        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  
+  
+  
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/calculate-special-event-Fixedbill/${ParamsUserId}`, {
+  
+        bill_id: newBillId
+      }, {
+        headers: {
+          authorization: `Token ${token}`
+        }
+      })
+       console.log("Calculate Special Event:",response.data);
+      if (response.data.status) {
+        
+       
+        setAddtionalUnit(response.data.data[0].total_units.toFixed(2));
+        console.log(response.data.data);
+      }
+      else {
+        // console.log(response.data.message);
+        // history.push("/sign-in");
+        // window.location.reload();//reload browser
+        // deleteAllCookies();//delete all cookies
+      }
+  
+    }
+
     return (
         <div>
             
@@ -311,7 +352,7 @@ const addtionalUnits =0;
                   />
                 </Col>
                 <Col sm="4">
-                <button type="button" className="btn btn-success calculate-button-special-event">
+                <button type="button" className="btn btn-success calculate-button-special-event" onClick={calculateSpecialEventFixedDevice}>
                     Calculate
                 </button>
                 </Col>
@@ -328,7 +369,7 @@ const addtionalUnits =0;
                 <Col sm="4">
                   <Form.Control
                     type="text"
-                    value={addtionalUnits}
+                    value={addtionalUnit}
                     disabled
                   />
                 </Col>
