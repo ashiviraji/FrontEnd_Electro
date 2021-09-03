@@ -21,6 +21,7 @@ import {
   } from "@material-ui/core";
   import { Add, DeleteOutline, EditOutlined, Search } from "@material-ui/icons";
 import { Col, Form, Row } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 const noOfDays = 0;
 
@@ -67,6 +68,7 @@ const noOfDays = 0;
     let history = useHistory();
     const [buttonState, setButtonState] = useState(true);
     const [recordForEdit, setRecordForEdit] = useState(null);
+    const [inputValue, setInputValue] = useState (' ');
 
     
     const [addtionalUnit, setAddtionalUnit] = useState(0);
@@ -212,6 +214,8 @@ const noOfDays = 0;
 
     async function calculateSpecialEventFixedDevice() {
 
+      console.log("work onclick function");
+
       var token = document.cookie
         .split(';')
         .map(cookie => cookie.split('='))
@@ -341,17 +345,8 @@ const noOfDays = 0;
         <Form className="main-calculate-form">
             <Form.Group>
               <Row className="RowInForm-noOfDays">
-                <Form.Label column sm="4" style={{fontWeight:"550"}}>
-                  Special Event Bill Name 
-                </Form.Label>
-                <Col sm="4">
-                  <Form.Control
-                    type="text"
-                    placeholder=" Special Event Bill Name"
-                    // defaultValue={noOfDays}
-                  />
-                </Col>
-                <Col sm="4">
+                
+                <Col sm="4" style={{marginLeft:"624px"}}>
                 <button type="button" className="btn btn-success calculate-button-special-event" onClick={calculateSpecialEventFixedDevice}>
                     Calculate
                 </button>
@@ -374,6 +369,44 @@ const noOfDays = 0;
                   />
                 </Col>
               </Row>
+
+              
+
+              <Row className={classes.Rowinform}>
+                <Col sm="4"></Col>
+                <Form.Label column sm="4" style={{fontWeight:"550"}}>
+               Name Of Your Plan
+                </Form.Label>
+                <Col sm="4">
+                  
+
+      <input
+         type="text"
+         value={inputValue}
+         placeholder="Enter a plan"
+         onChange={e => setInputValue(e.target.value)}
+       />
+
+                     
+                     
+                    
+               
+                </Col>
+              </Row>
+
+              <Row className={classes.Rowinform}>
+                <Col sm="4"></Col>
+               
+                <Col sm="4" style={{marginLeft:"624px"}}>
+                <Link to="/special-event">
+                <button type="button" className="btn btn-success calculate-button-special-event" >
+                    Save Plan
+                </button>
+                </Link>
+                </Col>
+              </Row>
+               
+
             </Form.Group>
           </Form>
         </Paper>
