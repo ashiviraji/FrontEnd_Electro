@@ -197,6 +197,7 @@ export default function CalculateBill() {
     if (recordDetails == null) {
       setRecords([]);
       setButtonState(true);
+      console.log("button disabled after delete all");
     } else {
       setRecords(recordDetails);
       setButtonState(false);
