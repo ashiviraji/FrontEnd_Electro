@@ -79,6 +79,7 @@ export default function CalculateBill() {
       }
 
     })
+    
     if (response.data.status) {
       var oldBillId = response.data.data;
       oldBillId++;
