@@ -264,6 +264,49 @@ const noOfDays = 0;
   
     }
 
+    async function saveSpecialEventFixedDevice() {
+
+      var token = document.cookie
+        .split(';')
+        .map(cookie => cookie.split('='))
+        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+  
+  
+      var ParamsUserId = document.cookie
+        .split(';')
+        .map(cookie => cookie.split('='))
+        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  
+  
+  
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/save-special-event-Fixedbill/${ParamsUserId}`, {
+  
+        bill_id: newBillId,
+        fixed_plan_name:inputValue
+      }, {
+        headers: {
+          authorization: `Token ${token}`
+        }
+      })
+       console.log("Calculate Special Event:",response.data);
+      if (response.data.status) {
+        
+       
+       
+        console.log(response.data.data);
+        
+      
+  
+  
+      } else {
+        // console.log(response.data.message);
+        // history.push("/sign-in");
+        // window.location.reload();//reload browser
+        // deleteAllCookies();//delete all cookies
+      }
+  
+    }
+
     return (
         <div>
             
@@ -410,7 +453,7 @@ const noOfDays = 0;
                
                 <Col sm="4" style={{marginLeft:"624px"}}>
                 <Link to="/special-event">
-                <button type="button" className="btn btn-success calculate-button-special-event" disabled={saveButtonState}>
+                <button type="button" className="btn btn-success calculate-button-special-event" onClick={saveSpecialEventFixedDevice}  disabled={saveButtonState}>
                     Save Plan
                 </button>
                 </Link>
