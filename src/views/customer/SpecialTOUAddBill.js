@@ -335,7 +335,7 @@ export default function SpecialTOUAddBill() {
             }}
           >
             <Add />
-            Add New
+            New Appliance
           </button>
         </Toolbar>
 
