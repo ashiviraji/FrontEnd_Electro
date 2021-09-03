@@ -67,6 +67,7 @@ const noOfDays = 0;
     const classes = useStyles();
     let history = useHistory();
     const [buttonState, setButtonState] = useState(true);
+    const [saveButtonState, setSaveButtonState] = useState(true);
     const [recordForEdit, setRecordForEdit] = useState(null);
     const [inputValue, setInputValue] = useState (' ');
 
@@ -130,13 +131,15 @@ const noOfDays = 0;
      const recordDetails = await SpecialDeviceBill.getAllDevices(new_bill_id);
      console.log("record details:"+recordDetails);
      if(recordDetails==null){
-      console.log("awaaa ne!!");
+      
       setRecords([]);
       setButtonState(true);
+      setSaveButtonState(true);
     }else{
-      console.log("awaaa!!");
+      
        setRecords(recordDetails);
        setButtonState(false);
+       setSaveButtonState(false);
     }
 
     console.log("inside of useEffect" , recordDetails);
@@ -162,9 +165,11 @@ const noOfDays = 0;
       if (recordDetails == null) {
         setRecords([]);
         setButtonState(true);
+        setSaveButtonState(true);
       } else {
         setRecords(recordDetails);
         setButtonState(false);
+        setSaveButtonState(false);
       }
       setNotify({
         isOpen: true,
@@ -190,9 +195,12 @@ const noOfDays = 0;
       if (recordDetails == null) {
         setRecords([]);
         setButtonState(true);
+        setSaveButtonState(true);
+        console.log("button disabled after delete all");
       } else {
         setRecords(recordDetails);
         setButtonState(false);
+        setSaveButtonState(false);
       }
       setNotify({
         isOpen: true,
@@ -239,10 +247,13 @@ const noOfDays = 0;
       })
        console.log("Calculate Special Event:",response.data);
       if (response.data.status) {
+        if(response.data.data[0].total_units == null){
+          setAddtionalUnit(0);
+        }else{
+          setAddtionalUnit(response.data.data[0].total_units.toFixed(2));
+          console.log(response.data.data);
+        }
         
-       
-        setAddtionalUnit(response.data.data[0].total_units.toFixed(2));
-        console.log(response.data.data);
       }
       else {
         // console.log(response.data.message);
@@ -347,7 +358,7 @@ const noOfDays = 0;
               <Row className="RowInForm-noOfDays">
                 
                 <Col sm="4" style={{marginLeft:"624px"}}>
-                <button type="button" className="btn btn-success calculate-button-special-event" onClick={calculateSpecialEventFixedDevice}>
+                <button type="button" className="btn btn-success calculate-button-special-event" onClick={calculateSpecialEventFixedDevice} disabled={buttonState}>
                     Calculate
                 </button>
                 </Col>
@@ -399,7 +410,7 @@ const noOfDays = 0;
                
                 <Col sm="4" style={{marginLeft:"624px"}}>
                 <Link to="/special-event">
-                <button type="button" className="btn btn-success calculate-button-special-event" >
+                <button type="button" className="btn btn-success calculate-button-special-event" disabled={saveButtonState}>
                     Save Plan
                 </button>
                 </Link>
