@@ -13,35 +13,34 @@ import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
 import "../../assets/css/Customer/deviceWiseFixed.css";
 
-
 const columns = [
-    // { id: "device_id", label: "Device Id", minWidth: 40 },
-    { id: "Unit_charges_requested_date", label:"Requested Date", minWidth: 50 },
+  // { id: "device_id", label: "Device Id", minWidth: 40 },
+  { id: "Unit_charges_requested_date", label: "Requested Date", minWidth: 50 },
 
-    {
-      id: "Unit_category",
-      label: "Unit Category",
-      minWidth: 50,
-      align: "center",
-      format: (value) => value.toFixed(2),
-    },
+  {
+    id: "Unit_category",
+    label: "Unit Category",
+    minWidth: 50,
+    align: "center",
+    format: (value) => value.toFixed(2),
+  },
 
-    {
-      id: "Unit_charge",
-      label: "Current Unit Price (LKR)",
-      minWidth: 30,
-      align: "center",
-      format: (value) => value.toLocaleString("en-US"),
-    },
+  {
+    id: "Unit_charge",
+    label: "Current Unit Price (LKR)",
+    minWidth: 30,
+    align: "center",
+    format: (value) => value.toLocaleString("en-US"),
+  },
 
-    {
-      id: "Update_unit_charges",
-      label: "Requested Unit Price (LKR)",
-      minWidth: 30,
-      align: "center",
-      format: (value) => value.toFixed(2),
-    },
-  ];
+  {
+    id: "Update_unit_charges",
+    label: "Requested Unit Price (LKR)",
+    minWidth: 30,
+    align: "center",
+    format: (value) => value.toFixed(2),
+  },
+];
 
 const useStyles = makeStyles({
   root: {
@@ -58,7 +57,7 @@ const useStyles = makeStyles({
   },
 });
 
-const PendingNormalUnitCharges=({setVisibleState}) =>{
+const PendingNormalUnitCharges = ({ setVisibleState1 }) => {
   // var pendingnormalunit="";
   // const [row, setPendingNormalUnitCharges] = useState([]);
   const classes = useStyles();
@@ -70,7 +69,7 @@ const PendingNormalUnitCharges=({setVisibleState}) =>{
   var ParamsUserId = "unit";
 
   // console.log(ParamsUserId);
- const handleChangePage = (event, newPage) => {
+  const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
@@ -94,14 +93,16 @@ const PendingNormalUnitCharges=({setVisibleState}) =>{
     // e.preventDefault();
     console.log("inside getDashboardData");
 
-    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/dashboard-pending-normal-unit-charges/${ParamsUserId}`,
+    const response = await Axios.get(
+      `${process.env.REACT_APP_BASE_URL}/dashboard-pending-normal-unit-charges/${ParamsUserId}`,
       {
         headers: {
           authorization: `Token ${token}`,
-        }
-      })
+        },
+      }
+    );
     if (response.data.status) {
-       console.log("inside if Unit ",response.data.data);
+      console.log("inside if Unit ", response.data.data);
       return response.data.data;
     } else {
       history.push("/sign-in");
@@ -124,31 +125,26 @@ const PendingNormalUnitCharges=({setVisibleState}) =>{
     }
   }
 
-  async function getPendingUnit(){
-     var pendingnormalunit = await getDashboardData();
-       setDeviceData(pendingnormalunit);
+  async function getPendingUnit() {
+    var pendingnormalunit = await getDashboardData();
+    setDeviceData(pendingnormalunit);
 
-    if(pendingnormalunit.length>0){
-      setVisibleState("block")
-    }else{
-      setVisibleState("none")
+    if (pendingnormalunit.length > 0) {
+      setVisibleState1("block");
+    } else {
+      setVisibleState1("none");
     }
   }
 
-  useEffect( () => {
+  useEffect(() => {
     getPendingUnit();
-  
   }, []);
 
- 
-
-  
-  console.log("roes 1:",rows);
+  console.log("roes 1:", rows);
   return (
-   <Paper className={classes.root} >
-    
-      <TableContainer className={classes.container} >
-        <Table stickyHeader aria-label="sticky table" >
+    <Paper className={classes.root}>
+      <TableContainer className={classes.container}>
+        <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -186,7 +182,7 @@ const PendingNormalUnitCharges=({setVisibleState}) =>{
           </TableBody>
         </Table>
       </TableContainer>
-         <TablePagination
+      <TablePagination
         rowsPerPageOptions={[5, 10, 15]}
         component="div"
         count={rows.length}
@@ -197,6 +193,6 @@ const PendingNormalUnitCharges=({setVisibleState}) =>{
       />
     </Paper>
   );
-}
+};
 
 export default PendingNormalUnitCharges;
