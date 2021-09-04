@@ -74,45 +74,38 @@ export default function SpecialTOUCalculateBillForm(props) {
         fieldValues.power > 0 ? "" : "power should be a number and > 0";
         if ("hPeak" in fieldValues)
         temp.hPeak =
-          (fieldValues.hPeak >= 0 && fieldValues.hPeak <= 4) ||
-            fieldValues.hPeak === ""
+          (fieldValues.hPeak >= 0 && fieldValues.hPeak <= 4)
             ? ""
             : "4 >Peak Hours in day >= 0";
       if ("hOffPeak" in fieldValues)
         temp.hOffPeak =
-          (fieldValues.hOffPeak >= 0 && fieldValues.hOffPeak <= 7) ||
-            fieldValues.hOffPeak === ""
+          (fieldValues.hOffPeak >= 0 && fieldValues.hOffPeak <= 7)
             ? ""
             : "7 >Off Peak Hours in day >= 0";
       if ("hDay" in fieldValues)
         temp.hDay =
-          (fieldValues.hDay >= 0 && fieldValues.hDay <= 13) ||
-            fieldValues.hDay === ""
+          (fieldValues.hDay >= 0 && fieldValues.hDay <= 13)
             ? ""
             : "13 >Day Hours in day >= 0";
       if ("mPeak" in fieldValues)
         temp.mPeak =
-          (fieldValues.mPeak >= 0 && fieldValues.mPeak < 60) ||
-            fieldValues.mPeak === ""
+          (fieldValues.mPeak >= 0 && fieldValues.mPeak < 60)
             ? ""
             : "60 > minutes >= 0";
       if ("mOffPeak" in fieldValues)
         temp.mOffPeak =
-          (fieldValues.mOffPeak >= 0 && fieldValues.mOffPeak < 60) ||
-            fieldValues.mOffPeak === ""
+          (fieldValues.mOffPeak >= 0 && fieldValues.mOffPeak < 60)
             ? ""
             : "60 > minutes >= 0";
       if ("mDay" in fieldValues)
         temp.mDay =
-          (fieldValues.mDay >= 0 && fieldValues.mDay < 60) ||
-            fieldValues.mDay === ""
+          (fieldValues.mDay >= 0 && fieldValues.mDay < 60)
             ? ""
             : "60 > minutes >= 0";
 
       if ("numberOfDays" in fieldValues)
           temp.numberOfDays =
-            (fieldValues.numberOfDays >= 0 && fieldValues.numberOfDays < 30) ||
-              fieldValues.numberOfDays === ""
+            (fieldValues.numberOfDays > 0 && fieldValues.numberOfDays < 31)
               ? ""
               : "30 > Number Of Days >= 0";
     
