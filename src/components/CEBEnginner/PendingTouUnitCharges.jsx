@@ -19,7 +19,7 @@ const columns = [
     { id: "Unit_charges_requested_date", label:"Requested Date", minWidth: 50 },
 
     {
-      id: "Unit_category",
+      id: "Time_category",
       label: "Unit Category",
       minWidth: 50,
       align: "center",
@@ -58,7 +58,7 @@ const useStyles = makeStyles({
   },
 });
 
-const PendingNormalUnitCharges=({setVisibleState}) =>{
+const PendingTouUnitCharges=() =>{
   // var pendingnormalunit="";
   // const [row, setPendingNormalUnitCharges] = useState([]);
   const classes = useStyles();
@@ -94,7 +94,7 @@ const PendingNormalUnitCharges=({setVisibleState}) =>{
     // e.preventDefault();
     console.log("inside getDashboardData");
 
-    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/dashboard-pending-normal-unit-charges/${ParamsUserId}`,
+    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/dashboard-pending-tou-unit-charges/${ParamsUserId}`,
       {
         headers: {
           authorization: `Token ${token}`,
@@ -124,20 +124,10 @@ const PendingNormalUnitCharges=({setVisibleState}) =>{
     }
   }
 
-  async function getPendingUnit(){
-     var pendingnormalunit = await getDashboardData();
-       setDeviceData(pendingnormalunit);
-
-    if(pendingnormalunit.length>0){
-      setVisibleState("block")
-    }else{
-      setVisibleState("none")
-    }
-  }
-
-  useEffect( () => {
-    getPendingUnit();
-  
+  useEffect(async () => {
+    var pendingnormalunit = await getDashboardData();
+    setDeviceData(pendingnormalunit);
+    
   }, []);
 
  
@@ -145,10 +135,9 @@ const PendingNormalUnitCharges=({setVisibleState}) =>{
   
   console.log("roes 1:",rows);
   return (
-   <Paper className={classes.root} >
-    
-      <TableContainer className={classes.container} >
-        <Table stickyHeader aria-label="sticky table" >
+   <Paper className={classes.root}>
+      <TableContainer className={classes.container}>
+        <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -199,4 +188,4 @@ const PendingNormalUnitCharges=({setVisibleState}) =>{
   );
 }
 
-export default PendingNormalUnitCharges;
+export default PendingTouUnitCharges;

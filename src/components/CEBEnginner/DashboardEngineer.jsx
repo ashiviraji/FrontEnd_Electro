@@ -14,6 +14,9 @@ import Axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import PendingNormalUnitCharges from "./PendingNormalUnitCharges";
+import PendingNormalFixedCharges from "./PendingNormalFixedCharges";
+import PendingTouUnitCharges from "./PendingTouUnitCharges";
+import PendingTouFixedCharges from "./PendingTouFixedCharges";
 
 const useStyles = makeStyles({
   engineerCurrentRoot: {
@@ -69,6 +72,7 @@ export default function SimpleCard() {
 
   const [requestCount, setRequestCount] = useState("");
   const [userCount, setUserCount] = useState("");
+  const [visibleState, setVisibleState] = useState("");
 
   const classes = useStyles();
   var ParamsUserId = document.cookie
@@ -193,26 +197,46 @@ export default function SimpleCard() {
           <CardActions></CardActions>
         </Card>
       </div>
-      <div style={{ width: "47%", float: "left", marginTop: "10%" }}>
+      <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }} >
         <p>
           <center>
-            <h4>
-              <b>Pending Normal Unit Charges</b>
-            </h4>
+            <h6>
+              <b>Pending Normal Unit Charges </b>
+            </h6>
           </center>
         </p>
-        <PendingNormalUnitCharges />
+        <PendingNormalUnitCharges setVisibleState={setVisibleState}/>
       </div>
 
-      <div style={{ width: "47%", float: "right", marginTop: "10%" }}>
+      <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }}>
         <p>
           <center>
-            <h4>
+            <h6>
               <b>Pending Normal Fixed Charges</b>
-            </h4>
+            </h6>
           </center>
         </p>
-        <PendingNormalUnitCharges />
+        <PendingNormalFixedCharges setVisibleState={setVisibleState} />
+      </div>
+       <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }}>
+        <p>
+          <center>
+            <h6>
+              <b>Pending TOU Unit Charges</b>
+            </h6>
+          </center>
+        </p>
+        <PendingTouUnitCharges setVisibleState={setVisibleState} />
+      </div>
+       <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }}>
+        <p>
+          <center>
+            <h6>
+              <b>Pending TOU Fixed Charges</b>
+            </h6>
+          </center>
+        </p>
+        <PendingTouFixedCharges setVisibleState={setVisibleState}/>
       </div>
     </div>
   );
