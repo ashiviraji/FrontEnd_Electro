@@ -173,9 +173,7 @@ export default function SimpleCard() {
 
         <Card className={classes.engineerSpecialRoot} id="engineer-card2">
           <CardContent>
-            <label className="engineer-card-title-name">
-              Unit Charge Notifications
-            </label>
+            <label className="engineer-card-title-name">Pending Updates</label>
           </CardContent>
           <div>
             <GoRequestChanges className="engineer-svg-icon"></GoRequestChanges>
