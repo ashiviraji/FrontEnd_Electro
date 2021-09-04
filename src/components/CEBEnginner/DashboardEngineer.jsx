@@ -72,7 +72,10 @@ export default function SimpleCard() {
 
   const [requestCount, setRequestCount] = useState("");
   const [userCount, setUserCount] = useState("");
-  const [visibleState, setVisibleState] = useState("");
+  const [visibleState1, setVisibleState1] = useState("");
+  const [visibleState2, setVisibleState2] = useState("");
+  const [visibleState3, setVisibleState3] = useState("");
+  const [visibleState4, setVisibleState4] = useState("");
 
   const classes = useStyles();
   var ParamsUserId = document.cookie
@@ -197,7 +200,14 @@ export default function SimpleCard() {
           <CardActions></CardActions>
         </Card>
       </div>
-      <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }} >
+      <div
+        style={{
+          width: "90%",
+          float: "left",
+          marginTop: "10%",
+          display: `${visibleState1}`,
+        }}
+      >
         <p>
           <center>
             <h6>
@@ -205,10 +215,17 @@ export default function SimpleCard() {
             </h6>
           </center>
         </p>
-        <PendingNormalUnitCharges setVisibleState={setVisibleState}/>
+        <PendingNormalUnitCharges setVisibleState1={setVisibleState1} />
       </div>
 
-      <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }}>
+      <div
+        style={{
+          width: "90%",
+          float: "left",
+          marginTop: "10%",
+          display: `${visibleState2}`,
+        }}
+      >
         <p>
           <center>
             <h6>
@@ -216,9 +233,16 @@ export default function SimpleCard() {
             </h6>
           </center>
         </p>
-        <PendingNormalFixedCharges setVisibleState={setVisibleState} />
+        <PendingNormalFixedCharges setVisibleState2={setVisibleState2} />
       </div>
-       <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }}>
+      <div
+        style={{
+          width: "90%",
+          float: "left",
+          marginTop: "10%",
+          display: `${visibleState3}`,
+        }}
+      >
         <p>
           <center>
             <h6>
@@ -226,9 +250,16 @@ export default function SimpleCard() {
             </h6>
           </center>
         </p>
-        <PendingTouUnitCharges setVisibleState={setVisibleState} />
+        <PendingTouUnitCharges setVisibleState3={setVisibleState3} />
       </div>
-       <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }}>
+      <div
+        style={{
+          width: "90%",
+          float: "left",
+          marginTop: "10%",
+          display: `${visibleState4}`,
+        }}
+      >
         <p>
           <center>
             <h6>
@@ -236,7 +267,7 @@ export default function SimpleCard() {
             </h6>
           </center>
         </p>
-        <PendingTouFixedCharges setVisibleState={setVisibleState}/>
+        <PendingTouFixedCharges setVisibleState4={setVisibleState4} />
       </div>
     </div>
   );
