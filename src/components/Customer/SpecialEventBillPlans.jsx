@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -9,7 +9,8 @@ import { Grid } from "@material-ui/core";
 import img1 from "../../assets/img/specialEvent.png";
 import "../../assets/css/Customer/specialEventPlans.css";
 import { Link } from "react-router-dom";
-
+import Axios from 'axios';
+import  {useHistory}  from 'react-router-dom'
 const useStyles = makeStyles({
   root: {
     // minWidth: 275,
@@ -72,6 +73,81 @@ const cardDetails = [
 
 export default function DeviceWisePlans() {
   const classes = useStyles();
+  const [cardDetails, setCardDetails] = useState([]);
+  let history = useHistory();
+  async  function getCalculatedData(){
+
+    var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+    var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+
+
+    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/get-all-special-event-bill-plans/${ParamsUserId}`,  {
+      headers: {
+          authorization: `Token ${token}`
+      }
+  })
+  // console.log(response.data);
+  // if (response.data.status){
+  //   if(response.data.data){
+  //     setCardDetails(response.data.data);
+  //     console.log(response.data.data);
+  //   }else{
+  //     setCardDetails([]);
+  //     console.log("No any bill details");
+  //   }
+    
+    
+    
+  // }else {
+  //   console.log(response.data.message);
+  //   history.push("/sign-in");
+  //   window.location.reload();//reload browser
+  //   deleteAllCookies();//delete all cookies
+  // }
+        
+  } 
+
+  // const onDeletebill = async (bill_id) => {
+  //   setConfirmDialog({
+  //     ...confirmDialog,
+  //     isOpen: false,
+  //   });
+  //   await DeleteBillPlan(bill_id);
+  //   await getCalculatedData();
+    
+  //   setNotify({
+  //     isOpen: true,
+  //     message: "Deleted Successfully",
+  //     variant: "danger",
+  //   });
+  // };
+
+  useEffect( async () => {
+
+    await getCalculatedData();
+   
+ },[]);
+
+
+  function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+  
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+  }
 
   return (
     <div className={classes.gridMain}>
