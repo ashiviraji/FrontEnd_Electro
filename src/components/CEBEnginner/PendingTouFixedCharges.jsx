@@ -13,35 +13,34 @@ import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
 import "../../assets/css/Customer/deviceWiseFixed.css";
 
-
 const columns = [
-    // { id: "device_id", label: "Device Id", minWidth: 40 },
-    { id: "Fixed_charges_requested_date", label:"Requested Date", minWidth: 50 },
+  // { id: "device_id", label: "Device Id", minWidth: 40 },
+  { id: "Fixed_charges_requested_date", label: "Requested Date", minWidth: 50 },
 
-    {
-      id: "Time_category",
-      label: "Unit Category",
-      minWidth: 50,
-      align: "center",
-      format: (value) => value.toFixed(2),
-    },
+  {
+    id: "Time_category",
+    label: "Unit Category",
+    minWidth: 50,
+    align: "center",
+    format: (value) => value.toFixed(2),
+  },
 
-    {
-      id: "Fixed_charge",
-      label: "Current Fixed Price (LKR)",
-      minWidth: 30,
-      align: "center",
-      format: (value) => value.toLocaleString("en-US"),
-    },
+  {
+    id: "Fixed_charge",
+    label: "Current Fixed Price (LKR)",
+    minWidth: 30,
+    align: "center",
+    format: (value) => value.toLocaleString("en-US"),
+  },
 
-    {
-      id: "Update_fixed_charges",
-      label: "Requested Fixed Price (LKR)",
-      minWidth: 30,
-      align: "center",
-      format: (value) => value.toFixed(2),
-    },
-  ];
+  {
+    id: "Update_fixed_charges",
+    label: "Requested Fixed Price (LKR)",
+    minWidth: 30,
+    align: "center",
+    format: (value) => value.toFixed(2),
+  },
+];
 
 const useStyles = makeStyles({
   root: {
@@ -58,7 +57,7 @@ const useStyles = makeStyles({
   },
 });
 
-const PendingTouFixedCharges=() =>{
+const PendingTouFixedCharges = ({ setVisibleState4 }) => {
   // var pendingnormalunit="";
   // const [row, setPendingNormalUnitCharges] = useState([]);
   const classes = useStyles();
@@ -70,7 +69,7 @@ const PendingTouFixedCharges=() =>{
   var ParamsUserId = "fixed";
 
   // console.log(ParamsUserId);
- const handleChangePage = (event, newPage) => {
+  const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
@@ -94,14 +93,16 @@ const PendingTouFixedCharges=() =>{
     // e.preventDefault();
     console.log("inside getDashboardData");
 
-    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/dashboard-pending-tou-unit-charges/${ParamsUserId}`,
+    const response = await Axios.get(
+      `${process.env.REACT_APP_BASE_URL}/dashboard-pending-tou-unit-charges/${ParamsUserId}`,
       {
         headers: {
           authorization: `Token ${token}`,
-        }
-      })
+        },
+      }
+    );
     if (response.data.status) {
-       console.log("inside if Unit ",response.data.data);
+      console.log("inside if Unit ", response.data.data);
       return response.data.data;
     } else {
       history.push("/sign-in");
@@ -124,18 +125,24 @@ const PendingTouFixedCharges=() =>{
     }
   }
 
-  useEffect(async () => {
-    var pendingnormalunit = await getDashboardData();
-    setDeviceData(pendingnormalunit);
-    
+  async function getPendingUnit() {
+    var pendingTOUfixed = await getDashboardData();
+    setDeviceData(pendingTOUfixed);
+
+    if (pendingTOUfixed.length > 0) {
+      setVisibleState4("block");
+    } else {
+      setVisibleState4("none");
+    }
+  }
+
+  useEffect(() => {
+    getPendingUnit();
   }, []);
 
- 
-
-  
-  console.log("roes 1:",rows);
+  console.log("roes 1:", rows);
   return (
-   <Paper className={classes.root}>
+    <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -175,7 +182,7 @@ const PendingTouFixedCharges=() =>{
           </TableBody>
         </Table>
       </TableContainer>
-         <TablePagination
+      <TablePagination
         rowsPerPageOptions={[5, 10, 15]}
         component="div"
         count={rows.length}
@@ -186,6 +193,6 @@ const PendingTouFixedCharges=() =>{
       />
     </Paper>
   );
-}
+};
 
 export default PendingTouFixedCharges;
