@@ -199,18 +199,18 @@ export default function SimpleCard() {
           <CardActions></CardActions>
         </Card>
       </div>
-      <div style={{ width: "90%", float: "left", marginTop: "10%",display: "none" }} >
+      <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }} >
         <p>
           <center>
             <h6>
-              <b>Pending Normal Unit Charges {visibleState}</b>
+              <b>Pending Normal Unit Charges </b>
             </h6>
           </center>
         </p>
         <PendingNormalUnitCharges setVisibleState={setVisibleState}/>
       </div>
 
-      <div style={{ width: "90%", float: "left", marginTop: "10%" }}>
+      <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }}>
         <p>
           <center>
             <h6>
@@ -218,9 +218,9 @@ export default function SimpleCard() {
             </h6>
           </center>
         </p>
-        <PendingNormalFixedCharges />
+        <PendingNormalFixedCharges setVisibleState={setVisibleState} />
       </div>
-       <div style={{ width: "90%", float: "left", marginTop: "10%" }}>
+       <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }}>
         <p>
           <center>
             <h6>
@@ -228,9 +228,9 @@ export default function SimpleCard() {
             </h6>
           </center>
         </p>
-        <PendingTouUnitCharges />
+        <PendingTouUnitCharges setVisibleState={setVisibleState} />
       </div>
-       <div style={{ width: "90%", float: "left", marginTop: "10%" }}>
+       <div style={{ width: "90%", float: "left", marginTop: "10%",display: `${visibleState}` }}>
         <p>
           <center>
             <h6>
@@ -238,7 +238,7 @@ export default function SimpleCard() {
             </h6>
           </center>
         </p>
-        <PendingTouFixedCharges />
+        <PendingTouFixedCharges setVisibleState={setVisibleState}/>
       </div>
     </div>
   );

@@ -127,7 +127,7 @@ const PendingNormalFixedCharges=() =>{
   useEffect(async () => {
     var pendingnormalunit = await getDashboardData();
     setDeviceData(pendingnormalunit);
-    
+    console.log("length fixed",pendingnormalunit.length);
   }, []);
 
  
@@ -135,7 +135,7 @@ const PendingNormalFixedCharges=() =>{
   
   console.log("roes fixed:",rows);
   return (
-   <Paper className={classes.root} style={{visibility: "hidden"}}>
+   <Paper className={classes.root} >
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

@@ -124,10 +124,20 @@ const PendingNormalUnitCharges=({setVisibleState}) =>{
     }
   }
 
-  useEffect(async () => {
-    var pendingnormalunit = await getDashboardData();
-    setDeviceData(pendingnormalunit);
-    setVisibleState("hidden")
+  async function getPendingUnit(){
+     var pendingnormalunit = await getDashboardData();
+       setDeviceData(pendingnormalunit);
+
+    if(pendingnormalunit.length>0){
+      setVisibleState("block")
+    }else{
+      setVisibleState("none")
+    }
+  }
+
+  useEffect( () => {
+    getPendingUnit();
+  
   }, []);
 
  
