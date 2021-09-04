@@ -95,41 +95,20 @@ export default function DeviceWisePlans() {
           authorization: `Token ${token}`
       }
   })
-  // console.log(response.data);
-  // if (response.data.status){
-  //   if(response.data.data){
-  //     setCardDetails(response.data.data);
-  //     console.log(response.data.data);
-  //   }else{
-  //     setCardDetails([]);
-  //     console.log("No any bill details");
-  //   }
-    
-    
-    
-  // }else {
-  //   console.log(response.data.message);
-  //   history.push("/sign-in");
-  //   window.location.reload();//reload browser
-  //   deleteAllCookies();//delete all cookies
-  // }
+   console.log(response.data);
+  if (response.data.status){
+    if(response.data.data == null){
+      setCardDetails([]);
+    } else {
+      setCardDetails(response.data.data);
+    }
+  
+  }
+  
         
   } 
 
-  // const onDeletebill = async (bill_id) => {
-  //   setConfirmDialog({
-  //     ...confirmDialog,
-  //     isOpen: false,
-  //   });
-  //   await DeleteBillPlan(bill_id);
-  //   await getCalculatedData();
-    
-  //   setNotify({
-  //     isOpen: true,
-  //     message: "Deleted Successfully",
-  //     variant: "danger",
-  //   });
-  // };
+
 
   useEffect( async () => {
 
@@ -168,14 +147,14 @@ export default function DeviceWisePlans() {
                     gutterBottom
                     key={index}
                   >
-                    {card.Bill_Title}
+                    {card.bill_plan_name}
                   </Typography>
                   <div>
                     <img src={img1} alt="Image1" className="card-img-top" />
                   </div>
                   <div>
-                    <label>Selected Model : {card.Choose_model}</label>
-                    <label>Duration :  {card.Duration}</label>
+                    <label>Selected Model : {card.bill_model}</label>
+                    <label>Additional Units :  {card.Total_units.toFixed(3)}</label>
                   </div>
                 </CardContent>
                 <CardActions>
