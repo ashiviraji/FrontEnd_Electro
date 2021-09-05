@@ -347,7 +347,7 @@ function MyVerticallyCenteredModal(props) {
         if (response.data.status) {
           // window.location.reload();//reload browser
           props.getFunc();
-          toast.success('Edit Successfuly', {
+          toast.success('Edited Successfuly', {
             autoClose: 7000,
             hideProgressBar: true,
             closeOnClick: true,
