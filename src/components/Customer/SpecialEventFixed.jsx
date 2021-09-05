@@ -14,11 +14,10 @@ import Button from "@material-ui/core/Button";
 import { BsFillBarChartFill } from "react-icons/bs";
 
 import "../../assets/css/Customer/deviceWiseFixed.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const columns = [
-  { id: "device_id", label: "#", minWidth: 90 },
-  { id: "appliaance", label: "Appliance", minWidth: 100 },
+  { id: "appliance", label: "Appliance", minWidth: 100 },
 
   {
     id: "quantity",
@@ -28,7 +27,7 @@ const columns = [
     format: (value) => value.toLocaleString("en-US"),
   },
   {
-    id: "total_units",
+    id: "total_units_fixed",
     label: "Total units",
     minWidth: 160,
     align: "center",
@@ -37,16 +36,16 @@ const columns = [
  
 ];
 
-function createData(
-  device_id,
-  appliance,
-  quantity,
-  total_units,
-  total_amount
-) {
-  //   const density = population / size;
-  return { device_id, appliance, quantity, total_units };
-}
+// function createData(
+//   device_id,
+//   appliaance,
+//   quantity,
+//   total_units,
+//   total_amount
+// ) {
+//   //   const density = population / size;
+//   return { device_id, appliaance, quantity, total_units };
+// }
 
 // const rows = [
 //   createData(1, "Freezer", 1, 20),
@@ -77,14 +76,17 @@ const useStyles = makeStyles({
 });
 
 export default function StickyHeadTable() {
-  console.log("TOU awa!!");
+
   const params = new URLSearchParams(window.location.search)
-  const calculatedSpecialEventBillId  = params.get('bill_id');
+  const BillId  = params.get('bill_id');
+  console.log(BillId);
+
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [selected, setSelected] = React.useState("");
   const [rows, setDeviceData] = useState([]);
+  const [billName, setBillName] = useState("");
 
   let area = null;
   const changeSelectOptionHandler = (event) => {
@@ -118,7 +120,7 @@ export default function StickyHeadTable() {
       // let History = useHistory();
       console.log("call device detail fixed function")
   
-      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-specialEvent-detailsfixed/${ParamsUserId}`, {
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-specialEvent-details-devicewise-fixed/${ParamsUserId}`, {
           newBillId: newBillId
       }, {
           headers: {
@@ -133,15 +135,24 @@ export default function StickyHeadTable() {
    
   useEffect( async () => {
   
-    var special_event_data_fixed = await getSpecialEventDeviceDetailsFixed(1);
-    setDeviceData(special_event_data_fixed );
+    var special_event_data_fixed = await getSpecialEventDeviceDetailsFixed(BillId);
+    
+    if(special_event_data_fixed != null){
+      setDeviceData(special_event_data_fixed );
+      setBillName(special_event_data_fixed[0].model_name);
+      
+    }
+    else{
+      setDeviceData([]);
+      setBillName("");
+    }
   },[]);
 
   return (
     <Paper className={classes.root}>
       <h2 style={{marginLeft:"3%"}}>Fixed Model</h2>
-        <label className="duration-label">Duration : 2 days</label>
-       
+      <h5 style={{marginLeft:"3%",marginTop:"5%"}}>Bill Name :- {billName} </h5>
+
       <div className="button-device-wise">
         <Link to="/devicewise-chart-fixed" className={classes.linkchartButton}> 
           <Button
