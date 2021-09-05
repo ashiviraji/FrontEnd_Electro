@@ -10,8 +10,6 @@ import Axios from 'axios';
 export default function Billcomparison(props) {
 
   
-  // console.log("Bill id eka awaaaa" , calculatedBillId )
-
   const params = new URLSearchParams(window.location.search)
   const calculatedBillId  = params.get('bill_id');
   console.log(params.get('bill_id'));
