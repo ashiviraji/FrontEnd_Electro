@@ -59,6 +59,16 @@ const useStyles = makeStyles({
       background: "#439c69",
     },
   },
+  buttonEditPlan: {
+    width: "100%",
+    margin: "3px",
+    backgroundColor: "#F99D3B",
+    color: "white",
+    textDecoration: "none",
+    "&:hover": {
+      background: "#F78914",
+    },
+  },
   linkStyle:{
     textDecoration:"none"
   }
@@ -250,13 +260,22 @@ export default function DeviceWisePlans() {
                         Device Wise Usage &nbsp;&nbsp;&nbsp;
                       </Button>
                     </Link>
-                    <Link className={classes.linkStyle} to={`/my-bill-plans-moreAndEdit?bill_id=${card.bill_id}`}>
+                    <Link className={classes.linkStyle} to={`/bill-comparison?bill_id=${card.bill_id}`}>
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
                         className={classes.buttonMoreDetails}
                       >
                         More Details &nbsp;&nbsp;&nbsp;
+                      </Button>
+                    </Link>
+                    <Link className={classes.linkStyle} to={`/my-bill-plans-moreAndEdit?bill_id=${card.bill_id}`}>
+                      <Button
+                        className="iconCardsButtons"
+                        variant="contained"
+                        className={classes.buttonEditPlan}
+                      >
+                        Edit Bill Plan &nbsp;&nbsp;&nbsp;
                       </Button>
                     </Link>
                     <Link className={classes.linkStyle} onClick={() => {
