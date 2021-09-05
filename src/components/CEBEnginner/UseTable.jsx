@@ -10,14 +10,16 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(3),
         '& thead th': {
             fontWeight: '600',
-            color: theme.palette.primary.light,
+            color: '#011627',
+            backgroundColor: '#23E694',
         },
         '& tbody td': {
             fontWeight: '300',
+            textAlign: 'center'
         },
         '& tbody tr:hover': {
-            backgroundColor: '#fffbf2',
-            cursor: 'pointer',
+            backgroundColor: '#bef7de',
+            // cursor: 'pointer',
         },
     },
 }))
