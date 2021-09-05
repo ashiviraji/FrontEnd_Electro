@@ -225,7 +225,7 @@ export default function DeviceWisePlans() {
                 </CardContent>
                 <CardActions>
                   <div className="buttonContainer">
-                    <Link className={classes.linkStyle} to={card.device_wise}>
+                    <Link className={classes.linkStyle} to={card.device_wise} >
                       <Button
                         className="iconCardsButtons"
                         variant="contained"

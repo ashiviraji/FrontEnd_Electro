@@ -39,13 +39,13 @@ const columns = [
 
 function createData(
   device_id,
-  appliance,
+  appliaance,
   quantity,
   total_units,
   total_amount
 ) {
   //   const density = population / size;
-  return { device_id, appliance, quantity, total_units };
+  return { device_id, appliaance, quantity, total_units };
 }
 
 // const rows = [
