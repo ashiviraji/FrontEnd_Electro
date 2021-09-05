@@ -191,15 +191,15 @@ export default function PendingNormalUnitCharges({ setVisibleState1 }) {
 
         if (response.data.status) {
           getPendingUnit();
-          // props.getFunc();
-          // toast.success('rejected successfuly', {
-          //   autoClose: 7000,
-          //   hideProgressBar: true,
-          //   closeOnClick: true,
-          //   pauseOnHover: true,
-          //   draggable: true,
-          //   progress: undefined,
-          // });
+
+          toast.success('Deleted Successfuly', {
+            autoClose: 7000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         } else {
 
           confirmation()
@@ -353,7 +353,7 @@ function MyVerticallyCenteredModal(props) {
         if (response.data.status) {
           // window.location.reload();//reload browser
           props.getFunc();
-          toast.success('Edit Successfuly', {
+          toast.success('Edited Successfuly', {
             autoClose: 7000,
             hideProgressBar: true,
             closeOnClick: true,
