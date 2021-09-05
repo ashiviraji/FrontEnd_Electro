@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { makeStyles, Table } from '@material-ui/core'
 import { TableRow } from '@material-ui/core'
 import { TableCell } from '@material-ui/core'
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
             fontWeight: '600',
             color: theme.palette.primary.light,
         },
-        '& tbody td' : {
+        '& tbody td': {
             fontWeight: '300',
         },
         '& tbody tr:hover': {
@@ -29,13 +29,13 @@ export default function UseTable(records, headcells, filterFn) {
     // const pages = [5,10,25]
     // const [page, setPage] = useState(0);
     // const [rowsPerPage, setRowsPerPage]=useState(pages[page])
-    
+
     const TblContainer = props => (
         <Table className={classes.table}>
             {props.children}
         </Table>
     )
-    
+
     const TblHead = props => {
         return (<TableHead>
             <TableRow>
@@ -56,7 +56,7 @@ export default function UseTable(records, headcells, filterFn) {
     //     setRowsPerPage(parseInt(event.target.value,10))
     //     setPage(0);
     // }
-    
+
     // const TblPagination = () => (<TablePagination
     //     component = "div"
     //     page = {page}
