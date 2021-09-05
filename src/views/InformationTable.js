@@ -1,12 +1,10 @@
 import React from "react";
 import "../../src/assets/css/informationTable.css";
 import { useHistory } from "react-router";
-import Axios from 'axios';
+import Axios from "axios";
 import { useEffect, useState } from "react";
 
-
 export default function InformationTable() {
-
   let history = useHistory();
 
   const [fixedUCharge0to30, setFixedMduleUCharge0to30] = useState("");
@@ -22,24 +20,11 @@ export default function InformationTable() {
 
   const [touUChargePeak, setTouMduleUChargePeak] = useState("");
 
-
-
-
-
-
-
-
-
-
   var category = "all";
   function getalldata() {
-
-
     Axios.get(`${process.env.REACT_APP_BASE_URL}/information/${category}`)
       .then((response) => {
-
         if (response.data.status) {
-
           console.log(response.data.data.result2);
           setFixedMduleUCharge0to30(response.data.data.result1[0]);
           setFixedMduleUCharge0to60(response.data.data.result1[1]);
@@ -54,37 +39,27 @@ export default function InformationTable() {
           setTouMduleUChargeOffPeak(response.data.data.result2[1]);
           setTouMduleUChargePeak(response.data.data.result2[2]);
 
-
-
-
-
-
           // setFixedMduleUCharge0to60(response.data.data.result1[1]);
 
           // setFixedMduleUCharge0to60(response.data.data.result1[1]);
-
-
 
           // let r = response.data.data.result1[0];
           // console.log("fff:", r.Fixed_charge)
           console.log("successfully get unit charges informations");
-
         } else {
-
           history.push("/sign-in");
-          window.location.reload();//reload browser
-          deleteAllCookies();//delete all cookies
+          window.location.reload(); //reload browser
+          deleteAllCookies(); //delete all cookies
         }
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log("this is error response", error);
       });
-
   }
 
-
   /**
-    * function of delete all cookies
-    */
+   * function of delete all cookies
+   */
   function deleteAllCookies() {
     var cookies = document.cookie.split(";");
 
@@ -102,23 +77,32 @@ export default function InformationTable() {
 
   return (
     <div>
-      <form >
+      <form>
         <div className="infotable-form">
           <div className="infotable-grp">
             <div className="infotable-title">
-              <h2 className="maintitle-info"> Tariff Plan</h2>
+              <h2 className="maintitle-info">
+                <b> TARIFF PLAN </b>
+              </h2>
               <p>
-                The following Electricity Tariffs have been approved by the Public Utility Commission of Sri Lanka.
+                The following Electricity Tariffs have been approved by the
+                Public Utility Commission of Sri Lanka.
               </p>
-              <h5>Domestic (D-1) </h5>
+              <h5>
+                <b>Domestic (D-1) </b>
+              </h5>
             </div>
             <div className="infotable-group1">
               <p>
-                If 30 day Consumption is between 0-60 kWh per month the following tariffs will be applicable.
+                <b>Normal Billing Method</b>
+              </p>
+              <p>
+                If 30 day Consumption is between 0-60 kWh per month the
+                following tariffs will be applicable.
               </p>
               <table className="table table-hover">
                 <thead>
-                  <tr className="bg-info rowfont" >
+                  <tr className="bg-info rowfont">
                     <th scope="col title1"> Monthly Consumption (kWh)</th>
                     <th scope="col title2">Unit Charge (LKR/kWh)</th>
                     <th scope="col title3">Fixed Charge (LKR/month</th>
@@ -140,7 +124,8 @@ export default function InformationTable() {
             </div>
             <div className="infotable-group2">
               <p>
-                If 30 day consumption is above 60kWh per month the following tariffs will be applicable.
+                If 30 day consumption is above 60kWh per month the following
+                tariffs will be applicable.
               </p>
               <table className="table table-hover">
                 <thead>
@@ -181,7 +166,7 @@ export default function InformationTable() {
             </div>
             <div className="infotable-group3">
               <p>
-                Domestic Time of Use
+                <b>Time of Use (TOU) Method</b>
               </p>
               <table className="table table-hover">
                 <thead>
