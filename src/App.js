@@ -32,10 +32,9 @@ import ForgotPassword from "./views/ForgotPassword";
 
 import InfoTable from "./views/InformationTable";
 import SpecialEventBill from "./views/customer/SpecialEventBill";
-import DevicewiseChartFixed from "./views/customer/devicewiseChartFixed"
+import DevicewiseChartFixed from "./views/customer/devicewiseChartFixed";
 // import DevicewiseChart from "./views/customer/devicewiseChart";
 // import { Bar } from 'react-chartjs-2';
-
 
 function App() {
   return (
@@ -89,7 +88,6 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
-
 
       <Route exact path="/home-user">
         <DashbordNavbar />
@@ -147,6 +145,11 @@ function App() {
       </Route>
 
       <Route exact path="/engineer-unitcharges-0to60">
+        <DashbordNavbar />
+        <SidebarEngineer />
+      </Route>
+
+      <Route exact path="/engineer-pending-unit-charges-home">
         <DashbordNavbar />
         <SidebarEngineer />
       </Route>
@@ -224,8 +227,6 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
-
-
     </div>
   );
 }
