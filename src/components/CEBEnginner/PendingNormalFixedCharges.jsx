@@ -173,8 +173,49 @@ const PendingNormalFixedCharges = ({ setVisibleState2 }) => {
                           {column.format && typeof value === "number"
                             ? column.format(value)
                             : value}
+
+
                         </TableCell>
+
+
                       );
+                      <TableCell>
+                        <button
+                          className="btn editActionButtonIcon"
+                        // onClick={() => {
+                        //   openInPopup(item);
+                        // }}
+                        >
+                          <EditOutlined
+                            fontSize="small"
+                            ClassName={classes.actionButtonIcon}
+                          />
+                        </button>
+                        <button
+                          className="btn deleteActionButtonIcon"
+                          // onClick={() => {
+                          //   setConfirmDialog({
+                          //     isOpen: true,
+                          //     title: "Are You sure delete this record",
+                          //     subTitle: "You can't  undo this operation",
+                          //     btnStatus: "danger",
+                          //     onConfirm: () => {
+                          //       onDeletedevice(row.Unit_category);
+                          //     },
+                          //   });
+                          // }}
+
+                          onClick={() => {
+                            onDeletedevice(row.Unit_category);
+                          }}
+                        >
+                          <DeleteOutline
+                            fontSize="small"
+                            ClassName={classes.actionButtonIcon}
+                          />
+                        </button>
+
+                      </TableCell>
                     })}
                   </TableRow>
                 );
