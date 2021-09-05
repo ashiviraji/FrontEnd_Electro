@@ -5,17 +5,16 @@ import Engineer1 from "../../assets/img/engineer1.png";
 // import { NavLink } from "../common/Sidebar-admin/SidebarElement";
 import { useHistory } from "react-router";
 import { useState } from "react";
-import Axios from 'axios';
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import Axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 import ConfirmationBox from "../common/ConfirmationBox";
 
 toast.configure();
 export default function ManageCebEngineer() {
-
-  const params = new URLSearchParams(window.location.search)
-  const ParamsUserId = params.get('emp_id');
+  const params = new URLSearchParams(window.location.search);
+  const ParamsUserId = params.get("emp_id");
   const [confirmDialog, setConfirmDialog] = useState({
     isOpen: false,
     title: "",
@@ -38,11 +37,15 @@ export default function ManageCebEngineer() {
   const [useremail, setUseremai] = useState("");
 
   var token = document.cookie
-    .split(';')
-    .map(cookie => cookie.split('='))
-    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
-
-
+    .split(";")
+    .map((cookie) => cookie.split("="))
+    .reduce(
+      (accumulator, [key, value]) => ({
+        ...accumulator,
+        [key.trim()]: decodeURIComponent(value),
+      }),
+      {}
+    ).token;
 
   const getUser = (e) => {
     e.preventDefault();
@@ -51,15 +54,16 @@ export default function ManageCebEngineer() {
       isOpen: false,
     });
 
-    Axios.get(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
-      headers: {
-        authorization: `Token ${token}`
+    Axios.get(
+      `${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`,
+      {
+        headers: {
+          authorization: `Token ${token}`,
+        },
       }
-    })
+    )
       .then((response) => {
-
         if (response.data.status) {
-
           setCebEngineerDetails(response.data.data[0]);
 
           setUserFirstName(response.data.data[0].First_name);
@@ -71,15 +75,12 @@ export default function ManageCebEngineer() {
           setUserDesignation(response.data.data[0].Role);
           setUserNic(response.data.data[0].NIC);
 
-
-
           // console.log("successfully get user profile of ceb engineer");
-
         } else {
-
-          confirmation()
+          confirmation();
         }
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log("this is 1c response", error);
       });
   };
@@ -94,21 +95,24 @@ export default function ManageCebEngineer() {
       ...confirmationBox,
       isOpen: false,
     });
-    Axios.put(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
-      firstName: userFirstName,
-      lastName: userLastName,
-      contact: userContact,
-      nic: userNic,
-      address: userAddress
-    }, {
-      headers: {
-        authorization: `Token ${token}`
+    Axios.put(
+      `${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`,
+      {
+        firstName: userFirstName,
+        lastName: userLastName,
+        contact: userContact,
+        nic: userNic,
+        address: userAddress,
       },
-    })
+      {
+        headers: {
+          authorization: `Token ${token}`,
+        },
+      }
+    )
       .then((response) => {
-
         if (response.data.status) {
-          toast.success('Ceb Engineer Deatils Updated', {
+          toast.success("Ceb Engineer Deatils Updated", {
             autoClose: 5000,
             hideProgressBar: true,
             closeOnClick: true,
@@ -117,18 +121,17 @@ export default function ManageCebEngineer() {
             progress: undefined,
           });
           // console.log("successfully update user profile of ceb engineer");
-
         } else {
-
-          confirmation()
+          confirmation();
         }
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log("This is  response", error);
       });
   };
   /**
-     * function of delete all cookies
-     */
+   * function of delete all cookies
+   */
   function deleteAllCookies() {
     var cookies = document.cookie.split(";");
 
@@ -148,18 +151,23 @@ export default function ManageCebEngineer() {
       btnStatus: "warning",
       onConfirm: () => {
         history.push("/sign-in");
-        window.location.reload();//reload browser
+        window.location.reload(); //reload browser
         deleteAllCookies();
       },
     });
   }
 
   return (
-
     <div className="body-engineer">
-      <form onLoad={(e) => { getUser(e) }} >
+      <form
+        onLoad={(e) => {
+          getUser(e);
+        }}
+      >
         <div className="ceb-engineer-heading">
-          <h2 align="center">USER PROFILE</h2>
+          <h2 align="center">
+            <b>USER PROFILE</b>
+          </h2>
         </div>
 
         {/* <div class="alert alert-success w-25 mx-auto p-3" role="alert">
@@ -177,7 +185,9 @@ export default function ManageCebEngineer() {
               class="form-control"
               id="firstname"
               value={userFirstName}
-              onChange={(e) => { setUserFirstName(e.target.value); }}
+              onChange={(e) => {
+                setUserFirstName(e.target.value);
+              }}
               required
             />
           </div>
@@ -193,8 +203,9 @@ export default function ManageCebEngineer() {
               class="form-control"
               id="lastname"
               value={userLastName}
-              onChange={(e) => { setUserLastName(e.target.value); }}
-
+              onChange={(e) => {
+                setUserLastName(e.target.value);
+              }}
               required
             />
           </div>
@@ -230,13 +241,13 @@ export default function ManageCebEngineer() {
               class="form-control"
               id="contactnumber"
               value={userContact}
-              onChange={(e) => { setUserContact(e.target.value); }}
-
+              onChange={(e) => {
+                setUserContact(e.target.value);
+              }}
               required
             />
           </div>
         </div>
-
 
         <div class="row mb-3">
           <label for="address" class="col-sm-2 col-form-label" align="left">
@@ -248,8 +259,9 @@ export default function ManageCebEngineer() {
               class="form-control"
               id="address"
               value={userAddress}
-              onChange={(e) => { setUserAddress(e.target.value); }}
-
+              onChange={(e) => {
+                setUserAddress(e.target.value);
+              }}
               required
             />
           </div>
@@ -265,9 +277,9 @@ export default function ManageCebEngineer() {
               class="form-control"
               id="nicnumber"
               value={userNic}
-              onChange={(e) => { setUserNic(e.target.value); }}
-
-
+              onChange={(e) => {
+                setUserNic(e.target.value);
+              }}
             />
           </div>
         </div>
@@ -313,17 +325,21 @@ export default function ManageCebEngineer() {
         </div>
 
         <div>
-          <button type="button" className="admin-add-update-btn" onClick={(e) => {
-            setConfirmDialog({
-              isOpen: true,
-              title: "Are You sure update CEB engineer",
-              subTitle: "You can't  undo this operation",
-              btnStatus: "success",
-              onConfirm: (e) => {
-                updateCebEngineer(e);
-              },
-            });
-          }}>
+          <button
+            type="button"
+            className="admin-add-update-btn"
+            onClick={(e) => {
+              setConfirmDialog({
+                isOpen: true,
+                title: "Are You sure update CEB engineer",
+                subTitle: "You can't  undo this operation",
+                btnStatus: "success",
+                onConfirm: (e) => {
+                  updateCebEngineer(e);
+                },
+              });
+            }}
+          >
             Update
           </button>
         </div>
