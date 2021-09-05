@@ -1,17 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import DashboardEngineer from './../../components/CEBEnginner/DashboardEngineer';
+import DashboardEngineer from "./../../components/CEBEnginner/DashboardEngineer";
 export default function DashboardCEBEngineer() {
-    return (
-
-        <div>
-
-            <DashboardEngineer/>
-        </div>
-
-
-
-
-
-    )
+  return (
+    <div>
+      <DashboardEngineer />
+    </div>
+  );
 }
