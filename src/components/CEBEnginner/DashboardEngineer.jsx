@@ -13,10 +13,7 @@ import dashboardUser from "../../assets/img/dashboardUser.svg";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
-import PendingNormalUnitCharges from "./PendingNormalUnitCharges";
-import PendingNormalFixedCharges from "./PendingNormalFixedCharges";
-import PendingTouUnitCharges from "./PendingTouUnitCharges";
-import PendingTouFixedCharges from "./PendingTouFixedCharges";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   engineerCurrentRoot: {
@@ -72,10 +69,6 @@ export default function SimpleCard() {
 
   const [requestCount, setRequestCount] = useState("");
   const [userCount, setUserCount] = useState("");
-  const [visibleState1, setVisibleState1] = useState("");
-  const [visibleState2, setVisibleState2] = useState("");
-  const [visibleState3, setVisibleState3] = useState("");
-  const [visibleState4, setVisibleState4] = useState("");
 
   const classes = useStyles();
   var ParamsUserId = document.cookie
@@ -178,96 +171,42 @@ export default function SimpleCard() {
           <CardActions></CardActions>
         </Card>
 
-        <Card className={classes.engineerSpecialRoot} id="engineer-card2">
-          <CardContent>
-            <label className="engineer-card-title-name">Pending Updates</label>
-          </CardContent>
-          <div>
-            <GoRequestChanges className="engineer-svg-icon"></GoRequestChanges>
-            <label className="engineer-numeric-value">{requestCount}</label>
-          </div>
-          <CardActions></CardActions>
-        </Card>
+        <Link to="/engineer-pending-unit-charges-home">
+          <Card className={classes.engineerSpecialRoot} id="engineer-card2">
+            <CardContent>
+              <label className="engineer-card-title-name">
+                Pending Updates
+              </label>
+            </CardContent>
+            <div>
+              <GoRequestChanges className="engineer-svg-icon"></GoRequestChanges>
+              <label className="engineer-numeric-value">{requestCount}</label>
+            </div>
+            <CardActions></CardActions>
+          </Card>
+        </Link>
 
-        <Card className={classes.engineerMyprofile} id="engineer-card3">
-          <CardContent>
-            <label className="engineer-card-title-name">My profile</label>
-          </CardContent>
-          <div>
-            <BsFillPersonFill className="engineer-svg-icon"></BsFillPersonFill>
-            <label className="engineer-numeric-value"></label>
-          </div>
-          <CardActions></CardActions>
-        </Card>
-      </div>
-      <div
-        style={{
-          width: "90%",
-          float: "left",
-          marginTop: "10%",
-          display: `${visibleState1}`,
-        }}
-      >
-        <p>
-          <center>
-            <h6>
-              <b>Pending Normal Unit Charges </b>
-            </h6>
-          </center>
-        </p>
-        <PendingNormalUnitCharges setVisibleState1={setVisibleState1} />
+        <Link to="/engineer-userprofile">
+          <Card className={classes.engineerMyprofile} id="engineer-card3">
+            <CardContent>
+              <label className="engineer-card-title-name">My profile</label>
+            </CardContent>
+            <div>
+              <BsFillPersonFill className="engineer-svg-icon"></BsFillPersonFill>
+              <label className="engineer-numeric-value"></label>
+            </div>
+            <CardActions></CardActions>
+          </Card>
+        </Link>
       </div>
 
-      <div
-        style={{
-          width: "90%",
-          float: "left",
-          marginTop: "10%",
-          display: `${visibleState2}`,
-        }}
-      >
-        <p>
-          <center>
-            <h6>
-              <b>Pending Normal Fixed Charges</b>
-            </h6>
-          </center>
-        </p>
-        <PendingNormalFixedCharges setVisibleState2={setVisibleState2} />
-      </div>
-      <div
-        style={{
-          width: "90%",
-          float: "left",
-          marginTop: "10%",
-          display: `${visibleState3}`,
-        }}
-      >
-        <p>
-          <center>
-            <h6>
-              <b>Pending TOU Unit Charges</b>
-            </h6>
-          </center>
-        </p>
-        <PendingTouUnitCharges setVisibleState3={setVisibleState3} />
-      </div>
-      <div
-        style={{
-          width: "90%",
-          float: "left",
-          marginTop: "10%",
-          display: `${visibleState4}`,
-        }}
-      >
-        <p>
-          <center>
-            <h6>
-              <b>Pending TOU Fixed Charges</b>
-            </h6>
-          </center>
-        </p>
-        <PendingTouFixedCharges setVisibleState4={setVisibleState4} />
+      <div className="admin-image-details">
+        <img
+          src={dashboardUser}
+          alt="unit-charge-update-admin"
+          width="450"
+          height="350"
+        />
       </div>
     </div>
   );

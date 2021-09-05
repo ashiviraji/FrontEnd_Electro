@@ -7,6 +7,7 @@ import { AiOutlineDollar } from "react-icons/ai";
 
 import { BiUserCircle } from "react-icons/bi";
 import { RiInformationLine } from "react-icons/ri";
+import { BiRevision } from "react-icons/bi";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { Route } from "react-router-dom";
@@ -19,6 +20,7 @@ import EngineerUnitChargesToU from "../../../views/CEBEnginner/EngineerUnitCharg
 import EngineerUserProfile from "../../../views/CEBEnginner/EngineerUserProfile";
 import InformationTable from "../../../views/InformationTable";
 import DashboardEngineer from "../../../views/CEBEnginner/DashboardCEBEngineer";
+import PendingUnitChargesMain from "../../../views/CEBEnginner/EngineerPendingUnitChargesMain";
 
 import {
   SideNav,
@@ -43,10 +45,20 @@ const SidebarEngineer = ({ show }) => {
                 <UserProfile src={CEBEngineer1} alt="image"></UserProfile>
 
                 <UlDetailList>
-                  <NameList>{document.cookie
-                    .split(';')
-                    .map(cookie => cookie.split('='))
-                    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).name} </NameList>
+                  <NameList>
+                    {
+                      document.cookie
+                        .split(";")
+                        .map((cookie) => cookie.split("="))
+                        .reduce(
+                          (accumulator, [key, value]) => ({
+                            ...accumulator,
+                            [key.trim()]: decodeURIComponent(value),
+                          }),
+                          {}
+                        ).name
+                    }{" "}
+                  </NameList>
                   <NameList>CEB Engineer</NameList>
                   <NameList>
                     <ActiveIcon src={active}></ActiveIcon>&nbsp;&nbsp;Active
@@ -64,7 +76,14 @@ const SidebarEngineer = ({ show }) => {
                 <List>
                   <LinkList to="/engineer-unit-charges-home">
                     <AiOutlineDollar />
-                    &nbsp;&nbsp;&nbsp;Unit Charges
+                    &nbsp;&nbsp;&nbsp;Update Unit Charges
+                  </LinkList>
+                </List>
+
+                <List>
+                  <LinkList to="/engineer-pending-unit-charges-home">
+                    <BiRevision />
+                    &nbsp;&nbsp;&nbsp;Pending Unit Charges
                   </LinkList>
                 </List>
 
@@ -126,6 +145,11 @@ const SidebarEngineer = ({ show }) => {
                 path="/dashboard-engineer"
                 exact={true}
                 component={DashboardEngineer}
+              />
+              <Route
+                path="/engineer-pending-unit-charges-home"
+                exact={true}
+                component={PendingUnitChargesMain}
               />
             </div>
           </div>

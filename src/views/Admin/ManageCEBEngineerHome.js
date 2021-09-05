@@ -10,7 +10,9 @@ export default function ManageCEBEngineerHome() {
     <div>
       <div id="admin-manage-engineer-home">
         <label>
-          <h2>MANAGE CEB ENGINEER</h2>
+          <h2>
+            <b>MANAGE CEB ENGINEER</b>
+          </h2>
         </label>
 
         <NavLink to="/addnewcebengineer">

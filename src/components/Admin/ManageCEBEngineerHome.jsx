@@ -3,7 +3,7 @@ import img1 from "../../assets/img/undraw_Add_user_re_5oib.png";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import { useState, useEffect } from "react";
-import Axios from 'axios';
+import Axios from "axios";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import { Grid } from "@material-ui/core";
@@ -11,8 +11,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 import ConfirmationBox from "../common/ConfirmationBox";
 toast.configure();
@@ -36,8 +36,8 @@ const useStyles = makeStyles({
   gridContainer: {
     paddingLeft: "40px",
     paddingRight: "20px",
-    marginLeft: "10%",
-    marginTop: "8%",
+    marginLeft: "1%",
+    marginTop: "14%",
   },
 
   gridMain: {
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   button: {
     width: "100%",
     margin: "3px",
-    textDecoration: "none"
+    textDecoration: "none",
   },
   iconCardsButtons: {
     justifyContent: "right",
@@ -62,10 +62,8 @@ const useStyles = makeStyles({
     },
   },
   linkStyle: {
-    textDecoration: "none"
-  }
-
-
+    textDecoration: "none",
+  },
 });
 const ManageCEBEngineerHome = () => {
   const classes = useStyles();
@@ -82,10 +80,15 @@ const ManageCEBEngineerHome = () => {
   });
   let history = useHistory();
   var token = document.cookie
-    .split(';')
-    .map(cookie => cookie.split('='))
-    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
-
+    .split(";")
+    .map((cookie) => cookie.split("="))
+    .reduce(
+      (accumulator, [key, value]) => ({
+        ...accumulator,
+        [key.trim()]: decodeURIComponent(value),
+      }),
+      {}
+    ).token;
 
   const getCebengineer = async () => {
     // e.preventDefault();
@@ -94,23 +97,21 @@ const ManageCEBEngineerHome = () => {
       ...confirmationBox,
       isOpen: false,
     });
-    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/manager-cebengineer`, {
-      headers: {
-        authorization: `Token ${token}`
+    const response = await Axios.get(
+      `${process.env.REACT_APP_BASE_URL}/manager-cebengineer`,
+      {
+        headers: {
+          authorization: `Token ${token}`,
+        },
       }
-
-    })
+    );
     if (response.data.status) {
-      return (response.data.data);
-
+      return response.data.data;
     } else {
-      confirmation()
-      return ([]);
-
-
+      confirmation();
+      return [];
     }
-
-  }
+  };
 
   const removeCebengineer = async (emp_id) => {
     // e.preventDefault();
@@ -122,15 +123,17 @@ const ManageCEBEngineerHome = () => {
       ...confirmationBox,
       isOpen: false,
     });
-    const response = await Axios.get(`${process.env.REACT_APP_BASE_URL}/remove-cebengineer/${emp_id}`, {
-      headers: {
-        authorization: `Token ${token}`
+    const response = await Axios.get(
+      `${process.env.REACT_APP_BASE_URL}/remove-cebengineer/${emp_id}`,
+      {
+        headers: {
+          authorization: `Token ${token}`,
+        },
       }
-
-    })
+    );
     if (response.data.status) {
-      window.location.reload();//reload browser
-      toast.success('CEB Engineer Removed', {
+      window.location.reload(); //reload browser
+      toast.success("CEB Engineer Removed", {
         autoClose: 5000,
         hideProgressBar: true,
         closeOnClick: true,
@@ -138,24 +141,20 @@ const ManageCEBEngineerHome = () => {
         draggable: true,
         progress: undefined,
       });
-
     } else {
-
-      confirmation()
+      confirmation();
     }
-
-  }
+  };
 
   useEffect(async () => {
     var details = await getCebengineer();
     // console.log("successfully get ceb engineer", details);
     setCardDetails(details);
-
   }, []);
 
   /**
-    * function of delete all cookies
-    */
+   * function of delete all cookies
+   */
   function deleteAllCookies() {
     var cookies = document.cookie.split(";");
 
@@ -175,7 +174,7 @@ const ManageCEBEngineerHome = () => {
       btnStatus: "warning",
       onConfirm: () => {
         history.push("/sign-in");
-        window.location.reload();//reload browser
+        window.location.reload(); //reload browser
         deleteAllCookies();
       },
     });
@@ -206,14 +205,20 @@ const ManageCEBEngineerHome = () => {
                     <img src={img1} alt="Image1" className="card-img-top" />
                   </div>
                   <div>
-                    <label><b>{card.First_name} {card.Last_name}</b></label>
+                    <label>
+                      <b>
+                        {card.First_name} {card.Last_name}
+                      </b>
+                    </label>
                     <label>Employee Id : EMP_{card.Emp_id}</label>
                   </div>
                 </CardContent>
                 <CardActions>
                   <div className="buttonContainer">
-
-                    <Link className={classes.linkStyle} to={`/cebengineer-details?emp_id=${card.Emp_id}`}>
+                    <Link
+                      className={classes.linkStyle}
+                      to={`/cebengineer-details?emp_id=${card.Emp_id}`}
+                    >
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
@@ -239,7 +244,7 @@ const ManageCEBEngineerHome = () => {
                             },
                           });
                         }}
-                      // onClick={() => { removeCebengineer(card.Emp_id) }}
+                        // onClick={() => { removeCebengineer(card.Emp_id) }}
                       >
                         Remove User &nbsp;&nbsp;&nbsp;
                       </Button>
@@ -261,8 +266,6 @@ const ManageCEBEngineerHome = () => {
       />
     </div>
   );
-
-
 };
 
 export default ManageCEBEngineerHome;
