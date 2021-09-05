@@ -1,15 +1,14 @@
 import React from "react";
 import "../../assets/css/Admin/admin.css";
-import Axios from 'axios';
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import Axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import ConfirmationBox from "../common/ConfirmationBox";
 
 toast.configure();
 export default function AddNewCebEngineer() {
-
   let history = useHistory();
 
   const [userFirstName, setUserFirstName] = useState("");
@@ -25,9 +24,15 @@ export default function AddNewCebEngineer() {
     subTitle: "",
   });
   var token = document.cookie
-    .split(';')
-    .map(cookie => cookie.split('='))
-    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+    .split(";")
+    .map((cookie) => cookie.split("="))
+    .reduce(
+      (accumulator, [key, value]) => ({
+        ...accumulator,
+        [key.trim()]: decodeURIComponent(value),
+      }),
+      {}
+    ).token;
 
   const AddNewCebEngineer = (e) => {
     e.preventDefault();
@@ -36,24 +41,27 @@ export default function AddNewCebEngineer() {
       isOpen: false,
     });
 
-    Axios.post(`${process.env.REACT_APP_BASE_URL}/add-cebengineer`, {
-      firstName: userFirstName,
-      lastName: userLastName,
-      contact: userContact,
-      nic: userNic,
-      address: userAddress,
-      email: useremail,
-      password: userPassword
-    }, {
-      headers: {
-        authorization: `Token ${token}`
+    Axios.post(
+      `${process.env.REACT_APP_BASE_URL}/add-cebengineer`,
+      {
+        firstName: userFirstName,
+        lastName: userLastName,
+        contact: userContact,
+        nic: userNic,
+        address: userAddress,
+        email: useremail,
+        password: userPassword,
       },
-    })
+      {
+        headers: {
+          authorization: `Token ${token}`,
+        },
+      }
+    )
       .then((response) => {
-
         if (response.data.status) {
           history.push("/manage-cebengineer");
-          toast.success('New CEB Engineer Added Successfully', {
+          toast.success("New CEB Engineer Added Successfully", {
             autoClose: 5000,
             hideProgressBar: true,
             closeOnClick: true,
@@ -62,12 +70,11 @@ export default function AddNewCebEngineer() {
             progress: undefined,
           });
           console.log("New CEB Engineer Added Successfully");
-
         } else {
-
-          confirmation()
+          confirmation();
         }
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log("This is  response", error);
       });
   };
@@ -93,7 +100,7 @@ export default function AddNewCebEngineer() {
       btnStatus: "warning",
       onConfirm: () => {
         history.push("/sign-in");
-        window.location.reload();//reload browser
+        window.location.reload(); //reload browser
         deleteAllCookies();
       },
     });
@@ -101,9 +108,15 @@ export default function AddNewCebEngineer() {
 
   return (
     <div className="body-manageengineer">
-      <form onSubmit={(e) => { AddNewCebEngineer(e) }}>
+      <form
+        onSubmit={(e) => {
+          AddNewCebEngineer(e);
+        }}
+      >
         <div className="ceb-heading">
-          <h2 align="center">ADD NEW CEB ENGINEER</h2>
+          <h2 align="center">
+            <b>ADD NEW CEB ENGINEER</b>
+          </h2>
         </div>
 
         <div class="row mb-3">
@@ -111,8 +124,15 @@ export default function AddNewCebEngineer() {
             <b>First Name</b>
           </label>
           <div class="w-50 p-1">
-            <input type="text" class="form-control" id="firstname" onChange={(e) => { setUserFirstName(e.target.value); }}
-              required />
+            <input
+              type="text"
+              class="form-control"
+              id="firstname"
+              onChange={(e) => {
+                setUserFirstName(e.target.value);
+              }}
+              required
+            />
           </div>
         </div>
 
@@ -121,8 +141,15 @@ export default function AddNewCebEngineer() {
             <b>Last Name</b>
           </label>
           <div class="w-50 p-1">
-            <input type="text" class="form-control" id="lastname" onChange={(e) => { setUserLastName(e.target.value); }}
-              required />
+            <input
+              type="text"
+              class="form-control"
+              id="lastname"
+              onChange={(e) => {
+                setUserLastName(e.target.value);
+              }}
+              required
+            />
           </div>
         </div>
 
@@ -131,8 +158,15 @@ export default function AddNewCebEngineer() {
             <b>Email</b>
           </label>
           <div class="w-50 p-1">
-            <input type="email" class="form-control" id="email" onChange={(e) => { setUseremai(e.target.value); }}
-              required />
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              onChange={(e) => {
+                setUseremai(e.target.value);
+              }}
+              required
+            />
           </div>
         </div>
 
@@ -141,8 +175,15 @@ export default function AddNewCebEngineer() {
             <b>Password</b>
           </label>
           <div class="w-50 p-1">
-            <input type="password" class="form-control" id="password" onChange={(e) => { setUserPassword(e.target.value); }}
-              required />
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              onChange={(e) => {
+                setUserPassword(e.target.value);
+              }}
+              required
+            />
           </div>
         </div>
 
@@ -159,8 +200,9 @@ export default function AddNewCebEngineer() {
               type="tel"
               class="form-control"
               id="contactnumber"
-              onChange={(e) => { setUserContact(e.target.value); }}
-
+              onChange={(e) => {
+                setUserContact(e.target.value);
+              }}
               required
             />
           </div>
@@ -171,8 +213,15 @@ export default function AddNewCebEngineer() {
             <b>Address</b>
           </label>
           <div class="w-50 p-1">
-            <input type="text" class="form-control" id="address" onChange={(e) => { setUserAddress(e.target.value); }}
-              required />
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              onChange={(e) => {
+                setUserAddress(e.target.value);
+              }}
+              required
+            />
           </div>
         </div>
 
@@ -181,8 +230,15 @@ export default function AddNewCebEngineer() {
             <b>NIC Number</b>
           </label>
           <div class="w-50 p-1">
-            <input type="text" class="form-control" id="nicnumber" onChange={(e) => { setUserNic(e.target.value); }}
-              required />
+            <input
+              type="text"
+              class="form-control"
+              id="nicnumber"
+              onChange={(e) => {
+                setUserNic(e.target.value);
+              }}
+              required
+            />
           </div>
         </div>
 
