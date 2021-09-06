@@ -314,7 +314,7 @@ function MyVerticallyCenteredModal(props) {
 
   function getUpdatedata(e) {
     // console.log(NewAmount, props.categoryName, props.timePeriod);
-    e.preventDefault();
+    // e.preventDefault();
     setConfirmDialog({
       ...confirmDialog,
       isOpen: false,
@@ -345,9 +345,9 @@ function MyVerticallyCenteredModal(props) {
         // console.log(response.data.data[1]);
 
         if (response.data.status) {
-          // window.location.reload();//reload browser
-          props.getFunc();
-          toast.success('Edit Successfuly', {
+          window.location.reload();//reload browser
+          // props.getFunc();
+          toast.success('Edited Successfuly', {
             autoClose: 7000,
             hideProgressBar: true,
             closeOnClick: true,
