@@ -311,7 +311,7 @@ function MyVerticallyCenteredModal(props) {
   });
 
   function updateData(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     getUpdatedata(e);
     props.onHide();
@@ -320,7 +320,7 @@ function MyVerticallyCenteredModal(props) {
 
   function getUpdatedata(e) {
     // console.log(NewAmount, props.categoryName, props.timePeriod);
-    e.preventDefault();
+    // e.preventDefault();
     setConfirmDialog({
       ...confirmDialog,
       isOpen: false,
@@ -351,8 +351,8 @@ function MyVerticallyCenteredModal(props) {
         // console.log(response.data.data[1]);
 
         if (response.data.status) {
-          // window.location.reload();//reload browser
-          props.getFunc();
+          window.location.reload();//reload browser
+          // props.getFunc();
           toast.success('Edited Successfuly', {
             autoClose: 7000,
             hideProgressBar: true,
@@ -427,7 +427,7 @@ function MyVerticallyCenteredModal(props) {
             className="engineer-popup-price-changes"
             style={{ display: "flex" }}
           >
-            <h4>Requested {props.categoryName} Price </h4>
+            <h4>Pending {props.categoryName} Price </h4>
 
             <label className="engineer-current-label">LKR : {props.reqUnitPrice}</label>
 
