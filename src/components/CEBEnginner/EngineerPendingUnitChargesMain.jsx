@@ -79,6 +79,7 @@ export default function SimpleCard() {
           width: "90%",
           float: "left",
           marginTop: "10%",
+          marginBottom: "10%",
           display: `${visibleState4}`,
         }}
       >
