@@ -159,6 +159,7 @@ export default function CalculateBill() {
       setRecords([]);
       setSearchRecords([]);
       setButtonState(true);
+      console.log("huuu");
     } else {
       setRecords(recordDetails);
       setSearchRecords(recordDetails);
@@ -198,9 +199,11 @@ export default function CalculateBill() {
     const recordDetails = await DeviceBill.getAllDevices(newBillId);
     if (recordDetails == null) {
       setRecords([]);
+      setSearchRecords([]);
       setButtonState(true);
     } else {
       setRecords(recordDetails);
+      setSearchRecords(recordDetails);
       setButtonState(false);
     }
     setNotify({
