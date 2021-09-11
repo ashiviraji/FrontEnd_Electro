@@ -67,44 +67,6 @@ const columns = [
   },
 ];
 
-// function createData(
-//   device_id,
-//   applicance,
-//   quantity,
-//   peak_amount,
-//   day_amount,
-//   off_peak_amount,
-//   total_units,
-//   total_amount
-// ) {
-//   //   const density = population / size;
-//   return {
-//     device_id,
-//     applicance,
-//     quantity,
-//     peak_amount,
-//     day_amount,
-//     off_peak_amount,
-//     total_units,
-//     total_amount,
-//   };
-// }
-
-// const rows = [
-//   createData(1, "Television", 1, 600, 400, 300, 100, 1300),
-//   createData(2, "Rice Cooker", 1, 800, 300, 200, 200, 1300),
-//   createData(3, "Radio", 1, 100, 500, 800, 220, 1440),
-//   createData(4, "Blender", 1, 100, 890, 780, 210, 1340),
-//   createData(5, "Washing Machine", 1, 100, 890, 780, 210, 1340),
-//   createData(6, "Multi Cooker", 1, 100, 890, 780, 210, 1340),
-//   createData(7, "Computer", 1, 100, 890, 780, 210, 1340),
-//   createData(8, "Laptop", 1, 100, 890, 780, 210, 210, 1340),
-//   createData(9, "Table Fan", 1, 100, 890, 780, 210, 1340),
-//   createData(10, "Iron", 1, 100, 890, 780, 210, 1340),
-//   createData(11, "Oven", 1, 100, 890, 780, 210, 1340),
-//   createData(12, "", 1, 100, 890, 780, 210, 1340),
-// ];
-
 const useStyles = makeStyles({
   root: {
     width: "80%",
