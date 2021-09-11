@@ -11,6 +11,9 @@ import "../../assets/css/Customer/specialEventPlans.css";
 import { Link } from "react-router-dom";
 import Axios from 'axios';
 import  {useHistory}  from 'react-router-dom'
+import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
+import Notification from "../Customer/bill_control/Notification";
+
 const useStyles = makeStyles({
   root: {
     // minWidth: 275,
@@ -62,19 +65,23 @@ const useStyles = makeStyles({
 
 });
 
-const cardDetails = [
-  { Bill_Title: "Special Event Plan 1", Choose_model: "TOU Model", Duration:"1 days", moreDetails:"TOU-Event-Form",device_wise:"/special-tou-device-wise"},
-  { Bill_Title: "Special Event Plan 2", Choose_model: "Fixed Model",Duration:"2 days", moreDetails:"special-event-fixed",device_wise:"/special-fixed-device-wise" },
-  { Bill_Title: "Special Event Plan 3", Choose_model: "Fixed Model", Duration:"2 days", moreDetails:"special-event-fixed",device_wise:"/special-fixed-device-wise" },
-  { Bill_Title: "Special Event Plan 4", Choose_model: "TOU Model",Duration:"1 days", moreDetails:"TOU-Event-Form",device_wise:"/special-tou-device-wise" },
-  { Bill_Title: "Special Event Plan 5", Choose_model:"Fixed Model", Duration:"2 days", moreDetails:"special-event-fixed",device_wise:"/special-fixed-device-wise" },
-  { Bill_Title: "Special Event Plan 6", Choose_model: "TOU Model", Duration:"1 days", moreDetails:"TOU-Event-Form",device_wise:"/special-tou-device-wise" },
-];
-
 export default function DeviceWisePlans() {
   const classes = useStyles();
   const [cardDetails, setCardDetails] = useState([]);
   let history = useHistory();
+
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    variant: "",
+  });
+
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
+
   async  function getCalculatedData(){
 
     var token = document.cookie
@@ -95,41 +102,61 @@ export default function DeviceWisePlans() {
           authorization: `Token ${token}`
       }
   })
-  // console.log(response.data);
-  // if (response.data.status){
-  //   if(response.data.data){
-  //     setCardDetails(response.data.data);
-  //     console.log(response.data.data);
-  //   }else{
-  //     setCardDetails([]);
-  //     console.log("No any bill details");
-  //   }
-    
-    
-    
-  // }else {
-  //   console.log(response.data.message);
-  //   history.push("/sign-in");
-  //   window.location.reload();//reload browser
-  //   deleteAllCookies();//delete all cookies
-  // }
+   console.log(response.data);
+  if (response.data.status){
+    if(response.data.data == null){
+      setCardDetails([]);
+    } else {
+      setCardDetails(response.data.data);
+    }
+  
+  }
+  
         
   } 
 
-  // const onDeletebill = async (bill_id) => {
-  //   setConfirmDialog({
-  //     ...confirmDialog,
-  //     isOpen: false,
-  //   });
-  //   await DeleteBillPlan(bill_id);
-  //   await getCalculatedData();
+  async  function DeleteBillPlan(bill_id, bill_model){
+
+    var token = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+
+
+    var ParamsUserId = document.cookie
+    .split(';')
+    .map(cookie => cookie.split('='))
+    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+
+    console.log("Inside delete function delete plan", bill_id);
+
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/delete-bill-plan-special-event/${ParamsUserId}`, {
+      bill_id:bill_id,
+      bill_model : bill_model
+    }, {
+      headers: {
+          authorization: `Token ${token}`
+      },
+    })
+        
+  } 
+
+  const onDeletebill = async (bill_id, bill_model) => {
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
+    await DeleteBillPlan(bill_id, bill_model);
+    await getCalculatedData();
     
-  //   setNotify({
-  //     isOpen: true,
-  //     message: "Deleted Successfully",
-  //     variant: "danger",
-  //   });
-  // };
+    setNotify({
+      isOpen: true,
+      message: "Deleted Successfully",
+      variant: "danger",
+    });
+  };
+
+
 
   useEffect( async () => {
 
@@ -168,19 +195,19 @@ export default function DeviceWisePlans() {
                     gutterBottom
                     key={index}
                   >
-                    {card.Bill_Title}
+                    {card.bill_plan_name}
                   </Typography>
                   <div>
                     <img src={img1} alt="Image1" className="card-img-top" />
                   </div>
                   <div>
-                    <label>Selected Model : {card.Choose_model}</label>
-                    <label>Duration :  {card.Duration}</label>
+                    <label>Selected Model : {card.bill_model}</label>
+                    <label>Additional Units :  {card.Total_units.toFixed(3)}</label>
                   </div>
                 </CardContent>
                 <CardActions>
                   <div className="buttonContainer">
-                    <Link className={classes.linkStyle} to={card.device_wise}>
+                    <Link className={classes.linkStyle} to={card.device_wise} >
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
@@ -199,7 +226,16 @@ export default function DeviceWisePlans() {
                         More Details &nbsp;&nbsp;&nbsp;
                       </Button>
                     </Link>
-                    <Link className={classes.linkStyle} to="#">
+                    <Link className={classes.linkStyle} onClick={() => {
+                      setConfirmDialog({
+                        isOpen: true,
+                        title: "Are You sure delete this Bill Plan",
+                        subTitle: "You can't  undo this operation",
+                        onConfirm: () => {
+                          onDeletebill(card.bill_id, card.bill_model);
+                        },
+                      });
+                    }}>
                       <Button
                         className="iconCardsButtons"
                         variant="contained"
@@ -216,6 +252,11 @@ export default function DeviceWisePlans() {
           );
         })}
       </Grid>
+      <Notification notify={notify} setNotify={setNotify} />
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
+      />
     </div>
   );
 }

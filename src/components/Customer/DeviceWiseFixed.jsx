@@ -32,36 +32,11 @@ const columns = [
     label: "Total units",
     minWidth: 160,
     align: "center",
-    // format: (value) => value.toFixed(2),
+    format: (value) => value.toFixed(2),
   },
   
 ];
 
-// function createData(
-//   device_id,
-//   appliance,
-//   quantity,
-//   total_units,
-//   total_amount
-// ) {
-//   //   const density = population / size;
-//   return { device_id, appliance, quantity, total_units, total_amount };
-// }
-
-// const rows = [
-//   createData(1, "Television", 1, 100, 1340),
-//   createData(2, "Rice Cooker", 1, 100, 1340),
-//   createData(3, "Radio", 1, 100, 1340),
-//   createData(4, "Blender", 1, 100, 1340),
-//   createData(5, "Washing Machine", 1, 100, 1340),
-//   createData(6, "Multi Cooker", 1, 100, 1340),
-//   createData(7, "Computer", 1, 100, 1340),
-//   createData(8, "Laptop", 1, 100, 1340),
-//   createData(9, "Table Fan", 1, 100, 1340),
-//   createData(10, "Iron", 1, 100, 1340),
-//   createData(11, "Oven", 1, 100, 1340),
-//   createData(12, "", 1, 100, 1340),
-// ];
 
 const useStyles = makeStyles({
   root: {
@@ -87,7 +62,7 @@ export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [selected, setSelected] = React.useState("");
-  const [rows, setDeviceData] = useState([]);
+  const [rows, setRows] = useState([]);
 
   let area = null;
   const changeSelectOptionHandler = (event) => {
@@ -140,7 +115,7 @@ export default function StickyHeadTable() {
     useEffect( async () => {
   
       var devices_data_fixed = await getDeviceDetailsFixed(calculatedBillId);
-      setDeviceData(devices_data_fixed);
+      setRows(devices_data_fixed);
     },[]);
 
 

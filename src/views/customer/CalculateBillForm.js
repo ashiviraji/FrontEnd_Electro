@@ -32,7 +32,7 @@ const initialFvalues = {
   mOffPeak: 0,
   hDay: 0,
   mDay: 0,
-  power: "",
+  power: 0,
   priority: "",
   using_minutes_peak_time: 0,
   using_minutes_off_peak_time: 0,

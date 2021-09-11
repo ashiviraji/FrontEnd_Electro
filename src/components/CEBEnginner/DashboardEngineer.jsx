@@ -10,9 +10,10 @@ import { GoRequestChanges } from "react-icons/go";
 import { FaUsers } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import dashboardUser from "../../assets/img/dashboardUser.svg";
-import Axios from 'axios';
+import Axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   engineerCurrentRoot: {
@@ -66,47 +67,61 @@ const useStyles = makeStyles({
 export default function SimpleCard() {
   let history = useHistory();
 
-
-
   const [requestCount, setRequestCount] = useState("");
   const [userCount, setUserCount] = useState("");
 
   const classes = useStyles();
   var ParamsUserId = document.cookie
-    .split(';')
-    .map(cookie => cookie.split('='))
-    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+    .split(";")
+    .map((cookie) => cookie.split("="))
+    .reduce(
+      (accumulator, [key, value]) => ({
+        ...accumulator,
+        [key.trim()]: decodeURIComponent(value),
+      }),
+      {}
+    ).userId;
 
   // console.log(ParamsUserId);
 
   var token = document.cookie
-    .split(';')
-    .map(cookie => cookie.split('='))
-    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
-
+    .split(";")
+    .map((cookie) => cookie.split("="))
+    .reduce(
+      (accumulator, [key, value]) => ({
+        ...accumulator,
+        [key.trim()]: decodeURIComponent(value),
+      }),
+      {}
+    ).token;
 
   const getDashboardData = () => {
     // e.preventDefault();
 
-
-    Axios.get(`${process.env.REACT_APP_BASE_URL}/dashboard-details/${ParamsUserId}`, {
-      headers: {
-        authorization: `Token ${token}`
+    Axios.get(
+      `${process.env.REACT_APP_BASE_URL}/dashboard-details/${ParamsUserId}`,
+      {
+        headers: {
+          authorization: `Token ${token}`,
+        },
       }
-    }).then((response) => {
-      if (response.data.status) {
-        setRequestCount(parseInt(response.data.data.result1[0].request_count) + parseInt(response.data.data.result2[0].request_count));
-        setUserCount(response.data.data.result3[0].user_count);
-
-      } else {
-
-        history.push("/sign-in");
-        window.location.reload();//reload browser
-        deleteAllCookies();//delete all cookies
-      }
-    }).catch((error) => {
-      console.log("this is 1c response", error);
-    });
+    )
+      .then((response) => {
+        if (response.data.status) {
+          setRequestCount(
+            parseInt(response.data.data.result1[0].request_count) +
+              parseInt(response.data.data.result2[0].request_count)
+          );
+          setUserCount(response.data.data.result3[0].user_count);
+        } else {
+          history.push("/sign-in");
+          window.location.reload(); //reload browser
+          deleteAllCookies(); //delete all cookies
+        }
+      })
+      .catch((error) => {
+        console.log("this is 1c response", error);
+      });
   };
 
   /**
@@ -129,10 +144,21 @@ export default function SimpleCard() {
 
   return (
     <div className="engineer-home-user-main">
-      <label className="engineer-welcome-note">Welcome {document.cookie
-        .split(';')
-        .map(cookie => cookie.split('='))
-        .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).name}</label>
+      <label className="engineer-welcome-note">
+        Welcome{" "}
+        {
+          document.cookie
+            .split(";")
+            .map((cookie) => cookie.split("="))
+            .reduce(
+              (accumulator, [key, value]) => ({
+                ...accumulator,
+                [key.trim()]: decodeURIComponent(value),
+              }),
+              {}
+            ).name
+        }
+      </label>
       <div className="engineer-user-cards-area">
         <Card className={classes.engineerCurrentRoot} id="engineer-card1">
           <CardContent>
@@ -145,34 +171,39 @@ export default function SimpleCard() {
           <CardActions></CardActions>
         </Card>
 
-        <Card className={classes.engineerSpecialRoot} id="engineer-card2">
-          <CardContent>
-            <label className="engineer-card-title-name">
-              Unit Charge Notifications
-            </label>
-          </CardContent>
-          <div>
-            <GoRequestChanges className="engineer-svg-icon"></GoRequestChanges>
-            <label className="engineer-numeric-value">{requestCount}</label>
-          </div>
-          <CardActions></CardActions>
-        </Card>
+        <Link to="/engineer-pending-unit-charges-home">
+          <Card className={classes.engineerSpecialRoot} id="engineer-card2">
+            <CardContent>
+              <label className="engineer-card-title-name">
+                Pending Updates
+              </label>
+            </CardContent>
+            <div>
+              <GoRequestChanges className="engineer-svg-icon"></GoRequestChanges>
+              <label className="engineer-numeric-value">{requestCount}</label>
+            </div>
+            <CardActions></CardActions>
+          </Card>
+        </Link>
 
-        <Card className={classes.engineerMyprofile} id="engineer-card3">
-          <CardContent>
-            <label className="engineer-card-title-name">My profile</label>
-          </CardContent>
-          <div>
-            <BsFillPersonFill className="engineer-svg-icon"></BsFillPersonFill>
-            <label className="engineer-numeric-value"></label>
-          </div>
-          <CardActions></CardActions>
-        </Card>
+        <Link to="/engineer-userprofile">
+          <Card className={classes.engineerMyprofile} id="engineer-card3">
+            <CardContent>
+              <label className="engineer-card-title-name">My profile</label>
+            </CardContent>
+            <div>
+              <BsFillPersonFill className="engineer-svg-icon"></BsFillPersonFill>
+              <label className="engineer-numeric-value"></label>
+            </div>
+            <CardActions></CardActions>
+          </Card>
+        </Link>
       </div>
-      <div className="engineer-image-details">
+
+      <div className="admin-image-details">
         <img
           src={dashboardUser}
-          alt="unit-charge-update-engineer"
+          alt="unit-charge-update-admin"
           width="450"
           height="350"
         />

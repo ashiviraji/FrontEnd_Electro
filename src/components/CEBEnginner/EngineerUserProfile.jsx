@@ -3,16 +3,15 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 import "../../assets/css/CEBEngineer/engineer.css";
 import Engineer1 from "../../assets/img/engineer1.png";
-import Axios from 'axios';
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import Axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 import ConfirmationBox from "../common/ConfirmationBox";
 
 toast.configure();
 
 export default function EngineerUserProfile() {
-
   let history = useHistory();
 
   const [userFirstName, setUserFirstName] = useState("");
@@ -33,17 +32,28 @@ export default function EngineerUserProfile() {
     subTitle: "",
   });
   var ParamsUserId = document.cookie
-    .split(';')
-    .map(cookie => cookie.split('='))
-    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+    .split(";")
+    .map((cookie) => cookie.split("="))
+    .reduce(
+      (accumulator, [key, value]) => ({
+        ...accumulator,
+        [key.trim()]: decodeURIComponent(value),
+      }),
+      {}
+    ).userId;
 
   // console.log(ParamsUserId);
 
   var token = document.cookie
-    .split(';')
-    .map(cookie => cookie.split('='))
-    .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
-
+    .split(";")
+    .map((cookie) => cookie.split("="))
+    .reduce(
+      (accumulator, [key, value]) => ({
+        ...accumulator,
+        [key.trim()]: decodeURIComponent(value),
+      }),
+      {}
+    ).token;
 
   const getUser = (e) => {
     e.preventDefault();
@@ -52,15 +62,16 @@ export default function EngineerUserProfile() {
       isOpen: false,
     });
 
-    Axios.get(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
-      headers: {
-        authorization: `Token ${token}`
+    Axios.get(
+      `${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`,
+      {
+        headers: {
+          authorization: `Token ${token}`,
+        },
       }
-    })
+    )
       .then((response) => {
-
         if (response.data.status) {
-
           setUserFirstName(response.data.data[0].First_name);
           setUserLastName(response.data.data[0].Last_name);
           setUseremai(response.data.data[0].Email);
@@ -70,18 +81,15 @@ export default function EngineerUserProfile() {
           setUserDesignation(response.data.data[0].Role);
           setUserNic(response.data.data[0].NIC);
 
-
           console.log("successfully get user profile of ceb engineer");
-
         } else {
-
-          confirmation()
+          confirmation();
         }
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log("this is 1c response", error);
       });
   };
-
 
   const updateUser = (e) => {
     e.preventDefault();
@@ -93,22 +101,25 @@ export default function EngineerUserProfile() {
       ...confirmationBox,
       isOpen: false,
     });
-    Axios.put(`${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`, {
-      firstName: userFirstName,
-      lastName: userLastName,
-      contact: userContact,
-      nic: userNic,
-      address: userAddress
-    }, {
-      headers: {
-        authorization: `Token ${token}`
+    Axios.put(
+      `${process.env.REACT_APP_BASE_URL}/user-profile/${ParamsUserId}`,
+      {
+        firstName: userFirstName,
+        lastName: userLastName,
+        contact: userContact,
+        nic: userNic,
+        address: userAddress,
       },
-    })
+      {
+        headers: {
+          authorization: `Token ${token}`,
+        },
+      }
+    )
       .then((response) => {
-
         if (response.data.status) {
           document.cookie = `name=${userFirstName}`;
-          toast.success('User Profile Updated', {
+          toast.success("User Profile Updated", {
             autoClose: 5000,
             hideProgressBar: true,
             closeOnClick: true,
@@ -117,12 +128,11 @@ export default function EngineerUserProfile() {
             progress: undefined,
           });
           console.log("successfully update user profile of ceb engineer");
-
         } else {
-
-          confirmation()
+          confirmation();
         }
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log("This is  response", error);
       });
   };
@@ -147,7 +157,7 @@ export default function EngineerUserProfile() {
       btnStatus: "warning",
       onConfirm: () => {
         history.push("/sign-in");
-        window.location.reload();//reload browser
+        window.location.reload(); //reload browser
         deleteAllCookies();
       },
     });
@@ -155,9 +165,15 @@ export default function EngineerUserProfile() {
 
   return (
     <div className="body-engineer">
-      <form onLoad={(e) => { getUser(e) }} >
+      <form
+        onLoad={(e) => {
+          getUser(e);
+        }}
+      >
         <div className="ceb-engineer-heading">
-          <h2 align="center">USER PROFILE</h2>
+          <h2 align="center">
+            <b>USER PROFILE</b>
+          </h2>
         </div>
 
         <div class="row mb-3">
@@ -170,7 +186,9 @@ export default function EngineerUserProfile() {
               class="form-control"
               id="firstname"
               value={userFirstName}
-              onChange={(e) => { setUserFirstName(e.target.value); }}
+              onChange={(e) => {
+                setUserFirstName(e.target.value);
+              }}
               required
             />
           </div>
@@ -186,8 +204,9 @@ export default function EngineerUserProfile() {
               class="form-control"
               id="lastname"
               value={userLastName}
-              onChange={(e) => { setUserLastName(e.target.value); }}
-
+              onChange={(e) => {
+                setUserLastName(e.target.value);
+              }}
               required
             />
           </div>
@@ -223,8 +242,9 @@ export default function EngineerUserProfile() {
               class="form-control"
               id="contactnumber"
               value={userContact}
-              onChange={(e) => { setUserContact(e.target.value); }}
-
+              onChange={(e) => {
+                setUserContact(e.target.value);
+              }}
               required
             />
           </div>
@@ -270,8 +290,9 @@ export default function EngineerUserProfile() {
               class="form-control"
               id="address"
               value={userAddress}
-              onChange={(e) => { setUserAddress(e.target.value); }}
-
+              onChange={(e) => {
+                setUserAddress(e.target.value);
+              }}
               required
             />
           </div>
@@ -287,9 +308,9 @@ export default function EngineerUserProfile() {
               class="form-control"
               id="nicnumber"
               value={userNic}
-              onChange={(e) => { setUserNic(e.target.value); }}
-
-
+              onChange={(e) => {
+                setUserNic(e.target.value);
+              }}
             />
           </div>
         </div>
@@ -335,17 +356,21 @@ export default function EngineerUserProfile() {
         </div>
 
         <div>
-          <button type="button" className="admin-add-update-btn" onClick={(e) => {
-            setConfirmDialog({
-              isOpen: true,
-              title: "Are You Sure Update Profile",
-              subTitle: "Click  'Yes'  To Update Profile",
-              btnStatus: "success",
-              onConfirm: () => {
-                updateUser(e);
-              },
-            });
-          }}>
+          <button
+            type="button"
+            className="admin-add-update-btn"
+            onClick={(e) => {
+              setConfirmDialog({
+                isOpen: true,
+                title: "Are You Sure Update Profile",
+                subTitle: "Click  'Yes'  To Update Profile",
+                btnStatus: "success",
+                onConfirm: () => {
+                  updateUser(e);
+                },
+              });
+            }}
+          >
             Update
           </button>
         </div>

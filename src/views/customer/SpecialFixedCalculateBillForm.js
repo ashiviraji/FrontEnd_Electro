@@ -24,7 +24,7 @@ const initialFvalues = {
   quantity: 0,
   hfixed: 0,
   mfixed: 0,
-  power: "",
+  power: 0,
   numberOfDays:0,
   using_total_minutes: 0,
   total_units_fixed: 0,
@@ -58,23 +58,28 @@ export default function SpecialFixedCalculateBillForm(props) {
     if ("power" in fieldValues)
       temp.power =
         fieldValues.power > 0 ? "" : "power should be a number and > 0";
-    if ("hfixed" in fieldValues)
+    // if ("hfixed" in fieldValues)
+    //   temp.hfixed =
+    //     (fieldValues.hfixed >= 0 && fieldValues.hfixed <= 24) ||
+    //       fieldValues.hfixed === ""
+    //       ? ""
+    //       : "24 > Hours in day >= 0";
+    // if ("mfixed" in fieldValues)
+    //   temp.mfixed =
+    //     (fieldValues.mfixed >= 0 && fieldValues.mfixed < 60) ||
+    //       fieldValues.mfixed === ""
+    //       ? ""
+    //       : "60 > minutes >= 0";
+
+    if ("hfixed" in fieldValues || "mfixed" in fieldValues)
       temp.hfixed =
-        (fieldValues.hfixed >= 0 && fieldValues.hfixed <= 24) ||
-          fieldValues.hfixed === ""
+        (fieldValues.hfixed > 0 || fieldValues.mfixed > 0)
           ? ""
-          : "24 > Hours in day >= 0";
-    if ("mfixed" in fieldValues)
-      temp.mfixed =
-        (fieldValues.mfixed >= 0 && fieldValues.mfixed < 60) ||
-          fieldValues.mfixed === ""
-          ? ""
-          : "60 > minutes >= 0";
+          : "Required time period";
 
     if ("numberOfDays" in fieldValues)
           temp.numberOfDays =
-            (fieldValues.numberOfDays >= 0 && fieldValues.numberOfDays < 30) ||
-              fieldValues.numberOfDays === ""
+            (fieldValues.numberOfDays > 0 && fieldValues.numberOfDays <= 31 )
               ? ""
               : "30 > Number Of Days >= 0";
     
