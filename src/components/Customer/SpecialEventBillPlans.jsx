@@ -65,15 +65,6 @@ const useStyles = makeStyles({
 
 });
 
-// const cardDetails = [
-//   { Bill_Title: "Special Event Plan 1", Choose_model: "TOU Model", Duration:"1 days", moreDetails:"TOU-Event-Form",device_wise:"/special-tou-device-wise"},
-//   { Bill_Title: "Special Event Plan 2", Choose_model: "Fixed Model",Duration:"2 days", moreDetails:"special-event-fixed",device_wise:"/special-fixed-device-wise" },
-//   { Bill_Title: "Special Event Plan 3", Choose_model: "Fixed Model", Duration:"2 days", moreDetails:"special-event-fixed",device_wise:"/special-fixed-device-wise" },
-//   { Bill_Title: "Special Event Plan 4", Choose_model: "TOU Model",Duration:"1 days", moreDetails:"TOU-Event-Form",device_wise:"/special-tou-device-wise" },
-//   { Bill_Title: "Special Event Plan 5", Choose_model:"Fixed Model", Duration:"2 days", moreDetails:"special-event-fixed",device_wise:"/special-fixed-device-wise" },
-//   { Bill_Title: "Special Event Plan 6", Choose_model: "TOU Model", Duration:"1 days", moreDetails:"TOU-Event-Form",device_wise:"/special-tou-device-wise" },
-// ];
-
 export default function DeviceWisePlans() {
   const classes = useStyles();
   const [cardDetails, setCardDetails] = useState([]);
@@ -147,15 +138,6 @@ export default function DeviceWisePlans() {
           authorization: `Token ${token}`
       },
     })
-  // console.log(response.data);
-  // if (response.data.status){
-  //    console.log("Delete Device")
-  // }else {
-  //   console.log(response.data.message);
-  //   history.push("/sign-in");
-  //   window.location.reload();//reload browser
-  //   deleteAllCookies();//delete all cookies
-  // }
         
   } 
 

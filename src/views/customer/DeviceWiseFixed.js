@@ -7,23 +7,6 @@ import DeviceWiseTOU from "../../components/Customer/TOUDeviceWiseUsage";
 
 export default function DeviceWiseFixed() {
 
-  // constructor(props){
-  //   super(props);
-  //  this.state = {name: "Michael"}
-   
-
-  // }
-  // changeTitle = (e) =>{
-    
-  //   this.setState({name: e.target.value});
-  //   console.log(e.target.value);
-  //   if((e.target.value) === "Fixed Model"){
-  //   return({model_name:"DeviceWiseFixed1"});
-      
-  //   }
-   
-  //   }
- 
   const[displayModel,setModel]=useState(
     {
       isAgree : false,
