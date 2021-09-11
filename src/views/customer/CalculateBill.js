@@ -11,7 +11,8 @@ import { TableRow } from "@material-ui/core";
 import { Toolbar } from "@material-ui/core";
 import { InputAdornment } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
-import { Search } from "@material-ui/icons";
+import SearchBar from "material-ui-search-bar";
+import { Search, StrikethroughSTwoTone } from "@material-ui/icons";
 import "../../assets/css/Customer/billCalculate.css";
 import { Button } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
@@ -66,9 +67,34 @@ console.log("Front End eken yanawada id eka :- " + ParamsUserId);
 export default function CalculateBill() {
   const classes = useStyles();
   let history = useHistory();
+  const [searched,setSearched] = useState("");
+  const[searchRecords,setSearchRecords] = useState([]);
+  const [records, setRecords] = useState([]);
   const [recordForEdit, setRecordForEdit] = useState(null);
   const [buttonState, setButtonState] = useState(true);
   const [newBillId, setNewBillId] = useState(0);
+  
+  const requestSearch =  (searchVal) =>{
+    console.log("The searsearchVal",searchVal);
+    
+    const filteredRows =  searchRecords.filter((row) =>{
+      console.log(records);
+      return row.appliance.toLowerCase().includes(searchVal.toLowerCase());
+    });
+    console.log("The filter Row",filteredRows);
+    if(searchVal == " "){
+      console.log("val");
+      setRecords(records);
+    }else{
+      setRecords(filteredRows);
+    }
+    
+  }
+
+  const cancelSearch = () =>{
+    setSearched("");
+    requestSearch(searched);
+  };
 
   async function getBillId() {
 
@@ -96,7 +122,7 @@ export default function CalculateBill() {
 
   }
 
-  const [records, setRecords] = useState([]);
+  
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
@@ -131,9 +157,11 @@ export default function CalculateBill() {
     const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
     if (recordDetails == null) {
       setRecords([]);
+      setSearchRecords([]);
       setButtonState(true);
     } else {
       setRecords(recordDetails);
+      setSearchRecords(recordDetails);
       setButtonState(false);
     }
 
@@ -271,10 +299,13 @@ export default function CalculateBill() {
       <Paper className={classes.pageContent}>
         <h2>Your Device Data</h2>
         <Toolbar>
-          <TextField
+          {/* <TextField
             label="Search Device"
             className="Search-bar-in-form"
-            onChange={handleSearch}
+            //onChange={handleSearch}
+            value={searched}
+            onChange={(searchVal) => requestSearch(searchVal)}
+            onCancelSearch={() => cancelSearch()}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="start">
@@ -282,7 +313,12 @@ export default function CalculateBill() {
                 </InputAdornment>
               ),
             }}
-          />
+          /> */}
+          <SearchBar
+           value={searched}
+           onChange={(searchVal) => requestSearch(searchVal)}
+           onCancelSearch={() => cancelSearch()}
+            />
           <button
             type="button"
             className="btn btn-info add-new-button"
