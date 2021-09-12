@@ -7,11 +7,14 @@ import '../../assets/css/TOUSuggestions.css';
 
 
 
-
-
-
 const TOUSuggestions = (props) => {
     console.log(props);
+
+    const params = new URLSearchParams(window.location.search)
+    const calculatedBillId  = params.get('bill_id');
+    console.log(params.get('bill_id'));
+
+
     const cardInfo = [
         { Applicance: "Television", Quantity: "2", Suggestion1: "Transfer time from peak to off-peak", Save: "200" },
         { Applicance: "Television", Quantity: "2", Suggestion1: "Transfer  time  from peak to day", Save: "100" },
@@ -72,8 +75,7 @@ const TOUSuggestions = (props) => {
 
     const [devices, setDevices] = useState(cardInfo.slice(0, 15));
     const [pageNumber, setPageNumber] = useState(0);
-    const devicesPerPage = 4
-        ;
+    const devicesPerPage = 4;
     const pagesVisited = pageNumber * devicesPerPage;
 
     const displayDivices = devices.slice(pagesVisited, pagesVisited + devicesPerPage).map((card, index) => {
@@ -89,7 +91,7 @@ const TOUSuggestions = (props) => {
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Suggestion 1 &nbsp;:</Form.Label>
-                        <Form.Label className="suggestions">{card.Suggestion1}</Form.Label>
+                        <Form.Label className="suggestions">assss {card.Suggestion1}</Form.Label>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
