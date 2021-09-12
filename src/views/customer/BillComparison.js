@@ -189,7 +189,7 @@ var ParamsUserId = document.cookie
 
           <Link
             className="btn btn-info btn-lg btn-suggest"
-            to="/TOU-suggestions"
+            to={`/TOU-suggestions?bill_id=${calculatedBillId}`}
           >
             <FaThList /> Suggestions
           </Link>
