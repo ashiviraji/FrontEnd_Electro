@@ -54,7 +54,7 @@ const TOUSuggestions = (props) => {
     .map((card, index) => {
       return (
         <Card
-          style={{ width: "40rem", height: "12rem" }}
+          style={{ width: "40rem", height: "15rem" }}
           key={index}
           className="box"
           id="box-card"
@@ -79,6 +79,14 @@ const TOUSuggestions = (props) => {
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Save Amount (LKR) &nbsp;:</Form.Label>
               <Form.Label>&nbsp;&nbsp;{card.save_amount}</Form.Label>
+              {/* <Form.Label>&nbsp;&nbsp;{card.can_change_hours}Hours</Form.Label>
+              <Form.Label>&nbsp;&nbsp;{card.can_change_minutes}Minutes</Form.Label> */}
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Change Time&nbsp;:</Form.Label>
+              <Form.Label>&nbsp;&nbsp;{card.can_change_hours}Hours&nbsp;&nbsp;&</Form.Label>
+              <Form.Label>&nbsp;&nbsp;{card.can_change_minutes}Minutes</Form.Label>
             </Form.Group>
           </Card.Body>
         </Card>
