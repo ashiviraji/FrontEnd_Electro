@@ -29,7 +29,7 @@ import CustomerUserProfile from "../../Customer/CustomerUserProfile";
 import deviceWiseFixedSeperate from "../../../views/customer/deviceWiseFixedUsageSeperate";
 import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate";
 import SpecialEventDeviceUsage from "../../../views/customer/SpecialEventDeviceUsage";
-import TOUEventForm from "../../../views/customer/TOUEventForm";
+import TOUEventForm from "../../../views/customer/SpecialTOUEditBill";
 import { GrObjectUngroup } from "react-icons/gr";
 // import UserProfile from "../../../views/customer/AdminUserProfile"
 
