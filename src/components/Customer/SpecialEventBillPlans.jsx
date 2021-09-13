@@ -108,6 +108,8 @@ export default function DeviceWisePlans() {
       setCardDetails([]);
     } else {
       setCardDetails(response.data.data);
+      console.log("Special Event Card details");
+      console.log(response.data.data);
     }
   
   }

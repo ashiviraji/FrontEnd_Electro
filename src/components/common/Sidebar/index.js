@@ -18,10 +18,11 @@ import DashboardUser from "../../../views/customer/DashboardUser";
 import CalculateBill from "../../../views/customer/CalculateBill";
 import BillCompariosn from "../../../views/customer/BillComparison";
 import myBillPlans from "../../../views/customer/billPlans";
+
 import SpecialEventMyBillPlans from "../../../views/customer/SpecialEventBillPlans";
 import InformationTable from "../../../views/InformationTable";
 import DeviceWisePlans from "../../../views/customer/DeviceWisePlans";
-import FixedEventForm from "../../../views/customer/FixedEventForm";
+import FixedEventForm from "../../../views/customer/SpecialFixedEditBill";
 import { BiUserCircle } from "react-icons/bi";
 // import AdminUserProfile from "../../../views/Admin/AdminUserProfile";
 import CustomerUserProfile from "../../Customer/CustomerUserProfile";
