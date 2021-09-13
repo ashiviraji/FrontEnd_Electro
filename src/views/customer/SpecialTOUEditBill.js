@@ -76,6 +76,7 @@ export default function SpecialTOUEditBill() {
     const [openPopup, setOpenPopup] = useState(false);
     let history = useHistory();
     const [buttonState, setButtonState] = useState(true);
+    const [bill_plan_name,setPlanNameState] = useState("");
     const [buttonStatesave, setbuttonStatesave] = useState(true);
     const [inputValue, setInputValue] = useState (' ');
     const [notify, setNotify] = useState({
@@ -109,6 +110,9 @@ export default function SpecialTOUEditBill() {
     useEffect( async () => {
   
    const recordDetails = await SpecialDeviceBill.getAllDevices(newBillId);
+   const planName= await getPlanName();
+     setPlanNameState(planName);
+     console.log("plan_name is:",planName);
    if(recordDetails==null){
        setRecords([]);
        setButtonState(true);
@@ -122,6 +126,49 @@ export default function SpecialTOUEditBill() {
     console.log("inside of useEffect" , recordDetails);
   
     },[]);
+  
+
+    async function getPlanName(){
+        console.log("Get Bill Plan Name");
+  
+        var token = document.cookie
+          .split(';')
+          .map(cookie => cookie.split('='))
+          .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+    
+    
+        var ParamsUserId = document.cookie
+          .split(';')
+          .map(cookie => cookie.split('='))
+          .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+    
+    
+    
+        const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-bill-plan-name/${ParamsUserId}`, {
+    
+          bill_id: newBillId
+        }, {
+          headers: {
+            authorization: `Token ${token}`
+          }
+        })
+  
+        console.log("Get Bill Plan Name",response.data);
+        if (response.data.status) {
+          const bill_plan_name=response.data.message.data[0].bill_plan_name;
+          console.log(bill_plan_name);
+          return bill_plan_name;
+          
+        }
+        else {
+          // console.log(response.data.message);
+          // history.push("/sign-in");
+          // window.location.reload();//reload browser
+          // deleteAllCookies();//delete all cookies
+        }
+    
+  
+      }
   
 
     const addOrEdit = async (device, resetForm) => {
@@ -438,7 +485,7 @@ export default function SpecialTOUEditBill() {
 
       <input
          type="text"
-         value={inputValue}
+         value={bill_plan_name}
          placeholder="Enter a plan"
          onChange={e => setInputValue(e.target.value)}
        />
