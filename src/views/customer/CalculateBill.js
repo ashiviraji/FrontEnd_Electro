@@ -157,12 +157,12 @@ export default function CalculateBill() {
     const recordDetails = await DeviceBill.getAllDevices(new_bill_id);
     if (recordDetails == null) {
       setRecords([]);
-      setSearchRecords([]);
+      
       setButtonState(true);
       console.log("huuu");
     } else {
       setRecords(recordDetails);
-      setSearchRecords(recordDetails);
+     
       setButtonState(false);
     }
 
@@ -228,10 +228,12 @@ export default function CalculateBill() {
     const recordDetails = await DeviceBill.getAllDevices(newBillId);
     if (recordDetails == null) {
       setRecords([]);
+      setSearchRecords([]);
       setButtonState(true);
       console.log("button disabled after delete all");
     } else {
       setRecords(recordDetails);
+      setSearchRecords(recordDetails);
       setButtonState(false);
     }
     setNotify({
