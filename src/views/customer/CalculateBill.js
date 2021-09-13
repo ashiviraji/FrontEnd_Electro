@@ -304,21 +304,7 @@ export default function CalculateBill() {
       <Paper className={classes.pageContent}>
         <h2>Your Device Data</h2>
         <Toolbar>
-          {/* <TextField
-            label="Search Device"
-            className="Search-bar-in-form"
-            //onChange={handleSearch}
-            value={searched}
-            onChange={(searchVal) => requestSearch(searchVal)}
-            onCancelSearch={() => cancelSearch()}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-            }}
-          /> */}
+       
           <SearchBar
            value={searched}
            onChange={(searchVal) => requestSearch(searchVal)}
