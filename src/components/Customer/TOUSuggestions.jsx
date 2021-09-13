@@ -93,7 +93,12 @@ const TOUSuggestions = (props) => {
   useEffect( async () => {
   
     var suggestions = await getSuggestionsDetails(calculatedBillId);
-    setCardInfo(suggestions);
+    console.log(suggestions);
+    if(suggestions){
+      setCardInfo(suggestions);
+    }else{
+      setCardInfo([]);
+    }
     console.log(suggestions);
   },[]);
 
