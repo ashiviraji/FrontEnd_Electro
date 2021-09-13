@@ -75,9 +75,9 @@ export default function BillPlansMoreAndEdit() {
   const [buttonState, setButtonState] = useState(true);
 //   const [newBillId, setNewBillId] = useState(0);
 
+const [records, setRecords] = useState([]);
 
-
-  const [records, setRecords] = useState([]);
+ 
   const [filterFn, setFilterFn] = useState({
     fn: (items) => {
       return items;
