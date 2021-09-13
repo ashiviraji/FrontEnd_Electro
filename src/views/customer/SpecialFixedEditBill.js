@@ -246,18 +246,18 @@ const noOfDays = 0;
         }
       })
 
-      console.log("Get Bill Plan Name",response.data);
+      console.log("Get Bill Plan Name",response.data.data);
       if (response.data.status) {
-        const bill_plan_name=response.data.message.data[0].bill_plan_name;
-        console.log(bill_plan_name);
-        return bill_plan_name;
+      const bill_plan_name=response.data.data[0].bill_plan_name;
+      console.log(bill_plan_name);
+       return bill_plan_name;
         
       }
       else {
-        // console.log(response.data.message);
-        // history.push("/sign-in");
-        // window.location.reload();//reload browser
-        // deleteAllCookies();//delete all cookies
+        console.log(response.data.message);
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();//delete all cookies
       }
   
 
@@ -310,10 +310,10 @@ const noOfDays = 0;
         
       }
       else {
-        // console.log(response.data.message);
-        // history.push("/sign-in");
-        // window.location.reload();//reload browser
-        // deleteAllCookies();//delete all cookies
+        console.log(response.data.message);
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();//delete all cookies
       }
   
     }
@@ -342,21 +342,17 @@ const noOfDays = 0;
           authorization: `Token ${token}`
         }
       })
-       console.log("Calculate Special Event:",response.data);
+       console.log("Update Fixed Bill Plan:",response.data.message);
       if (response.data.status) {
-        
+        console.log("Update Success--------------------------------------------------");
+        history.push("/special-event");
        
-       
-        console.log(response.data.data);
         
-      
-  
-  
       } else {
-        // console.log(response.data.message);
-        // history.push("/sign-in");
-        // window.location.reload();//reload browser
-        // deleteAllCookies();//delete all cookies
+        console.log(response.data);
+        history.push("/sign-in");
+        window.location.reload();//reload browser
+        deleteAllCookies();//delete all cookies
       }
   
     }
@@ -491,8 +487,6 @@ const noOfDays = 0;
 
                      
                      
-                    
-               
                 </Col>
               </Row>
 
@@ -500,11 +494,11 @@ const noOfDays = 0;
                 <Col sm="4"></Col>
                
                 <Col sm="4" style={{marginLeft:"624px"}}>
-                <Link to="/special-event">
+                
                 <button type="button" className="btn btn-success calculate-button-special-event" onClick={updateSpecialEventFixedDevice}  disabled={saveButtonState}>
                     Save Plan
                 </button>
-                </Link>
+               
                 </Col>
               </Row>
                
