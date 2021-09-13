@@ -72,6 +72,7 @@ const noOfDays = 0;
     const [saveButtonState, setSaveButtonState] = useState(true);
     const [recordForEdit, setRecordForEdit] = useState(null);
     const [searched,setSearched] = useState("");
+
    
     const params = new URLSearchParams(window.location.search)
     const newBillId  = params.get('bill_id');
@@ -91,6 +92,7 @@ const noOfDays = 0;
     // });
 
     const [openPopup, setOpenPopup] = useState(false);
+
     
     const requestSearch =  (searchVal) =>{
       console.log("The searsearchVal",searchVal);
@@ -113,6 +115,7 @@ const noOfDays = 0;
       setSearched("");
       requestSearch(searched);
     };
+
 
     const [confirmDialog, setConfirmDialog] = useState({
       isOpen: false,
@@ -141,6 +144,7 @@ const noOfDays = 0;
       setRecords([]);
       setButtonState(true);
       setSearchRecords([]);
+
       setSaveButtonState(true);
     }else{
       
@@ -258,6 +262,7 @@ const noOfDays = 0;
         history.push("/sign-in");
         window.location.reload();//reload browser
         deleteAllCookies();//delete all cookies
+
       }
   
 
@@ -314,6 +319,7 @@ const noOfDays = 0;
         history.push("/sign-in");
         window.location.reload();//reload browser
         deleteAllCookies();//delete all cookies
+
       }
   
     }
@@ -342,6 +348,7 @@ const noOfDays = 0;
           authorization: `Token ${token}`
         }
       })
+
        console.log("Update Fixed Bill Plan:",response.data.message);
       if (response.data.status) {
         console.log("Update Success--------------------------------------------------");
@@ -364,12 +371,15 @@ const noOfDays = 0;
         <h1>Your Device Data </h1>
 
         <Toolbar>
+
           
            <SearchBar
            value={searched}
            onChange={(searchVal) => requestSearch(searchVal)}
            onCancelSearch={() => cancelSearch()}
             />
+
+
           <button
             type="button"
             className="btn btn-info add-new-button"
@@ -487,6 +497,7 @@ const noOfDays = 0;
 
                      
                      
+
                 </Col>
               </Row>
 
@@ -494,11 +505,13 @@ const noOfDays = 0;
                 <Col sm="4"></Col>
                
                 <Col sm="4" style={{marginLeft:"624px"}}>
+
                 
                 <button type="button" className="btn btn-success calculate-button-special-event" onClick={updateSpecialEventFixedDevice}  disabled={saveButtonState}>
                     Save Plan
                 </button>
                
+
                 </Col>
               </Row>
                
