@@ -6,104 +6,6 @@ import "../../assets/css/TOUSuggestions.css";
 import Axios from 'axios';
 
 
-const cardInfo = [
-  {
-    Applicance: "Television",
-    Quantity: "2",
-    Suggestion1: "Transfer time from peak to off-peak",
-    Save: "200",
-  },
-  {
-    Applicance: "Television",
-    Quantity: "2",
-    Suggestion1: "Transfer  time  from peak to day",
-    Save: "100",
-  },
-  {
-    Applicance: "Celling Fan",
-    Quantity: "3",
-    Suggestion1: "Transfer time from Day to off-peak",
-    Save: "150",
-  },
-  {
-    Applicance: "Washing Machine",
-    Quantity: "1",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "400",
-  },
-  {
-    Applicance: "Radio",
-    Quantity: "1",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Computer",
-    Quantity: "2",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Printer",
-    Quantity: "2",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Bulb",
-    Quantity: "10",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Table Fan",
-    Quantity: "4",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Table Fan",
-    Quantity: "4",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Table Fan",
-    Quantity: "4",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Table Fan",
-    Quantity: "4",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Celling Fan",
-    Quantity: "3",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Celling Fan",
-    Quantity: "3",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Celling Fan",
-    Quantity: "3",
-    Suggestion1: "Transfer  time  from peak to off-peak",
-    Save: "300",
-  },
-  {
-    Applicance: "Celling Fan",
-    Quantity: "3",
-    Suggestion1: "Transfer  time from peak to off-peak",
-    Save: "300",
-  },
-];
 
 const TOUSuggestions = (props) => {
   console.log(props);
@@ -112,61 +14,13 @@ const TOUSuggestions = (props) => {
   const calculatedBillId = params.get("bill_id");
   console.log(params.get("bill_id"));
 
-  // const cardInfo = [
-  //     { Applicance: "Television", Quantity: "2", Suggestion1: "Transfer time from peak to off-peak", Save: "200" },
-  //     { Applicance: "Television", Quantity: "2", Suggestion1: "Transfer  time  from peak to day", Save: "100" },
-  //     { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer time from Day to off-peak", Save: "150" },
-  //     { Applicance: "Washing Machine", Quantity: "1", Suggestion1: "Transfer  time from peak to off-peak", Save: "400" },
-  //     { Applicance: "Radio", Quantity: "1", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-  //     { Applicance: "Computer", Quantity: "2", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-  //     { Applicance: "Printer", Quantity: "2", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-  //     { Applicance: "Bulb", Quantity: "10", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-  //     { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-  //     { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-  //     { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-  //     { Applicance: "Table Fan", Quantity: "4", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-  //     { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-  //     { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-  //     { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer  time  from peak to off-peak", Save: "300" },
-  //     { Applicance: "Celling Fan", Quantity: "3", Suggestion1: "Transfer  time from peak to off-peak", Save: "300" },
-
-  // ];
-
-  // const renderCard =(card,index) =>{
-
-  //     return(
-
-  //     <Card style={{ width: '40rem' }} key={index} className="box">
-
-  //      <Card.Body  className="card-body">
-  //         <Card.Title>Device Name &nbsp;:&nbsp;&nbsp;{card.Applicance}</Card.Title>
-  //         <Form.Group className="mb-3" controlId="formBasicPassword">
-  //          <Form.Label>Quantity &nbsp;:</Form.Label>
-  //          <Form.Label>&nbsp;&nbsp;{card.Quantity}</Form.Label>
-  //          </Form.Group>
-
-  //         <Form.Group className="mb-3" controlId="formBasicPassword">
-  //          <Form.Label>Suggestion 1 &nbsp;:</Form.Label>
-  //          <Form.Label className="suggestions">{card.Suggestion1}</Form.Label>
-  //          </Form.Group>
-
-  //          <Form.Group className="mb-3" controlId="formBasicPassword">
-  //          <Form.Label>Save Amount (LKR) &nbsp;:</Form.Label>
-  //          <Form.Label>&nbsp;&nbsp;{card.Save}</Form.Label>
-  //          </Form.Group>
-
-  //      </Card.Body>
-  // </Card>
-
-  //     );
-  // };
-
+  const [cardInfo, setCardInfo] = useState([]);
   const [devices, setDevices] = useState(cardInfo.slice(0, 15));
   const [pageNumber, setPageNumber] = useState(0);
   const devicesPerPage = 4;
   const pagesVisited = pageNumber * devicesPerPage;
 
-  async function getDeviceDetailsFixed(newBillId) {
+  async function getSuggestionsDetails(newBillId) {
 
     var ParamsUserId = document.cookie
       .split(';')
@@ -191,12 +45,11 @@ const TOUSuggestions = (props) => {
           }
       })
   
-      console.log(response.data.data);
       return response.data.data;
   
   }
 
-  const displayDivices = devices
+  const displayDivices = cardInfo
     .slice(pagesVisited, pagesVisited + devicesPerPage)
     .map((card, index) => {
       return (
@@ -208,23 +61,24 @@ const TOUSuggestions = (props) => {
         >
           <Card.Body className="card-body">
             <Card.Title>
-              Device Name &nbsp;:&nbsp;&nbsp;{card.Applicance}
+              Device Name &nbsp;:&nbsp;&nbsp;{card.appliance}
             </Card.Title>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Quantity &nbsp;:</Form.Label>
-              <Form.Label>&nbsp;&nbsp;{card.Quantity}</Form.Label>
+              <Form.Label>&nbsp;&nbsp;{card.quantity}</Form.Label>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Suggestion 1 &nbsp;:</Form.Label>
+              <Form.Label>Suggestion &nbsp;:</Form.Label>
               <Form.Label className="suggestions">
-                assss {card.Suggestion1}
+                Change time {card.cur_time} to {card.change_time} and 
+                save LKR. {card.	save_amount}
               </Form.Label>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Save Amount (LKR) &nbsp;:</Form.Label>
-              <Form.Label>&nbsp;&nbsp;{card.Save}</Form.Label>
+              <Form.Label>&nbsp;&nbsp;{card.save_amount}</Form.Label>
             </Form.Group>
           </Card.Body>
         </Card>
@@ -236,11 +90,14 @@ const TOUSuggestions = (props) => {
     setPageNumber(selected);
   };
 
-//   useEffect( async () => {
+  useEffect( async () => {
   
-//     var devices_data_fixed = await getDeviceDetailsFixed(calculatedBillId);
-//     setDevices(devices_data_fixed);
-//   },[]);
+    var suggestions = await getSuggestionsDetails(calculatedBillId);
+    setCardInfo(suggestions);
+    console.log(suggestions);
+  },[]);
+
+  
 
   return (
     <div className="grid-pagnation" id="paginate-buttons">
