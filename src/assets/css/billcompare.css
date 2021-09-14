@@ -1,9 +1,10 @@
 .bad_model{
     height:90%;
+    
 }
 .best_model{
     /* background-color: turquoise; */
-    background-color: #83fca7;
+    background-color: #5fede6;
     height: 90%;
 }
 /* 
@@ -15,6 +16,7 @@
 .best-model{
     margin-top: 2%;
     margin-bottom: 5%;
+    background-color:#5fede6;
 }
 
 .grp-billcomparison{
@@ -51,7 +53,7 @@
 }
 
 .btn-suggest{
-    margin: 2% ;
+    margin: 2% ;  
     margin-bottom: none;
     font-size: 120%;
 }
@@ -71,5 +73,14 @@
     margin-top: 40px;
     width: 20%;
     height: 50px;
+}
+
+.suggestion{
+    height: 110px;
+    padding-top: 10px;
+}
+
+.device-wise{
+    height: 130px;
 }
     
