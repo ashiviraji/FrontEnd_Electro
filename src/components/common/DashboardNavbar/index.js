@@ -34,7 +34,7 @@ const DashbordNavbar = ({ toggle }) => {
       ...confirmDialog,
       isOpen: false,
     });
-    history.push("/electro");
+    history.push("/");
     var cookies = document.cookie.split(";");
 
     for (var i = 0; i < cookies.length; i++) {
