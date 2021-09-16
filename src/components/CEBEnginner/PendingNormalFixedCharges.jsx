@@ -87,7 +87,7 @@ const PendingNormalFixedCharges = ({ setVisibleState2 }) => {
       isOpen: false,
     });
 
-    console.log("inside getDashboardData");
+    // console.log("inside getDashboardData");
     var ParamsUserId = "fixed";
     const response = await Axios.get(
       `${process.env.REACT_APP_BASE_URL}/dashboard-pending-normal-unit-charges/${ParamsUserId}`,
@@ -98,7 +98,7 @@ const PendingNormalFixedCharges = ({ setVisibleState2 }) => {
       }
     );
     if (response.data.status) {
-      console.log("inside if fixed", response.data.data);
+      // console.log("inside if fixed", response.data.data);
       return response.data.data;
 
     } else {

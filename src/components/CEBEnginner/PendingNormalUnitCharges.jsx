@@ -86,7 +86,7 @@ export default function PendingNormalUnitCharges({ setVisibleState1 }) {
       isOpen: false,
     });
 
-    console.log("inside getDashboardData");
+    // console.log("inside getDashboardData");
     var ParamsUserId = "unit";
 
     const response = await Axios.get(
@@ -98,7 +98,7 @@ export default function PendingNormalUnitCharges({ setVisibleState1 }) {
       }
     );
     if (response.data.status) {
-      console.log("inside if unit", response.data.data);
+      // console.log("inside if unit", response.data.data);
       return response.data.data;
 
     } else {

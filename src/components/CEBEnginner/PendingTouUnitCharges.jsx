@@ -87,7 +87,7 @@ const PendingTouUnitCharges = ({ setVisibleState3 }) => {
       isOpen: false,
     });
 
-    console.log("inside getDashboardData");
+    // console.log("inside getDashboardData");
     var ParamsUserId = "unit";
 
     const response = await Axios.get(
@@ -99,7 +99,7 @@ const PendingTouUnitCharges = ({ setVisibleState3 }) => {
       }
     );
     if (response.data.status) {
-      console.log("inside if unit", response.data.data);
+      // console.log("inside if unit", response.data.data);
       return response.data.data;
 
     } else {
