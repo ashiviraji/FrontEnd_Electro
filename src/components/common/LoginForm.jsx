@@ -28,12 +28,12 @@ export default function LoginForm() {
     }).then((response) => {
       // console.log(response.data.token);
       // history.push("/sign-in")
-      console.log("this is response", response);
+      // console.log("this is response", response);
       if (response.data.status) {
         document.cookie = `name=${response.data.data[0].First_name}`;
         document.cookie = `token=${response.data.token}`;
 
-        console.log(document.cookie);
+        // console.log(document.cookie);
 
         // console.log(document.cookie
         //   .split(';')
@@ -45,20 +45,20 @@ export default function LoginForm() {
           document.cookie = `userId=${response.data.data[0].Cust_id}`;
 
           history.push("/dashboard-user");
-          console.log("successfully login customer");
+          // console.log("successfully login customer");
 
         } else {
           if (response.data.data[0].Role === "admin") {
 
             document.cookie = `userId=${response.data.data[0].Emp_id}`;
             history.push("/dashboard-admin");
-            console.log("successfully login admin");
+            // console.log("successfully login admin");
 
           } else {
 
             document.cookie = `userId=${response.data.data[0].Emp_id}`;
             history.push("/dashboard-engineer");
-            console.log("successfully login ceb engineer");
+            // console.log("successfully login ceb engineer");
 
           }
 
@@ -68,7 +68,7 @@ export default function LoginForm() {
 
       } else {
         history.push("/sign-in");
-        console.log("signin");
+        // console.log("signin");
         setUserLogError("Invalid Username or Password");
 
       }

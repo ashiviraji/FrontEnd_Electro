@@ -26,13 +26,13 @@ export default function SignUpForm() {
             userPassword: conpasswordReg,
             userEmail: useremailReg,
         }).then((response) => {
-            console.log(response);
+            // console.log(response);
             if (response.data.status) {
                 history.push("/sign-in");
-                console.log("registered");
+                // console.log("registered");
             } else {
                 history.push("/sign-up");
-                console.log("unregistered");
+                // console.log("unregistered");
                 setemailWarningReg("Email  Already Used")
             }
         }).catch((error) => {
