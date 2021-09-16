@@ -15,7 +15,7 @@ const TOUSuggestions = (props) => {
   console.log(params.get("bill_id"));
 
   const [cardInfo, setCardInfo] = useState([]);
-  const [devices, setDevices] = useState(cardInfo.slice(0, 15));
+  const [devices, setDevices] = useState(cardInfo.slice(0, 10));
   const [pageNumber, setPageNumber] = useState(0);
   const devicesPerPage = 4;
   const pagesVisited = pageNumber * devicesPerPage;
@@ -77,8 +77,8 @@ const TOUSuggestions = (props) => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Save Amount (LKR) &nbsp;:</Form.Label>
-              <Form.Label>&nbsp;&nbsp;{card.save_amount}</Form.Label>
+              <Form.Label>Total Cost for the Device (LKR) &nbsp;:</Form.Label>
+              <Form.Label>&nbsp;&nbsp;{card.total_cost_TOU}</Form.Label>
               {/* <Form.Label>&nbsp;&nbsp;{card.can_change_hours}Hours</Form.Label>
               <Form.Label>&nbsp;&nbsp;{card.can_change_minutes}Minutes</Form.Label> */}
             </Form.Group>
@@ -93,7 +93,7 @@ const TOUSuggestions = (props) => {
       );
     });
 
-  const pageCount = Math.ceil(devices.length / devicesPerPage);
+  const pageCount = Math.ceil(cardInfo.length / devicesPerPage);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };

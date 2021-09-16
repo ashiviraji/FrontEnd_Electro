@@ -6,7 +6,7 @@ import { NavLink } from "../common/Sidebar-admin/SidebarElement";
 
 export default function ManageCebEngineer() {
   const params = new URLSearchParams(window.location.search)
-  console.log(params.get('name'));
+  // console.log(params.get('name'));
   return (
     <div className="body-manageengineer">
       <form>

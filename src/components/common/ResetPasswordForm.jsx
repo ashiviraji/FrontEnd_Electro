@@ -17,14 +17,14 @@ export default function ResetPasswordForm() {
     const [btnEnable, setbtnEnable] = useState("true");
     const { eid } = useParams();
     let history = useHistory();
-    console.log("email:", eid);
+    // console.log("email:", eid);
     const passwordReset = (e) => {
         e.preventDefault();
         Axios.post(`${process.env.REACT_APP_BASE_URL}/reset-password/${eid}`, {
             userPassword: conpasswordReg,
 
         }).then((response) => {
-            console.log(response);
+            // console.log(response);
             if (response.data.status) {
                 history.push("/sign-in");
                 toast.success('Successfully Reset Your Password ', {
@@ -35,10 +35,10 @@ export default function ResetPasswordForm() {
                     draggable: true,
                     progress: undefined,
                 });
-                console.log("password reset successfully");
+                // console.log("password reset successfully");
             } else {
                 history.push("/reset-password");
-                console.log("password reset unsuccessfully");
+                // console.log("password reset unsuccessfully");
             }
         }).catch((error) => {
             console.log("this is response" + error);

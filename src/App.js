@@ -39,7 +39,7 @@ import DevicewiseChartFixed from "./views/customer/devicewiseChartFixed";
 function App() {
   return (
     <div className="App">
-      <Route exact path="/electro">
+      <Route exact path="/">
         <Home id="electro" />
       </Route>
       <Route exact path="/forgot-password">

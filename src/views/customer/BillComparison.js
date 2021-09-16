@@ -158,13 +158,13 @@ var ParamsUserId = document.cookie
             </div>
           </div>
         </div>
-        <div className="card text-center best-model card border-success mb-3">
+        <div className="card text-center border-success best-model card mb-3">
           <div className="card-body best">
             <h5> Best Model : {best_model} </h5>
           </div>
         </div>
 
-        <div className="card text-center card border-success mb-3">
+        <div className="card text-center card border-success device-wise mb-3">
           <div className="card-body usage-of-device">
             <h5 className="card-title">Device Wise Usage</h5>
 
@@ -184,11 +184,11 @@ var ParamsUserId = document.cookie
           </div>
         </div>
 
-        <div className="text-center">
+        <div className="card border-success suggestion text-center ">
           <h5> View TOU Suggestions</h5>
 
           <Link
-            className="btn btn-info btn-lg btn-suggest"
+            className="btn btn-warning btn-lg btn-suggest"
             to={`/TOU-suggestions?bill_id=${calculatedBillId}`}
           >
             <FaThList /> Suggestions
