@@ -69,13 +69,13 @@ export default function AddNewCebEngineer() {
             draggable: true,
             progress: undefined,
           });
-          console.log("New CEB Engineer Added Successfully");
+          // console.log("New CEB Engineer Added Successfully");
         } else {
           confirmation();
         }
       })
       .catch((error) => {
-        console.log("This is  response", error);
+        // console.log("This is  response", error);
       });
   };
   /**
