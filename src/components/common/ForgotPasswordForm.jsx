@@ -23,7 +23,7 @@ export default function ForgotPasswordForm() {
       userEmail: useremail,
     }).then((response) => {
 
-      console.log("this is response", response);
+      // console.log("this is response", response);
       if (response.data.status) {
         toast.success('Please Check Your Mails', {
           autoClose: 5000,
