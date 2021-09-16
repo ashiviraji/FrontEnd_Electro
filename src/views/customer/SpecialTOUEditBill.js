@@ -78,7 +78,7 @@ export default function SpecialTOUEditBill() {
     const [buttonState, setButtonState] = useState(true);
     const [bill_plan_name,setPlanNameState] = useState("");
     const [buttonStatesave, setbuttonStatesave] = useState(true);
-    const [inputValue, setInputValue] = useState (' ');
+    
     const [notify, setNotify] = useState({
       isOpen: false,
       message: "",
@@ -153,9 +153,9 @@ export default function SpecialTOUEditBill() {
           }
         })
   
-        console.log("Get Bill Plan Name",response.data);
+        console.log("Get Bill Plan Name",response.data.data);
         if (response.data.status) {
-          const bill_plan_name=response.data.message.data[0].bill_plan_name;
+          const bill_plan_name=response.data.data[0].bill_plan_name;
           console.log(bill_plan_name);
           return bill_plan_name;
           
@@ -288,7 +288,7 @@ export default function SpecialTOUEditBill() {
     }
 
 
-    async function saveSpecialEventTOUDevice() {
+    async function updateSpecialEventTOUDevice() {
 
       var token = document.cookie
         .split(';')
@@ -303,10 +303,10 @@ export default function SpecialTOUEditBill() {
   
   
   
-      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/save-special-event-TOUbill/${ParamsUserId}`, {
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/update-special-event-TOUbillPlan/${ParamsUserId}`, {
   
         bill_id: newBillId,
-        tou_plan_name:inputValue
+        tou_plan_name:bill_plan_name
       }, {
         headers: {
           authorization: `Token ${token}`
@@ -314,7 +314,7 @@ export default function SpecialTOUEditBill() {
       })
        console.log("Calculate Special Event:",response.data);
       if (response.data.status) {
-        
+        history.push("/special-event");
        
        
         console.log(response.data.data);
@@ -487,7 +487,7 @@ export default function SpecialTOUEditBill() {
          type="text"
          value={bill_plan_name}
          placeholder="Enter a plan"
-         onChange={e => setInputValue(e.target.value)}
+         onChange={e => setPlanNameState(e.target.value)}
        />
 
                      
@@ -501,11 +501,11 @@ export default function SpecialTOUEditBill() {
                 <Col sm="4"></Col>
                
                 <Col sm="4" style={{marginLeft:"624px"}}>
-                <Link to="/special-event">
-                <button type="button" className="btn btn-success calculate-button-special-event" onClick={saveSpecialEventTOUDevice} disabled={buttonStatesave}>
+               
+                <button type="button" className="btn btn-success calculate-button-special-event" onClick={updateSpecialEventTOUDevice} disabled={buttonStatesave}>
                     Save Plan
                 </button>
-                </Link>
+                
                 </Col>
               </Row>
                
