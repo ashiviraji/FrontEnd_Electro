@@ -349,10 +349,10 @@ const noOfDays = 0;
        
         
       } else {
-        console.log(response.data);
-        history.push("/sign-in");
-        window.location.reload();//reload browser
-        deleteAllCookies();//delete all cookies
+        // console.log(response.data);
+        // history.push("/sign-in");
+        // window.location.reload();//reload browser
+        // deleteAllCookies();//delete all cookies
       }
   
     }
