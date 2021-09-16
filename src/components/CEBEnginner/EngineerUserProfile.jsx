@@ -81,7 +81,7 @@ export default function EngineerUserProfile() {
           setUserDesignation(response.data.data[0].Role);
           setUserNic(response.data.data[0].NIC);
 
-          console.log("successfully get user profile of ceb engineer");
+          // console.log("successfully get user profile of ceb engineer");
         } else {
           confirmation();
         }
@@ -127,7 +127,7 @@ export default function EngineerUserProfile() {
             draggable: true,
             progress: undefined,
           });
-          console.log("successfully update user profile of ceb engineer");
+          // console.log("successfully update user profile of ceb engineer");
         } else {
           confirmation();
         }
