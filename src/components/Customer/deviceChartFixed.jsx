@@ -7,6 +7,8 @@ export default function DeviceChartfixed() {
   const params = new URLSearchParams(window.location.search)
   const calculatedBillId  = params.get('bill_id');
 
+  console.log("________________"+calculatedBillId)
+
   const [chartData,setChartData] = useState([]);
 
 
@@ -26,6 +28,8 @@ export default function DeviceChartfixed() {
   
       // let History = useHistory();
       console.log("call device detail fixed function")
+      console.log(ParamsUserId);
+      console.log(newBillId);
   
       const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-device-wise-usage-fixed-main/${ParamsUserId}`, {
           newBillId: newBillId
