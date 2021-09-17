@@ -115,6 +115,7 @@ export async function getAllDevices(newBillId) {
    
     const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-specialEvent-fixedDetails/${ParamsUserId}`, {
         newBillId: newBillId
+        
     }, {
         headers: {
             authorization: `Token ${token}`
