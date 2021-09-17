@@ -9,7 +9,7 @@ import Axios from 'axios';
 
 export default function Billcomparison(props) {
 
-  
+
   const params = new URLSearchParams(window.location.search)
   const calculatedBillId  = params.get('bill_id');
   console.log(params.get('bill_id'));
@@ -187,7 +187,7 @@ var ParamsUserId = document.cookie
         <div className="card border-success suggestion text-center ">
           <h5> View TOU Suggestions</h5>
 
-          <Link
+          <Link style={{ width:"60%", marginLeft:"19%" }}
             className="btn btn-warning btn-lg btn-suggest"
             to={`/TOU-suggestions?bill_id=${calculatedBillId}`}
           >

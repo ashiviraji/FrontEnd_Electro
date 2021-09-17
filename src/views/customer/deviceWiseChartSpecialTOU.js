@@ -1,13 +1,13 @@
 import React from "react";
 
 
-import DeviceChart from "../../components/Customer/deviceChart";
+import DeviceChartSpTOU from "../../components/Customer/DeviceChartSpTOU";
 
 
 export default function devicewiseChart() {
   return (
     <div>
-      <DeviceChart />
+      <DeviceChartSpTOU />
     </div>
   );
 }
