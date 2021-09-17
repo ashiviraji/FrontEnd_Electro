@@ -40,6 +40,7 @@ export default function DeviceChartfixed() {
       })
   
       console.log(response.data.data);
+      console.log("****"+response.data.data[0].appliance);
       return response.data.data;
   
   }
@@ -50,6 +51,30 @@ export default function DeviceChartfixed() {
       var devices_data_fixed = await getDeviceDetailsFixed(calculatedBillId);
       setChartData(devices_data_fixed);
     },[]);
+
+    var i;
+    var applianceList = new Array(chartData.length);    
+    
+    for(i=0;i<chartData.length;i++){
+      applianceList[i] = chartData[i].appliance;
+    }
+
+    var i;
+    var unitList = new Array(chartData.length);    
+    
+    for(i=0;i<chartData.length;i++){
+      unitList[i] = chartData[i].total_units;
+    }
+
+    console.log("++++++++++++++");
+
+    var array = ["abc","def"];
+    console.log(typeof array);
+    console.log(typeof applianceList);
+
+    console.log("TESTING");
+    console.log(array);
+    console.log(applianceList);
 
   return (
     <div>
@@ -68,21 +93,17 @@ export default function DeviceChartfixed() {
                       <Pie
                         data={{
                           labels: [
-                            "Television",
+                            // chartData[0].appliance,
+                            "ABC",
                             "Rice Cooker",
-                            "Radio",
-                            "Washing Machine",
-                            "Multi Cooker",
                           ],
                           datasets: [
                             {
-                              data: [180, 200, 60, 800, 320],
+                              // data: {unitList},
+                              data: [123,23],
                               backgroundColor: [
                                 "#C7FF33",
                                 "#f5ef42",
-                                "#42f5ef",
-                                "#f5424e",
-                                "#33FFBD",
                               ],
                               hoverOffset: 4,
                             },
