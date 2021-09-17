@@ -3,7 +3,9 @@ import { Card } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import "../../assets/css/TOUSuggestions.css";
+import {BsSearch} from 'react-icons/bs';
 import Axios from 'axios';
+import SearchBar from "material-ui-search-bar";
 import { Link } from "react-router-dom";
 
 
@@ -20,7 +22,26 @@ const TOUSuggestions = (props) => {
   const [pageNumber, setPageNumber] = useState(0);
   const devicesPerPage = 4;
   const pagesVisited = pageNumber * devicesPerPage;
+  const [searched,setSearched] = useState("");
+  const[searchRecords,setSearchRecords] = useState([]);
+  
+  
+  const requestSearch =  (searchVal) =>{
+    console.log("The searsearchVal",searchVal);
+    
+    const filteredRows =  searchRecords.filter((card) =>{
+      console.log("TOU suggestions:",searchRecords);
+      return card.appliance.toLowerCase().includes(searchVal.toLowerCase());
+    });
+    console.log("The filter Row",filteredRows);
+    
+    
+  }
 
+  const cancelSearch = () =>{
+    setSearched("");
+    requestSearch(searched);
+  };
 
   async function editBillPlan(sugestDetails) {
     var ParamsUserId = document.cookie
@@ -47,8 +68,12 @@ const TOUSuggestions = (props) => {
     console.log(response.data.data);
     if(response.data.data){
       setCardInfo(response.data.data);
+      
+     
     }else{
       setCardInfo([]);
+      
+      
     }
     
   }
@@ -82,8 +107,6 @@ const TOUSuggestions = (props) => {
       return response.data.data;
   
   }
-
-  
 
   const displayDivices = cardInfo
     .slice(pagesVisited, pagesVisited + devicesPerPage)
@@ -147,8 +170,10 @@ const TOUSuggestions = (props) => {
     console.log(suggestions);
     if(suggestions){
       setCardInfo(suggestions);
+      setSearchRecords(suggestions);
     }else{
       setCardInfo([]);
+      setSearchRecords([]);
     }
     //console.log(suggestions);
   },[]);
@@ -156,7 +181,16 @@ const TOUSuggestions = (props) => {
   
 
   return (
+    <div>
+  
+     <SearchBar className="search-bar"
+           value={searched}
+           onChange={(searchVal) => requestSearch(searchVal)}
+           onCancelSearch={() => cancelSearch()}
+            />
+    
     <div className="grid-pagnation" id="paginate-buttons">
+      
       {displayDivices}
       <ReactPaginate
         previousLabel={"Previous"}
@@ -169,6 +203,7 @@ const TOUSuggestions = (props) => {
         disabledClassName={"paginationDisabled"}
         activeClassName={"paginationActive"}
       />
+    </div>
     </div>
   );
 };
