@@ -154,7 +154,7 @@ export default function StickyHeadTable() {
       <h5 style={{marginLeft:"3%",marginTop:"5%"}}>Bill Name :- {billName} </h5>
 
       <div className="button-device-wise">
-        <Link to="/devicewise-chart-fixed" className={classes.linkchartButton}> 
+      <Link to= {`/devicewise-chart-fixed?bill_id=${BillId}`} className={classes.linkchartButton}> 
           <Button
             variant="contained"
             id="device-wise-btn"

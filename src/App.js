@@ -227,6 +227,16 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
+
+      <Route exact path="/devicewise-chart-spfixed">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
+
+      <Route exact path="/devicewise-chart-spTOU">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
     </div>
   );
 }
