@@ -30,7 +30,7 @@ export default function LoginForm() {
       // history.push("/sign-in")
       // console.log("this is response", response);
       if (response.data.status) {
-        document.cookie = `name=${response.data.data[0].First_name}`;
+        document.cookie = `name=${response.data.data[0].First_name + " " + response.data.data[0].Last_name}`;
         document.cookie = `token=${response.data.token}`;
 
         // console.log(document.cookie);
