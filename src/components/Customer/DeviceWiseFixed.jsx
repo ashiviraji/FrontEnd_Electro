@@ -57,6 +57,7 @@ export default function StickyHeadTable() {
 
   const params = new URLSearchParams(window.location.search)
   const calculatedBillId  = params.get('bill_id');
+  console.log("**********"+calculatedBillId);
 
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
@@ -122,7 +123,7 @@ export default function StickyHeadTable() {
   return (
     <Paper className={classes.root}>
       <div className="button-device-wise">
-        <Link to="/devicewise-chart-fixed" className={classes.linkchartButton}> 
+        <Link to={`/devicewise-chart-fixed?bill_id=${calculatedBillId}`} className={classes.linkchartButton}> 
           <Button
             variant="contained"
             id="device-wise-btn"
