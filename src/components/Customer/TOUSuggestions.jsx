@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import "../../assets/css/TOUSuggestions.css";
 import Axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 
@@ -19,6 +20,39 @@ const TOUSuggestions = (props) => {
   const [pageNumber, setPageNumber] = useState(0);
   const devicesPerPage = 4;
   const pagesVisited = pageNumber * devicesPerPage;
+
+
+  async function editBillPlan(sugestDetails) {
+    var ParamsUserId = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
+  
+  
+    var token = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
+  
+      console.log("call sugestions function");
+
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
+        sugestDetails: sugestDetails
+    }, {
+        headers: {
+            authorization: `Token ${token}`
+        }
+    })
+
+    console.log(response.data.data);
+    if(response.data.data){
+      setCardInfo(response.data.data);
+    }else{
+      setCardInfo([]);
+    }
+    
+  }
+
 
   async function getSuggestionsDetails(newBillId) {
 
@@ -49,31 +83,31 @@ const TOUSuggestions = (props) => {
   
   }
 
+  
+
   const displayDivices = cardInfo
     .slice(pagesVisited, pagesVisited + devicesPerPage)
     .map((card, index) => {
       return (
         <Card
-          style={{ width: "40rem", height: "15rem" }}
-          key={index}
+          style={{ width: "40rem", height: "16.5rem" }}
+          key={index + card.suggest_id}
           className="box"
-          id="box-card"
+          id={card.suggest_id}
         >
           <Card.Body className="card-body">
-            <Card.Title>
+          {/* <Link style={{ float:"right" }}  > */}
+          <button style={{ float:"right" }} type="button"  className="btn btn-success btn-lg btn-tou" onClick ={ ()  => editBillPlan(card)}>
+            Apply
+          </button> 
+            {/* </Link> */}
+
+            <Card.Title  style={{ height: "2.2rem" }}>
               Device Name &nbsp;:&nbsp;&nbsp;{card.appliance}
             </Card.Title>
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Quantity &nbsp;:</Form.Label>
               <Form.Label>&nbsp;&nbsp;{card.quantity}</Form.Label>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Suggestion &nbsp;:</Form.Label>
-              <Form.Label className="suggestions">
-                Change time {card.cur_time} to {card.change_time} and 
-                save LKR. {card.	save_amount}
-              </Form.Label>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -88,6 +122,15 @@ const TOUSuggestions = (props) => {
               <Form.Label>&nbsp;&nbsp;{card.can_change_hours}Hours&nbsp;&nbsp;&</Form.Label>
               <Form.Label>&nbsp;&nbsp;{card.can_change_minutes}Minutes</Form.Label>
             </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Suggestion &nbsp;:</Form.Label>
+              <Form.Label className="suggestions">
+                Change time {card.cur_time} to {card.change_time} and 
+                save LKR. {card.save_amount}
+              </Form.Label>
+            </Form.Group>
+
           </Card.Body>
         </Card>
       );
@@ -107,7 +150,7 @@ const TOUSuggestions = (props) => {
     }else{
       setCardInfo([]);
     }
-    console.log(suggestions);
+    //console.log(suggestions);
   },[]);
 
   
