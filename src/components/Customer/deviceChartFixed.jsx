@@ -7,9 +7,11 @@ export default function DeviceChartfixed() {
   const params = new URLSearchParams(window.location.search)
   const calculatedBillId  = params.get('bill_id');
 
-  console.log("________________"+calculatedBillId)
+  // console.log("________________"+calculatedBillId)
 
-  const [chartData,setChartData] = useState([]);
+  //const [chartData,setChartData] = useState([]);
+  const [appliance,setAppliance] = useState([]);
+  const [units,setUnits] = useState([]);
 
 
   async function getDeviceDetailsFixed(newBillId) {
@@ -40,41 +42,37 @@ export default function DeviceChartfixed() {
       })
   
       console.log(response.data.data);
-      console.log("****"+response.data.data[0].appliance);
+      // console.log("****"+response.data.data[0].appliance);
       return response.data.data;
   
+  }
+  function getData(chartData){
+    var i;
+  var applianceList = []; 
+  let unitList =[];    
+  
+  for(i=0;i<chartData.length;i++){
+    applianceList.push(chartData[i].appliance);
+    unitList.push( chartData[i].total_units);
+  }
+
+  setAppliance(applianceList);
+  setUnits(unitList);
+
   }
   
   
     useEffect( async () => {
   
       var devices_data_fixed = await getDeviceDetailsFixed(calculatedBillId);
-      setChartData(devices_data_fixed);
+      await getData(devices_data_fixed);
+      console.log(appliance);
+      console.log(units);
     },[]);
 
-    var i;
-    var applianceList = new Array(chartData.length);    
     
-    for(i=0;i<chartData.length;i++){
-      applianceList[i] = chartData[i].appliance;
-    }
 
-    var i;
-    var unitList = new Array(chartData.length);    
     
-    for(i=0;i<chartData.length;i++){
-      unitList[i] = chartData[i].total_units;
-    }
-
-    console.log("++++++++++++++");
-
-    var array = ["abc","def"];
-    console.log(typeof array);
-    console.log(typeof applianceList);
-
-    console.log("TESTING");
-    console.log(array);
-    console.log(applianceList);
 
   return (
     <div>
@@ -92,15 +90,11 @@ export default function DeviceChartfixed() {
                     <div className="chart-devicewise">
                       <Pie
                         data={{
-                          labels: [
-                            // chartData[0].appliance,
-                            "ABC",
-                            "Rice Cooker",
-                          ],
+                          labels: appliance,
                           datasets: [
                             {
                               // data: {unitList},
-                              data: [123,23],
+                              data: units,
                               backgroundColor: [
                                 "#C7FF33",
                                 "#f5ef42",
