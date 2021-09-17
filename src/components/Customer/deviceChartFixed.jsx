@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import "../../assets/css/Customer/deviceChartfixed.css";
-import { Pie } from "react-chartjs-2";
+import { Pie, Bar } from "react-chartjs-2";
 import Axios from "axios";
 
 export default function DeviceChartfixed() {
@@ -105,6 +105,37 @@ export default function DeviceChartfixed() {
                   <div class="card-body">
                     <div className="chart-devicewise">
                       <Pie
+                        data={{
+                          labels: appliance,
+                          datasets: [
+                            {
+                              data: units,
+                              backgroundColor: colors,
+                              hoverOffset: 4,
+                            },
+                          ],
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row row-fixed">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-title text-center">
+                Unit Usage - Device Wise (kWh)
+              </h6>
+              <div class="col-sm-12">
+                <div class="card chart-fixed">
+                  <div class="card-body">
+                    <div className="chart-devicewise">
+                      <Bar
                         data={{
                           labels: appliance,
                           datasets: [
