@@ -212,6 +212,7 @@ const noOfDays = 0;
     };
 
     const onDeletedevice = async (device_id) => {
+      console.log("Fixed device id:",device_id);
      
       setConfirmDialog({
         ...confirmDialog,
@@ -319,7 +320,7 @@ const noOfDays = 0;
       })
        console.log("Calculate Special Event:",response.data);
       if (response.data.status) {
-        
+        history.push("/special-event");
        
        
         console.log(response.data.data);
@@ -474,15 +475,14 @@ const noOfDays = 0;
                 <Col sm="4"></Col>
                
                 <Col sm="4" style={{marginLeft:"624px"}}>
-                <Link to="/special-event">
-                <button type="button" className="btn btn-success calculate-button-special-event" onClick={saveSpecialEventFixedDevice}  disabled={saveButtonState}>
+               
+                <button type="button" disabled={saveButtonState} className="btn btn-success calculate-button-special-event" onClick={saveSpecialEventFixedDevice} >
                     Save Plan
                 </button>
-                </Link>
+              
                 </Col>
               </Row>
                
-
             </Form.Group>
           </Form>
         </Paper>
