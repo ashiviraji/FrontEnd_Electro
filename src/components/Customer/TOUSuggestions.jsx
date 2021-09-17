@@ -48,34 +48,36 @@ const TOUSuggestions = (props) => {
       .split(';')
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
-  
-  
+
+
     var token = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
-  
-      console.log("call sugestions function");
 
-      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
-        sugestDetails: sugestDetails
+    console.log("call sugestions function");
+
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
+      sugestDetails: sugestDetails
     }, {
-        headers: {
-            authorization: `Token ${token}`
-        }
+      headers: {
+        authorization: `Token ${token}`
+      }
     })
 
     console.log(response.data.data);
-    if(response.data.data){
+    if (response.data.data) {
       setCardInfo(response.data.data);
+
       
      
     }else{
+
       setCardInfo([]);
       
       
     }
-    
+
   }
 
 
@@ -85,28 +87,32 @@ const TOUSuggestions = (props) => {
       .split(';')
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
-  
-  
+
+
     var token = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
-  
-  
-      // let History = useHistory();
-      console.log("call device detail fixed function")
-  
-      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-suggestions/${ParamsUserId}`, {
-          newBillId: newBillId
-      }, {
-          headers: {
-              authorization: `Token ${token}`
-          }
-      })
-  
-      return response.data.data;
-  
+
+
+    // let History = useHistory();
+    console.log("call device detail fixed function")
+
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-suggestions/${ParamsUserId}`, {
+      newBillId: newBillId
+    }, {
+      headers: {
+        authorization: `Token ${token}`
+      }
+    })
+    props.setSuggestions(response.data.data);
+    return response.data.data;
+
   }
+
+
+
+
 
   const displayDivices = cardInfo
     .slice(pagesVisited, pagesVisited + devicesPerPage)
@@ -119,13 +125,13 @@ const TOUSuggestions = (props) => {
           id={card.suggest_id}
         >
           <Card.Body className="card-body">
-          {/* <Link style={{ float:"right" }}  > */}
-          <button style={{ float:"right" }} type="button"  className="btn btn-success btn-lg btn-tou" onClick ={ ()  => editBillPlan(card)}>
-            Apply
-          </button> 
+            {/* <Link style={{ float:"right" }}  > */}
+            <button style={{ float: "right" }} type="button" className="btn btn-success btn-lg btn-tou" onClick={() => editBillPlan(card)}>
+              Apply
+            </button>
             {/* </Link> */}
 
-            <Card.Title  style={{ height: "2.2rem" }}>
+            <Card.Title style={{ height: "2.2rem" }}>
               Device Name &nbsp;:&nbsp;&nbsp;{card.appliance}
             </Card.Title>
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -141,7 +147,7 @@ const TOUSuggestions = (props) => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Change Time&nbsp;:</Form.Label>
+              <Form.Label>Change Time&nbsp;:</Form.Label>
               <Form.Label>&nbsp;&nbsp;{card.can_change_hours}Hours&nbsp;&nbsp;&</Form.Label>
               <Form.Label>&nbsp;&nbsp;{card.can_change_minutes}Minutes</Form.Label>
             </Form.Group>
@@ -149,7 +155,7 @@ const TOUSuggestions = (props) => {
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Suggestion &nbsp;:</Form.Label>
               <Form.Label className="suggestions">
-                Change time {card.cur_time} to {card.change_time} and 
+                Change time {card.cur_time} to {card.change_time} and
                 save LKR. {card.save_amount}
               </Form.Label>
             </Form.Group>
@@ -164,21 +170,22 @@ const TOUSuggestions = (props) => {
     setPageNumber(selected);
   };
 
-  useEffect( async () => {
-  
+  useEffect(async () => {
+
     var suggestions = await getSuggestionsDetails(calculatedBillId);
     console.log(suggestions);
-    if(suggestions){
+    if (suggestions) {
       setCardInfo(suggestions);
       setSearchRecords(suggestions);
     }else{
+
       setCardInfo([]);
       setSearchRecords([]);
     }
     //console.log(suggestions);
-  },[]);
+  }, []);
 
-  
+
 
   return (
     <div>
