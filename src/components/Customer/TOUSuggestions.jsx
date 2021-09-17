@@ -22,7 +22,7 @@ const TOUSuggestions = (props) => {
   const pagesVisited = pageNumber * devicesPerPage;
 
 
-  async function editBillPlan(sugestDetails) {
+  async function editBillPlan(suggestDetails) {
     var ParamsUserId = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
@@ -37,7 +37,7 @@ const TOUSuggestions = (props) => {
       console.log("call sugestions function");
 
       const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
-        sugestDetails: sugestDetails
+        suggestDetails: suggestDetails
     }, {
         headers: {
             authorization: `Token ${token}`
