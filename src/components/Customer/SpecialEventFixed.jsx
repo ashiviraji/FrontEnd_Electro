@@ -154,7 +154,7 @@ export default function StickyHeadTable() {
       <h5 style={{marginLeft:"3%",marginTop:"5%"}}>Bill Name :- {billName} </h5>
 
       <div className="button-device-wise">
-      <Link to= {`/devicewise-chart-fixed?bill_id=${BillId}`} className={classes.linkchartButton}> 
+      <Link to= {`/devicewise-chart-spfixed?bill_id=${BillId}`} className={classes.linkchartButton}> 
           <Button
             variant="contained"
             id="device-wise-btn"
@@ -164,7 +164,7 @@ export default function StickyHeadTable() {
             <BsFillBarChartFill
               style={{ width: "20px", height: "20px" }}
             ></BsFillBarChartFill>
-            &nbsp;&nbsp;&nbsp;View Chart Of Usage
+            &nbsp;&nbsp;&nbsp;View Chart Of Usage 
           </Button>
         </Link>
       </div>

@@ -52,9 +52,9 @@ export const HeroContent = styled.div`
 `;
 export const HeroH1 = styled.h1`
   color: #fff;
-  font-size: 48px;
+  font-size: 50px;
   text-align: center;
-
+  font-family: 'Playfair Display', serif;
   @media screen and (max-width: 818px) {
     font-size: 32px;
   }
@@ -66,9 +66,15 @@ export const HeroH1 = styled.h1`
 export const HeroP = styled.p`
   margin-top: 24px;
   color: #fff;
-  font-size: 18px;
+  font-size: 19px;
   text-align: center;
   max-width: 600px;
+  font-family: 'Courgette', cursive;
+
+   &:hover {
+    transition: all 0.2s ease-in-out;
+    color: #06db38;
+  }
   @media screen and (max-width: 818px) {
     font-size: 24px;
   }
