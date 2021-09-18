@@ -13,33 +13,50 @@ import TOUSuggestionsPage from './../../components/Customer/TOUSuggestions';
 
 export default function TOUSuggestions() {
 
-  const [suggestions, setSuggestions] = useState("");
-  const [billPlanName,setBillId]=useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [billPlanName, setBillId] = useState("");
+  const [buttonState, setButtonState] = useState("");
 
   function downloadPdf() {
+
+    var customerName = document.cookie
+      .split(";")
+      .map((cookie) => cookie.split("="))
+      .reduce(
+        (accumulator, [key, value]) => ({
+          ...accumulator,
+          [key.trim()]: decodeURIComponent(value),
+        }),
+        {}
+      ).name;
+
     const doc = new jsPDF();
     doc.text("Electro Suggestions", 85, 10)
     doc.text("electrosysg11@gmail.com", 75, 20)
-    
-    var plan=("Name of Your Plan : Bill Plan"+billPlanName);
-    doc.text(20, 40,plan,{fontSize:10});
+
+    var custName = ("Customer Name : Mr/Mrs " + customerName);
+    doc.text(custName, 20, 30, { styles: { fontSize: 10 } });
+
+    var plan = ("Name of Your Plan : Bill Plan" + billPlanName);
+    doc.text(20, 40, plan, { styles: { fontSize: 10 } });
+
     var today = new Date();
-    
-    var newdat = "Date Printed : "+today;
-    doc.text(20,50,newdat);
+
+    var newdat = "Date Printed : " + today;
+    doc.text(20, 50, newdat);
     var rows = [];
-    var col = ["Device Name","Quantity","Total Cost For Device","Save Amount","From","To"];
-    
-    
-    suggestions.forEach(element => {      
-      var temp = [element.appliance,element.quantity,element.total_cost_TOU,element.save_amount,element.cur_time,element.change_time];
-      
+    var col = ["Device Name", "Quantity", "Total Cost For Device", "Save Amount", "From", "To"];
+
+
+    suggestions.forEach(element => {
+      var temp = [element.appliance, element.quantity, element.total_cost_TOU, element.save_amount, element.cur_time, element.change_time];
+
       rows.push(temp);
 
-  });   
-    
-    doc.autoTable(col, rows, { startY: 60 ,columnStyles: { 0: { cellPadding:8},1: { cellPadding:8},2: { cellPadding:8},3: { cellPadding:8},4: { cellPadding:8},5: { cellPadding:8}}});
-    
+    });
+
+    doc.autoTable(col, rows, { startY: 60, columnStyles: { 0: { cellPadding: 8 }, 1: { cellPadding: 8 }, 2: { cellPadding: 8 }, 3: { cellPadding: 8 }, 4: { cellPadding: 8 }, 5: { cellPadding: 8 } } });
+
     doc.save('suggestions.pdf')
   }
 
@@ -47,16 +64,18 @@ export default function TOUSuggestions() {
     <div>
       <div className="device-wise-title-TOU">
 
-       TOU SUGGESTIONS
+        TOU SUGGESTIONS
       </div>
-      
-      <input className="download-button" type="Button" value="Download As Pdf" onClick={() => {downloadPdf() }} />
 
+      {/* <input className="download-button" type="button" value="Download As Pdf" onClick={() => { downloadPdf() }} /> */}
+      <button type="button" className="btn download-button" onClick={() => { downloadPdf() }} disabled={buttonState}>
+        Download As Pdf
+      </button>
 
-      <TOUSuggestionsPage setSuggestions={setSuggestions} setBillId={setBillId} />
+      <TOUSuggestionsPage setSuggestions={setSuggestions} setBillId={setBillId} setButtonState={setButtonState} />
 
     </div>
-   
+
 
 
 
