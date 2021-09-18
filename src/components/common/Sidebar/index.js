@@ -40,6 +40,8 @@ import SpecialEventTouDeviceWise from "../../../views/customer/SpecialEventDevic
 import AddSpecialEventBillPlan from "../../../views/customer/AddSpecialEvent"
 import BillMoreDetails from "../../../views/customer/BillMoreDetails";
 import BillPlansMoreAndEdit from "../../../views/customer/BillPlansMoreAndEdit";
+import DeviceChartSpFixed from "../../Customer/DeviceChartSpFixed";
+import DeviceChartSpTOU from "../../Customer/DeviceChartSpTOU";
 
 import "../../../assets/css/Sidebar-user.css";
 
@@ -244,6 +246,18 @@ const Sidebar = ({ show }) => {
                 path="/Bill-More-Details"
                 exact={true}
                 component={BillMoreDetails}
+              />
+
+              <Route
+                path="/devicewise-chart-spfixed"
+                exact={true}
+                component={DeviceChartSpFixed}
+              />
+
+              <Route
+                path="/devicewise-chart-spTOU"
+                exact={true}
+                component={DeviceChartSpTOU}
               />
 
             </div>
