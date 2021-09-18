@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../assets/css/TOUSuggestions.css';
 
-import { BsSearch } from 'react-icons/bs';
+
 import { IoMdDownload } from "react-icons/io";
 import { useState } from "react";
 import jsPDF from "jspdf";
@@ -14,30 +14,32 @@ import TOUSuggestionsPage from './../../components/Customer/TOUSuggestions';
 export default function TOUSuggestions() {
 
   const [suggestions, setSuggestions] = useState("");
+  const [billPlanName,setBillId]=useState("");
 
   function downloadPdf() {
-    // console.log("akkkkkk", suggestions);
-    const columns = [
-      { title: "Device Name", field: "Device Name" },
-      { title: "Quantity", field: "Quantity" },
-      { title: "Total Cost For Device", field: "Total Cost For Device" },
-      { title: "Change Time", field: "Change Time" },
-      { title: "Suggestion", field: "Suggestion" },
-    ]
     const doc = new jsPDF();
     doc.text("Electro Suggestions", 85, 10)
     doc.text("electrosysg11@gmail.com", 75, 20)
-    // doc.text("Electro Suggestions", 80, 30)
+    
+    var plan=("Name of Your Plan : Bill Plan"+billPlanName);
+    doc.text(20, 40,plan,{fontSize:10});
+    var today = new Date();
+    
+    var newdat = "Date Printed : "+today;
+    doc.text(20,50,newdat);
+    var rows = [];
+    var col = ["Device Name","Quantity","Total Cost For Device","Save Amount","From","To"];
+    
+    
+    suggestions.forEach(element => {      
+      var temp = [element.appliance,element.quantity,element.total_cost_TOU,element.save_amount,element.cur_time,element.change_time];
+      
+      rows.push(temp);
 
-    doc.autoTable({
-      margin: { top: 50 },
-      columns: columns.map(col => ({ ...col, dataKey: col.field })),
-      body: [
-        ['David', 'david@example.com', 'Sweden', 'nnb', 'ccccc'],
-        ['David', 'david@example.com', 'Sweden', 'nnb', 'ccccc'],
-      ],
-    })
-
+  });   
+    
+    doc.autoTable(col, rows, { startY: 60 ,columnStyles: { 0: { cellPadding:8},1: { cellPadding:8},2: { cellPadding:8},3: { cellPadding:8},4: { cellPadding:8},5: { cellPadding:8}}});
+    
     doc.save('suggestions.pdf')
   }
 
@@ -47,20 +49,11 @@ export default function TOUSuggestions() {
 
        TOU SUGGESTIONS
       </div>
-    <input  className="download-button" type="Button" value="Download As Pdf"  />
-    
-        <TOUSuggestionsPage />
-            TOU SUGGESTIONS
       
       <input className="download-button" type="Button" value="Download As Pdf" onClick={() => {downloadPdf() }} />
-      <div className="ui search">
-        <div className="ui icon1 input">
-          <input className="search-bar" type="Text" placeholder="Search Device" />
-          <BsSearch className="bsSearch"></BsSearch>
-        </div>
-      </div>
 
-      <TOUSuggestionsPage setSuggestions={setSuggestions} />
+
+      <TOUSuggestionsPage setSuggestions={setSuggestions} setBillId={setBillId} />
 
     </div>
    
