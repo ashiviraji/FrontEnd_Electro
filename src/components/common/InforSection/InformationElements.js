@@ -47,14 +47,14 @@ padding: 0;
 padding-bottom: 60px;
 `
 export const TopLine = styled.p`
-color: #01bf71;
-font-size: 16px;
+color:  #06db38;
+font-size: 20px;
 line-height: 16px;
-font-weight: 700;
+font-weight: 900;
 letter-spacing: 1.4px;
 text-transform: uppercase;
 margin-bottom: 16px;
-
+ font-family: 'Playfair Display', serif;
 `
 export const Heading = styled.h1`
 margin-bottom: 24px;
@@ -62,7 +62,7 @@ font-size: 44px;
 line-height: 1.1;
 font-weight: 600;
 color: ${({ lightText }) => (lightText ? '#000' : '#010606')};
-
+font-family: 'Courgette', cursive;
 
 @media screen and (max-width: 780px){
   font-size:22px;
@@ -77,7 +77,7 @@ margin-bottom: 35px;
 font-size: 18px;
 line-height: 24px;
 color: ${({ darkText }) => (darkText ? '#010606' : '#fff')};
-
+font-family: 'Roboto', sans-serif;
 `
 export const BtnWrap = styled.div`
 display:flex;

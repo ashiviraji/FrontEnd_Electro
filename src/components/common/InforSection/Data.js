@@ -4,7 +4,7 @@ export const homeObjOne = {
     lightText: true,
     lightTextDes: false,
     topLine: 'Electro',
-    headline: ' Welcome ! ',
+    headline: ' Welcome To Electro ! ',
     description: 'Get a better understanding about your monthly electricity consumption',
     buttonLabel: 'Get Started',
     imgStart: false,

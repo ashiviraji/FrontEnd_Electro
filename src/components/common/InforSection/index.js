@@ -38,7 +38,7 @@ const InforSection = ({ lightBg,
                                 <Heading lightText={lightText}>{headline}</Heading>
                                 <Subtitle darkText={darkText}>{description}</Subtitle>
                                 <BtnWrap>
-                                    <Button to='home'
+                                    <Button to='/sign-in'
                                         smooth={true}
                                         duration={500}
                                         spy={true}
