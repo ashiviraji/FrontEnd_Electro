@@ -1,7 +1,7 @@
 import React,{useState, useEffect } from 'react';
 import { Redirect, useHistory } from 'react-router-dom'
 import Axios from 'axios';
-
+import SearchBar from "material-ui-search-bar";
 import Popup from "../../components/Customer/bill_control/Popup";
 import * as SpecialDeviceBill from "./SpecialEventFixedDeviceBill";
 import Notification from "../../components/Customer/bill_control/Notification";
@@ -69,9 +69,11 @@ const noOfDays = 0;
     const [buttonState, setButtonState] = useState(true);
     const [saveButtonState, setSaveButtonState] = useState(true);
     const [recordForEdit, setRecordForEdit] = useState(null);
-    const [inputValue, setInputValue] = useState (' ');
-
     
+    const [inputValue, setInputValue] = useState ('');
+    const[searchRecords,setSearchRecords] = useState([]);
+    const [searched,setSearched] = useState("");
+
     const [addtionalUnit, setAddtionalUnit] = useState(0);
     
     const [newBillId, setNewBillId] = useState(0);
@@ -123,6 +125,29 @@ const noOfDays = 0;
       variant: "",
     });
 
+
+    const requestSearch =  (searchVal) =>{
+      console.log("The searsearchVal",searchVal);
+      
+      const filteredRows =  searchRecords.filter((row) =>{
+        console.log(records);
+        return row.appliance.toLowerCase().includes(searchVal.toLowerCase());
+      });
+      console.log("The filter Row",filteredRows);
+      if(searchVal == " "){
+        console.log("val");
+        setRecords(records);
+      }else{
+        setRecords(filteredRows);
+      }
+      
+    }
+
+    const cancelSearch = () =>{
+      setSearched("");
+      requestSearch(searched);
+    };
+
     
     useEffect( async () => {
      const new_bill_id = await getBillId();
@@ -131,12 +156,12 @@ const noOfDays = 0;
      const recordDetails = await SpecialDeviceBill.getAllDevices(new_bill_id);
      console.log("record details:"+recordDetails);
      if(recordDetails==null){
-      
+      setSearchRecords([]);
       setRecords([]);
       setButtonState(true);
       setSaveButtonState(true);
     }else{
-      
+      setSearchRecords(recordDetails);
        setRecords(recordDetails);
        setButtonState(false);
        setSaveButtonState(false);
@@ -166,10 +191,12 @@ const noOfDays = 0;
         setRecords([]);
         setButtonState(true);
         setSaveButtonState(true);
+        setSearchRecords([]);
       } else {
         setRecords(recordDetails);
         setButtonState(false);
         setSaveButtonState(false);
+        setSearchRecords(recordDetails);
       }
       setNotify({
         isOpen: true,
@@ -185,6 +212,7 @@ const noOfDays = 0;
     };
 
     const onDeletedevice = async (device_id) => {
+      console.log("Fixed device id:",device_id);
      
       setConfirmDialog({
         ...confirmDialog,
@@ -196,11 +224,13 @@ const noOfDays = 0;
         setRecords([]);
         setButtonState(true);
         setSaveButtonState(true);
+        setSearchRecords([]);
         console.log("button disabled after delete all");
       } else {
         setRecords(recordDetails);
         setButtonState(false);
         setSaveButtonState(false);
+        setSearchRecords(recordDetails);
       }
       setNotify({
         isOpen: true,
@@ -290,7 +320,7 @@ const noOfDays = 0;
       })
        console.log("Calculate Special Event:",response.data);
       if (response.data.status) {
-        
+        history.push("/special-event");
        
        
         console.log(response.data.data);
@@ -314,18 +344,11 @@ const noOfDays = 0;
         <h1>Your Device Data</h1>
 
         <Toolbar>
-          <TextField
-            label="Search Device"
-            className="Search-bar-in-form"
-            // onChange={handleSearch}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-            }}
-          />
+        <SearchBar
+           value={searched}
+           onChange={(searchVal) => requestSearch(searchVal)}
+           onCancelSearch={() => cancelSearch()}
+            />
           <button
             type="button"
             className="btn btn-info add-new-button"
@@ -452,15 +475,14 @@ const noOfDays = 0;
                 <Col sm="4"></Col>
                
                 <Col sm="4" style={{marginLeft:"624px"}}>
-                <Link to="/special-event">
-                <button type="button" className="btn btn-success calculate-button-special-event" onClick={saveSpecialEventFixedDevice}  disabled={saveButtonState}>
+               
+                <button type="button" disabled={saveButtonState} className="btn btn-success calculate-button-special-event" onClick={saveSpecialEventFixedDevice} >
                     Save Plan
                 </button>
-                </Link>
+              
                 </Col>
               </Row>
                
-
             </Form.Group>
           </Form>
         </Paper>

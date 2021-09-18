@@ -11,6 +11,7 @@ import { Table,TableHead } from "@material-ui/core";
 import { TableCell } from "@material-ui/core";
 import { TableRow,TableBody } from "@material-ui/core";
 import { Toolbar } from "@material-ui/core";
+import SearchBar from "material-ui-search-bar";
 import { InputAdornment } from "@material-ui/core";
 import { TextField } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
@@ -78,6 +79,8 @@ export default function SpecialTOUEditBill() {
     const [buttonState, setButtonState] = useState(true);
     const [bill_plan_name,setPlanNameState] = useState("");
     const [buttonStatesave, setbuttonStatesave] = useState(true);
+    const[searchRecords,setSearchRecords] = useState([]);
+    const [searched,setSearched] = useState("");
     
     const [notify, setNotify] = useState({
       isOpen: false,
@@ -106,6 +109,28 @@ export default function SpecialTOUEditBill() {
     subTitle: "",
   });
 
+  const requestSearch =  (searchVal) =>{
+    console.log("The searsearchVal",searchVal);
+    
+    const filteredRows =  searchRecords.filter((row) =>{
+      console.log(records);
+      return row.appliance.toLowerCase().includes(searchVal.toLowerCase());
+    });
+    console.log("The filter Row",filteredRows);
+    if(searchVal == " "){
+      console.log("val");
+      setRecords(records);
+    }else{
+      setRecords(filteredRows);
+    }
+    
+  }
+
+  const cancelSearch = () =>{
+    setSearched("");
+    requestSearch(searched);
+  };
+
 
     useEffect( async () => {
   
@@ -117,10 +142,12 @@ export default function SpecialTOUEditBill() {
        setRecords([]);
        setButtonState(true);
        setbuttonStatesave(true);
+       setSearchRecords([]);
      }else{
        setRecords(recordDetails);
        setButtonState(false);
        setbuttonStatesave(false);
+       setSearchRecords(recordDetails);
     }
 
     console.log("inside of useEffect" , recordDetails);
@@ -187,10 +214,12 @@ export default function SpecialTOUEditBill() {
         setRecords([]);
         setButtonState(true);
         setbuttonStatesave(true);
+        setSearchRecords([]);
       } else {
         setRecords(recordDetails);
         setButtonState(false);
         setbuttonStatesave(false);
+        setSearchRecords(recordDetails);
       }
       setNotify({
         isOpen: true,
@@ -217,10 +246,12 @@ export default function SpecialTOUEditBill() {
         setRecords([]);
         setButtonState(true);
         setbuttonStatesave(true);
+        setSearchRecords([]);
       } else {
         setRecords(recordDetails);
         setButtonState(false);
         setbuttonStatesave(false);
+        setSearchRecords(recordDetails);
       }
       setNotify({
         isOpen: true,
@@ -338,18 +369,11 @@ export default function SpecialTOUEditBill() {
         <h1>Your Device Data</h1>
 
         <Toolbar>
-          <TextField
-            label="Search Device"
-            className="Search-bar-in-form"
-            // onChange={handleSearch}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-            }}
-          />
+        <SearchBar
+           value={searched}
+           onChange={(searchVal) => requestSearch(searchVal)}
+           onCancelSearch={() => cancelSearch()}
+            />
           <button
             type="button"
             className="btn btn-info add-new-button"
