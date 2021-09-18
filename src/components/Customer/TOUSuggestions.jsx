@@ -65,16 +65,18 @@ const TOUSuggestions = (props) => {
       }
     })
 
-    console.log(response.data.data);
+   
     if (response.data.data) {
-      setCardInfo(response.data.data);
-
       
-     
+      setCardInfo(response.data.data);
+      props.setSuggestions(response.data.data);
+       props.setBillId(response.data.data[0].bill_id);
+
     }else{
 
       setCardInfo([]);
-      
+      props.setSuggestions([]);
+      props.setBillId("");
       
     }
 
@@ -105,7 +107,15 @@ const TOUSuggestions = (props) => {
         authorization: `Token ${token}`
       }
     })
-    props.setSuggestions(response.data.data);
+    console.log("The Bill Id is:",response.data.data[0].bill_id);
+    if(response.data.data){
+      props.setSuggestions(response.data.data);
+      props.setBillId(response.data.data[0].bill_id);
+    }else{
+      props.setSuggestions([]);
+      props.setBillId([]);
+    }
+    
     return response.data.data;
 
   }
