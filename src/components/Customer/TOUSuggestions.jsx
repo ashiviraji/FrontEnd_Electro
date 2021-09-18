@@ -43,7 +43,7 @@ const TOUSuggestions = (props) => {
     requestSearch(searched);
   };
 
-  async function editBillPlan(sugestDetails) {
+  async function editBillPlan(suggestDetails) {
     var ParamsUserId = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
@@ -55,10 +55,10 @@ const TOUSuggestions = (props) => {
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
-    console.log("call sugestions function");
 
-    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
-      sugestDetails: sugestDetails
+      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
+        suggestDetails: suggestDetails
+
     }, {
       headers: {
         authorization: `Token ${token}`
