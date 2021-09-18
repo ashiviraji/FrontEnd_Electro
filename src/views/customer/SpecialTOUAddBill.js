@@ -7,6 +7,7 @@ import SpecialTOUCalculateBillForm from "./SpecialTOUCalculateBillForm";
 import * as SpecialDeviceBill from "./SpecialEventTOUDeviceBill";
 import UseTable from "../../components/Customer/useTable";
 import * as DeviceBill from "./DeviceBill";
+import SearchBar from "material-ui-search-bar";
 import { Table,TableHead } from "@material-ui/core";
 import { TableCell } from "@material-ui/core";
 import { TableRow,TableBody } from "@material-ui/core";
@@ -77,8 +78,9 @@ export default function SpecialTOUAddBill() {
     let history = useHistory();
     const [buttonState, setButtonState] = useState(true);
     const [buttonStatesave, setbuttonStatesave] = useState(true);
-    const [inputValue, setInputValue] = useState (' ');
-   // const[searchRecords,setSearchRecords] = useState([]);
+    const [inputValue, setInputValue] = useState ('');
+    const[searchRecords,setSearchRecords] = useState([]);
+    const [searched,setSearched] = useState("");
 
 
     const [notify, setNotify] = useState({
@@ -94,7 +96,27 @@ export default function SpecialTOUAddBill() {
     
     const [addtionalCost,setAdditionalCost]=useState(0);
 
+    const requestSearch =  (searchVal) =>{
+      console.log("The searsearchVal",searchVal);
+      
+      const filteredRows =  searchRecords.filter((row) =>{
+        console.log(records);
+        return row.appliance.toLowerCase().includes(searchVal.toLowerCase());
+      });
+      console.log("The filter Row",filteredRows);
+      if(searchVal == " "){
+        console.log("val");
+        setRecords(records);
+      }else{
+        setRecords(filteredRows);
+      }
+      
+    }
 
+    const cancelSearch = () =>{
+      setSearched("");
+      requestSearch(searched);
+    };
 
     async function getBillId() {
 
@@ -137,10 +159,12 @@ export default function SpecialTOUAddBill() {
        setRecords([]);
        setButtonState(true);
        setbuttonStatesave(true);
+       setSearchRecords([]);
      }else{
        setRecords(recordDetails);
        setButtonState(false);
        setbuttonStatesave(false);
+       setSearchRecords(recordDetails);
     }
 
     console.log("inside of useEffect" , recordDetails);
@@ -164,10 +188,13 @@ export default function SpecialTOUAddBill() {
         setRecords([]);
         setButtonState(true);
         setbuttonStatesave(true);
+        setSearchRecords([]);
+        
       } else {
         setRecords(recordDetails);
         setButtonState(false);
         setbuttonStatesave(false);
+        setSearchRecords(recordDetails);
       }
       setNotify({
         isOpen: true,
@@ -194,10 +221,12 @@ export default function SpecialTOUAddBill() {
         setRecords([]);
         setButtonState(true);
         setbuttonStatesave(true);
+        setSearchRecords([]);
       } else {
         setRecords(recordDetails);
         setButtonState(false);
         setbuttonStatesave(false);
+        setSearchRecords(recordDetails);
       }
       setNotify({
         isOpen: true,
@@ -315,18 +344,11 @@ export default function SpecialTOUAddBill() {
         <h1>Your Device Data</h1>
 
         <Toolbar>
-          <TextField
-            label="Search Device"
-            className="Search-bar-in-form"
-            // onChange={handleSearch}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-            }}
-          />
+        <SearchBar
+           value={searched}
+           onChange={(searchVal) => requestSearch(searchVal)}
+           onCancelSearch={() => cancelSearch()}
+            />
           <button
             type="button"
             className="btn btn-info add-new-button"

@@ -101,6 +101,7 @@
 }
 
 .search-bar{
+    outline:none;
     width: 35%;
     text-align: left;
     background: #E8E8E8;
