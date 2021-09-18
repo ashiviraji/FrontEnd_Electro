@@ -28,12 +28,13 @@ export const NavbarContainer = styled.div`
   margin-left: 120px;
 `;
 export const NavLogo = styled(LinkR)`
-color:#fff;
+color:#000;
 justify-self:flex-start;
 cursor:pointer;
 display:flex;
 font-size:1.5rem;
 align:item:left;
+font-family: 'Playfair Display', serif;
 
 font-weight:bold;
 margin-top:15px;
@@ -41,6 +42,11 @@ text-decoration:none;
 @media screen and (max-width:980px){
     margin-left:-100px;
 }
+ &:hover{
+        color:#fff;
+        transform:scale(1.2);
+        transition: all 0.2s ease-in-out;
+    }
 `;
 export const MobileIcon = styled.div`
   display: none;
