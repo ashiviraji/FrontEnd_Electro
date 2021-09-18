@@ -52,7 +52,6 @@ export default function DeviceChartfixed() {
       }
     );
 
-    console.log(response.data.data);
     return response.data.data;
   }
   function generateColor() {
