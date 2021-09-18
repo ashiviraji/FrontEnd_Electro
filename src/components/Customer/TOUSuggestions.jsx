@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import "../../assets/css/TOUSuggestions.css";
-import {BsSearch} from 'react-icons/bs';
+import { BsSearch } from 'react-icons/bs';
 import Axios from 'axios';
 import SearchBar from "material-ui-search-bar";
 import { Link } from "react-router-dom";
@@ -22,23 +22,23 @@ const TOUSuggestions = (props) => {
   const [pageNumber, setPageNumber] = useState(0);
   const devicesPerPage = 4;
   const pagesVisited = pageNumber * devicesPerPage;
-  const [searched,setSearched] = useState("");
-  const[searchRecords,setSearchRecords] = useState([]);
-  
-  
-  const requestSearch =  (searchVal) =>{
-    console.log("The searsearchVal",searchVal);
-    
-    const filteredRows =  searchRecords.filter((card) =>{
-      console.log("TOU suggestions:",searchRecords);
+  const [searched, setSearched] = useState("");
+  const [searchRecords, setSearchRecords] = useState([]);
+
+
+  const requestSearch = (searchVal) => {
+    console.log("The searsearchVal", searchVal);
+
+    const filteredRows = searchRecords.filter((card) => {
+      console.log("TOU suggestions:", searchRecords);
       return card.appliance.toLowerCase().includes(searchVal.toLowerCase());
     });
-    console.log("The filter Row",filteredRows);
-    
-    
+    console.log("The filter Row", filteredRows);
+
+
   }
 
-  const cancelSearch = () =>{
+  const cancelSearch = () => {
     setSearched("");
     requestSearch(searched);
   };
@@ -56,8 +56,8 @@ const TOUSuggestions = (props) => {
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
 
-      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
-        suggestDetails: suggestDetails
+    const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
+      suggestDetails: suggestDetails
 
     }, {
       headers: {
@@ -65,19 +65,19 @@ const TOUSuggestions = (props) => {
       }
     })
 
-   
-    if (response.data.data) {
-      
+
+    if (response.data.status) {
+
       setCardInfo(response.data.data);
       props.setSuggestions(response.data.data);
-       props.setBillId(response.data.data[0].bill_id);
-
-    }else{
+      props.setBillId(response.data.data[0].bill_id);
+      props.setButtonState(false);
+    } else {
 
       setCardInfo([]);
       props.setSuggestions([]);
       props.setBillId("");
-      
+      props.setButtonState(true);
     }
 
   }
@@ -107,15 +107,17 @@ const TOUSuggestions = (props) => {
         authorization: `Token ${token}`
       }
     })
-    console.log("The Bill Id is:",response.data.data[0].bill_id);
-    if(response.data.data){
+    // console.log("The Bill Id is:",response.data.data[0].bill_id);
+    if (response.data.status) {
       props.setSuggestions(response.data.data);
       props.setBillId(response.data.data[0].bill_id);
-    }else{
+      props.setButtonState(false);
+    } else {
       props.setSuggestions([]);
       props.setBillId([]);
+      props.setButtonState(true);
     }
-    
+
     return response.data.data;
 
   }
@@ -187,7 +189,7 @@ const TOUSuggestions = (props) => {
     if (suggestions) {
       setCardInfo(suggestions);
       setSearchRecords(suggestions);
-    }else{
+    } else {
 
       setCardInfo([]);
       setSearchRecords([]);
@@ -199,28 +201,28 @@ const TOUSuggestions = (props) => {
 
   return (
     <div>
-  
-     <SearchBar className="search-bar"
-           value={searched}
-           onChange={(searchVal) => requestSearch(searchVal)}
-           onCancelSearch={() => cancelSearch()}
-            />
-    
-    <div className="grid-pagnation" id="paginate-buttons">
-      
-      {displayDivices}
-      <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
-        pageCount={pageCount}
-        onPageChange={changePage}
-        containerClassName={"paginationBttns"}
-        priviousLinkClassName={"previousBttn"}
-        nextLinkClassName={"nextBttn"}
-        disabledClassName={"paginationDisabled"}
-        activeClassName={"paginationActive"}
+
+      <SearchBar className="search-bar"
+        value={searched}
+        onChange={(searchVal) => requestSearch(searchVal)}
+        onCancelSearch={() => cancelSearch()}
       />
-    </div>
+
+      <div className="grid-pagnation" id="paginate-buttons">
+
+        {displayDivices}
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationBttns"}
+          priviousLinkClassName={"previousBttn"}
+          nextLinkClassName={"nextBttn"}
+          disabledClassName={"paginationDisabled"}
+          activeClassName={"paginationActive"}
+        />
+      </div>
     </div>
   );
 };
