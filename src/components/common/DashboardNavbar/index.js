@@ -55,7 +55,7 @@ const DashbordNavbar = ({ toggle }) => {
             <FaBars />
           </MobileIcon>
           <NavMenu>
-            <NavItem>
+            {/* <NavItem>
               <NavLinks to="home">Home</NavLinks>
             </NavItem>
             <NavItem></NavItem>
@@ -64,7 +64,7 @@ const DashbordNavbar = ({ toggle }) => {
             </NavItem>
             <NavItem>
               <NavLinks to="contactus">Contact Us</NavLinks>
-            </NavItem>
+            </NavItem> */}
             {/* <NavItem>
                             <NavBtn>
                                 <NavBtnLinks to="/information">Information</NavBtnLinks>
