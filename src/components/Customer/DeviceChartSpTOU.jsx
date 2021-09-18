@@ -110,23 +110,11 @@ export default function DeviceChartSpTOU() {
                     <div className="chart-devicewise">
                       <Pie
                         data={{
-                          labels: [
-                            "Television",
-                            "Rice Cooker",
-                            "Radio",
-                            "Washing Machine",
-                            "Multi Cooker",
-                          ],
+                          labels: appliance,
                           datasets: [
                             {
-                              data: [1340, 500, 6100, 9700, 4200],
-                              backgroundColor: [
-                                "#C7FF33",
-                                "#33BDFF",
-                                "#FFE633",
-                                "#DC33FF",
-                                "#33FFBD",
-                              ],
+                              data: peakCost,
+                              backgroundColor: colors,
                               hoverOffset: 4,
                             },
                           ],
@@ -149,23 +137,11 @@ export default function DeviceChartSpTOU() {
                     <div className="chart-devicewise">
                       <Pie
                         data={{
-                          labels: [
-                            "Television",
-                            "Rice Cooker",
-                            "Radio",
-                            "Washing Machine",
-                            "Multi Cooker",
-                          ],
+                          labels: appliance,
                           datasets: [
                             {
-                              data: [1340, 500, 6100, 9700, 4200],
-                              backgroundColor: [
-                                "#C7FF33",
-                                "#33BDFF",
-                                "#FFE633",
-                                "#DC33FF",
-                                "#33FFBD",
-                              ],
+                              data: peakUnits,
+                              backgroundColor: colors,
                               hoverOffset: 4,
                             },
                           ],
@@ -191,23 +167,11 @@ export default function DeviceChartSpTOU() {
                     <div className="chart-devicewise">
                       <Pie
                         data={{
-                          labels: [
-                            "Television",
-                            "Rice Cooker",
-                            "Radio",
-                            "Washing Machine",
-                            "Multi Cooker",
-                          ],
+                          labels: appliance,
                           datasets: [
                             {
-                              data: [1340, 500, 6100, 9700, 4200],
-                              backgroundColor: [
-                                "#C7FF33",
-                                "#33BDFF",
-                                "#FFE633",
-                                "#DC33FF",
-                                "#33FFBD",
-                              ],
+                              data: offPeakCost,
+                              backgroundColor:colors,
                               hoverOffset: 4,
                             },
                           ],
@@ -230,23 +194,11 @@ export default function DeviceChartSpTOU() {
                     <div className="chart-devicewise">
                       <Pie
                         data={{
-                          labels: [
-                            "Television",
-                            "Rice Cooker",
-                            "Radio",
-                            "Washing Machine",
-                            "Multi Cooker",
-                          ],
+                          labels: appliance,
                           datasets: [
                             {
-                              data: [1340, 500, 6100, 9700, 4200],
-                              backgroundColor: [
-                                "#C7FF33",
-                                "#33BDFF",
-                                "#FFE633",
-                                "#DC33FF",
-                                "#33FFBD",
-                              ],
+                              data: offPeakUnits,
+                              backgroundColor: colors,
                               hoverOffset: 4,
                             },
                           ],
@@ -272,23 +224,11 @@ export default function DeviceChartSpTOU() {
                     <div className="chart-devicewise">
                       <Pie
                         data={{
-                          labels: [
-                            "Television",
-                            "Rice Cooker",
-                            "Radio",
-                            "Washing Machine",
-                            "Multi Cooker",
-                          ],
+                          labels: appliance,
                           datasets: [
                             {
-                              data: [1340, 500, 6100, 9700, 4200],
-                              backgroundColor: [
-                                "#C7FF33",
-                                "#33BDFF",
-                                "#FFE633",
-                                "#DC33FF",
-                                "#33FFBD",
-                              ],
+                              data: dayCost,
+                              backgroundColor: colors,
                               hoverOffset: 4,
                             },
                           ],
@@ -311,23 +251,11 @@ export default function DeviceChartSpTOU() {
                     <div className="chart-devicewise">
                       <Pie
                         data={{
-                          labels: [
-                            "Television",
-                            "Rice Cooker",
-                            "Radio",
-                            "Washing Machine",
-                            "Multi Cooker",
-                          ],
+                          labels:appliance,
                           datasets: [
                             {
-                              data: [1340, 500, 6100, 9700, 4200],
-                              backgroundColor: [
-                                "#C7FF33",
-                                "#33BDFF",
-                                "#FFE633",
-                                "#DC33FF",
-                                "#33FFBD",
-                              ],
+                              data: dayUnits,
+                              backgroundColor: colors,
                               hoverOffset: 4,
                             },
                           ],
