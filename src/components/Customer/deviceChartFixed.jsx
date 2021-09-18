@@ -67,17 +67,6 @@ export default function DeviceChartfixed() {
     return color;
   }
 
-  function getMaxAppliace(chartData,max){
-    var max_appliance;
-    for(var x=0; x< chartData.length; x++ ){
-      if(chartData[x].total_units===max){
-        max_appliance = chartData[x].appliance;
-      }
-    }
-    // return max_appliance;
-    getMaxApp(max_appliance);
-  }
-
   function getData(chartData) {
     var i;
     var applianceList = [];
@@ -104,13 +93,24 @@ export default function DeviceChartfixed() {
     setMax(maxunit);
   }
 
+  function getMaxAppliace(chartData,max){
+    var max_appliance;
+    for(var x=0; x< chartData.length; x++ ){
+      if(chartData[x].total_units===max){
+        max_appliance = chartData[x].appliance;
+      }
+    }
+    // return max_appliance;
+    getMaxApp(max_appliance);
+  }
+
   useEffect(async () => {
     var devices_data_fixed = await getDeviceDetailsFixed(calculatedBillId);
     await getData(devices_data_fixed);
     await getMaxAppliace(devices_data_fixed,max);
     console.log(appliance);
     console.log(units);
-    console.log(maxApp);
+    console.log("__________________"+maxApp);
     
   }, []);
 
