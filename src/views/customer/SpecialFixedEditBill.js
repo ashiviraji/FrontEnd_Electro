@@ -6,6 +6,10 @@ import Popup from "../../components/Customer/bill_control/Popup";
 import * as SpecialDeviceBill from "./SpecialEventFixedDeviceBill";
 import Notification from "../../components/Customer/bill_control/Notification";
 import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import SpecialFixedCalculateBillForm from "./SpecialFixedCalculateBillForm";
 import {
     InputAdornment,
@@ -21,7 +25,6 @@ import {
   } from "@material-ui/core";
   import { Add, DeleteOutline, EditOutlined, Search } from "@material-ui/icons";
 import { Col, Form, Row } from 'react-bootstrap';
-import { Link } from "react-router-dom";
 
 const noOfDays = 0;
 
@@ -366,6 +369,13 @@ const noOfDays = 0;
 
     return (
         <div>
+         <Breadcrumbs aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
+  <Link underline="hover" color="inherit" href="/special-event">
+    Special Event
+  </Link>
+ 
+  <Typography color="text.primary">More Details</Typography>
+</Breadcrumbs>
             
         <Paper className={classes.pageContent}>
         <h1>Your Device Data </h1>
