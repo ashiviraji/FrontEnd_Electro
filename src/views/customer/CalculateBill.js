@@ -82,8 +82,8 @@ export default function CalculateBill() {
       return row.appliance.toLowerCase().includes(searchVal.toLowerCase());
     });
     console.log("The filter Row",filteredRows);
+    
     if(searchVal == " "){
-      console.log("val");
       setRecords(records);
     }else{
       setRecords(filteredRows);
