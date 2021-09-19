@@ -27,6 +27,7 @@ export default function SimpleCard() {
           width: "90%",
           float: "left",
           marginTop: "3%",
+          marginBottom: "3%",
           display: `${visibleState1}`,
         }}
       >
@@ -44,7 +45,8 @@ export default function SimpleCard() {
         style={{
           width: "90%",
           float: "left",
-          marginTop: "10%",
+          marginTop: "3%",
+          marginBottom: "3%",
           display: `${visibleState2}`,
         }}
       >
@@ -61,7 +63,8 @@ export default function SimpleCard() {
         style={{
           width: "90%",
           float: "left",
-          marginTop: "10%",
+          marginTop: "3%",
+          marginBottom: "3%",
           display: `${visibleState3}`,
         }}
       >
@@ -78,8 +81,8 @@ export default function SimpleCard() {
         style={{
           width: "90%",
           float: "left",
-          marginTop: "10%",
-          marginBottom: "10%",
+          marginTop: "3%",
+          marginBottom: "3%",
           display: `${visibleState4}`,
         }}
       >

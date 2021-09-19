@@ -33,12 +33,12 @@ export default function TOUSuggestions() {
     const doc = new jsPDF();
     doc.text("Electro Suggestions", 85, 10)
     doc.text("electrosysg11@gmail.com", 75, 20)
-
-    var custName = ("Customer Name : Mr/Mrs " + customerName);
-    doc.text(custName, 20, 30, { styles: { fontSize: 10 } });
+    
+    var custName = ("Customer Name : " + customerName);
+    doc.text(custName, 20, 40);
 
     var plan = ("Name of Your Plan : Bill Plan" + billPlanName);
-    doc.text(20, 40, plan, { styles: { fontSize: 10 } });
+    doc.text( plan,20, 50);
 
     var today = new Date();
 
@@ -68,9 +68,12 @@ export default function TOUSuggestions() {
       </div>
 
       {/* <input className="download-button" type="button" value="Download As Pdf" onClick={() => { downloadPdf() }} /> */}
+      
+       
       <button type="button" className="btn download-button" onClick={() => { downloadPdf() }} disabled={buttonState}>
         Download As Pdf
       </button>
+     
 
       <TOUSuggestionsPage setSuggestions={setSuggestions} setBillId={setBillId} setButtonState={setButtonState} />
 
