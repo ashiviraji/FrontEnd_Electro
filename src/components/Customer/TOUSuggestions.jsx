@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 import "../../assets/css/TOUSuggestions.css";
-import { BsSearch } from 'react-icons/bs';
+import {BsSearch} from 'react-icons/bs';
 import Axios from 'axios';
 import SearchBar from "material-ui-search-bar";
 import { Link } from "react-router-dom";
@@ -22,28 +22,30 @@ const TOUSuggestions = (props) => {
   const [pageNumber, setPageNumber] = useState(0);
   const devicesPerPage = 4;
   const pagesVisited = pageNumber * devicesPerPage;
-  const [searched, setSearched] = useState("");
-  const [searchRecords, setSearchRecords] = useState([]);
-
-
-  const requestSearch = (searchVal) => {
-    console.log("The searsearchVal", searchVal);
-
-    const filteredRows = searchRecords.filter((card) => {
-      console.log("TOU suggestions:", searchRecords);
-      return card.appliance.toLowerCase().includes(searchVal.toLowerCase());
+  const [searched,setSearched] = useState("");
+  const[searchRecords,setSearchRecords] = useState([]);
+  
+  
+  const requestSearch =  (searchVal) =>{
+    console.log("The searsearchVal",searchVal);
+    
+    const filteredRows =  searchRecords.filter((row) =>{
+      console.log("TOU suggestions:",searchRecords);
+      return row.appliance.toLowerCase().includes(searchVal.toLowerCase());
     });
-    console.log("The filter Row", filteredRows);
-
-
+   //return filteredRows;
+   setCardInfo(filteredRows);
+    console.log("The filter Row",filteredRows);
+    
+    
   }
 
-  const cancelSearch = () => {
+  const cancelSearch = () =>{
     setSearched("");
     requestSearch(searched);
   };
 
-  async function editBillPlan(suggestDetails) {
+  async function editBillPlan(sugestDetails) {
     var ParamsUserId = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
@@ -55,29 +57,29 @@ const TOUSuggestions = (props) => {
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
+    console.log("call sugestions function");
 
     const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
-      suggestDetails: suggestDetails
-
+      sugestDetails: sugestDetails
     }, {
       headers: {
         authorization: `Token ${token}`
       }
     })
 
-
-    if (response.data.status) {
-
+   
+    if (response.data.data) {
+      
       setCardInfo(response.data.data);
       props.setSuggestions(response.data.data);
-      props.setBillId(response.data.data[0].bill_id);
-      props.setButtonState(false);
-    } else {
+       props.setBillId(response.data.data[0].bill_id);
+
+    }else{
 
       setCardInfo([]);
       props.setSuggestions([]);
-      props.setBillId("");
-      props.setButtonState(true);
+       props.setBillId(response.data.data[0].bill_id);
+      
     }
 
   }
@@ -107,17 +109,15 @@ const TOUSuggestions = (props) => {
         authorization: `Token ${token}`
       }
     })
-    // console.log("The Bill Id is:",response.data.data[0].bill_id);
-    if (response.data.status) {
+    console.log("The Bill Id is:",response.data.data[0].bill_id);
+    if(response.data.data){
       props.setSuggestions(response.data.data);
       props.setBillId(response.data.data[0].bill_id);
-      props.setButtonState(false);
-    } else {
+    }else{
       props.setSuggestions([]);
       props.setBillId([]);
-      props.setButtonState(true);
     }
-
+    
     return response.data.data;
 
   }
@@ -189,7 +189,7 @@ const TOUSuggestions = (props) => {
     if (suggestions) {
       setCardInfo(suggestions);
       setSearchRecords(suggestions);
-    } else {
+    }else{
 
       setCardInfo([]);
       setSearchRecords([]);
@@ -201,28 +201,28 @@ const TOUSuggestions = (props) => {
 
   return (
     <div>
-
-      <SearchBar className="search-bar"
-        value={searched}
-        onChange={(searchVal) => requestSearch(searchVal)}
-        onCancelSearch={() => cancelSearch()}
+  
+     <SearchBar className="search-bar"
+           value={searched}
+           onChange={(searchVal) => requestSearch(searchVal)}
+           onCancelSearch={() => cancelSearch()}
+            />
+    
+    <div className="grid-pagnation" id="paginate-buttons">
+      
+      {displayDivices}
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationBttns"}
+        priviousLinkClassName={"previousBttn"}
+        nextLinkClassName={"nextBttn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
       />
-
-      <div className="grid-pagnation" id="paginate-buttons">
-
-        {displayDivices}
-        <ReactPaginate
-          previousLabel={"Previous"}
-          nextLabel={"Next"}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName={"paginationBttns"}
-          priviousLinkClassName={"previousBttn"}
-          nextLinkClassName={"nextBttn"}
-          disabledClassName={"paginationDisabled"}
-          activeClassName={"paginationActive"}
-        />
-      </div>
+    </div>
     </div>
   );
 };
