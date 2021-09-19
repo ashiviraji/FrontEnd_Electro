@@ -18,8 +18,8 @@ export default function DevicewiseChart() {
         style={{ marginTop: "2rem", marginLeft: "2rem" }}
         separator={<NavigateNextIcon fontSize="small" />}
       >
-        <Link underline="hover" color="blue" href="/my-bill-plans">
-          My Bill Plans
+        <Link underline="hover" color="blue" href={`/bill-comparison?bill_id=${calculatedBillId}`}>
+          More Details
         </Link>
 
         <Link
