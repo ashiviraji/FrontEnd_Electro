@@ -43,7 +43,7 @@ export default function TOUSuggestions() {
     var today = new Date();
 
     var newdat = "Date Printed : " + today;
-    doc.text(20, 50, newdat);
+    doc.text(20, 60, newdat);
     var rows = [];
     var col = ["Device Name", "Quantity", "Total Cost For Device", "Save Amount", "From", "To"];
 
