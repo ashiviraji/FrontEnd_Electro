@@ -1,4 +1,4 @@
-import  { React, useState, useEffect }  from "react";
+import { React, useState, useEffect } from "react";
 import "../../assets/css/Customer/deviceCharttou.css";
 import { Pie } from "react-chartjs-2";
 import Axios from "axios";
@@ -19,34 +19,47 @@ export default function DeviceChart() {
   const [totalUnits,setTotalUnits] = useState(0);
   const [totalCost,setTotalCost] = useState(0);
 
-  async function getDeviceDetailsTOU(newBillId) {
 
+  async function getDeviceDetailsTOU(newBillId) {
     var ParamsUserId = document.cookie
-      .split(';')
-      .map(cookie => cookie.split('='))
-      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
-  
-  
+      .split(";")
+      .map((cookie) => cookie.split("="))
+      .reduce(
+        (accumulator, [key, value]) => ({
+          ...accumulator,
+          [key.trim()]: decodeURIComponent(value),
+        }),
+        {}
+      ).userId;
+
     var token = document.cookie
-      .split(';')
-      .map(cookie => cookie.split('='))
-      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
-  
-  
-      // let History = useHistory();
-      console.log("call device detail function")
-  
-      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-device-wise-usage-tou-main/${ParamsUserId}`, {
-          newBillId: newBillId
-      }, {
-          headers: {
-              authorization: `Token ${token}`
-          }
-      })
-  
-      console.log(response.data.data);
-      return response.data.data;
-  
+      .split(";")
+      .map((cookie) => cookie.split("="))
+      .reduce(
+        (accumulator, [key, value]) => ({
+          ...accumulator,
+          [key.trim()]: decodeURIComponent(value),
+        }),
+        {}
+      ).token;
+
+    // let History = useHistory();
+    console.log("call device detail function");
+
+    const response = await Axios.post(
+      `${process.env.REACT_APP_BASE_URL}/get-device-wise-usage-tou-main/${ParamsUserId}`,
+      {
+        newBillId: newBillId,
+      },
+      {
+        headers: {
+          authorization: `Token ${token}`,
+        },
+      }
+    );
+
+    console.log(response.data.data);
+    return response.data.data;
   }
 
   function generateColor1() {
@@ -85,7 +98,7 @@ export default function DeviceChart() {
     var totalCost = [];
     var totalUnit = [];
 
-    for (i = 0; i < chartData.length ; i++) {
+    for (i = 0; i < chartData.length; i++) {
       applianceList.push(chartData[i].appliance);
       colorList1.push(generateColor1());
       colorList2.push(generateColor2());
@@ -122,7 +135,8 @@ export default function DeviceChart() {
 
   return (
     <div>
-      <h4 className="MainTitle-tou text-center" style={{marginBottom: '2rem'}}> Device Wise Usage - TOU </h4>
+
+      <h2 className="MainTitle-tou text-center" style={{marginBottom: '2rem'}}> DEVICE WISE USAGE - TOU </h4>
       <div class="row row-tou">       
         <div class="col-sm-6">
           <div class="card">
@@ -181,6 +195,7 @@ export default function DeviceChart() {
       </div>
       <h5 className="SubTitle-tou"> Peak Time </h5>
       <div class="row row-tou">       
+
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -236,8 +251,10 @@ export default function DeviceChart() {
           </div>
         </div>
       </div>
-      <h5 className="SubTitle-tou"> Off Peak Time </h5>
-      <div class="row row-tou">       
+      <h5 className="SubTitle-tou">
+        <b> Off Peak Time </b>
+      </h5>
+      <div class="row row-tou">
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -293,8 +310,10 @@ export default function DeviceChart() {
           </div>
         </div>
       </div>
-      <h5 className="SubTitle-tou"> Day Time </h5>
-      <div class="row row-tou">       
+      <h5 className="SubTitle-tou">
+        <b> Day Time </b>
+      </h5>
+      <div class="row row-tou">
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -350,7 +369,6 @@ export default function DeviceChart() {
           </div>
         </div>
       </div>
-      
     </div>
   );
 }

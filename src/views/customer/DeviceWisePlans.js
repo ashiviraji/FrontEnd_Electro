@@ -11,7 +11,11 @@ export default function DeviceWisePlans() {
   return (
     <div>
       <div id="bill-plans-title-heading">
-        <label>MY BILL PLANS</label>
+        <label>
+          <h2 align="center">
+            <b>MY BILL PLANS</b>
+          </h2>
+        </label>
       </div>
       <Link to="/manage-bill">
         <button className="add-new-bill-plan">
@@ -21,7 +25,7 @@ export default function DeviceWisePlans() {
           <label className="new-bill-text">Add New Bill Plan</label>
         </button>
       </Link>
-      
+
       <DeviceWisePlanCard />
     </div>
   );

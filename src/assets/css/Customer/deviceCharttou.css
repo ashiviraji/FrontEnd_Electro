@@ -1,19 +1,17 @@
-.row-tou{
-    margin-right: 0;
-    width: 80%;
-    margin-left: 10%;
+.row-tou {
+  width: 80%;
+  margin-left: 10%;
 }
 
-.MainTitle-tou{
-    margin-top: 2%;
+.MainTitle-tou {
+  margin-top: 3%;
 }
 
-.SubTitle-tou{
-    margin-top: 5%;
-    margin-bottom: 2%;
-    margin-left: 11%;
+.SubTitle-tou {
+  margin-top: 8%;
+  margin-bottom: 2%;
+  margin-left: 11%;
 }
-.chart-tou{
-    border: none;
+.chart-tou {
+  border: none;
 }
-
