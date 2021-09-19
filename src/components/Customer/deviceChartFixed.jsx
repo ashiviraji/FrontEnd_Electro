@@ -161,7 +161,10 @@ export default function DeviceChartfixed() {
                           datasets: [
                             {
                               label: "Max Usage",
+
                               axis: "y",
+
+
                               data: units,
                               backgroundColor: colors,
                               hoverOffset: 4,
