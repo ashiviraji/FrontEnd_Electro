@@ -8,7 +8,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 import ConfirmationBox from "../common/ConfirmationBox";
-
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 toast.configure();
 
 export default function EngineerUserProfile() {
@@ -165,6 +168,18 @@ export default function EngineerUserProfile() {
 
   return (
     <div className="body-engineer">
+      <Breadcrumbs aria-label="breadcrumb" style={{ marginTop: '1rem', marginLeft: '-10rem' }} separator={<NavigateNextIcon fontSize="small" />}>
+        <Link underline="hover" color="inherit" href="/dashboard-engineer">
+          Dashboard
+        </Link>
+
+        {/* <Link underline="hover" color="inherit" href={`/special-fixed-device-wise?bill_id=${BillId}`}>
+         
+          Device Wise Usage
+        </Link> */}
+
+        <Typography color="text.primary">CEB Engineer Profile</Typography>
+      </Breadcrumbs>
       <form
         onLoad={(e) => {
           getUser(e);
