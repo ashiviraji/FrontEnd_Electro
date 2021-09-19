@@ -110,7 +110,6 @@ export default function DeviceChartfixed() {
     await getMaxAppliace(devices_data_fixed,max);
     console.log(appliance);
     console.log(units);
-    console.log("__________________"+maxApp);
     
   }, []);
 
