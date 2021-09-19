@@ -77,11 +77,15 @@ const TOUSuggestions = (props) => {
       
       setCardInfo(response.data.data);
       props.setSuggestions(response.data.data);
+      props.setBillId(response.data.data[0].bill_id);
+
 
     }else{
 
       setCardInfo([]);
       props.setSuggestions([]);
+      props.setBillId("");
+
 
     }
 
@@ -157,7 +161,7 @@ const TOUSuggestions = (props) => {
                     onClick={() => {
                       setConfirmDialog({
                         isOpen: true,
-                        title: "Are You sure you want to Apply this Sugestions",
+                        title: "Are You sure you want to Apply this Sugestions ?",
                         subTitle: "All the related bill calculations may change accordingly",
                         btnStatus: "primary",
                         onConfirm: () => { editBillPlan(card);},
