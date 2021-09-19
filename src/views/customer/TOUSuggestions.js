@@ -5,6 +5,10 @@ import { IoMdDownload } from "react-icons/io";
 import { useState } from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link_ from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 //import {IoMdDownload} from "react-icons/io";
 import TOUSuggestionsPage from "./../../components/Customer/TOUSuggestions";
@@ -81,6 +85,15 @@ export default function TOUSuggestions() {
   return (
     
     <div>
+      <Breadcrumbs aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
+        <Link_ underline="hover" color="blue" href="/my-bill-plans">
+          My Bill Plans
+        </Link_ >
+        <Link_ underline="hover" color="blue" href={`/bill-comparison?bill_id=${billPlanName}`}>
+          More Details
+        </Link_ >
+        <Typography color="text.primary">Suggestions</Typography>
+      </Breadcrumbs>
       <div className="device-wise-title-TOU">
         <h2>
           <b>TOU SUGGESTIONS</b>
