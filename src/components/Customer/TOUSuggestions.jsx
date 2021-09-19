@@ -157,8 +157,8 @@ const TOUSuggestions = (props) => {
                     onClick={() => {
                       setConfirmDialog({
                         isOpen: true,
-                        title: "Are You sure Apply this Sugestions",
-                        subTitle: "Your Bill plan and all calculations are change quickly",
+                        title: "Are You sure you want to Apply this Sugestions",
+                        subTitle: "All the related bill calculations may change accordingly",
                         btnStatus: "primary",
                         onConfirm: () => { editBillPlan(card);},
                       });
