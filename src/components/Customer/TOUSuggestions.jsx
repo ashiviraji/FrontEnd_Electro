@@ -7,6 +7,8 @@ import {BsSearch} from 'react-icons/bs';
 import Axios from 'axios';
 import SearchBar from "material-ui-search-bar";
 import { Link } from "react-router-dom";
+import ConfirmDialog from "./bill_control/ConfirmDialog";
+
 
 
 
@@ -122,6 +124,12 @@ const TOUSuggestions = (props) => {
 
   }
 
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
+
 
 
 
@@ -138,7 +146,19 @@ const TOUSuggestions = (props) => {
         >
           <Card.Body className="card-body">
             {/* <Link style={{ float:"right" }}  > */}
-            <button style={{ float: "right" }} type="button" className="btn btn-success btn-lg btn-tou" onClick={() => editBillPlan(card)}>
+            <button style={{ float: "right" }} 
+                    type="button" className="btn btn-success btn-lg btn-tou" 
+                    onClick={() => {
+                      setConfirmDialog({
+                        isOpen: true,
+                        title: "Are You sure delete this record",
+                        subTitle: "You can't  undo this operation",
+                        btnStatus: "success",
+                        onConfirm: () => {
+                        editBillPlan(card);
+                        },
+                      });
+                    }}>
               Apply
             </button>
             {/* </Link> */}
@@ -221,6 +241,10 @@ const TOUSuggestions = (props) => {
         nextLinkClassName={"nextBttn"}
         disabledClassName={"paginationDisabled"}
         activeClassName={"paginationActive"}
+      />
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
       />
     </div>
     </div>
