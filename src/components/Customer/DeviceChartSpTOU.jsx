@@ -2,6 +2,10 @@ import { React, useState, useEffect } from "react";
 import "../../assets/css/Customer/deviceCharttou.css";
 import { Pie } from "react-chartjs-2";
 import Axios from "axios";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 export default function DeviceChartSpTOU() {
   const params = new URLSearchParams(window.location.search)
@@ -120,6 +124,18 @@ export default function DeviceChartSpTOU() {
   },[]);
   return (
     <div>
+      <Breadcrumbs maxItems={2} aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
+  <Link underline="hover" color="blue" href="/special-event">
+    Special Event
+  </Link>
+
+  <Link underline="hover" color="blue" href={`/special-tou-device-wise?bill_id=${BillId}`}>
+  {/* {`/special-tou-device-wise?bill_id=${BillId}`} */}
+    Device Wise Usage
+  </Link>
+ 
+  <Typography color="text.primary">Device Wise Chart Usage</Typography>
+</Breadcrumbs>
       <h4 className="MainTitle-tou text-center" style={{marginBottom: '2rem'}}> Device Wise Usage - TOU </h4>
       <div class="row row-tou">       
         <div class="col-sm-6">
