@@ -1,130 +1,116 @@
 .box {
-    height: 200px;
-    width: 40rem;
-    margin-bottom: 30px;
-    border-radius: 8px;
-    margin-left:18%;
-    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  height: 200px;
+  width: 40rem;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  margin-left: 18%;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
 }
 
-#box-card{
-    margin-left: 18%;
+#box-card {
+  margin-left: 18%;
 }
 
-
-
-.grid{
-    margin-left: 200px;
-    margin-top: 100px;
+.grid {
+  margin-left: 200px;
+  margin-top: 100px;
 }
 
+.device-wise-title-TOU {
+  /* margin-top: 45px; */
+  height: 50px;
+  padding: 5px;
+  text-align: center;
+  text-align: center;
+  display: inline-block;
+  text-align: center;
+  margin-left: 290px;
+  margin-top: 3%;
 
-
-
-.device-wise-title-TOU{
-    /* margin-top: 45px; */
-    height: 50px;
-    padding: 5px;
-    text-align: center;
-    font-weight:500;
-    text-align: center;
-    font-size:25px;
-    display: inline-block;
-    text-align: center;
-    margin-left: 290px;
-   
-    
-   
-    width: 500px;
+  width: 500px;
 }
 
-.download-button{
-    border-color: darkblue;
-    font-size: 20px;
-    color: white;
-    background: #0096FF;
-    margin-top:3%;
-    float: right;
-    margin-right: 3%;
-    width: 250px;
-    height: 45px;
-    border-radius: 5px;
+.download-button {
+  border-color: darkblue;
+  font-size: 20px;
+  color: white;
+  background: #0096ff;
+  margin-top: 3%;
+  float: right;
+  margin-right: 3%;
+  width: 250px;
+  height: 45px;
+  border-radius: 5px;
 }
 
-
-.suggestions{
-    border-radius: 4px;
-    background: #D9DCD9;
-    margin-left: 20px;
-    height: 27px;
-    padding-left: 5px;
-    padding-right:5px;
+.suggestions {
+  border-radius: 4px;
+  background: #d9dcd9;
+  margin-left: 20px;
+  height: 27px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
-.paginationBttns{
-    width:80%;
-    height:40px;
-    list-style:none;
-    display:flex;
-    margin-left:25%;
-    
-   
+.paginationBttns {
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  margin-left: 25%;
 }
 
-.paginationBttns a{
-    padding:10px;
-    margin: 8px;
-    border-radius:5px;
-    border:1px solid #23e694;
-    color:#23e694;
-    cursor: pointer;
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid #23e694;
+  color: #23e694;
+  cursor: pointer;
 }
 
-.paginationBttns a:hover{
-    color:white;
-    background-color:#23e694; 
+.paginationBttns a:hover {
+  color: white;
+  background-color: #23e694;
 }
 
-#paginate-buttons{
-    width: 35rem;
-    margin-left: 150px;
-    margin-top: 40px;
+#paginate-buttons {
+  width: 35rem;
+  margin-left: 150px;
+  margin-top: 40px;
 }
 
-
-.paginationActive a{
-    color:white;
-    background-color:#23e694; 
+.paginationActive a {
+  color: white;
+  background-color: #23e694;
 }
 
-.nextBttn{
-    text-decoration: none;;
+.nextBttn {
+  text-decoration: none;
 }
 
-.search-bar{
-    outline:none;
-    width: 35%;
-    text-align: left;
-    background: #E8E8E8;
-    height: 40px;
-    margin-top: 30px;
-    margin-left: 28%;
-    border-radius: 20px;
-    padding: 15px;
+.search-bar {
+  outline: none;
+  width: 35%;
+  text-align: left;
+  background: #e8e8e8;
+  height: 40px;
+  margin-top: 30px;
+  margin-left: 28%;
+  border-radius: 20px;
+  padding: 15px;
 }
 
 .input-icons i {
-    position: absolute;
+  position: absolute;
 }
-  
+
 .input-icons {
-    width: 100%;
-    margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.bsSearch{
-   margin-top: -3px;
-   margin-left: -28px;
+.bsSearch {
+  margin-top: -3px;
+  margin-left: -28px;
 }
-
-
-

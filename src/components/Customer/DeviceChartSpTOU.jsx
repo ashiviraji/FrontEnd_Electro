@@ -2,19 +2,26 @@ import { React, useState, useEffect } from "react";
 import "../../assets/css/Customer/deviceCharttou.css";
 import { Pie } from "react-chartjs-2";
 import Axios from "axios";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 export default function DeviceChartSpTOU() {
   const params = new URLSearchParams(window.location.search)
   const BillId  = params.get('bill_id');
 
   const [appliance, setAppliance] = useState([]);
-  const [colors, setColors] = useState([]);
+  const [colors1, setColors1] = useState([]);
+  const [colors2, setColors2] = useState([]);
   const [peakUnits,setPeakUnits] = useState([]);
   const [offPeakUnits,setOffPeakUnits] = useState([]);
   const [dayUnits,setDayUnits] = useState([]);
   const [peakCost,setPeakCost] = useState([]);
   const [offPeakCost,setOffPeakCost] = useState([]);
   const [dayCost,setDayCost] = useState([]);
+  const [totalCost,setTotalCost] = useState([]);
+  const [totalUnits,setTotalUnits] = useState([]);
   
   async function getSpecialEventDeviceDetailsTOU(newBillId) {
 
@@ -46,9 +53,20 @@ export default function DeviceChartSpTOU() {
   
   }
 
-  function generateColor() {
+  function generateColor1() {
     var symbols, color;
     symbols = "0123456789ABCDEF";
+    color = "#";
+
+    for (var i = 0; i < 6; i++) {
+      color = color + symbols[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  function generateColor2() {
+    var symbols, color;
+    symbols = "ABCDEF0123456789";
     color = "#";
 
     for (var i = 0; i < 6; i++) {
@@ -60,33 +78,42 @@ export default function DeviceChartSpTOU() {
   function getSpData(chartData) {
     var i;
     var applianceList = [];
-    let colorList = [];
+    let colorList1 = [];
+    let colorList2 = [];
     var peakUnitList = [];
     var offPeakUnitList = [];
     var dayUnitList = [];
     var peakCostList = [];
     var offPeakCostList = [];
     var dayCostList = [];
+    var totalCost = [];
+    var totalUnit = [];
 
     for (i = 0; i < chartData.length ; i++) {
       applianceList.push(chartData[i].appliance);
-      colorList.push(generateColor());
+      colorList1.push(generateColor1());
+      colorList2.push(generateColor2());
       peakUnitList.push(chartData[i].units_peak_time);
       offPeakUnitList.push(chartData[i].units_off_peak_time);
       dayUnitList.push(chartData[i].units_day_time);
       peakCostList.push(chartData[i].cost_peak_time);
       offPeakCostList.push(chartData[i].cost_off_peak_time);
       dayCostList.push(chartData[i].cost_day_time);
+      totalCost.push(chartData[i].total_cost_TOU);
+      totalUnit.push(chartData[i].total_units);
     }
 
     setAppliance(applianceList);
-    setColors(colorList);
+    setColors1(colorList1);
+    setColors2(colorList2);
     setPeakUnits(peakUnitList);
     setOffPeakUnits(offPeakUnitList);
     setDayUnits(dayUnitList);
     setPeakCost(peakCostList);
     setOffPeakCost(offPeakCostList);
     setDayCost(dayCostList);
+    setTotalCost(totalCost);
+    setTotalUnits(totalUnit);
   }
 
    
@@ -97,7 +124,75 @@ export default function DeviceChartSpTOU() {
   },[]);
   return (
     <div>
-      <h4 className="MainTitle-tou text-center"> Device Wise Usage - TOU </h4>
+      <Breadcrumbs maxItems={2} aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
+  <Link underline="hover" color="blue" href="/special-event">
+    Special Event
+  </Link>
+
+  <Link underline="hover" color="blue" href={`/special-tou-device-wise?bill_id=${BillId}`}>
+  {/* {`/special-tou-device-wise?bill_id=${BillId}`} */}
+    Device Wise Usage
+  </Link>
+ 
+  <Typography color="text.primary">Device Wise Chart Usage</Typography>
+</Breadcrumbs>
+      <h4 className="MainTitle-tou text-center" style={{marginBottom: '2rem'}}> Device Wise Usage - TOU </h4>
+      <div class="row row-tou">       
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-title text-center">Total Cost Usage (LKR/month)</h6>
+              <div class="col-sm-12">
+                <div class="card chart-tou">
+                  <div class="card-body chartbody">
+                    <div className="chart-devicewise">
+                      <Pie
+                        data={{
+                          labels: appliance,
+                          datasets: [
+                            {
+                              data: totalCost,
+                              backgroundColor: colors1,
+                              hoverOffset: 4,
+                            },
+                          ],
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h6 class="card-title text-center">Total Unit Usage (kWh)</h6>
+              <div class="col-sm-12">
+                <div class="card chart-tou">
+                  <div class="card-body">
+                    <div className="chart-devicewise">
+                      <Pie
+                        data={{
+                          labels: appliance,
+                          datasets: [
+                            {
+                              data: totalUnits,
+                              backgroundColor: colors2,
+                              hoverOffset: 4,
+                            },
+                          ],
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <h5 className="SubTitle-tou"> Peak Time </h5>
       <div class="row row-tou">       
         <div class="col-sm-6">
@@ -114,7 +209,7 @@ export default function DeviceChartSpTOU() {
                           datasets: [
                             {
                               data: peakCost,
-                              backgroundColor: colors,
+                              backgroundColor: colors1,
                               hoverOffset: 4,
                             },
                           ],
@@ -141,7 +236,7 @@ export default function DeviceChartSpTOU() {
                           datasets: [
                             {
                               data: peakUnits,
-                              backgroundColor: colors,
+                              backgroundColor: colors2,
                               hoverOffset: 4,
                             },
                           ],
@@ -171,7 +266,7 @@ export default function DeviceChartSpTOU() {
                           datasets: [
                             {
                               data: offPeakCost,
-                              backgroundColor:colors,
+                              backgroundColor:colors1,
                               hoverOffset: 4,
                             },
                           ],
@@ -198,7 +293,7 @@ export default function DeviceChartSpTOU() {
                           datasets: [
                             {
                               data: offPeakUnits,
-                              backgroundColor: colors,
+                              backgroundColor: colors2,
                               hoverOffset: 4,
                             },
                           ],
@@ -228,7 +323,7 @@ export default function DeviceChartSpTOU() {
                           datasets: [
                             {
                               data: dayCost,
-                              backgroundColor: colors,
+                              backgroundColor: colors1,
                               hoverOffset: 4,
                             },
                           ],
@@ -255,7 +350,7 @@ export default function DeviceChartSpTOU() {
                           datasets: [
                             {
                               data: dayUnits,
-                              backgroundColor: colors,
+                              backgroundColor: colors2,
                               hoverOffset: 4,
                             },
                           ],

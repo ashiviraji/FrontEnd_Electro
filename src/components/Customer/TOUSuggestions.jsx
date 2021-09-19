@@ -7,6 +7,8 @@ import {BsSearch} from 'react-icons/bs';
 import Axios from 'axios';
 import SearchBar from "material-ui-search-bar";
 import { Link } from "react-router-dom";
+import ConfirmDialog from "./bill_control/ConfirmDialog";
+
 
 
 
@@ -45,7 +47,8 @@ const TOUSuggestions = (props) => {
     requestSearch(searched);
   };
 
-  async function editBillPlan(sugestDetails) {
+  async function editBillPlan(suggestDetails) {
+    console.log(suggestDetails);
     var ParamsUserId = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
@@ -57,30 +60,39 @@ const TOUSuggestions = (props) => {
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
-    console.log("call sugestions function");
+    console.log("call editBillPlan function");
 
     const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
-      sugestDetails: sugestDetails
+      suggestDetails: suggestDetails
     }, {
       headers: {
         authorization: `Token ${token}`
       }
     })
 
+    console.log(response.data.data)
+
    
     if (response.data.data) {
       
       setCardInfo(response.data.data);
       props.setSuggestions(response.data.data);
-       props.setBillId(response.data.data[0].bill_id);
+      props.setBillId(response.data.data[0].bill_id);
+
 
     }else{
 
       setCardInfo([]);
       props.setSuggestions([]);
-       props.setBillId(response.data.data[0].bill_id);
-      
+      props.setBillId("");
+
+
     }
+
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
 
   }
 
@@ -122,6 +134,12 @@ const TOUSuggestions = (props) => {
 
   }
 
+  const [confirmDialog, setConfirmDialog] = useState({
+    isOpen: false,
+    title: "",
+    subTitle: "",
+  });
+
 
 
 
@@ -138,7 +156,17 @@ const TOUSuggestions = (props) => {
         >
           <Card.Body className="card-body">
             {/* <Link style={{ float:"right" }}  > */}
-            <button style={{ float: "right" }} type="button" className="btn btn-success btn-lg btn-tou" onClick={() => editBillPlan(card)}>
+            <button style={{ float: "right" }} 
+                    type="button" className="btn btn-success btn-lg btn-tou" 
+                    onClick={() => {
+                      setConfirmDialog({
+                        isOpen: true,
+                        title: "Are You sure you want to Apply this Sugestions ?",
+                        subTitle: "All the related bill calculations may change accordingly",
+                        btnStatus: "primary",
+                        onConfirm: () => { editBillPlan(card);},
+                      });
+                    }}>
               Apply
             </button>
             {/* </Link> */}
@@ -221,6 +249,10 @@ const TOUSuggestions = (props) => {
         nextLinkClassName={"nextBttn"}
         disabledClassName={"paginationDisabled"}
         activeClassName={"paginationActive"}
+      />
+      <ConfirmDialog
+        confirmDialog={confirmDialog}
+        setConfirmDialog={setConfirmDialog}
       />
     </div>
     </div>

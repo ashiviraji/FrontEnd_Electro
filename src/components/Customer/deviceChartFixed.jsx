@@ -11,8 +11,8 @@ export default function DeviceChartfixed() {
   const [appliance, setAppliance] = useState([]);
   const [units, setUnits] = useState([]);
   const [colors, setColors] = useState([]);
-  const [max,setMax] = useState(0);
-  const [maxApp,setMaxApp] = useState("");
+  const [max, setMax] = useState(0);
+  const [maxApp, setMaxApp] = useState("");
 
   async function getDeviceDetailsFixed(newBillId) {
     var ParamsUserId = document.cookie
@@ -74,10 +74,10 @@ export default function DeviceChartfixed() {
       colorList.push(generateColor());
     }
 
-    var maxunit = chartData[0].total_units
+    var maxunit = chartData[0].total_units;
 
-    for(i=0;i< chartData.length; i++){
-      if(chartData[i].total_units>maxunit){
+    for (i = 0; i < chartData.length; i++) {
+      if (chartData[i].total_units > maxunit) {
         maxunit = chartData[i].total_units;
       }
     }
@@ -88,10 +88,10 @@ export default function DeviceChartfixed() {
     await setMax(maxunit);
   }
 
-  function getMaxAppliace(chartData,max){
+  function getMaxAppliace(chartData, max) {
     var max_appliance;
-    for(var x=0; x< chartData.length; x++ ){
-      if(chartData[x].total_units==max){
+    for (var x = 0; x < chartData.length; x++) {
+      if (chartData[x].total_units == max) {
         max_appliance = chartData[x].appliance;
       }
     }
@@ -103,15 +103,16 @@ export default function DeviceChartfixed() {
   useEffect(async () => {
     var devices_data_fixed = await getDeviceDetailsFixed(calculatedBillId);
     await getData(devices_data_fixed);
-    const maxAppl = await getMaxAppliace(devices_data_fixed,max);
+    const maxAppl = await getMaxAppliace(devices_data_fixed, max);
     setMaxApp(maxAppl);
     console.log(maxAppl);
-
   }, []);
 
   return (
     <div>
-      <h4 className="MainTitle-fixed text-center">DEVICE WISE USAGE - FIXED</h4>
+      <h2 className="MainTitle-fixed">
+        <b>DEVICE WISE USAGE - FIXED</b>
+      </h2>
       <div class="row row-fixed">
         <div class="col-sm-6">
           <div class="card">
@@ -160,7 +161,10 @@ export default function DeviceChartfixed() {
                           datasets: [
                             {
                               label: "Max Usage",
-                              axis:'y',
+
+                              axis: "y",
+
+
                               data: units,
                               backgroundColor: colors,
                               hoverOffset: 4,
