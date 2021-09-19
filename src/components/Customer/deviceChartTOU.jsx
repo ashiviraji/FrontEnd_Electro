@@ -1,4 +1,4 @@
-import  { React, useState, useEffect }  from "react";
+import { React, useState, useEffect } from "react";
 import "../../assets/css/Customer/deviceCharttou.css";
 import { Pie } from "react-chartjs-2";
 import Axios from "axios";
@@ -9,41 +9,53 @@ export default function DeviceChart() {
 
   const [appliance, setAppliance] = useState([]);
   const [colors, setColors] = useState([]);
-  const [peakUnits,setPeakUnits] = useState([]);
-  const [offPeakUnits,setOffPeakUnits] = useState([]);
-  const [dayUnits,setDayUnits] = useState([]);
-  const [peakCost,setPeakCost] = useState([]);
-  const [offPeakCost,setOffPeakCost] = useState([]);
-  const [dayCost,setDayCost] = useState([]);
+  const [peakUnits, setPeakUnits] = useState([]);
+  const [offPeakUnits, setOffPeakUnits] = useState([]);
+  const [dayUnits, setDayUnits] = useState([]);
+  const [peakCost, setPeakCost] = useState([]);
+  const [offPeakCost, setOffPeakCost] = useState([]);
+  const [dayCost, setDayCost] = useState([]);
 
   async function getDeviceDetailsTOU(newBillId) {
-
     var ParamsUserId = document.cookie
-      .split(';')
-      .map(cookie => cookie.split('='))
-      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).userId;
-  
-  
+      .split(";")
+      .map((cookie) => cookie.split("="))
+      .reduce(
+        (accumulator, [key, value]) => ({
+          ...accumulator,
+          [key.trim()]: decodeURIComponent(value),
+        }),
+        {}
+      ).userId;
+
     var token = document.cookie
-      .split(';')
-      .map(cookie => cookie.split('='))
-      .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
-  
-  
-      // let History = useHistory();
-      console.log("call device detail function")
-  
-      const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-device-wise-usage-tou-main/${ParamsUserId}`, {
-          newBillId: newBillId
-      }, {
-          headers: {
-              authorization: `Token ${token}`
-          }
-      })
-  
-      console.log(response.data.data);
-      return response.data.data;
-  
+      .split(";")
+      .map((cookie) => cookie.split("="))
+      .reduce(
+        (accumulator, [key, value]) => ({
+          ...accumulator,
+          [key.trim()]: decodeURIComponent(value),
+        }),
+        {}
+      ).token;
+
+    // let History = useHistory();
+    console.log("call device detail function");
+
+    const response = await Axios.post(
+      `${process.env.REACT_APP_BASE_URL}/get-device-wise-usage-tou-main/${ParamsUserId}`,
+      {
+        newBillId: newBillId,
+      },
+      {
+        headers: {
+          authorization: `Token ${token}`,
+        },
+      }
+    );
+
+    console.log(response.data.data);
+    return response.data.data;
   }
 
   function generateColor() {
@@ -68,7 +80,7 @@ export default function DeviceChart() {
     var offPeakCostList = [];
     var dayCostList = [];
 
-    for (i = 0; i < chartData.length ; i++) {
+    for (i = 0; i < chartData.length; i++) {
       applianceList.push(chartData[i].appliance);
       colorList.push(generateColor());
       peakUnitList.push(chartData[i].units_peak_time);
@@ -99,9 +111,13 @@ export default function DeviceChart() {
 
   return (
     <div>
-      <h4 className="MainTitle-tou text-center"> Device Wise Usage - TOU </h4>
-      <h5 className="SubTitle-tou"> Peak Time </h5>
-      <div class="row row-tou">       
+      <h2 className="MainTitle-tou text-center">
+        <b> DEVICE WISE USAGE - TOU </b>
+      </h2>
+      <h5 className="SubTitle-tou">
+        <b> Peak Time </b>
+      </h5>
+      <div class="row row-tou">
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -116,7 +132,7 @@ export default function DeviceChart() {
                           datasets: [
                             {
                               data: peakCost,
-                              backgroundColor:colors,
+                              backgroundColor: colors,
                               hoverOffset: 4,
                             },
                           ],
@@ -157,8 +173,10 @@ export default function DeviceChart() {
           </div>
         </div>
       </div>
-      <h5 className="SubTitle-tou"> Off Peak Time </h5>
-      <div class="row row-tou">       
+      <h5 className="SubTitle-tou">
+        <b> Off Peak Time </b>
+      </h5>
+      <div class="row row-tou">
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -173,7 +191,7 @@ export default function DeviceChart() {
                           datasets: [
                             {
                               data: offPeakCost,
-                              backgroundColor:colors,
+                              backgroundColor: colors,
                               hoverOffset: 4,
                             },
                           ],
@@ -200,7 +218,7 @@ export default function DeviceChart() {
                           datasets: [
                             {
                               data: offPeakUnits,
-                              backgroundColor:colors,
+                              backgroundColor: colors,
                               hoverOffset: 4,
                             },
                           ],
@@ -214,8 +232,10 @@ export default function DeviceChart() {
           </div>
         </div>
       </div>
-      <h5 className="SubTitle-tou"> Day Time </h5>
-      <div class="row row-tou">       
+      <h5 className="SubTitle-tou">
+        <b> Day Time </b>
+      </h5>
+      <div class="row row-tou">
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
@@ -257,7 +277,7 @@ export default function DeviceChart() {
                           datasets: [
                             {
                               data: dayUnits,
-                              backgroundColor:colors,
+                              backgroundColor: colors,
                               hoverOffset: 4,
                             },
                           ],
@@ -271,7 +291,6 @@ export default function DeviceChart() {
           </div>
         </div>
       </div>
-      
     </div>
   );
 }
