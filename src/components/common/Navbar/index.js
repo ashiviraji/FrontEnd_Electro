@@ -22,14 +22,24 @@ const Navbar = ({ toggle }) => {
           </MobileIcon>
           <NavMenu>
             <NavItem>
-              <NavLinks to="electro">Home</NavLinks>
-            </NavItem>
-            <NavItem></NavItem>
-            <NavItem>
-              <NavLinks to="aboutus">About Us</NavLinks>
+              <NavLinks to="electro">
+                <b>HOME</b>
+              </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="contactus">Contact Us</NavLinks>
+              <NavLinks to="services">
+                <b>OUR SERVICES</b>
+              </NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks to="aboutus">
+                <b>ABOUT US</b>
+              </NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks to="contactus">
+                <b>CONTACT US</b>
+              </NavLinks>
             </NavItem>
             <NavItem>
               <NavBtn>
