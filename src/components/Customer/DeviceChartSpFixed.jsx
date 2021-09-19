@@ -2,6 +2,10 @@ import { React, useState, useEffect } from "react";
 import "../../assets/css/Customer/deviceChartfixed.css";
 import { Pie, Bar } from "react-chartjs-2";
 import Axios from "axios";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 export default function DeviceChartfixed() {
   
@@ -99,6 +103,21 @@ export default function DeviceChartfixed() {
  
   return (
     <div>
+      {/* {`/special-event-fixed?bill_id=${newBillId}`} */}
+
+<Breadcrumbs aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
+  <Link underline="hover" color="inherit" href="/special-event">
+    Special Event
+  </Link>
+
+  <Link underline="hover" color="inherit" href={`/special-fixed-device-wise?bill_id=${BillId}`}>
+  {/* {`/special-fixed-device-wise?bill_id=${BillId}`} */}
+    Device Wise Usage
+  </Link>
+ 
+  <Typography color="text.primary">Device Wise Chart Usage</Typography>
+</Breadcrumbs>
+
       <h4 className="MainTitle-fixed text-center">
         DEVICE WISE USAGE - FIXED
       </h4>
