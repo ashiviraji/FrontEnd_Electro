@@ -45,7 +45,7 @@ export default function TOUSuggestions() {
     var newdat = "Date Printed : " + today;
     doc.text(20, 60, newdat);
     var rows = [];
-    var col = ["Device Name", "Quantity", "Total Cost For Device", "Save Amount", "From", "To"];
+    var col = ["Device Name", "Quantity", "Total Cost For Device", "Save Amount", "Current Time", "Change Time"];
 
 
     suggestions.forEach(element => {
@@ -55,7 +55,7 @@ export default function TOUSuggestions() {
 
     });
 
-    doc.autoTable(col, rows, { startY: 60, columnStyles: { 0: { cellPadding: 8 }, 1: { cellPadding: 8 }, 2: { cellPadding: 8 }, 3: { cellPadding: 8 }, 4: { cellPadding: 8 }, 5: { cellPadding: 8 } } });
+    doc.autoTable(col, rows, { startY: 80, columnStyles: { 0: { cellPadding: 8 }, 1: { cellPadding: 8 }, 2: { cellPadding: 8 }, 3: { cellPadding: 8 }, 4: { cellPadding: 8 }, 5: { cellPadding: 8 } } });
 
     doc.save('suggestions.pdf')
   }
