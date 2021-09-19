@@ -47,7 +47,8 @@ const TOUSuggestions = (props) => {
     requestSearch(searched);
   };
 
-  async function editBillPlan(sugestDetails) {
+  async function editBillPlan(suggestDetails) {
+    console.log(suggestDetails);
     var ParamsUserId = document.cookie
       .split(';')
       .map(cookie => cookie.split('='))
@@ -59,30 +60,35 @@ const TOUSuggestions = (props) => {
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
 
-    console.log("call sugestions function");
+    console.log("call editBillPlan function");
 
     const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/apply-suggestions/${ParamsUserId}`, {
-      sugestDetails: sugestDetails
+      suggestDetails: suggestDetails
     }, {
       headers: {
         authorization: `Token ${token}`
       }
     })
 
+    console.log(response.data.data)
+
    
     if (response.data.data) {
       
       setCardInfo(response.data.data);
       props.setSuggestions(response.data.data);
-       props.setBillId(response.data.data[0].bill_id);
 
     }else{
 
       setCardInfo([]);
       props.setSuggestions([]);
-       props.setBillId(response.data.data[0].bill_id);
-      
+
     }
+
+    setConfirmDialog({
+      ...confirmDialog,
+      isOpen: false,
+    });
 
   }
 
@@ -151,12 +157,10 @@ const TOUSuggestions = (props) => {
                     onClick={() => {
                       setConfirmDialog({
                         isOpen: true,
-                        title: "Are You sure delete this record",
-                        subTitle: "You can't  undo this operation",
-                        btnStatus: "success",
-                        onConfirm: () => {
-                        editBillPlan(card);
-                        },
+                        title: "Are You sure you want to Apply this Sugestions",
+                        subTitle: "All the related bill calculations may change accordingly",
+                        btnStatus: "primary",
+                        onConfirm: () => { editBillPlan(card);},
                       });
                     }}>
               Apply
