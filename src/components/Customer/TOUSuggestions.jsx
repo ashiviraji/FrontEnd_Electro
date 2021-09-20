@@ -74,19 +74,22 @@ const TOUSuggestions = (props) => {
 
    
     if (response.data.data) {
-      
+      var today = new Date();
+     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
       setCardInfo(response.data.data);
       props.setSuggestions(response.data.data);
-      props.setBillId(response.data.data[0].bill_id);
+       props.setBillId(response.data.data[0].bill_id);
+       props.setDate(date);
+
 
 
     }else{
 
       setCardInfo([]);
       props.setSuggestions([]);
-      props.setBillId("");
-
-
+       props.setBillId("");
+       props.setDate(" ");
+      
     }
 
     setConfirmDialog({
@@ -123,11 +126,16 @@ const TOUSuggestions = (props) => {
     })
     console.log("The Bill Id is:",response.data.data[0].bill_id);
     if(response.data.data){
+      var today = new Date();
+     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+      console.log("The date is:",date);
       props.setSuggestions(response.data.data);
+      props.setDate(date);
       props.setBillId(response.data.data[0].bill_id);
     }else{
       props.setSuggestions([]);
-      props.setBillId([]);
+      props.setBillId("");
+      props.setDate("");
     }
     
     return response.data.data;

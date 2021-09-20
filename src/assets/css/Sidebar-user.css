@@ -21,6 +21,13 @@
   
 }
 
+
+#active{
+    background: #172b4d;
+    color: #ffff;
+
+}
+
 .highlight{
 background-color: #172b4d;
 }
@@ -28,16 +35,5 @@ background-color: #172b4d;
 .nonhighlight{
 background-color: #011627;
 }
-/* a:active{
-    background-color: brown;
-} */
- /* &.active {
-    color: #ffff;
-  }
-
-#active{
-    background: rgba(236, 5, 5, 0.856);
-    color: #ffff;
-} */
 
 
