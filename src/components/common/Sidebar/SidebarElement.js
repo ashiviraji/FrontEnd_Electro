@@ -53,6 +53,8 @@ export const ActiveIcon = styled.img`
   height: 24px;
 `;
 
+
+
 export const LinkList = styled(LinkR)`
   color: #eaecef;
   text-decoration: none;
@@ -60,9 +62,7 @@ export const LinkList = styled(LinkR)`
   display: block;
   padding: 10px 15px;
   border-radius: 6px;
-  &.active {
-    color: #ffff;
-  }
+  
 
   &:hover {
     background: #172b4d;
