@@ -106,11 +106,11 @@ export default function DeviceChartfixed() {
       {/* {`/special-event-fixed?bill_id=${newBillId}`} */}
 
 <Breadcrumbs aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
-  <Link underline="hover" color="inherit" href="/special-event">
+  <Link underline="hover" color="blue" href="/special-event">
     Special Event
   </Link>
 
-  <Link underline="hover" color="inherit" href={`/special-fixed-device-wise?bill_id=${BillId}`}>
+  <Link underline="hover" color="blue" href={`/special-fixed-device-wise?bill_id=${BillId}`}>
   {/* {`/special-fixed-device-wise?bill_id=${BillId}`} */}
     Device Wise Usage
   </Link>

@@ -370,7 +370,7 @@ const noOfDays = 0;
     return (
         <div>
          <Breadcrumbs aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
-  <Link underline="hover" color="inherit" href="/special-event">
+  <Link underline="hover" color="blue" href="/special-event">
     Special Event
   </Link>
  
