@@ -91,7 +91,7 @@ export default function InformationTable() {
         </Link>
         <Typography color="text.primary"> Information </Typography>
       </Breadcrumbs> */}
-      <form>
+      <form style={{ marginLeft: "10%" }}>
         <div className="infotable-form">
           <div className="infotable-grp">
             <div className="infotable-title">
