@@ -22,6 +22,10 @@ import { EditOutlined } from "@material-ui/icons";
 import Notification from "../../components/Customer/bill_control/Notification";
 import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog";
 import { Link } from "react-router-dom";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link_ from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 
 
@@ -277,6 +281,12 @@ const [records, setRecords] = useState([]);
 
   return (
     <div>
+      <Breadcrumbs aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
+        <Link_ underline="hover" color="blue" href="/my-bill-plans">
+          My Bill Plans
+        </Link_ >
+        <Typography color="text.primary">Edit Bill Plan</Typography>
+      </Breadcrumbs>
 
       <Paper className={classes.pageContent}>
         <h2>Your Device Data</h2>

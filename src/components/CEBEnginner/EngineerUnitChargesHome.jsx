@@ -3,12 +3,27 @@ import "../../assets/css/CEBEngineer/unitchargesengineerhome.css";
 import { GrDocumentTime } from "react-icons/gr";
 import unitchargeupdates from "../../assets/img/unitchargeupdates.png";
 // import { Route } from "react-router-dom";
-
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { NavLink } from "react-router-dom";
 
 export default function EngineerUnitChargesHome() {
   return (
     <form className="col">
+      <Breadcrumbs aria-label="breadcrumb" style={{ marginTop: '2rem', marginLeft: '2rem' }} separator={<NavigateNextIcon fontSize="small" />}>
+        <Link underline="hover" color="inherit" href="/dashboard-engineer">
+          Dashboard
+        </Link>
+
+        {/* <Link underline="hover" color="inherit" href={`/special-fixed-device-wise?bill_id=${BillId}`}>
+         
+          Device Wise Usage
+        </Link> */}
+
+        <Typography color="text.primary">Unit Charges</Typography>
+      </Breadcrumbs>
       <div className="frm-ucharges">
         <div className="eng-grp-ucharges">
           <div className="eng-title-unitcharges text-center">

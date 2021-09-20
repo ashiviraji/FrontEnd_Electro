@@ -2,6 +2,10 @@ import { React, useState, useEffect } from "react";
 import "../../assets/css/Customer/deviceChartfixed.css";
 import { Pie, Bar } from "react-chartjs-2";
 import Axios from "axios";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 export default function DeviceChartfixed() {
   
@@ -11,8 +15,8 @@ export default function DeviceChartfixed() {
   const [appliance, setAppliance] = useState([]);
   const [units, setUnits] = useState([]);
   const [colors, setColors] = useState([]);
-  const [max,setMax] = useState([]);
-  const [maxApp,getMaxApp] = useState("");
+  const [max,setMax] = useState(0);
+  const [maxApp,setMaxApp] = useState("");
 
   async function getSpecialEventDeviceDetailsFixed(newBillId) {
 
@@ -26,11 +30,7 @@ export default function DeviceChartfixed() {
       .split(';')
       .map(cookie => cookie.split('='))
       .reduce((accumulator, [key, value]) => ({ ...accumulator, [key.trim()]: decodeURIComponent(value) }), {}).token;
-  
-  
-      // let History = useHistory();
-      console.log("call special event device detail fixed function")
-  
+    
       const response = await Axios.post(`${process.env.REACT_APP_BASE_URL}/get-specialEvent-details-devicewise-fixed/${ParamsUserId}`, {
           newBillId: newBillId
       }, {
@@ -39,7 +39,6 @@ export default function DeviceChartfixed() {
           }
       })
   
-      console.log(response.data.data);
       return response.data.data;
   
   }
@@ -54,40 +53,42 @@ export default function DeviceChartfixed() {
     return color;
   }
 
-  function getSpData(chartData) {
+  async function getSpData(chartData) {
     var i;
     var applianceList = [];
     let unitList = [];
     let colorList = [];
 
-    for (i = 0; i < 2; i++) {
+    for (i = 0; i < chartData.length; i++) {
       applianceList.push(chartData[i].appliance);
       unitList.push(chartData[i].	total_units_fixed);
       colorList.push(generateColor());
     }
     
-    var maxunit = chartData[0].total_units
+    var maxunit = chartData[0].total_units_fixed;
 
     for(i=0;i< chartData.length; i++){
-      if(chartData[i].total_units>maxunit){
-        maxunit = chartData[i].total_units;
+      if(chartData[i].total_units_fixed>maxunit){
+        maxunit = chartData[i].total_units_fixed;
       }
+
     }
 
-    setAppliance(applianceList);
-    setUnits(unitList);
-    setColors(colorList);
-    setMax(maxunit);
+    await setAppliance(applianceList);
+    await setUnits(unitList);
+    await setColors(colorList);
+    await setMax(maxunit);
   }
 
   function getMaxAppliace(chartData,max){
+   
     var max_appliance;
     for(var x=0; x< chartData.length; x++ ){
-      if(chartData[x].total_units===max){
+      if(chartData[x].total_units_fixed==max){
         max_appliance = chartData[x].appliance;
       }
     }
-    getMaxApp(max_appliance);
+    setMaxApp(max_appliance);
   }
 
    
@@ -95,11 +96,28 @@ export default function DeviceChartfixed() {
   
     var special_event_data_fixed = await getSpecialEventDeviceDetailsFixed(BillId);
     await getSpData(special_event_data_fixed);
+    console.log("________"+max);
     await getMaxAppliace(special_event_data_fixed,max);
   },[]);
 
+ 
   return (
     <div>
+      {/* {`/special-event-fixed?bill_id=${newBillId}`} */}
+
+<Breadcrumbs aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
+  <Link underline="hover" color="blue" href="/special-event">
+    Special Event
+  </Link>
+
+  <Link underline="hover" color="blue" href={`/special-fixed-device-wise?bill_id=${BillId}`}>
+  {/* {`/special-fixed-device-wise?bill_id=${BillId}`} */}
+    Device Wise Usage
+  </Link>
+ 
+  <Typography color="text.primary">Device Wise Chart Usage</Typography>
+</Breadcrumbs>
+
       <h4 className="MainTitle-fixed text-center">
         DEVICE WISE USAGE - FIXED
       </h4>
@@ -148,13 +166,15 @@ export default function DeviceChartfixed() {
                           labels: appliance,
                           datasets: [
                             {
-                              label: maxApp,
+                              axis: 'y',
+                              label: "Maximum Usage",
                               data: units,
                               backgroundColor: colors,
                               hoverOffset: 4,
                             },
                           ],
                         }}
+                        
                       />
                     </div>
                   </div>

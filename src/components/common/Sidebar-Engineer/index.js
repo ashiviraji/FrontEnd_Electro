@@ -21,7 +21,7 @@ import EngineerUserProfile from "../../../views/CEBEnginner/EngineerUserProfile"
 import InformationTable from "../../../views/InformationTable";
 import DashboardEngineer from "../../../views/CEBEnginner/DashboardCEBEngineer";
 import PendingUnitChargesMain from "../../../views/CEBEnginner/EngineerPendingUnitChargesMain";
-
+import { useState } from "react";
 import {
   SideNav,
   UlList,
@@ -35,6 +35,53 @@ import {
 } from "./SidebarElement";
 
 const SidebarEngineer = ({ show }) => {
+
+  const [buttnColor1, setBtnColor1] = useState("");
+  const [buttnColor2, setBtnColor2] = useState("");
+  const [buttnColor3, setBtnColor3] = useState("");
+  const [buttnColor4, setBtnColor4] = useState("");
+  const [buttnColor5, setBtnColor5] = useState("");
+
+
+  function buttonColor(btnNumber) {
+    if (btnNumber == 1) {
+      setBtnColor1("highlight");
+      setBtnColor2("nonhighlight");
+      setBtnColor3("nonhighlight");
+      setBtnColor4("nonhighlight");
+      setBtnColor5("nonhighlight");
+
+    } else if (btnNumber == 2) {
+      setBtnColor1("nonhighlight");
+      setBtnColor2("highlight");
+      setBtnColor3("nonhighlight");
+      setBtnColor4("nonhighlight");
+      setBtnColor5("nonhighlight");
+
+    } else if (btnNumber == 3) {
+      setBtnColor1("nonhighlight");
+      setBtnColor2("nonhighlight");
+      setBtnColor3("highlight");
+      setBtnColor4("nonhighlight");
+      setBtnColor5("nonhighlight");
+
+    } else if (btnNumber == 4) {
+      setBtnColor1("nonhighlight");
+      setBtnColor2("nonhighlight");
+      setBtnColor3("nonhighlight");
+      setBtnColor4("highlight");
+      setBtnColor5("nonhighlight");
+
+    } else {
+      setBtnColor1("nonhighlight");
+      setBtnColor2("nonhighlight");
+      setBtnColor3("nonhighlight");
+      setBtnColor4("nonhighlight");
+      setBtnColor5("highlight");
+
+    }
+
+  }
   return (
     <>
       <Router>
@@ -67,35 +114,35 @@ const SidebarEngineer = ({ show }) => {
               </UserName>
               <UlList>
                 <List>
-                  <LinkList to="/dashboard-engineer">
+                  <LinkList to="/dashboard-engineer" className={buttnColor1} onClick={() => buttonColor(1)}>
                     <RiDashboardLine />
                     &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/engineer-unit-charges-home">
+                  <LinkList to="/engineer-unit-charges-home" className={buttnColor2} onClick={() => buttonColor(2)}>
                     <AiOutlineDollar />
                     &nbsp;&nbsp;&nbsp;Update Unit Charges
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/engineer-pending-unit-charges-home">
+                  <LinkList to="/engineer-pending-unit-charges-home" className={buttnColor3} onClick={() => buttonColor(3)}>
                     <BiRevision />
                     &nbsp;&nbsp;&nbsp;Pending Unit Charges
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/engineer-userprofile">
+                  <LinkList to="/engineer-userprofile" className={buttnColor4} onClick={() => buttonColor(4)}>
                     <BiUserCircle />
                     &nbsp;&nbsp;&nbsp;User Profile
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/information">
+                  <LinkList to="/information" className={buttnColor5} onClick={() => buttonColor(5)}>
                     <RiInformationLine />
                     &nbsp;&nbsp;&nbsp; Information
                   </LinkList>

@@ -31,7 +31,9 @@ const HeroSection = () => {
           <HeroP>
             Sustainable Electricity Model for Domestic Household users to select
             between normal billing method and Time Of Use (TOU) method.
-            <br/>Get suggestions to reduce your monthly electricity bill.
+            <br />
+            We will provide you suggestions to reduce your monthly electricity
+            bill.
           </HeroP>
           <HeroBtnWrapper>
             <Button to="/sign-in" onMouseEnter={onHover} onMouseLeave={onHover}>

@@ -1,12 +1,8 @@
-#special-bill-plans-title-heading{
-    font-size: 25px;
-    font-weight: bold;
-    margin-top: 50px;
-width: 55%;
-margin-left: 33%;
+#special-bill-plans-title-heading {
+  margin-top: 50px;
+  text-align: center;
 }
 
-.buttonContainer{
+.buttonContainer {
   justify-content: center;
 }
-

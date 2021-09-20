@@ -242,6 +242,11 @@ function App() {
         <DashbordNavbar />
         <SidebarUser />
       </Route>
+
+      <Route exact path="/special-tou-device-wise">
+        <DashbordNavbar />
+        <SidebarUser />
+      </Route>
     </div>
   );
 }

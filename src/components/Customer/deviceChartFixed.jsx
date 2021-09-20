@@ -11,8 +11,8 @@ export default function DeviceChartfixed() {
   const [appliance, setAppliance] = useState([]);
   const [units, setUnits] = useState([]);
   const [colors, setColors] = useState([]);
-  const [max,setMax] = useState([]);
-  const [maxApp,getMaxApp] = useState("");
+  const [max, setMax] = useState(0);
+  const [maxApp, setMaxApp] = useState("");
 
   async function getDeviceDetailsFixed(newBillId) {
     var ParamsUserId = document.cookie
@@ -36,11 +36,6 @@ export default function DeviceChartfixed() {
         }),
         {}
       ).token;
-
-    // let History = useHistory();
-    console.log("call device detail fixed function");
-    console.log(ParamsUserId);
-    console.log(newBillId);
 
     const response = await Axios.post(
       `${process.env.REACT_APP_BASE_URL}/get-device-wise-usage-fixed-main/${ParamsUserId}`,
@@ -67,7 +62,7 @@ export default function DeviceChartfixed() {
     return color;
   }
 
-  function getData(chartData) {
+  async function getData(chartData) {
     var i;
     var applianceList = [];
     let unitList = [];
@@ -79,45 +74,53 @@ export default function DeviceChartfixed() {
       colorList.push(generateColor());
     }
 
-    var maxunit = chartData[0].total_units
+    var maxunit = chartData[0].total_units;
 
-    for(i=0;i< chartData.length; i++){
-      if(chartData[i].total_units>maxunit){
+    for (i = 0; i < chartData.length; i++) {
+      if (chartData[i].total_units > maxunit) {
         maxunit = chartData[i].total_units;
       }
     }
 
-    setAppliance(applianceList);
-    setUnits(unitList);
-    setColors(colorList);
-    setMax(maxunit);
+    await setAppliance(applianceList);
+    await setUnits(unitList);
+    await setColors(colorList);
+    await setMax(maxunit);
   }
 
-  function getMaxAppliace(chartData,max){
+  function getMaxAppliace(chartData, max) {
     var max_appliance;
-    for(var x=0; x< chartData.length; x++ ){
-      if(chartData[x].total_units===max){
+    for (var x = 0; x < chartData.length; x++) {
+      if (chartData[x].total_units == max) {
         max_appliance = chartData[x].appliance;
       }
     }
     // return max_appliance;
-    getMaxApp(max_appliance);
+    setMaxApp(max_appliance);
+    return max_appliance;
   }
 
   useEffect(async () => {
     var devices_data_fixed = await getDeviceDetailsFixed(calculatedBillId);
     await getData(devices_data_fixed);
-    await getMaxAppliace(devices_data_fixed,max);
-    console.log(appliance);
-    console.log(units);
-    
+    const maxAppl = await getMaxAppliace(devices_data_fixed, max);
+    setMaxApp(maxAppl);
+    console.log(maxAppl);
   }, []);
 
   return (
+    // <h2
+    //     className="MainTitle-tou text-center"
+    //     style={{ marginBottom: "2rem" }}
+    //   >
+    //     <b> DEVICE WISE USAGE - TOU </b>
+    //   </h2>
     <div>
-      <h4 className="MainTitle-fixed text-center">DEVICE WISE USAGE - FIXED</h4>
-      <div class="row row-fixed">
-        <div class="col-sm-6">
+      <h2 className="MainTitle-fixed ">
+        <b>DEVICE WISE USAGE - FIXED</b>
+      </h2>
+      <div class="row row-fixed justify-content-md-center">
+        <div class="col-sm-6 justify-content-md-center">
           <div class="card">
             <div class="card-body">
               <h6 class="card-title text-center">
@@ -147,8 +150,8 @@ export default function DeviceChartfixed() {
           </div>
         </div>
       </div>
-      <div class="row row-fixed">
-        <div class="col-sm-6">
+      <div class="row row-fixed justify-content-md-center">
+        <div class="col-sm-6 justify-content-md-center">
           <div class="card">
             <div class="card-body">
               <h6 class="card-title text-center">
@@ -163,7 +166,11 @@ export default function DeviceChartfixed() {
                           labels: appliance,
                           datasets: [
                             {
-                              label: maxApp,
+                              label: "Max Usage",
+
+                              axis: "y",
+
+
                               data: units,
                               backgroundColor: colors,
                               hoverOffset: 4,

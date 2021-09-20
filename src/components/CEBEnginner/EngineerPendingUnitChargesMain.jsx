@@ -1,11 +1,14 @@
 import React from "react";
-import Axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router";
 import PendingNormalUnitCharges from "./PendingNormalUnitCharges";
 import PendingNormalFixedCharges from "./PendingNormalFixedCharges";
 import PendingTouUnitCharges from "./PendingTouUnitCharges";
 import PendingTouFixedCharges from "./PendingTouFixedCharges";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 export default function SimpleCard() {
   let history = useHistory();
@@ -17,7 +20,19 @@ export default function SimpleCard() {
 
   return (
     <div className="engineer-home-user-main">
-      <div className="ceb-engineer-heading">
+      <Breadcrumbs aria-label="breadcrumb" style={{ marginTop: '2rem', marginLeft: '2rem' }} separator={<NavigateNextIcon fontSize="small" />}>
+        <Link underline="hover" color="inherit" href="/dashboard-engineer">
+          Dashboard
+        </Link>
+
+        {/* <Link underline="hover" color="inherit" href={`/special-fixed-device-wise?bill_id=${BillId}`}>
+         
+          Device Wise Usage
+        </Link> */}
+
+        <Typography color="text.primary">Pending Unit Update</Typography>
+      </Breadcrumbs>
+      <div className="ceb-engineer-heading" style={{ marginTop: '25px' }}>
         <h2 align="right">
           <b>PENDING UNIT CHARGE REQUESTS SENT TO ADMIN</b>
         </h2>
@@ -27,6 +42,7 @@ export default function SimpleCard() {
           width: "90%",
           float: "left",
           marginTop: "3%",
+          marginBottom: "3%",
           display: `${visibleState1}`,
         }}
       >
@@ -44,7 +60,8 @@ export default function SimpleCard() {
         style={{
           width: "90%",
           float: "left",
-          marginTop: "10%",
+          marginTop: "3%",
+          marginBottom: "3%",
           display: `${visibleState2}`,
         }}
       >
@@ -61,7 +78,8 @@ export default function SimpleCard() {
         style={{
           width: "90%",
           float: "left",
-          marginTop: "10%",
+          marginTop: "3%",
+          marginBottom: "3%",
           display: `${visibleState3}`,
         }}
       >
@@ -78,8 +96,8 @@ export default function SimpleCard() {
         style={{
           width: "90%",
           float: "left",
-          marginTop: "10%",
-          marginBottom: "10%",
+          marginTop: "3%",
+          marginBottom: "3%",
           display: `${visibleState4}`,
         }}
       >

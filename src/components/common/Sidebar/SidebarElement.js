@@ -62,7 +62,7 @@ export const LinkList = styled(LinkR)`
   display: block;
   padding: 10px 15px;
   border-radius: 6px;
-  
+
 
   &:hover {
     background: #172b4d;

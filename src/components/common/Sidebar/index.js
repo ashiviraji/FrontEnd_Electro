@@ -45,7 +45,7 @@ import DeviceChartSpFixed from "../../Customer/DeviceChartSpFixed";
 import DeviceChartSpTOU from "../../Customer/DeviceChartSpTOU";
 
 import "../../../assets/css/Sidebar-user.css";
-
+import { useState } from "react";
 import {
   SideNav,
   UlList,
@@ -67,6 +67,61 @@ const Sidebar = ({ show }) => {
     setDashFontColor("#ffff");
   }
                     
+  const [buttnColor1, setBtnColor1] = useState("");
+  const [buttnColor2, setBtnColor2] = useState("");
+  const [buttnColor3, setBtnColor3] = useState("");
+  const [buttnColor4, setBtnColor4] = useState("");
+  const [buttnColor5, setBtnColor5] = useState("");
+  const [buttnColor6, setBtnColor6] = useState("");
+
+  function buttonColor(btnNumber) {
+    if (btnNumber == 1) {
+      setBtnColor1("highlight");
+      setBtnColor2("nonhighlight");
+      setBtnColor3("nonhighlight");
+      setBtnColor4("nonhighlight");
+      setBtnColor5("nonhighlight");
+      setBtnColor6("nonhighlight");
+    } else if (btnNumber == 2) {
+      setBtnColor1("nonhighlight");
+      setBtnColor2("highlight");
+      setBtnColor3("nonhighlight");
+      setBtnColor4("nonhighlight");
+      setBtnColor5("nonhighlight");
+      setBtnColor6("nonhighlight");
+    } else if (btnNumber == 3) {
+      setBtnColor1("nonhighlight");
+      setBtnColor2("nonhighlight");
+      setBtnColor3("highlight");
+      setBtnColor4("nonhighlight");
+      setBtnColor5("nonhighlight");
+      setBtnColor6("nonhighlight");
+    } else if (btnNumber == 4) {
+      setBtnColor1("nonhighlight");
+      setBtnColor2("nonhighlight");
+      setBtnColor3("nonhighlight");
+      setBtnColor4("highlight");
+      setBtnColor5("nonhighlight");
+      setBtnColor6("nonhighlight");
+    } else if (btnNumber == 5) {
+      setBtnColor1("nonhighlight");
+      setBtnColor2("nonhighlight");
+      setBtnColor3("nonhighlight");
+      setBtnColor4("nonhighlight");
+      setBtnColor5("highlight");
+      setBtnColor6("nonhighlight");
+    } else {
+      setBtnColor1("nonhighlight");
+      setBtnColor2("nonhighlight");
+      setBtnColor3("nonhighlight");
+      setBtnColor4("nonhighlight");
+      setBtnColor5("nonhighlight");
+      setBtnColor6("highlight");
+    }
+
+  }
+
+
   return (
     <>
       <Router>
@@ -88,43 +143,49 @@ const Sidebar = ({ show }) => {
                 </UlDetailList>
               </UserName>
               <UlList>
-                <List >
-                <LinkList>
+                <List>
+                  <LinkList to="/dashboard-user" className={buttnColor1}
+                    onClick={() => buttonColor(1)}
+                  >
                     <RiDashboardLine />
                     &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
+
                 </List>
 
                 <List>
-                  <LinkList>
+
+                  <LinkList to="/manage-bill" className={buttnColor2} onClick={() => buttonColor(2)} >
                     <RiBillLine />
                     &nbsp;&nbsp;&nbsp;Manage Bill
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList>
+
+                  <LinkList to="/my-bill-plans" className={buttnColor3} onClick={() => buttonColor(3)}>
                     <ImInsertTemplate style={{ color: "White" }} />
                     &nbsp;&nbsp;&nbsp; My Bill Plans
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList>
+
+                  <LinkList to="/special-event" className={buttnColor4} onClick={() => buttonColor(4)}>
                     <MdEventNote />
                     &nbsp;&nbsp;&nbsp; Special Events
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/user-userprofile">
+                  <LinkList to="/user-userprofile" className={buttnColor5} onClick={() => buttonColor(5)}>
                     <BiUserCircle />
                     &nbsp;&nbsp;&nbsp;User Profile
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/information">
+                  <LinkList to="/information" className={buttnColor6} onClick={() => buttonColor(6)}>
                     <RiInformationLine />
                     &nbsp;&nbsp;&nbsp; Information
                   </LinkList>
@@ -175,7 +236,7 @@ const Sidebar = ({ show }) => {
                 exact={true}
                 component={BillPlansMoreAndEdit}
               />
-              
+
               <Route
                 path="/tou-device-wise-seperate"
                 exact={true}
