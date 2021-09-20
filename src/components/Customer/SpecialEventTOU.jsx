@@ -194,7 +194,7 @@ export default function StickyHeadTable() {
 
   return (
     <Paper className={classes.root}>
-      <h2 style={{marginLeft:"3%"}}>TOU Model</h2>
+      <h3 style={{marginLeft:"3%"}}>TOU Model</h3>
       <h5 style={{marginLeft:"3%",marginTop:"5%"}}>Bill Name :- {billName} </h5>
       <div className="button-device-wise">
         <Link to={`devicewise-chart-spTOU?bill_id=${BillId}`} className={classes.linkchartButton}>

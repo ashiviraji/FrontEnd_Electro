@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Axios from "axios";
 import CalculateBillForm from "./CalculateBillForm";
 import { Paper, makeStyles } from "@material-ui/core";
@@ -9,12 +9,8 @@ import { TableBody } from "@material-ui/core";
 import { TableCell } from "@material-ui/core";
 import { TableRow } from "@material-ui/core";
 import { Toolbar } from "@material-ui/core";
-import { InputAdornment } from "@material-ui/core";
-import { TextField } from "@material-ui/core";
 import SearchBar from "material-ui-search-bar";
-import { Search, StrikethroughSTwoTone } from "@material-ui/icons";
 import "../../assets/css/Customer/billCalculate.css";
-import { Button } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import Popup from "../../components/Customer/bill_control/Popup";
 import { DeleteOutline } from "@material-ui/icons";
@@ -322,14 +318,14 @@ export default function CalculateBill() {
           />
           <button
             type="button"
-            className="btn btn-info add-new-button new-appl-btn"
+            className="btn btn-primary add-new-button new-appl-btn"
             onClick={() => {
               setOpenPopup(true);
               setRecordForEdit(null);
             }}
           >
-            <Add />
-            <b>New Appliance</b>
+          <Add style={{float: 'left', marginRight: '2%'}}/>
+          New Appliance
           </button>
         </Toolbar>
         <TblContainer>
