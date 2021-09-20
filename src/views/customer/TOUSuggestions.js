@@ -9,6 +9,8 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Link_ from '@mui/material/Link';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { AiFillPrinter} from "react-icons/ai";
+
 
 //import {IoMdDownload} from "react-icons/io";
 import TOUSuggestionsPage from "./../../components/Customer/TOUSuggestions";
@@ -102,7 +104,7 @@ export default function TOUSuggestions() {
       </div>
 
       {/* <input className="download-button" type="button" value="Download As Pdf" onClick={() => { downloadPdf() }} /> */}
-
+  
       <button
         type="button"
         className="btn download-button"
@@ -111,6 +113,7 @@ export default function TOUSuggestions() {
         }}
         disabled={buttonState}
       >
+        <AiFillPrinter style={{float:'left',marginTop:'1,8%',width:'28px',height:'28px',marginRight:'4%'}}/>
         Download As Pdf
       </button>
      

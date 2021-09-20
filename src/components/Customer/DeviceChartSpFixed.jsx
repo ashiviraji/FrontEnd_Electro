@@ -118,17 +118,17 @@ export default function DeviceChartfixed() {
 </Breadcrumbs>
 
 
-      <h2 className="MainTitle-fixed text-center">
-        DEVICE WISE USAGE - FIXED
+      <h2 className="MainTitle-fixed">
+        <b>DEVICE WISE USAGE - FIXED</b>
       </h2>
-      <div class="row row-fixed">       
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">Unit Usage - Device Wise (kWh)</h6>
-              <div class="col-sm-12">
-                <div class="card chart-fixed">
-                  <div class="card-body">
+      <div className="row row-fixed justify-content-md-center">       
+        <div className="col-sm-6 justify-content-md-center">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">Unit Usage - Device Wise (kWh)</h6>
+              <div className="col-sm-12">
+                <div className="card chart-fixed">
+                  <div className="card-body">
 
                     <div className="chart-devicewise">
                       <Pie

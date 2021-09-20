@@ -137,15 +137,15 @@ export default function DeviceChartSpTOU() {
   <Typography color="text.primary">Device Wise Chart Usage</Typography>
 </Breadcrumbs>
 
-      <h2 className="MainTitle-tou text-center" style={{marginBottom: '2rem'}}> Device Wise Usage - TOU </h2>
-      <div class="row row-tou">       
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">Total Cost Usage (LKR/month)</h6>
-              <div class="col-sm-12">
-                <div class="card chart-tou">
-                  <div class="card-body chartbody">
+      <h2 className="MainTitle-tou text-center" style={{marginBottom: '2rem'}}> <b>DEVICE WISE USAGE - TOU </b></h2>
+      <div className="row row-tou">       
+        <div className="col-sm-6">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">Total Cost Usage (LKR/month)</h6>
+              <div className="col-sm-12">
+                <div className="card chart-tou">
+                  <div className="card-body chartbody">
 
                     <div className="chart-devicewise">
                       <Pie
