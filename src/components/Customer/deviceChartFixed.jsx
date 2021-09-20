@@ -109,12 +109,18 @@ export default function DeviceChartfixed() {
   }, []);
 
   return (
+    // <h2
+    //     className="MainTitle-tou text-center"
+    //     style={{ marginBottom: "2rem" }}
+    //   >
+    //     <b> DEVICE WISE USAGE - TOU </b>
+    //   </h2>
     <div>
-      <h2 className="MainTitle-fixed">
+      <h2 className="MainTitle-fixed ">
         <b>DEVICE WISE USAGE - FIXED</b>
       </h2>
-      <div class="row row-fixed">
-        <div class="col-sm-6">
+      <div class="row row-fixed justify-content-md-center">
+        <div class="col-sm-6 justify-content-md-center">
           <div class="card">
             <div class="card-body">
               <h6 class="card-title text-center">
@@ -144,8 +150,8 @@ export default function DeviceChartfixed() {
           </div>
         </div>
       </div>
-      <div class="row row-fixed">
-        <div class="col-sm-6">
+      <div class="row row-fixed justify-content-md-center">
+        <div class="col-sm-6 justify-content-md-center">
           <div class="card">
             <div class="card-body">
               <h6 class="card-title text-center">
