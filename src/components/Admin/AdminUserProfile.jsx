@@ -125,7 +125,7 @@ export default function EngineerUserProfile() {
             draggable: true,
             progress: undefined,
           });
-          // console.log("successfully update user profile of ceb engineer");
+          document.cookie = `name=${response.data.data[0].First_name + " " + response.data.data[0].Last_name}`;
         } else {
           confirmation();
         }
