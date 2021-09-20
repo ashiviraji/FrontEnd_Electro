@@ -88,13 +88,15 @@ export const NavLinks = styled(LinkS)`
   padding: 0 0rem;
   height: 100%;
   font-size: 1rem;
+  font-weight:500;
   cursor: pointer;
   &.active {
     color: #000;
   }
   &:hover {
     color: #000;
-    transform: scale(1.2);
+    font-weight:700;
+    transform: scale(1);
     transition: all 0.2s ease-in-out;
   }
 `;
