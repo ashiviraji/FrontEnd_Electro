@@ -1,10 +1,9 @@
 import React,{useState} from "react";
-
 import image from "../../../assets/img/user.png";
 import active from "../../../assets/img/active.png";
 
 import { RiInformationLine } from "react-icons/ri";
-
+import { AiOutlineBook } from "react-icons/ai";
 
 import { Route } from "react-router-dom";
 import { ImInsertTemplate } from "react-icons/im";
@@ -45,7 +44,6 @@ import DeviceChartSpFixed from "../../Customer/DeviceChartSpFixed";
 import DeviceChartSpTOU from "../../Customer/DeviceChartSpTOU";
 
 import "../../../assets/css/Sidebar-user.css";
-import { useState } from "react";
 import {
   SideNav,
   UlList,
