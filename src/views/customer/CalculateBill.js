@@ -398,7 +398,7 @@ export default function CalculateBill() {
           >
             Calculate
           </button>
-        </Link1>
+        </Link>
       </Paper>
       <Popup
         title="Add New Device Details"

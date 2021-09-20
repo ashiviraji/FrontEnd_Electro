@@ -4,7 +4,7 @@ import { RiFileAddLine } from "react-icons/ri";
 
 import DeviceWisePlanCard from "../../components/Customer/DeviceWisePlans";
 import "../../assets/css/Customer/deviewisePlans.css";
-import Link from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
