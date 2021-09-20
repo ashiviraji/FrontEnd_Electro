@@ -76,15 +76,6 @@ const useStyles = makeStyles({
 
 });
 
-// const cardDetails = [
-//   { Bill_Title: "Bill Plan 1", Model: "TOU", Total_amount: "LKR : 3500" },
-//   { Bill_Title: "Bill Plan 2", Model: "Fixed ", Total_amount: "LKR : 2500" },
-//   { Bill_Title: "Bill Plan 3", Model: "Fixed ", Total_amount: "LKR : 4500" },
-//   { Bill_Title: "Bill Plan 4", Model: "Fixed ", Total_amount: "LKR : 4500" },
-//   { Bill_Title: "Bill Plan 5", Model: "Fixed ", Total_amount: "LKR : 4500" },
-//   { Bill_Title: "Bill Plan 6", Model: "Fixed ", Total_amount: "LKR : 4500" },
-// ];
-
 export default function DeviceWisePlans() {
   const classes = useStyles();
   const [cardDetails, setCardDetails] = useState([]);

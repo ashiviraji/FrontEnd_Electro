@@ -140,16 +140,16 @@ export default function DeviceChart() {
       >
         <b> DEVICE WISE USAGE - TOU </b>
       </h2>
-      <div class="row row-tou">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">
+      <div className="row row-tou">
+        <div className="col-sm-6">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">
                 Total Cost Usage (LKR/month)
               </h6>
-              <div class="col-sm-12">
-                <div class="card chart-tou">
-                  <div class="card-body chartbody">
+              <div className="col-sm-12">
+                <div className="card chart-tou">
+                  <div className="card-body chartbody">
                     <div className="chart-devicewise">
                       <Pie
                         data={{
@@ -170,13 +170,13 @@ export default function DeviceChart() {
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">Total Unit Usage (kWh)</h6>
-              <div class="col-sm-12">
-                <div class="card chart-tou">
-                  <div class="card-body">
+        <div className="col-sm-6">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">Total Unit Usage (kWh)</h6>
+              <div className="col-sm-12">
+                <div className="card chart-tou">
+                  <div className="card-body">
                     <div className="chart-devicewise">
                       <Pie
                         data={{
@@ -201,14 +201,14 @@ export default function DeviceChart() {
       <h5 className="SubTitle-tou">
         <b> Peak Time </b>
       </h5>
-      <div class="row row-tou">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">Cost Usage (LKR/month)</h6>
-              <div class="col-sm-12">
-                <div class="card chart-tou">
-                  <div class="card-body chartbody">
+      <div className="row row-tou">
+        <div className="col-sm-6">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">Cost Usage (LKR/month)</h6>
+              <div className="col-sm-12">
+                <div className="card chart-tou">
+                  <div className="card-body chartbody">
                     <div className="chart-devicewise">
                       <Pie
                         data={{
@@ -229,13 +229,13 @@ export default function DeviceChart() {
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">Unit Usage (kWh)</h6>
-              <div class="col-sm-12">
-                <div class="card chart-tou">
-                  <div class="card-body">
+        <div className="col-sm-6">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">Unit Usage (kWh)</h6>
+              <div className="col-sm-12">
+                <div className="card chart-tou">
+                  <div className="card-body">
                     <div className="chart-devicewise">
                       <Pie
                         data={{
@@ -260,14 +260,14 @@ export default function DeviceChart() {
       <h5 className="SubTitle-tou">
         <b> Off Peak Time </b>
       </h5>
-      <div class="row row-tou">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">Cost Usage (LKR/month)</h6>
-              <div class="col-sm-12">
-                <div class="card chart-tou">
-                  <div class="card-body chartbody">
+      <div className="row row-tou">
+        <div className="col-sm-6">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">Cost Usage (LKR/month)</h6>
+              <div className="col-sm-12">
+                <div className="card chart-tou">
+                  <div className="card-body chartbody">
                     <div className="chart-devicewise">
                       <Pie
                         data={{
@@ -288,13 +288,13 @@ export default function DeviceChart() {
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">Unit Usage (kWh)</h6>
-              <div class="col-sm-12">
-                <div class="card chart-tou">
-                  <div class="card-body">
+        <div className="col-sm-6">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">Unit Usage (kWh)</h6>
+              <div className="col-sm-12">
+                <div className="card chart-tou">
+                  <div className="card-body">
                     <div className="chart-devicewise">
                       <Pie
                         data={{
@@ -319,14 +319,14 @@ export default function DeviceChart() {
       <h5 className="SubTitle-tou">
         <b> Day Time </b>
       </h5>
-      <div class="row row-tou">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">Cost Usage (LKR/month)</h6>
-              <div class="col-sm-12">
-                <div class="card chart-tou">
-                  <div class="card-body chartbody">
+      <div className="row row-tou">
+        <div className="col-sm-6">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">Cost Usage (LKR/month)</h6>
+              <div className="col-sm-12">
+                <div className="card chart-tou">
+                  <div className="card-body chartbody">
                     <div className="chart-devicewise">
                       <Pie
                         data={{
@@ -347,13 +347,13 @@ export default function DeviceChart() {
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">Unit Usage (kWh)</h6>
-              <div class="col-sm-12">
-                <div class="card chart-tou">
-                  <div class="card-body">
+        <div className="col-sm-6">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">Unit Usage (kWh)</h6>
+              <div className="col-sm-12">
+                <div className="card chart-tou">
+                  <div className="card-body">
                     <div className="chart-devicewise">
                       <Pie
                         data={{
