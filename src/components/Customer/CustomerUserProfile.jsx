@@ -64,7 +64,7 @@ export default function CustomerUserProfile() {
           setUserLastName(response.data.data[0].Last_name);
           setUseremai(response.data.data[0].Email);
 
-          console.log("successfully get user profile of customer");
+          // console.log("successfully get user profile of customer");
 
         } else {
 
@@ -106,7 +106,7 @@ export default function CustomerUserProfile() {
             draggable: true,
             progress: undefined,
           });
-          console.log("successfully update user profile of customer");
+          document.cookie = `name=${response.data.data[0].First_name + " " + response.data.data[0].Last_name}`;
 
         } else {
           confirmation();
@@ -157,63 +157,63 @@ export default function CustomerUserProfile() {
         </Link>
         <Typography color="text.primary"> User Profile </Typography>
       </Breadcrumbs>
-    <div className="body-customeruser">
-      <form onLoad={(e) => { getUser(e) }}>
-        <div className="ceb-heading">
-          <h2 align="center">USER PROFILE</h2>
-        </div>
-
-        <div class="row mb-3">
-          <label for="firstname" class="col-sm-2 col-form-label" align="left">
-            <b>First Name</b>
-          </label>
-          <div class="w-50 p-1">
-            <input
-              type="text"
-              class="form-control"
-              id="firstname"
-              value={userFirstName}
-              onChange={(e) => { setUserFirstName(e.target.value); }}
-              required
-            />
+      <div className="body-customeruser">
+        <form onLoad={(e) => { getUser(e) }}>
+          <div className="ceb-heading">
+            <h2 align="center">USER PROFILE</h2>
           </div>
-        </div>
 
-        <div class="row mb-3">
-          <label for="lastname" class="col-sm-2 col-form-label" align="left">
-            <b>Last Name</b>
-          </label>
-          <div class="w-50 p-1">
-            <input
-              type="text"
-              class="form-control"
-              id="lastname"
-              value={userLastName}
-              onChange={(e) => { setUserLastName(e.target.value); }}
-
-              required
-            />
+          <div class="row mb-3">
+            <label for="firstname" class="col-sm-2 col-form-label" align="left">
+              <b>First Name</b>
+            </label>
+            <div class="w-50 p-1">
+              <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                value={userFirstName}
+                onChange={(e) => { setUserFirstName(e.target.value); }}
+                required
+              />
+            </div>
           </div>
-        </div>
 
-        <div class="row mb-3">
-          <label for="email" class="col-sm-2 col-form-label" align="left">
-            <b>Email</b>
-          </label>
-          <div class="w-50 p-1">
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              value={useremail}
-              onChange={(e) => { setUseremai(e.target.value); }}
+          <div class="row mb-3">
+            <label for="lastname" class="col-sm-2 col-form-label" align="left">
+              <b>Last Name</b>
+            </label>
+            <div class="w-50 p-1">
+              <input
+                type="text"
+                class="form-control"
+                id="lastname"
+                value={userLastName}
+                onChange={(e) => { setUserLastName(e.target.value); }}
 
-              required
-            />
+                required
+              />
+            </div>
           </div>
-        </div>
 
-        {/* <div class="row mb-3">
+          <div class="row mb-3">
+            <label for="email" class="col-sm-2 col-form-label" align="left">
+              <b>Email</b>
+            </label>
+            <div class="w-50 p-1">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                value={useremail}
+                onChange={(e) => { setUseremai(e.target.value); }}
+
+                required
+              />
+            </div>
+          </div>
+
+          {/* <div class="row mb-3">
           <label
             for="contactnumber"
             class="col-sm-2 col-form-label"
@@ -232,7 +232,7 @@ export default function CustomerUserProfile() {
           </div>
         </div> */}
 
-        {/* <div class="row mb-3">
+          {/* <div class="row mb-3">
           <label for="username" class="col-sm-2 col-form-label" align="left">
             <b>User Name</b>
           </label>
@@ -247,7 +247,7 @@ export default function CustomerUserProfile() {
           </div>
         </div> */}
 
-        {/* <div class="row mb-3">
+          {/* <div class="row mb-3">
           <label for="password" class="col-sm-2 col-form-label" align="left">
             <b>Password</b>
           </label>
@@ -262,7 +262,7 @@ export default function CustomerUserProfile() {
           </div>
         </div> */}
 
-        {/* <div class="row mb-3">
+          {/* <div class="row mb-3">
           <label for="address" class="col-sm-2 col-form-label" align="left">
             <b>Address</b>
           </label>
@@ -276,7 +276,7 @@ export default function CustomerUserProfile() {
             />
           </div>
         </div> */}
-        {/* 
+          {/* 
         <div class="row mb-3">
           <label for="nicnumber" class="col-sm-2 col-form-label" align="left">
             <b>NIC Number</b>
@@ -292,7 +292,7 @@ export default function CustomerUserProfile() {
           </div>
         </div> */}
 
-        {/* <div class="row mb-3">
+          {/* <div class="row mb-3">
           <label for="designation" class="col-sm-2 col-form-label" align="left">
             <b>Designation</b>
           </label>
@@ -307,54 +307,54 @@ export default function CustomerUserProfile() {
           </div>
         </div> */}
 
-        <div class="row mb-3">
-          <label for="image" class="col-sm-2 col-form-label" align="left">
-            <b>Image</b>
-          </label>
-          <div className="w-50 p-1">
-            <img src={Admin} height={150} width={150} />
+          <div class="row mb-3">
+            <label for="image" class="col-sm-2 col-form-label" align="left">
+              <b>Image</b>
+            </label>
+            <div className="w-50 p-1">
+              <img src={Admin} height={150} width={150} />
+            </div>
           </div>
-        </div>
 
-        <div class="row mb-3">
-          <label for="updateimage" class="col-sm-2 col-form-label" align="left">
-            <b>Update Image</b>
-          </label>
-          <div class="w-50 p-1">
-            <input
-              type="file"
-              accept="image/*"
-              class="form-control"
-              id="fileToUpload"
-            />
+          <div class="row mb-3">
+            <label for="updateimage" class="col-sm-2 col-form-label" align="left">
+              <b>Update Image</b>
+            </label>
+            <div class="w-50 p-1">
+              <input
+                type="file"
+                accept="image/*"
+                class="form-control"
+                id="fileToUpload"
+              />
+            </div>
           </div>
-        </div>
 
-        <div>
-          <button type="button" className="admin-add-update-btn" onClick={(e) => {
-            setConfirmDialog({
-              isOpen: true,
-              title: "Are You Sure Update Profile",
-              subTitle: "Click  'Yes'  To Update Profile",
-              btnStatus: "success",
-              onConfirm: () => {
-                updateUser(e);
-              },
-            });
-          }}>
-            Update
-          </button>
-        </div>
-      </form>
-      <ConfirmDialog
-        confirmDialog={confirmDialog}
-        setConfirmDialog={setConfirmDialog}
-      />
-      <ConfirmationBox
-        confirmationBox={confirmationBox}
-        setConfirmationBox={setConfirmationBox}
-      />
-    </div>
+          <div>
+            <button type="button" className="admin-add-update-btn" onClick={(e) => {
+              setConfirmDialog({
+                isOpen: true,
+                title: "Are You Sure Update Profile",
+                subTitle: "Click  'Yes'  To Update Profile",
+                btnStatus: "success",
+                onConfirm: () => {
+                  updateUser(e);
+                },
+              });
+            }}>
+              Update
+            </button>
+          </div>
+        </form>
+        <ConfirmDialog
+          confirmDialog={confirmDialog}
+          setConfirmDialog={setConfirmDialog}
+        />
+        <ConfirmationBox
+          confirmationBox={confirmationBox}
+          setConfirmationBox={setConfirmationBox}
+        />
+      </div>
     </div>
   );
 }
