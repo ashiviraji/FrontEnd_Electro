@@ -5,6 +5,7 @@ import CalculateBillForm from "./CalculateBillForm";
 import { Paper, makeStyles } from "@material-ui/core";
 import UseTable from "../../components/Customer/useTable";
 import * as DeviceBill from "./DeviceBill";
+import SearchBar from "material-ui-search-bar";
 import { TableBody } from "@material-ui/core";
 import { TableCell } from "@material-ui/core";
 import { TableRow } from "@material-ui/core";
@@ -74,6 +75,8 @@ export default function BillPlansMoreAndEdit() {
   const [recordForEdit, setRecordForEdit] = useState(null);
   const [buttonState, setButtonState] = useState(true);
 //   const [newBillId, setNewBillId] = useState(0);
+const [searched,setSearched] = useState("");
+  const[searchRecords,setSearchRecords] = useState([]);
 
 const [records, setRecords] = useState([]);
 
@@ -103,6 +106,30 @@ const [records, setRecords] = useState([]);
   const { TblContainer, TblHead, TblPagination, /*recordsAfterPagingAndSorting*/ } =
     UseTable(records, headCells, filterFn);
 
+    const requestSearch =  (searchVal) =>{
+      console.log("The searsearchVal",searchVal);
+      
+      const filteredRows =  searchRecords.filter((row) =>{
+        console.log(records);
+        return row.appliance.toLowerCase().includes(searchVal.toLowerCase());
+      });
+      console.log("The filter Row",filteredRows);
+      
+      if(searchVal == " "){
+        setRecords(records);
+      }else{
+        setRecords(filteredRows);
+      }
+      
+    }
+  
+    const cancelSearch = () =>{
+      setSearched("");
+      requestSearch(searched);
+    };
+  
+  
+
   useEffect(async () => {
 
     
@@ -110,9 +137,11 @@ const [records, setRecords] = useState([]);
     if (recordDetails == null) {
       setRecords([]);
       setButtonState(true);
+      setSearchRecords([]);
     } else {
       setRecords(recordDetails);
       setButtonState(false);
+      setSearchRecords(recordDetails);
     }
 
 
@@ -149,9 +178,11 @@ const [records, setRecords] = useState([]);
     if (recordDetails == null) {
       setRecords([]);
       setButtonState(true);
+      setSearchRecords([]);
     } else {
       setRecords(recordDetails);
       setButtonState(false);
+      setSearchRecords(recordDetails);
     }
     setNotify({
       isOpen: true,
@@ -176,9 +207,11 @@ const [records, setRecords] = useState([]);
     if (recordDetails == null) {
       setRecords([]);
       setButtonState(true);
+      setSearchRecords([]);
     } else {
       setRecords(recordDetails);
       setButtonState(false);
+      setSearchRecords([]);
     }
     setNotify({
       isOpen: true,
@@ -248,18 +281,11 @@ const [records, setRecords] = useState([]);
       <Paper className={classes.pageContent}>
         <h2>Your Device Data</h2>
         <Toolbar>
-          <TextField
-            label="Search Device"
-            className="Search-bar-in-form"
-            onChange={handleSearch}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-            }}
-          />
+        <SearchBar
+           value={searched}
+           onChange={(searchVal) => requestSearch(searchVal)}
+           onCancelSearch={() => cancelSearch()}
+            />
           <button
             type="button"
             className="btn btn-info add-new-button"
