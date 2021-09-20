@@ -29,7 +29,7 @@ export default function AddSpecialEvent() {
     return (
         <div className="device-wise-usage">
         <div className="title-heading">
-           <label className="tou-headline">Add New Special Event</label>
+           <label className="tou-headline"><h2>Add New Special Event</h2></label>
               <div style={{fontSize:"20px",marginTop:"3%"}}>
                   <input type="radio" style={{marginLeft:"6%"}} value="DeviceWiseFixed1" name="model"  onChange={handleChange} checked={displayModel.model==="DeviceWiseFixed1"}/>
                   <b style={{color:"black",marginRight:"4%"}}>&nbsp;&nbsp;Fixed Model</b>
