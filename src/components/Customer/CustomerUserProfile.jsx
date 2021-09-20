@@ -9,6 +9,10 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ConfirmDialog from "../Customer/bill_control/ConfirmDialog";
 import ConfirmationBox from "../common/ConfirmationBox";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 toast.configure();
 
@@ -142,8 +146,19 @@ export default function CustomerUserProfile() {
   }
 
   return (
+    <div>
+      <Breadcrumbs
+        aria-label="breadcrumb"
+        style={{ marginTop: "2rem", marginLeft: "2rem" }}
+        separator={<NavigateNextIcon fontSize="small" />}
+      >
+        <Link underline="hover" color="blue" href="/dashboard-user">
+          Dashboard
+        </Link>
+        <Typography color="text.primary"> User Profile </Typography>
+      </Breadcrumbs>
     <div className="body-customeruser">
-      <form onLoad={(e) => { getUser(e) }} >
+      <form onLoad={(e) => { getUser(e) }}>
         <div className="ceb-heading">
           <h2 align="center">USER PROFILE</h2>
         </div>
@@ -339,6 +354,7 @@ export default function CustomerUserProfile() {
         confirmationBox={confirmationBox}
         setConfirmationBox={setConfirmationBox}
       />
+    </div>
     </div>
   );
 }

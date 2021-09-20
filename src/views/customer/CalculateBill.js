@@ -388,6 +388,7 @@ export default function CalculateBill() {
         </TblContainer>
         {/* <TblPagination /> */}
 
+
         <Link to={`/bill-comparison?bill_id=${newBillId}`}>
           <button
             type="button"
@@ -397,7 +398,7 @@ export default function CalculateBill() {
           >
             Calculate
           </button>
-        </Link>
+        </Link1>
       </Paper>
       <Popup
         title="Add New Device Details"
