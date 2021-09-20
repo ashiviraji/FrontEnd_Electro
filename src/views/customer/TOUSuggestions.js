@@ -16,6 +16,7 @@ import TOUSuggestionsPage from "./../../components/Customer/TOUSuggestions";
 export default function TOUSuggestions() {
   const [suggestions, setSuggestions] = useState([]);
   const [billPlanName, setBillId] = useState("");
+  const [currentDate, setDate] = useState("");
   const [buttonState, setButtonState] = useState("");
 
   function downloadPdf() {
@@ -40,10 +41,10 @@ export default function TOUSuggestions() {
     var plan = "Name of Your Plan : Bill Plan" + billPlanName;
     doc.text(plan, 20, 50);
 
-    var today = new Date();
+    
 
-    var newdat = "Date Printed : " + today;
-    doc.text(20, 60, newdat);
+    var newdate = "Date Printed : " + currentDate;
+    doc.text(20, 60, newdate);
     var rows = [];
     var col = [
       "Device Name",
@@ -112,6 +113,9 @@ export default function TOUSuggestions() {
       >
         Download As Pdf
       </button>
+     
+
+      <TOUSuggestionsPage setSuggestions={setSuggestions} setBillId={setBillId} setButtonState={setButtonState} setDate={setDate} />
 
       <TOUSuggestionsPage
         setSuggestions={setSuggestions}

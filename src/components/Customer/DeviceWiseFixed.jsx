@@ -57,7 +57,6 @@ export default function StickyHeadTable() {
 
   const params = new URLSearchParams(window.location.search)
   const calculatedBillId  = params.get('bill_id');
-  console.log("**********"+calculatedBillId);
 
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
