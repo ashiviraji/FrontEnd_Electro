@@ -155,7 +155,7 @@ export default function CustomerUserProfile() {
         <Link underline="hover" color="blue" href="/dashboard-user">
           Dashboard
         </Link>
-        <Typography color="text.primary"> User Profile </Typography>
+        <Typography color="text.primary"> User Profile</Typography>
       </Breadcrumbs>
       <div className="body-customeruser">
         <form onLoad={(e) => { getUser(e) }}>
