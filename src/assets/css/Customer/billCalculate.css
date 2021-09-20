@@ -3,6 +3,10 @@
   width: 30%;
 }
 
+.add-new-button{
+  margin-left: 62%;
+}
+
 .editActionButtonIcon {
   width: 44px;
   height: 40px;
@@ -24,6 +28,7 @@
 }
 
 .new-appl-btn {
-  width: 180px;
+  width: 30%;
+  text-align: justify;
   height: 50px;
 }

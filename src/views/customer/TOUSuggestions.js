@@ -117,11 +117,7 @@ export default function TOUSuggestions() {
 
       <TOUSuggestionsPage setSuggestions={setSuggestions} setBillId={setBillId} setButtonState={setButtonState} setDate={setDate} />
 
-      <TOUSuggestionsPage
-        setSuggestions={setSuggestions}
-        setBillId={setBillId}
-        setButtonState={setButtonState}
-      />
+   
     </div>
   );
 }

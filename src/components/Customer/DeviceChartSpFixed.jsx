@@ -96,7 +96,6 @@ export default function DeviceChartfixed() {
   
     var special_event_data_fixed = await getSpecialEventDeviceDetailsFixed(BillId);
     await getSpData(special_event_data_fixed);
-    console.log("________"+max);
     await getMaxAppliace(special_event_data_fixed,max);
   },[]);
 
@@ -118,6 +117,7 @@ export default function DeviceChartfixed() {
   <Typography color="text.primary">Device Wise Chart Usage</Typography>
 </Breadcrumbs>
 
+
       <h2 className="MainTitle-fixed text-center">
         DEVICE WISE USAGE - FIXED
       </h2>
@@ -129,6 +129,7 @@ export default function DeviceChartfixed() {
               <div class="col-sm-12">
                 <div class="card chart-fixed">
                   <div class="card-body">
+
                     <div className="chart-devicewise">
                       <Pie
                         data={{
@@ -150,16 +151,16 @@ export default function DeviceChartfixed() {
           </div>
         </div>
       </div>
-      <div class="row row-fixed">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h6 class="card-title text-center">
+      <div className="row row-fixed justify-content-md-center">
+        <div className="col-sm-6 justify-content-md-center">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-title text-center">
                 Unit Usage - Device Wise (kWh)
               </h6>
-              <div class="col-sm-12">
-                <div class="card chart-fixed">
-                  <div class="card-body">
+              <div className="col-sm-12">
+                <div className="card chart-fixed">
+                  <div className="card-body">
                     <div className="chart-devicewise">
                       <Bar
                         data={{

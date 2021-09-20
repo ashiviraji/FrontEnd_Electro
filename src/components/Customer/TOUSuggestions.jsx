@@ -35,7 +35,7 @@ const TOUSuggestions = (props) => {
       console.log("TOU suggestions:",searchRecords);
       return row.appliance.toLowerCase().includes(searchVal.toLowerCase());
     });
-   //return filteredRows;
+  
    setCardInfo(filteredRows);
     console.log("The filter Row",filteredRows);
     
@@ -73,14 +73,14 @@ const TOUSuggestions = (props) => {
     console.log(response.data.data)
 
    
-    if (response.data.data) {
+    if (response.data.status) {
       var today = new Date();
-     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
       setCardInfo(response.data.data);
       props.setSuggestions(response.data.data);
        props.setBillId(response.data.data[0].bill_id);
        props.setDate(date);
-
+       props.setButtonState(false);
 
 
     }else{
@@ -88,8 +88,8 @@ const TOUSuggestions = (props) => {
       setCardInfo([]);
       props.setSuggestions([]);
        props.setBillId("");
-       props.setDate(" ");
-      
+       props.setDate("");
+       props.setButtonState(true);
     }
 
     setConfirmDialog({
@@ -125,17 +125,19 @@ const TOUSuggestions = (props) => {
       }
     })
     console.log("The Bill Id is:",response.data.data[0].bill_id);
-    if(response.data.data){
+    if(response.data.status){
       var today = new Date();
      var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
       console.log("The date is:",date);
       props.setSuggestions(response.data.data);
       props.setDate(date);
       props.setBillId(response.data.data[0].bill_id);
+      props.setButtonState(false);
     }else{
       props.setSuggestions([]);
       props.setBillId("");
       props.setDate("");
+      props.setButtonState(true);
     }
     
     return response.data.data;
@@ -158,7 +160,7 @@ const TOUSuggestions = (props) => {
       return (
         <Card
           style={{ width: "40rem", height: "16.5rem" }}
-          key={index + card.suggest_id}
+          key={index}
           className="box"
           id={card.suggest_id}
         >

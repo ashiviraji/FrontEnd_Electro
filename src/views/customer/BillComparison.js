@@ -122,7 +122,7 @@ var ParamsUserId = document.cookie
       </Breadcrumbs>
       
     <div className="frm-billcomparison">
-    <h4 style={{marginLeft: '18%', marginTop: '2rem', marginBottom: '2rem'}}> <b>BILL COMPARISON</b> </h4>
+    <h3 style={{marginLeft: '18%', marginTop: '2rem', marginBottom: '2rem'}}> <b>BILL COMPARISON</b> </h3>
       <div className="grp-billcomparison">
         <div className="text-center main-title ">
           
