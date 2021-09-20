@@ -15,6 +15,7 @@ export default function TOUSuggestions() {
 
   const [suggestions, setSuggestions] = useState([]);
   const [billPlanName, setBillId] = useState("");
+  const [currentDate, setDate] = useState("");
   const [buttonState, setButtonState] = useState("");
 
   function downloadPdf() {
@@ -40,10 +41,10 @@ export default function TOUSuggestions() {
     var plan = ("Name of Your Plan : Bill Plan" + billPlanName);
     doc.text( plan,20, 50);
 
-    var today = new Date();
+    
 
-    var newdat = "Date Printed : " + today;
-    doc.text(20, 70, newdat);
+    var newdate = "Date Printed : " + currentDate;
+    doc.text(20, 60, newdate);
     var rows = [];
     var col = ["Device Name", "Quantity", "Total Cost For Device", "Save Amount", "From", "To"];
 
@@ -55,7 +56,7 @@ export default function TOUSuggestions() {
 
     });
 
-    doc.autoTable(col, rows, { startY: 60, columnStyles: { 0: { cellPadding: 8 }, 1: { cellPadding: 8 }, 2: { cellPadding: 8 }, 3: { cellPadding: 8 }, 4: { cellPadding: 8 }, 5: { cellPadding: 8 } } });
+    doc.autoTable(col, rows, { startY: 70, columnStyles: { 0: { cellPadding: 8 }, 1: { cellPadding: 8 }, 2: { cellPadding: 8 }, 3: { cellPadding: 8 }, 4: { cellPadding: 8 }, 5: { cellPadding: 8 } } });
 
     doc.save('suggestions.pdf')
   }
@@ -75,7 +76,7 @@ export default function TOUSuggestions() {
       </button>
      
 
-      <TOUSuggestionsPage setSuggestions={setSuggestions} setBillId={setBillId} setButtonState={setButtonState} />
+      <TOUSuggestionsPage setSuggestions={setSuggestions} setBillId={setBillId} setButtonState={setButtonState} setDate={setDate} />
 
     </div>
 
