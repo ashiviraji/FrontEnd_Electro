@@ -1,12 +1,13 @@
-import React from "react";
+import React,{useState} from "react";
 import image from "../../../assets/img/user.png";
 import active from "../../../assets/img/active.png";
-import { FiHome } from "react-icons/fi";
+
 import { RiInformationLine } from "react-icons/ri";
 import { AiOutlineBook } from "react-icons/ai";
+
 import { Route } from "react-router-dom";
 import { ImInsertTemplate } from "react-icons/im";
-import { GiTeamIdea } from "react-icons/gi";
+
 import { RiDashboardLine } from "react-icons/ri";
 import { RiBillLine } from "react-icons/ri";
 import { MdEventNote } from "react-icons/md";
@@ -43,7 +44,6 @@ import DeviceChartSpFixed from "../../Customer/DeviceChartSpFixed";
 import DeviceChartSpTOU from "../../Customer/DeviceChartSpTOU";
 
 import "../../../assets/css/Sidebar-user.css";
-import { useState } from "react";
 import {
   SideNav,
   UlList,
@@ -57,6 +57,14 @@ import {
 } from "./SidebarElement";
 
 const Sidebar = ({ show }) => {
+  const [background_color, setDashBackgroundColor] = useState();
+  const [font_color, setDashFontColor] = useState();
+
+  function activeButton(){
+    setDashBackgroundColor("#172b4d");
+    setDashFontColor("#ffff");
+  }
+                    
   const [buttnColor1, setBtnColor1] = useState("");
   const [buttnColor2, setBtnColor2] = useState("");
   const [buttnColor3, setBtnColor3] = useState("");
@@ -111,6 +119,7 @@ const Sidebar = ({ show }) => {
 
   }
 
+
   return (
     <>
       <Router>
@@ -143,6 +152,7 @@ const Sidebar = ({ show }) => {
                 </List>
 
                 <List>
+
                   <LinkList to="/manage-bill" className={buttnColor2} onClick={() => buttonColor(2)} >
                     <RiBillLine />
                     &nbsp;&nbsp;&nbsp;Manage Bill
@@ -150,6 +160,7 @@ const Sidebar = ({ show }) => {
                 </List>
 
                 <List>
+
                   <LinkList to="/my-bill-plans" className={buttnColor3} onClick={() => buttonColor(3)}>
                     <ImInsertTemplate style={{ color: "White" }} />
                     &nbsp;&nbsp;&nbsp; My Bill Plans
@@ -157,6 +168,7 @@ const Sidebar = ({ show }) => {
                 </List>
 
                 <List>
+
                   <LinkList to="/special-event" className={buttnColor4} onClick={() => buttonColor(4)}>
                     <MdEventNote />
                     &nbsp;&nbsp;&nbsp; Special Events
