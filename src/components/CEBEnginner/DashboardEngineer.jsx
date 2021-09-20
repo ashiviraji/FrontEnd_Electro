@@ -14,6 +14,8 @@ import Axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import { Doughnut } from "react-chartjs-2";
+import "../../assets/css/Customer/deviceCharttou.css";
 
 const useStyles = makeStyles({
   engineerCurrentRoot: {
@@ -110,7 +112,7 @@ export default function SimpleCard() {
         if (response.data.status) {
           setRequestCount(
             parseInt(response.data.data.result1[0].request_count) +
-              parseInt(response.data.data.result2[0].request_count)
+            parseInt(response.data.data.result2[0].request_count)
           );
           setUserCount(response.data.data.result3[0].user_count);
         } else {
@@ -141,6 +143,11 @@ export default function SimpleCard() {
   useEffect(() => {
     getDashboardData();
   }, []);
+
+  // const config = {
+  //   type: 'doughnut',
+  //   data: data,
+  // };
 
   return (
     <div className="engineer-home-user-main">
@@ -208,6 +215,71 @@ export default function SimpleCard() {
           height="350"
         />
       </div>
+      {/* <div>
+
+        <div class="row row-tou" >
+          <div class="col-sm-4" style={{ marginLeft: '10%', marginTop: '5%' }}>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title text-center">Cost Usage (LKR/month)</h6>
+                <div class="col-sm-12">
+                  <div class="card chart-tou">
+                    <div class="card-body chartbody">
+                      <div className="chart-devicewise">
+                        <Doughnut
+                          data={{
+
+                            datasets: [{
+                              label: 'My First Dataset',
+                              data: [300, 50, 100],
+                              backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)'
+                              ],
+                              hoverOffset: 4
+                            }]
+                          }} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-sm-4" style={{ marginLeft: '10%', marginTop: '5%' }}>
+            <div class="card">
+              <div class="card-body">
+                <h6 class="card-title text-center">Cost Usage (LKR/month)</h6>
+                <div class="col-sm-12">
+                  <div class="card chart-tou">
+                    <div class="card-body chartbody">
+                      <div className="chart-devicewise">
+                        <Doughnut
+                          data={{
+
+                            datasets: [{
+                              label: 'My First Dataset',
+                              data: [300, 50, 100],
+                              backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 205, 86)'
+                              ],
+                              hoverOffset: 4
+                            }]
+                          }} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> */}
     </div>
   );
 }

@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React,{useState}from 'react';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-import DeviceWiseFixed1 from "../../components/Customer/DeviceWiseFixed";
+import DeviceWiseFixed1   from "../../components/Customer/DeviceWiseFixed";
+
 import DeviceWiseTOU from "../../components/Customer/TOUDeviceWiseUsage";
 
 export default function DeviceWiseFixed() {
@@ -19,9 +24,16 @@ export default function DeviceWiseFixed() {
     });
   };
   console.log(displayModel);
-
-  return (
-    <div className="device-wise-usage">
+  
+  return( 
+  <div className="device-wise-usage">
+    <Breadcrumbs aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
+  <Link underline="hover" color="blue" href="/my-bill-plans">
+    My Bill Plan
+  </Link>
+ 
+  <Typography color="text.primary">Device Wise Usage</Typography>
+</Breadcrumbs>
       <div className="title-heading">
         <label className="tou-headline">
           <h2 align="center">
@@ -51,6 +63,7 @@ export default function DeviceWiseFixed() {
           <b style={{ color: "black", marginRight: "4%" }}>
             &nbsp;&nbsp;Time Of Use Model
           </b>
+
         </div>
       </div>
       {displayModel.model === "DeviceWiseFixed1" ? (
