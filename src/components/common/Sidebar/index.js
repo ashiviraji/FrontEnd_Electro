@@ -1,13 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
+
 import image from "../../../assets/img/user.png";
 import active from "../../../assets/img/active.png";
-import { FiHome } from "react-icons/fi";
+
 import { RiInformationLine } from "react-icons/ri";
 
-import { AiOutlineBook } from "react-icons/ai";
+
 import { Route } from "react-router-dom";
 import { ImInsertTemplate } from "react-icons/im";
-import { GiTeamIdea } from "react-icons/gi";
+
 import { RiDashboardLine } from "react-icons/ri";
 import { RiBillLine } from "react-icons/ri";
 import { MdEventNote } from "react-icons/md";
@@ -58,6 +59,14 @@ import {
 } from "./SidebarElement";
 
 const Sidebar = ({ show }) => {
+  const [background_color, setDashBackgroundColor] = useState();
+  const [font_color, setDashFontColor] = useState();
+
+  function activeButton(){
+    setDashBackgroundColor("#172b4d");
+    setDashFontColor("#ffff");
+  }
+                    
   return (
     <>
       <Router>
@@ -79,29 +88,29 @@ const Sidebar = ({ show }) => {
                 </UlDetailList>
               </UserName>
               <UlList>
-                <List>
-                  <LinkList to="/dashboard-user">
+                <List >
+                <LinkList>
                     <RiDashboardLine />
                     &nbsp;&nbsp;&nbsp;Dashboard
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/manage-bill">
+                  <LinkList>
                     <RiBillLine />
                     &nbsp;&nbsp;&nbsp;Manage Bill
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/my-bill-plans">
+                  <LinkList>
                     <ImInsertTemplate style={{ color: "White" }} />
                     &nbsp;&nbsp;&nbsp; My Bill Plans
                   </LinkList>
                 </List>
 
                 <List>
-                  <LinkList to="/special-event">
+                  <LinkList>
                     <MdEventNote />
                     &nbsp;&nbsp;&nbsp; Special Events
                   </LinkList>
