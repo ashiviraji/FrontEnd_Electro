@@ -21,7 +21,7 @@ export default function SimpleCard() {
   return (
     <div className="engineer-home-user-main">
       <Breadcrumbs aria-label="breadcrumb" style={{ marginTop: '2rem', marginLeft: '2rem' }} separator={<NavigateNextIcon fontSize="small" />}>
-        <Link underline="hover" color="inherit" href="/dashboard-engineer">
+        <Link underline="hover" color="blue" href="/dashboard-engineer">
           Dashboard
         </Link>
 
