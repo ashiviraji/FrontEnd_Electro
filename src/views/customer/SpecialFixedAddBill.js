@@ -21,7 +21,7 @@ import {
   } from "@material-ui/core";
   import { Add, DeleteOutline, EditOutlined, Search } from "@material-ui/icons";
 import { Col, Form, Row } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import "../../assets/css/Customer/billCalculate.css";
 
 const noOfDays = 0;
 
@@ -341,7 +341,7 @@ const noOfDays = 0;
         <div>
             
         <Paper className={classes.pageContent}>
-        <h1>Your Device Data</h1>
+        <h3>Your Device Data</h3>
 
         <Toolbar>
         <SearchBar
@@ -351,13 +351,13 @@ const noOfDays = 0;
             />
           <button
             type="button"
-            className="btn btn-info add-new-button"
+            className="btn btn-primary new-appl-btn add-new-button"
             onClick={() => {
               setOpenPopup(true);
               setRecordForEdit(null);
             }}
           >
-            <Add />
+            <Add style={{float: 'left', marginRight: '2%'}}/>
             New Appliance
           </button>
         </Toolbar>

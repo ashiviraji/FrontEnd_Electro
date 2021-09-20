@@ -1,22 +1,15 @@
 import React, { useState,useEffect } from "react";
 import Axios from 'axios';
-import { Redirect, useHistory } from 'react-router-dom'
-import CalculateBillForm from "./CalculateBillForm";
+import { useHistory } from 'react-router-dom'
 import { Paper, makeStyles } from "@material-ui/core";
 import SpecialTOUCalculateBillForm from "./SpecialTOUCalculateBillForm";
 import * as SpecialDeviceBill from "./SpecialEventTOUDeviceBill";
-import UseTable from "../../components/Customer/useTable";
-import * as DeviceBill from "./DeviceBill";
 import SearchBar from "material-ui-search-bar";
 import { Table,TableHead } from "@material-ui/core";
 import { TableCell } from "@material-ui/core";
 import { TableRow,TableBody } from "@material-ui/core";
 import { Toolbar } from "@material-ui/core";
-import { InputAdornment } from "@material-ui/core";
-import { TextField } from "@material-ui/core";
-import { Search } from "@material-ui/icons";
 import "../../assets/css/Customer/billCalculate.css";
-import { Button } from "@material-ui/core";
 import { Add } from "@material-ui/icons";
 import Popup from "../../components/Customer/bill_control/Popup";
 import { DeleteOutline } from "@material-ui/icons";
@@ -26,6 +19,7 @@ import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog"
 import { Link } from "react-router-dom";
 import "../../assets/css/breadcrumb.css"
 import { Col, Form, Row } from "react-bootstrap";
+import "../../assets/css/Customer/billCalculate.css";
 
 
 import "../../assets/css/Customer/specialEvent.css"
@@ -341,7 +335,7 @@ export default function SpecialTOUAddBill() {
         <div>
             
         <Paper className={classes.pageContent}>
-        <h1>Your Device Data</h1>
+        <h3>Your Device Data</h3>
 
         <Toolbar>
         <SearchBar
@@ -351,13 +345,13 @@ export default function SpecialTOUAddBill() {
             />
           <button
             type="button"
-            className="btn btn-info add-new-button"
+            className="btn btn-primary new-appl-btn add-new-button"
             onClick={() => {
               setOpenPopup(true);
               setRecordForEdit(null);
             }}
           >
-            <Add />
+            <Add style={{float: 'left', marginRight: '2%'}}/>
             New Appliance
           </button>
         </Toolbar>
