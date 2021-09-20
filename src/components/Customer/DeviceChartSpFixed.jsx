@@ -118,9 +118,9 @@ export default function DeviceChartfixed() {
   <Typography color="text.primary">Device Wise Chart Usage</Typography>
 </Breadcrumbs>
 
-      <h4 className="MainTitle-fixed text-center">
+      <h2 className="MainTitle-fixed text-center">
         DEVICE WISE USAGE - FIXED
-      </h4>
+      </h2>
       <div class="row row-fixed">       
         <div class="col-sm-6">
           <div class="card">
