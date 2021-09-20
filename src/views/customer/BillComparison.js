@@ -4,7 +4,10 @@ import { FaThList } from "react-icons/fa";
 import  {useHistory}  from 'react-router-dom'
 import { Link, useParams } from "react-router-dom";
 import Axios from 'axios';
-
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link_ from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 
 export default function Billcomparison(props) {
@@ -111,11 +114,18 @@ var ParamsUserId = document.cookie
 
   return (
     <div>
+      <Breadcrumbs aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
+        <Link_ underline="hover" color="blue" href="/my-bill-plans">
+          My Bill Plans
+        </Link_ >
+        <Typography color="text.primary">More Details</Typography>
+      </Breadcrumbs>
       
     <div className="frm-billcomparison">
+    <h4 style={{marginLeft: '18%', marginTop: '2rem', marginBottom: '2rem'}}> <b>BILL COMPARISON</b> </h4>
       <div className="grp-billcomparison">
         <div className="text-center main-title ">
-          <h4> BILL COMPARISON </h4>
+          
         </div>
 
         <div className="row">

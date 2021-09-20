@@ -21,9 +21,19 @@
   
 }
 
+
 #active{
     background: #172b4d;
     color: #ffff;
 
 }
+
+.highlight{
+background-color: #172b4d;
+}
+
+.nonhighlight{
+background-color: #011627;
+}
+
 
