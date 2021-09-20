@@ -61,7 +61,8 @@ export const LinkList = styled(LinkR)`
   padding: 10px 15px;
   border-radius: 6px;
   &.active {
-    color: #ffff;
+     background:red;
+     color: #ffff;
   }
 
   &:hover {
