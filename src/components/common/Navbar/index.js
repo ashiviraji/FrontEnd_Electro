@@ -23,22 +23,22 @@ const Navbar = ({ toggle }) => {
           <NavMenu>
             <NavItem>
               <NavLinks to="electro">
-                <b>HOME</b>
+                HOME
               </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="services">
-                <b>OUR SERVICES</b>
+                OUR SERVICES
               </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="aboutus">
-                <b>ABOUT US</b>
+                ABOUT US
               </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="contactus">
-                <b>CONTACT US</b>
+                CONTACT US
               </NavLinks>
             </NavItem>
             <NavItem>
