@@ -160,7 +160,7 @@ export default function CustomerUserProfile() {
       <div className="body-customeruser">
         <form onLoad={(e) => { getUser(e) }}>
           <div className="ceb-heading">
-            <h2 align="center">USER PROFILE</h2>
+            <h2 align="center"> <b>USER PROFILE</b></h2>
           </div>
 
           <div class="row mb-3">
