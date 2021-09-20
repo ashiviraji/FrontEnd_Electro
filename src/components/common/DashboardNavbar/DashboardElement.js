@@ -32,7 +32,11 @@ color:#000;
 justify-self:flex-start;
 cursor:pointer;
 display:flex;
-font-size:1.5rem;
+font-size:2rem;
+margin-left:-60px;
+font-weight:bold;
+margin-top:15px;
+text-decoration:none;
 align:item:left;
 font-family: 'Playfair Display', serif;
 

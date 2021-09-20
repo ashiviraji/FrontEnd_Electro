@@ -9,9 +9,11 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
+
 function SpecialEventBillPlans() {
   return (
     <div>
+
       <Breadcrumbs
         aria-label="breadcrumb"
         style={{ marginTop: "2rem", marginLeft: "2rem" }}
@@ -23,7 +25,11 @@ function SpecialEventBillPlans() {
         <Typography color="text.primary"> Special Event Bill Plans</Typography>
       </Breadcrumbs>
       <div id="special-bill-plans-title-heading">
-        <label>MY SPECIAL EVENT BILL PLANS</label>
+        <label>
+          <h2>
+            <b>MY SPECIAL EVENT BILL PLANS</b>
+          </h2>
+        </label>
       </div>
       <Link1 to="/special-event-new-bill">
         <button className="add-new-bill-plan">
@@ -33,6 +39,7 @@ function SpecialEventBillPlans() {
           <label className="new-bill-text">Add New Bill Plan</label>
         </button>
       </Link1>
+
 
       <SpecialEventPlans />
     </div>

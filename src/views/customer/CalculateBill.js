@@ -21,11 +21,11 @@ import { DeleteOutline } from "@material-ui/icons";
 import { EditOutlined } from "@material-ui/icons";
 import Notification from "../../components/Customer/bill_control/Notification";
 import ConfirmDialog from "../../components/Customer/bill_control/ConfirmDialog";
-import { Link as Link1 } from "react-router-dom";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { Link } from "react-router-dom";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Typography from '@mui/material/Typography';
+import Link_ from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 const useStyles = makeStyles((theme) => ({
   pageContent: {
@@ -305,16 +305,13 @@ export default function CalculateBill() {
 
   return (
     <div>
-      <Breadcrumbs
-        aria-label="breadcrumb"
-        style={{ marginTop: "2rem", marginLeft: "2rem" }}
-        separator={<NavigateNextIcon fontSize="small" />}
-      >
-        <Link underline="hover" color="blue" href="/dashboard-user">
-          Dashboard
-        </Link>
-        <Typography color="text.primary"> Manage Bill </Typography>
-      </Breadcrumbs>
+      <Breadcrumbs aria-label="breadcrumb" style={{marginTop: '2rem',marginLeft: '2rem'}} separator={<NavigateNextIcon fontSize="small" />}>
+  <Link_ underline="hover" color="blue" href="/my-bill-plans">
+    My Bill Plans
+  </Link_ >
+  <Typography color="text.primary">Add Main Bill Plan</Typography>
+</Breadcrumbs>
+
       <Paper className={classes.pageContent}>
         <h2>Your Device Data</h2>
         <Toolbar>
@@ -325,14 +322,14 @@ export default function CalculateBill() {
           />
           <button
             type="button"
-            className="btn btn-info add-new-button"
+            className="btn btn-info add-new-button new-appl-btn"
             onClick={() => {
               setOpenPopup(true);
               setRecordForEdit(null);
             }}
           >
             <Add />
-            New Appliance
+            <b>New Appliance</b>
           </button>
         </Toolbar>
         <TblContainer>
@@ -391,7 +388,8 @@ export default function CalculateBill() {
         </TblContainer>
         {/* <TblPagination /> */}
 
-        <Link1 to={`/bill-comparison?bill_id=${newBillId}`}>
+
+        <Link to={`/bill-comparison?bill_id=${newBillId}`}>
           <button
             type="button"
             className="btn btn-success calculate-button"
