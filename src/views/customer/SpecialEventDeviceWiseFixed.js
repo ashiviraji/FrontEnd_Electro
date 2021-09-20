@@ -22,7 +22,7 @@ export default function SpecialEventDeviceUsage() {
 </Breadcrumbs>
     
   <div className="title-heading">
-     <label className="tou-headline">DEVICE WISE USAGE</label>
+     <label className="tou-headline justify-content-center"><h2><b>DEVICE WISE USAGE</b></h2></label>
         
         
       
