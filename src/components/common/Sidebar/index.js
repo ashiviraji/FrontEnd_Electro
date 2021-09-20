@@ -3,8 +3,6 @@ import image from "../../../assets/img/user.png";
 import active from "../../../assets/img/active.png";
 
 import { RiInformationLine } from "react-icons/ri";
-import { AiOutlineBook } from "react-icons/ai";
-
 import { Route } from "react-router-dom";
 import { ImInsertTemplate } from "react-icons/im";
 
@@ -17,7 +15,6 @@ import TOUSuggestions from "../../../views/customer/TOUSuggestions";
 import DashboardUser from "../../../views/customer/DashboardUser";
 import CalculateBill from "../../../views/customer/CalculateBill";
 import BillCompariosn from "../../../views/customer/BillComparison";
-import myBillPlans from "../../../views/customer/billPlans";
 
 import SpecialEventMyBillPlans from "../../../views/customer/SpecialEventBillPlans";
 import InformationTable from "../../../views/InformationTable";
@@ -30,7 +27,6 @@ import deviceWiseFixedSeperate from "../../../views/customer/deviceWiseFixedUsag
 import deviceWiseTOUSeperate from "../../../views/customer/DeviceWiseTOUSeperate";
 import SpecialEventDeviceUsage from "../../../views/customer/SpecialEventDeviceUsage";
 import TOUEventForm from "../../../views/customer/SpecialTOUEditBill";
-import { GrObjectUngroup } from "react-icons/gr";
 // import UserProfile from "../../../views/customer/AdminUserProfile"
 
 import DevicewiseChart from "../../../views/customer/devicewiseChartTOU";
