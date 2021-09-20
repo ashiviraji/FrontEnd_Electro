@@ -3,10 +3,10 @@ import "../../src/assets/css/informationTable.css";
 import { useHistory } from "react-router";
 import Axios from "axios";
 import { useEffect, useState } from "react";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+// import Breadcrumbs from "@mui/material/Breadcrumbs";
+// import Typography from "@mui/material/Typography";
+// import Link from "@mui/material/Link";
+// import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 export default function InformationTable() {
   let history = useHistory();
@@ -81,7 +81,7 @@ export default function InformationTable() {
 
   return (
     <div>
-      <Breadcrumbs
+      {/* <Breadcrumbs
         aria-label="breadcrumb"
         style={{ marginTop: "2rem", marginLeft: "2rem" }}
         separator={<NavigateNextIcon fontSize="small" />}
@@ -90,7 +90,7 @@ export default function InformationTable() {
           Dashboard
         </Link>
         <Typography color="text.primary"> Information </Typography>
-      </Breadcrumbs>
+      </Breadcrumbs> */}
       <form>
         <div className="infotable-form">
           <div className="infotable-grp">
