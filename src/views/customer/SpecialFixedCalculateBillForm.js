@@ -58,24 +58,22 @@ export default function SpecialFixedCalculateBillForm(props) {
     if ("power" in fieldValues)
       temp.power =
         fieldValues.power > 0 ? "" : "power should be a number and > 0";
-    // if ("hfixed" in fieldValues)
-    //   temp.hfixed =
-    //     (fieldValues.hfixed >= 0 && fieldValues.hfixed <= 24) ||
-    //       fieldValues.hfixed === ""
-    //       ? ""
-    //       : "24 > Hours in day >= 0";
-    // if ("mfixed" in fieldValues)
-    //   temp.mfixed =
-    //     (fieldValues.mfixed >= 0 && fieldValues.mfixed < 60) ||
-    //       fieldValues.mfixed === ""
-    //       ? ""
-    //       : "60 > minutes >= 0";
-
-    if ("hfixed" in fieldValues || "mfixed" in fieldValues)
+    if ("hfixed" in fieldValues)
       temp.hfixed =
-        (fieldValues.hfixed > 0 || fieldValues.mfixed > 0)
+        (fieldValues.hfixed >= 0 && fieldValues.hfixed <= 24) ||
+          fieldValues.hfixed === ""
           ? ""
-          : "Required time period";
+          : "24 > Hours in day >= 0";
+    if ("mfixed" in fieldValues)
+      temp.mfixed =
+        (fieldValues.mfixed >= 0 && fieldValues.mfixed < 60) ||
+          fieldValues.mfixed === ""
+          ? ""
+          : "60 > minutes >= 0";
+
+    // if ("hfixed" in fieldValues || "mfixed" in fieldValues)
+    //   temp.hfixed =
+    //     (fieldValues.hfixed > 0 || fieldValues.mfixed > 0) ? "" : "Required time period";
 
     if ("numberOfDays" in fieldValues)
           temp.numberOfDays =
