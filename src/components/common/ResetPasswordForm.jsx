@@ -83,7 +83,7 @@ export default function ResetPasswordForm() {
                     <div>
                         <p style={{ color: "red", float: "left", fontSize: 13, marginTop: 17 }}>{PassWarningReg}</p>
                     </div>
-                    <button type="submit" className="submitbtn" disabled={btnEnable} >Sign Up</button>
+                    <button type="submit" className="submitbtn" disabled={btnEnable} >Submit</button>
 
                     <p className="forgot-password ">
                         Don't Want to change<Link className="nav-link" to="/sign-in">sign in</Link>
